@@ -1,10 +1,18 @@
 /* ========================================
+ * This code will test/use the functionality of all of the below peripherals.
  * Fully working code: 
  * PWM      : 
+    Cycle up and down when enabled
  * Encoder  : 
+    Calibrate the wheels when enabled
+
  * ADC      :
+    Prints the ADC reading (in volts) to UART
+
  * USB      : port displays speed and position.
+
  * CMD: "PW xx"
+
  * Copyright Univ of Auckland, 2016
  * All Rights Reserved
  * UNPUBLISHED, LICENSED SOFTWARE.
@@ -28,14 +36,37 @@ void handle_usb();
 //* ========================================
 
 
-int main()
+
+void cycle_PWM()
 {
+    uint16 fluct;
     
+    for(fluct = 30; fluct <= 100; fluct++)
+    {
+        PWM_1_WriteCompare(fluct);
+        PWM_2_WriteCompare(fluct);
+        CyDelay(30);
+    }
+    
+    for(fluct = 100; fluct >= 30; fluct--)
+    {
+        PWM_1_WriteCompare(fluct);
+        PWM_2_WriteCompare(fluct);
+        CyDelay(30);
+    }
+    
+}
+
+int main()
+{  
 
 // --------------------------------    
 // ----- INITIALIZATIONS ----------
     CYGlobalIntEnable;
+    
+    
      PWM_1_Start();// starting the pwm
+     PWM_2_Start();// starting the pwm
 
 // ------USB SETUP ----------------    
 #ifdef USE_USB    
@@ -44,10 +75,11 @@ int main()
         
     RF_BT_SELECT_Write(0);
 
-    usbPutString("Started");
+    //usbPutString("Started");
     for(;;)
     {
         /* Place your application code here. */
+        cycle_PWM();
         handle_usb();
         if (flag_KB_string == 1)
         {
@@ -80,6 +112,21 @@ void usbPutChar(char c)
 #endif    
 }
 //* ========================================
+
+void uart_set_PWM()
+{
+    uint8 c;
+     if (USBUART_DataIsReady() != 0)
+        {  
+            c = USBUART_GetChar();
+            
+            if(c <= 100 && c > 0){
+                PWM_1_WriteCompare(c);
+                usbPutString(c);
+            }
+        }
+}
+
 void handle_usb()
 {
     // handles input at terminal, echos it back to the terminal
@@ -88,9 +135,6 @@ void handle_usb()
     
     static uint8 usbStarted = FALSE;
     static uint16 usbBufCount = 0;
-    uint8 c; 
-    uint16 fluct;
-    
 
     if (!usbStarted)
     {
@@ -102,49 +146,7 @@ void handle_usb()
     }
     else
     {
-        if (USBUART_DataIsReady() != 0)
-        {  
-            c = USBUART_GetChar();
-            
-            if(c <= 100 && c > 0){
-                PWM_1_WriteCompare(c);
-                usbPutString(c);
-            }else if(c == 101){
-                
-                for(fluct = 0; fluct <= 100; fluct++)
-                {
-                    PWM_1_WriteCompare(fluct);
-                    CyDelay(30);
-                }
-                
-            }
-/*
-            if ((c == 13) || (c == 10))
-            {
-//                if (usbBufCount > 0)
-                {
-                    entry[usbBufCount]= '\0';
-                    strcpy(line,entry);
-                    usbBufCount = 0;
-                    flag_KB_string = 1;
-                }
-            }
-            else 
-            {
-                if (((c == CHAR_BACKSP) || (c == CHAR_DEL) ) && (usbBufCount > 0) )
-                    usbBufCount--;
-                else
-                {
-                    if (usbBufCount > (BUF_SIZE-2) ) // one less else strtok triggers a crash
-                    {
-                       USBUART_PutChar('!');        
-                    }
-                    else
-                        entry[usbBufCount++] = c;  
-                }  
-            }
-            */
-        }
+       
     }    
 }
 
