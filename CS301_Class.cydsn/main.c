@@ -1,12 +1,12 @@
 /* ========================================
  * This code will test/use the functionality of all of the below peripherals.
  * Fully working code: 
- * PWM      : 
+ * PWM      : done
     Cycle up and down when enabled
  * Encoder  : 
     Calibrate the wheels when enabled
 
- * ADC      :
+ * ADC      : done
     Prints the ADC reading (in volts) to UART
 
  * USB      : port displays speed and position.
@@ -35,8 +35,77 @@ void usbPutChar(char c);
 void handle_usb();
 //* ========================================
 
+//ADC:
+CY_ISR (adc_isr)
+{
+    adc_result = ADC_GetResult16(0);
+    flag_receive_ADC = 1;
+    LED_Write(~LED_Read());
+}
+
+CY_ISR (isr_quad1)
+{
+    //LED_Write(~LED_Read());
+    quad_count1 = QuadDec_M1_GetCounter();
+    quad_count2 = QuadDec_M2_GetCounter();
+    QuadDec_M1_SetCounter(0);
+    QuadDec_M2_SetCounter(0);
+    flag_calc_wheelspeed = 1;
+}
+
+void Quad_Dec_response()
+{
+    //Check if the flag has been set
+    if (!flag_calc_wheelspeed) return;
+    flag_calc_wheelspeed = 0;
+    
+    char wheel_1_str [16];
+    char wheel_2_str [16];
+    sprintf(wheel_1_str, "quad count 1 is: %d\n\r", quad_count1);
+    usbPutString(wheel_1_str);
+    sprintf(wheel_2_str, "quad count 2 is: %d\n\r", quad_count2);
+    
+    usbPutString(wheel_2_str);
+    
+    int16 relativeSpeed = quad_count1 - quad_count2;
+    
+    //if rs is positive, quad count 1 is larger
+    //if rs is negative, quad count 2 is larger
+    if(relativeSpeed > 0)
+    {
+        
+    }
+    else if (relativeSpeed < 0)
+    {
+        
+    }
+    
+    
+    
+    
+        
+}    
+
+void print_ADC()
+{
+   //usbPutString("HII\n");
+    if(flag_receive_ADC == 1)
+    {
+        //usbPutString("AAA\r\n");
+        flag_receive_ADC = 0;
+        
+       // int8 channel = ADC_
+        int16 converted_val = (484 * adc_result) / 4096;
+        
+        char result_str[16];
+        sprintf(result_str, "%d\n\r", converted_val);
+        
+        usbPutString(result_str);
+    }
+}
 
 
+//PWM:
 void cycle_PWM()
 {
     uint16 fluct;
@@ -63,10 +132,34 @@ int main()
 // --------------------------------    
 // ----- INITIALIZATIONS ----------
     CYGlobalIntEnable;
+    if(ENABLE_PWM)
+    {
+        PWM_1_Start();// starting the pwm
+        PWM_2_Start();// starting the pwm
+    }
     
     
-     PWM_1_Start();// starting the pwm
-     PWM_2_Start();// starting the pwm
+    
+    if(ENABLE_ADC)
+    {
+        ADC_Start();
+        isr_eoc_StartEx(adc_isr);
+        ADC_StartConvert();
+    }
+    
+    if (ENABLE_QUAD)
+    {
+        QuadDec_M1_Start();
+        QuadDec_M2_Start();
+        
+        isr_quad1_StartEx(isr_quad1);
+        
+        Timer_1_Start();
+        
+        //isr_quad1_Start();
+       
+        
+    }
 
 // ------USB SETUP ----------------    
 #ifdef USE_USB    
@@ -79,7 +172,10 @@ int main()
     for(;;)
     {
         /* Place your application code here. */
-        cycle_PWM();
+        if(ENABLE_PWM && ENABLE_CYCLE) cycle_PWM();
+        if(ENABLE_ADC) print_ADC();
+        if(ENABLE_QUAD) Quad_Dec_response();
+        
         handle_usb();
         if (flag_KB_string == 1)
         {
@@ -142,6 +238,7 @@ void handle_usb()
         {
             USBUART_CDC_Init();
             usbStarted = TRUE;
+            usbPutString("Started\n");
         }
     }
     else

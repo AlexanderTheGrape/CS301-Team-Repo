@@ -40,9 +40,17 @@
 #define DB2_OFF         DB2_Write(0)
 #define DB2_TOGGLE_LED  DB2_Write(~DB2_Read())
 //* ========================================
+
+//ADC
+#define ENABLE_ADC 0
+
 // Motor
 #define COAST_OFF CONTROL_Write(0);
 #define COAST_ON CONTROL_Write(0b11);
+
+#define ENABLE_PWM 1
+#define ENABLE_CYCLE 0
+#define ENABLE_QUAD 1
 
 #define PWM_MAX 255     // maximum value of duty cycle
 #define PWM_MIN 0       // minimum value of duty cycle

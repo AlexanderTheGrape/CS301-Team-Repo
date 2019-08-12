@@ -87,6 +87,8 @@
 #include "isrRF_TX.h"
 #include "isrRF_RX.h"
 #include "RF_BT_SELECT.h"
+#include "isr_quad1.h"
+#include "Timer_1.h"
 #include "QuadDec_M1_Cnt16.h"
 #include "QuadDec_M2_Cnt16.h"
 #include "ADC_SAR.h"

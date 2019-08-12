@@ -33,6 +33,16 @@ uint8 dataready_flag =0;
 
 uint8 flag_rf_transmission_active = UNKNOWN; // [TRUE if receieving data, FALSE is not, UNKNOWN at startup]
 
+uint8 flag_receive_ADC = 0;
+int16 adc_result;
+
+//==========================================
+// Quad decoder
+uint8 flag_calc_wheelspeed = 0;
+int16 quad_count1 = 0;
+int16 quad_count2 = 0;
+
+
 //* ========================================
 char displaystring[BUF_SIZE] = "CS301 2016\n";
 char line[BUF_SIZE], entry[BUF_SIZE];
