@@ -1,6 +1,6 @@
 // ======================================================================
 // CS301_Class.v generated from TopDesign.cysch
-// 08/12/2019 at 16:42
+// 08/12/2019 at 16:58
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -290,7 +290,7 @@ endmodule
 `include "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\and_v1_0\and_v1_0.v"
 `endif
 
-// QuadDec_v3_0(Counter8bit=false, CounterResolution=1, CounterSize=16, CounterSizeReplacementString=int16, CounterSizeReplacementStringUnsigned=uint16, TypeCastReplacementString=int32, UsingGlitchFiltering=true, UsingIndexInput=false, CY_API_CALLBACK_HEADER_INCLUDE=, CY_COMPONENT_NAME=QuadDec_v3_0, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=QuadDec_M1, CY_INSTANCE_SHORT_NAME=QuadDec_M1, CY_MAJOR_VERSION=3, CY_MINOR_VERSION=0, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=QuadDec_M1, )
+// QuadDec_v3_0(Counter8bit=false, CounterResolution=4, CounterSize=16, CounterSizeReplacementString=int16, CounterSizeReplacementStringUnsigned=uint16, TypeCastReplacementString=int32, UsingGlitchFiltering=true, UsingIndexInput=false, CY_API_CALLBACK_HEADER_INCLUDE=, CY_COMPONENT_NAME=QuadDec_v3_0, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=QuadDec_M1, CY_INSTANCE_SHORT_NAME=QuadDec_M1, CY_MAJOR_VERSION=3, CY_MINOR_VERSION=0, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=QuadDec_M1, )
 module QuadDec_v3_0_1 (
     quad_A,
     quad_B,
@@ -303,7 +303,7 @@ module QuadDec_v3_0_1 (
     input       clock;
     output      interrupt;
 
-    parameter CounterResolution = 1;
+    parameter CounterResolution = 4;
     parameter UsingGlitchFiltering = 1;
     parameter UsingIndexInput = 0;
 
@@ -373,7 +373,7 @@ module QuadDec_v3_0_1 (
         .overflow(Net_530),
         .underflow(Net_611),
         .interrupt(interrupt));
-    defparam bQuadDec.CounterResolution = 1;
+    defparam bQuadDec.CounterResolution = 4;
     defparam bQuadDec.UsingGlitchFiltering = 1;
     defparam bQuadDec.UsingIndexInput = 0;
 
@@ -504,7 +504,7 @@ module Counter_v3_0_2 (
 
 endmodule
 
-// QuadDec_v3_0(Counter8bit=false, CounterResolution=1, CounterSize=16, CounterSizeReplacementString=int16, CounterSizeReplacementStringUnsigned=uint16, TypeCastReplacementString=int32, UsingGlitchFiltering=true, UsingIndexInput=false, CY_API_CALLBACK_HEADER_INCLUDE=, CY_COMPONENT_NAME=QuadDec_v3_0, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=QuadDec_M2, CY_INSTANCE_SHORT_NAME=QuadDec_M2, CY_MAJOR_VERSION=3, CY_MINOR_VERSION=0, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=QuadDec_M2, )
+// QuadDec_v3_0(Counter8bit=false, CounterResolution=4, CounterSize=16, CounterSizeReplacementString=int16, CounterSizeReplacementStringUnsigned=uint16, TypeCastReplacementString=int32, UsingGlitchFiltering=true, UsingIndexInput=false, CY_API_CALLBACK_HEADER_INCLUDE=, CY_COMPONENT_NAME=QuadDec_v3_0, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=QuadDec_M2, CY_INSTANCE_SHORT_NAME=QuadDec_M2, CY_MAJOR_VERSION=3, CY_MINOR_VERSION=0, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=QuadDec_M2, )
 module QuadDec_v3_0_3 (
     quad_A,
     quad_B,
@@ -517,7 +517,7 @@ module QuadDec_v3_0_3 (
     input       clock;
     output      interrupt;
 
-    parameter CounterResolution = 1;
+    parameter CounterResolution = 4;
     parameter UsingGlitchFiltering = 1;
     parameter UsingIndexInput = 0;
 
@@ -587,7 +587,7 @@ module QuadDec_v3_0_3 (
         .overflow(Net_530),
         .underflow(Net_611),
         .interrupt(interrupt));
-    defparam bQuadDec.CounterResolution = 1;
+    defparam bQuadDec.CounterResolution = 4;
     defparam bQuadDec.UsingGlitchFiltering = 1;
     defparam bQuadDec.UsingIndexInput = 0;
 
@@ -2145,7 +2145,7 @@ module top ;
           wire  Net_6167;
           wire  Net_6166;
           wire  Net_6165;
-          wire  Net_6182;
+          wire  Net_6185;
           wire  Net_3493;
           wire  Net_3492;
           wire  Net_3491;
@@ -2654,7 +2654,7 @@ module top ;
         .index(1'b0),
         .clock(Net_1850),
         .interrupt(Net_3247));
-    defparam QuadDec_M1.CounterResolution = 1;
+    defparam QuadDec_M1.CounterResolution = 4;
     defparam QuadDec_M1.UsingGlitchFiltering = 1;
     defparam QuadDec_M1.UsingIndexInput = 0;
 
@@ -2745,7 +2745,7 @@ module top ;
         .index(1'b0),
         .clock(Net_1850),
         .interrupt(Net_3249));
-    defparam QuadDec_M2.CounterResolution = 1;
+    defparam QuadDec_M2.CounterResolution = 4;
     defparam QuadDec_M2.UsingGlitchFiltering = 1;
     defparam QuadDec_M2.UsingIndexInput = 0;
 
