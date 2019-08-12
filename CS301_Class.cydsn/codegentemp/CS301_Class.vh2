@@ -2,7 +2,7 @@
 --	Conversion of CS301_Class.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Mon Aug 12 16:25:41 2019
+--	Mon Aug 12 16:42:38 2019
 --
 
 USE cypress.cypress.all;
@@ -1398,7 +1398,7 @@ SIGNAL Net_6134 : bit;
 SIGNAL Net_6058 : bit;
 SIGNAL Net_6060 : bit;
 SIGNAL \Timer_1:Net_260\ : bit;
-SIGNAL Net_6158 : bit;
+SIGNAL Net_6165 : bit;
 SIGNAL \Timer_1:Net_55\ : bit;
 SIGNAL \Timer_1:Net_53\ : bit;
 SIGNAL \Timer_1:TimerUDB:ClockOutFromEnBlock\ : bit;
@@ -1432,7 +1432,7 @@ SIGNAL \Timer_1:TimerUDB:tc_i\ : bit;
 SIGNAL \Timer_1:TimerUDB:tc_reg_i\ : bit;
 SIGNAL \Timer_1:TimerUDB:hwEnable_reg\ : bit;
 SIGNAL \Timer_1:TimerUDB:capture_out_reg_i\ : bit;
-SIGNAL Net_6162 : bit;
+SIGNAL Net_6169 : bit;
 SIGNAL \Timer_1:TimerUDB:capt_fifo_load_int\ : bit;
 SIGNAL \Timer_1:TimerUDB:runmode_enable\ : bit;
 SIGNAL \Timer_1:TimerUDB:trig_reg\ : bit;
@@ -1786,14 +1786,8 @@ tmpOE__M1_IN1_net_0 <=  ('1') ;
 	OR (not \QuadDec_M1:Net_1260\ and not \QuadDec_M1:bQuadDec:quad_A_filt\ and not \QuadDec_M1:bQuadDec:error\ and not \QuadDec_M1:bQuadDec:state_0\ and \QuadDec_M1:Net_1251\)
 	OR (not \QuadDec_M1:Net_1260\ and not \QuadDec_M1:bQuadDec:error\ and not \QuadDec_M1:bQuadDec:state_1\ and \QuadDec_M1:Net_1251\ and \QuadDec_M1:bQuadDec:quad_B_filt\));
 
-\QuadDec_M1:Net_1203\\D\ <= ((not \QuadDec_M1:Net_1260\ and not \QuadDec_M1:bQuadDec:state_1\ and not \QuadDec_M1:bQuadDec:state_0\ and \QuadDec_M1:Net_1203\ and \QuadDec_M1:bQuadDec:error\)
-	OR (not \QuadDec_M1:Net_1260\ and not \QuadDec_M1:bQuadDec:quad_B_filt\ and not \QuadDec_M1:bQuadDec:error\ and \QuadDec_M1:bQuadDec:quad_A_filt\ and \QuadDec_M1:bQuadDec:state_1\ and \QuadDec_M1:bQuadDec:state_0\)
-	OR (not \QuadDec_M1:Net_1260\ and not \QuadDec_M1:bQuadDec:quad_A_filt\ and not \QuadDec_M1:bQuadDec:error\ and \QuadDec_M1:bQuadDec:quad_B_filt\ and \QuadDec_M1:bQuadDec:state_1\ and \QuadDec_M1:bQuadDec:state_0\)
-	OR (not \QuadDec_M1:Net_1260\ and not \QuadDec_M1:bQuadDec:quad_A_filt\ and not \QuadDec_M1:bQuadDec:quad_B_filt\ and not \QuadDec_M1:bQuadDec:error\ and not \QuadDec_M1:bQuadDec:state_0\ and \QuadDec_M1:bQuadDec:state_1\)
-	OR (not \QuadDec_M1:Net_1260\ and not \QuadDec_M1:bQuadDec:error\ and not \QuadDec_M1:bQuadDec:state_0\ and \QuadDec_M1:bQuadDec:quad_A_filt\ and \QuadDec_M1:bQuadDec:quad_B_filt\ and \QuadDec_M1:bQuadDec:state_1\)
-	OR (not \QuadDec_M1:Net_1260\ and not \QuadDec_M1:bQuadDec:quad_A_filt\ and not \QuadDec_M1:bQuadDec:quad_B_filt\ and not \QuadDec_M1:bQuadDec:error\ and not \QuadDec_M1:bQuadDec:state_1\ and \QuadDec_M1:bQuadDec:state_0\)
-	OR (not \QuadDec_M1:Net_1260\ and not \QuadDec_M1:bQuadDec:error\ and not \QuadDec_M1:bQuadDec:state_1\ and \QuadDec_M1:bQuadDec:quad_A_filt\ and \QuadDec_M1:bQuadDec:quad_B_filt\ and \QuadDec_M1:bQuadDec:state_0\)
-	OR (not \QuadDec_M1:bQuadDec:quad_B_filt\ and not \QuadDec_M1:bQuadDec:error\ and not \QuadDec_M1:bQuadDec:state_1\ and not \QuadDec_M1:bQuadDec:state_0\ and \QuadDec_M1:bQuadDec:quad_A_filt\)
+\QuadDec_M1:Net_1203\\D\ <= ((not \QuadDec_M1:Net_1260\ and not \QuadDec_M1:bQuadDec:quad_A_filt\ and not \QuadDec_M1:bQuadDec:quad_B_filt\ and not \QuadDec_M1:bQuadDec:error\ and not \QuadDec_M1:bQuadDec:state_1\ and \QuadDec_M1:bQuadDec:state_0\)
+	OR (not \QuadDec_M1:Net_1260\ and not \QuadDec_M1:bQuadDec:state_1\ and not \QuadDec_M1:bQuadDec:state_0\ and \QuadDec_M1:Net_1203\ and \QuadDec_M1:bQuadDec:error\)
 	OR (not \QuadDec_M1:bQuadDec:quad_A_filt\ and not \QuadDec_M1:bQuadDec:error\ and not \QuadDec_M1:bQuadDec:state_1\ and not \QuadDec_M1:bQuadDec:state_0\ and \QuadDec_M1:bQuadDec:quad_B_filt\));
 
 \QuadDec_M1:Net_530\ <= ((not \QuadDec_M1:Net_1264\ and \QuadDec_M1:Net_1275\ and \QuadDec_M1:Net_1251\));
@@ -1862,14 +1856,8 @@ Net_362 <= (not Net_2404);
 	OR (not \QuadDec_M2:Net_1260\ and not \QuadDec_M2:bQuadDec:quad_A_filt\ and not \QuadDec_M2:bQuadDec:error\ and not \QuadDec_M2:bQuadDec:state_0\ and \QuadDec_M2:Net_1251\)
 	OR (not \QuadDec_M2:Net_1260\ and not \QuadDec_M2:bQuadDec:error\ and not \QuadDec_M2:bQuadDec:state_1\ and \QuadDec_M2:Net_1251\ and \QuadDec_M2:bQuadDec:quad_B_filt\));
 
-\QuadDec_M2:Net_1203\\D\ <= ((not \QuadDec_M2:Net_1260\ and not \QuadDec_M2:bQuadDec:state_1\ and not \QuadDec_M2:bQuadDec:state_0\ and \QuadDec_M2:Net_1203\ and \QuadDec_M2:bQuadDec:error\)
-	OR (not \QuadDec_M2:Net_1260\ and not \QuadDec_M2:bQuadDec:quad_B_filt\ and not \QuadDec_M2:bQuadDec:error\ and \QuadDec_M2:bQuadDec:quad_A_filt\ and \QuadDec_M2:bQuadDec:state_1\ and \QuadDec_M2:bQuadDec:state_0\)
-	OR (not \QuadDec_M2:Net_1260\ and not \QuadDec_M2:bQuadDec:quad_A_filt\ and not \QuadDec_M2:bQuadDec:error\ and \QuadDec_M2:bQuadDec:quad_B_filt\ and \QuadDec_M2:bQuadDec:state_1\ and \QuadDec_M2:bQuadDec:state_0\)
-	OR (not \QuadDec_M2:Net_1260\ and not \QuadDec_M2:bQuadDec:quad_A_filt\ and not \QuadDec_M2:bQuadDec:quad_B_filt\ and not \QuadDec_M2:bQuadDec:error\ and not \QuadDec_M2:bQuadDec:state_0\ and \QuadDec_M2:bQuadDec:state_1\)
-	OR (not \QuadDec_M2:Net_1260\ and not \QuadDec_M2:bQuadDec:error\ and not \QuadDec_M2:bQuadDec:state_0\ and \QuadDec_M2:bQuadDec:quad_A_filt\ and \QuadDec_M2:bQuadDec:quad_B_filt\ and \QuadDec_M2:bQuadDec:state_1\)
-	OR (not \QuadDec_M2:Net_1260\ and not \QuadDec_M2:bQuadDec:quad_A_filt\ and not \QuadDec_M2:bQuadDec:quad_B_filt\ and not \QuadDec_M2:bQuadDec:error\ and not \QuadDec_M2:bQuadDec:state_1\ and \QuadDec_M2:bQuadDec:state_0\)
-	OR (not \QuadDec_M2:Net_1260\ and not \QuadDec_M2:bQuadDec:error\ and not \QuadDec_M2:bQuadDec:state_1\ and \QuadDec_M2:bQuadDec:quad_A_filt\ and \QuadDec_M2:bQuadDec:quad_B_filt\ and \QuadDec_M2:bQuadDec:state_0\)
-	OR (not \QuadDec_M2:bQuadDec:quad_B_filt\ and not \QuadDec_M2:bQuadDec:error\ and not \QuadDec_M2:bQuadDec:state_1\ and not \QuadDec_M2:bQuadDec:state_0\ and \QuadDec_M2:bQuadDec:quad_A_filt\)
+\QuadDec_M2:Net_1203\\D\ <= ((not \QuadDec_M2:Net_1260\ and not \QuadDec_M2:bQuadDec:quad_A_filt\ and not \QuadDec_M2:bQuadDec:quad_B_filt\ and not \QuadDec_M2:bQuadDec:error\ and not \QuadDec_M2:bQuadDec:state_1\ and \QuadDec_M2:bQuadDec:state_0\)
+	OR (not \QuadDec_M2:Net_1260\ and not \QuadDec_M2:bQuadDec:state_1\ and not \QuadDec_M2:bQuadDec:state_0\ and \QuadDec_M2:Net_1203\ and \QuadDec_M2:bQuadDec:error\)
 	OR (not \QuadDec_M2:bQuadDec:quad_A_filt\ and not \QuadDec_M2:bQuadDec:error\ and not \QuadDec_M2:bQuadDec:state_1\ and not \QuadDec_M2:bQuadDec:state_0\ and \QuadDec_M2:bQuadDec:quad_B_filt\));
 
 \QuadDec_M2:Net_530\ <= ((not \QuadDec_M2:Net_1264\ and \QuadDec_M2:Net_1275\ and \QuadDec_M2:Net_1251\));

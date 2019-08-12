@@ -1,4 +1,4 @@
---------------- Rebuild Started: 08/12/2019 16:16:24 Project: CS301_Class, Configuration: ARM GCC 4.9-2015-q1-update Debug ---------------
+--------------- Rebuild Started: 08/12/2019 16:38:31 Project: CS301_Class, Configuration: ARM GCC 4.9-2015-q1-update Debug ---------------
 Deleting file ".\CortexM3\ARM_GCC_493\Debug\main.o"
 Deleting file ".\CortexM3\ARM_GCC_493\Debug\tacho.o"
 Deleting file ".\CortexM3\ARM_GCC_493\Debug\cyfitter_cfg.o"
@@ -182,14 +182,14 @@ Dependency Generation ...
 Clean Temporary Files ...
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/main.lst -g -D DEBUG -Wall -ffunction-sections -O0 -ffat-lto-objects -c .\main.c -o .\CortexM3\ARM_GCC_493\Debug\main.o
 .\main.c: In function 'uart_set_PWM':
-.\main.c:218:30: warning: passing argument 1 of 'usbPutString' makes pointer from integer without a cast
+.\main.c:221:30: warning: passing argument 1 of 'usbPutString' makes pointer from integer without a cast
                  usbPutString(c);
                               ^
-.\main.c:186:6: note: expected 'char *' but argument is of type 'uint8'
+.\main.c:189:6: note: expected 'char *' but argument is of type 'uint8'
  void usbPutString(char *s)
       ^
 .\main.c: In function 'handle_usb':
-.\main.c:230:19: warning: unused variable 'usbBufCount' [-Wunused-variable]
+.\main.c:233:19: warning: unused variable 'usbBufCount' [-Wunused-variable]
      static uint16 usbBufCount = 0;
                    ^
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/tacho.lst -g -D DEBUG -Wall -ffunction-sections -O0 -ffat-lto-objects -c .\tacho.c -o .\CortexM3\ARM_GCC_493\Debug\tacho.o
@@ -289,6 +289,6 @@ arm-none-eabi-ar.exe: creating .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a
 arm-none-eabi-gcc.exe -Wl,--start-group -o .\CortexM3\ARM_GCC_493\Debug\CS301_Class.elf .\CortexM3\ARM_GCC_493\Debug\main.o .\CortexM3\ARM_GCC_493\Debug\tacho.o .\CortexM3\ARM_GCC_493\Debug\cymetadata.o .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_493\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -g -ffunction-sections -O0 -ffat-lto-objects -L Generated_Source\PSoC5 -Wl,-Map,.\CortexM3\ARM_GCC_493\Debug/CS301_Class.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections -Wl,--end-group
 cyelftool.exe -C D:\GP1CS301\CS301-Team-Repo\CS301_Class.cydsn\CortexM3\ARM_GCC_493\Debug\CS301_Class.elf --flash_row_size 256 --flash_size 262144
 cyelftool.exe -S D:\GP1CS301\CS301-Team-Repo\CS301_Class.cydsn\CortexM3\ARM_GCC_493\Debug\CS301_Class.elf
-Flash used: 12032 of 262144 bytes (4.6%).
-SRAM used: 3005 of 65536 bytes (4.6%). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Rebuild Succeeded: 08/12/2019 16:16:54 ---------------
+Flash used: 16384 of 262144 bytes (6.3%).
+SRAM used: 3125 of 65536 bytes (4.8%). Stack: 2048 bytes. Heap: 128 bytes.
+--------------- Rebuild Succeeded: 08/12/2019 16:39:02 ---------------

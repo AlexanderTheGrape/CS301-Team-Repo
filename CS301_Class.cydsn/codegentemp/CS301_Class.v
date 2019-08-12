@@ -1,6 +1,6 @@
 // ======================================================================
 // CS301_Class.v generated from TopDesign.cysch
-// 08/12/2019 at 16:25
+// 08/12/2019 at 16:42
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -290,7 +290,7 @@ endmodule
 `include "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\and_v1_0\and_v1_0.v"
 `endif
 
-// QuadDec_v3_0(Counter8bit=false, CounterResolution=4, CounterSize=16, CounterSizeReplacementString=int16, CounterSizeReplacementStringUnsigned=uint16, TypeCastReplacementString=int32, UsingGlitchFiltering=true, UsingIndexInput=false, CY_API_CALLBACK_HEADER_INCLUDE=, CY_COMPONENT_NAME=QuadDec_v3_0, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=QuadDec_M1, CY_INSTANCE_SHORT_NAME=QuadDec_M1, CY_MAJOR_VERSION=3, CY_MINOR_VERSION=0, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=QuadDec_M1, )
+// QuadDec_v3_0(Counter8bit=false, CounterResolution=1, CounterSize=16, CounterSizeReplacementString=int16, CounterSizeReplacementStringUnsigned=uint16, TypeCastReplacementString=int32, UsingGlitchFiltering=true, UsingIndexInput=false, CY_API_CALLBACK_HEADER_INCLUDE=, CY_COMPONENT_NAME=QuadDec_v3_0, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=QuadDec_M1, CY_INSTANCE_SHORT_NAME=QuadDec_M1, CY_MAJOR_VERSION=3, CY_MINOR_VERSION=0, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=QuadDec_M1, )
 module QuadDec_v3_0_1 (
     quad_A,
     quad_B,
@@ -303,7 +303,7 @@ module QuadDec_v3_0_1 (
     input       clock;
     output      interrupt;
 
-    parameter CounterResolution = 4;
+    parameter CounterResolution = 1;
     parameter UsingGlitchFiltering = 1;
     parameter UsingIndexInput = 0;
 
@@ -373,7 +373,7 @@ module QuadDec_v3_0_1 (
         .overflow(Net_530),
         .underflow(Net_611),
         .interrupt(interrupt));
-    defparam bQuadDec.CounterResolution = 4;
+    defparam bQuadDec.CounterResolution = 1;
     defparam bQuadDec.UsingGlitchFiltering = 1;
     defparam bQuadDec.UsingIndexInput = 0;
 
@@ -504,7 +504,7 @@ module Counter_v3_0_2 (
 
 endmodule
 
-// QuadDec_v3_0(Counter8bit=false, CounterResolution=4, CounterSize=16, CounterSizeReplacementString=int16, CounterSizeReplacementStringUnsigned=uint16, TypeCastReplacementString=int32, UsingGlitchFiltering=true, UsingIndexInput=false, CY_API_CALLBACK_HEADER_INCLUDE=, CY_COMPONENT_NAME=QuadDec_v3_0, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=QuadDec_M2, CY_INSTANCE_SHORT_NAME=QuadDec_M2, CY_MAJOR_VERSION=3, CY_MINOR_VERSION=0, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=QuadDec_M2, )
+// QuadDec_v3_0(Counter8bit=false, CounterResolution=1, CounterSize=16, CounterSizeReplacementString=int16, CounterSizeReplacementStringUnsigned=uint16, TypeCastReplacementString=int32, UsingGlitchFiltering=true, UsingIndexInput=false, CY_API_CALLBACK_HEADER_INCLUDE=, CY_COMPONENT_NAME=QuadDec_v3_0, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=QuadDec_M2, CY_INSTANCE_SHORT_NAME=QuadDec_M2, CY_MAJOR_VERSION=3, CY_MINOR_VERSION=0, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=QuadDec_M2, )
 module QuadDec_v3_0_3 (
     quad_A,
     quad_B,
@@ -517,7 +517,7 @@ module QuadDec_v3_0_3 (
     input       clock;
     output      interrupt;
 
-    parameter CounterResolution = 4;
+    parameter CounterResolution = 1;
     parameter UsingGlitchFiltering = 1;
     parameter UsingIndexInput = 0;
 
@@ -587,7 +587,7 @@ module QuadDec_v3_0_3 (
         .overflow(Net_530),
         .underflow(Net_611),
         .interrupt(interrupt));
-    defparam bQuadDec.CounterResolution = 4;
+    defparam bQuadDec.CounterResolution = 1;
     defparam bQuadDec.UsingGlitchFiltering = 1;
     defparam bQuadDec.UsingIndexInput = 0;
 
@@ -2063,7 +2063,7 @@ endmodule
 `include "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_Timer_v2_70\B_Timer_v2_70.v"
 `endif
 
-// Timer_v2_70(CaptureAlternatingFall=false, CaptureAlternatingRise=false, CaptureCount=2, CaptureCounterEnabled=false, CaptureInputEnabled=false, CaptureMode=0, CONTROL3=0, ControlRegRemoved=0, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG16, CySetRegReplacementString=CY_SET_REG16, DeviceFamily=PSoC5, EnableMode=0, FF16=false, FF8=false, FixedFunction=false, FixedFunctionUsed=0, HWCaptureCounterEnabled=false, InterruptOnCapture=false, InterruptOnFIFOFull=false, InterruptOnTC=true, IntOnCapture=0, IntOnFIFOFull=0, IntOnTC=1, NumberOfCaptures=1, param45=1, Period=14999, RegDefReplacementString=reg16, RegSizeReplacementString=uint16, Resolution=16, RstStatusReplacementString=rstSts, RunMode=0, SiliconRevision=0, SoftwareCaptureModeEnabled=false, SoftwareTriggerModeEnabled=false, TriggerInputEnabled=false, TriggerMode=0, UDB16=true, UDB24=false, UDB32=false, UDB8=false, UDBControlReg=true, UsesHWEnable=0, VerilogSectionReplacementString=sT16, CY_API_CALLBACK_HEADER_INCLUDE=, CY_COMPONENT_NAME=Timer_v2_70, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=Timer_1, CY_INSTANCE_SHORT_NAME=Timer_1, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=70, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=Timer_1, )
+// Timer_v2_70(CaptureAlternatingFall=false, CaptureAlternatingRise=false, CaptureCount=2, CaptureCounterEnabled=false, CaptureInputEnabled=false, CaptureMode=0, CONTROL3=0, ControlRegRemoved=0, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG16, CySetRegReplacementString=CY_SET_REG16, DeviceFamily=PSoC5, EnableMode=0, FF16=false, FF8=false, FixedFunction=false, FixedFunctionUsed=0, HWCaptureCounterEnabled=false, InterruptOnCapture=false, InterruptOnFIFOFull=false, InterruptOnTC=true, IntOnCapture=0, IntOnFIFOFull=0, IntOnTC=1, NumberOfCaptures=1, param45=1, Period=65535, RegDefReplacementString=reg16, RegSizeReplacementString=uint16, Resolution=16, RstStatusReplacementString=rstSts, RunMode=0, SiliconRevision=0, SoftwareCaptureModeEnabled=false, SoftwareTriggerModeEnabled=false, TriggerInputEnabled=false, TriggerMode=0, UDB16=true, UDB24=false, UDB32=false, UDB8=false, UDBControlReg=true, UsesHWEnable=0, VerilogSectionReplacementString=sT16, CY_API_CALLBACK_HEADER_INCLUDE=, CY_COMPONENT_NAME=Timer_v2_70, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=Timer_1, CY_INSTANCE_SHORT_NAME=Timer_1, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=70, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=Timer_1, )
 module Timer_v2_70_11 (
     clock,
     reset,
@@ -2140,12 +2140,12 @@ endmodule
 module top ;
 
           wire  CLK24M;
-          wire  Net_6162;
-          wire  Net_6161;
-          wire  Net_6160;
-          wire  Net_6159;
-          wire  Net_6158;
-          wire  Net_6157;
+          wire  Net_6169;
+          wire  Net_6168;
+          wire  Net_6167;
+          wire  Net_6166;
+          wire  Net_6165;
+          wire  Net_6182;
           wire  Net_3493;
           wire  Net_3492;
           wire  Net_3491;
@@ -2654,7 +2654,7 @@ module top ;
         .index(1'b0),
         .clock(Net_1850),
         .interrupt(Net_3247));
-    defparam QuadDec_M1.CounterResolution = 4;
+    defparam QuadDec_M1.CounterResolution = 1;
     defparam QuadDec_M1.UsingGlitchFiltering = 1;
     defparam QuadDec_M1.UsingIndexInput = 0;
 
@@ -2745,7 +2745,7 @@ module top ;
         .index(1'b0),
         .clock(Net_1850),
         .interrupt(Net_3249));
-    defparam QuadDec_M2.CounterResolution = 4;
+    defparam QuadDec_M2.CounterResolution = 1;
     defparam QuadDec_M2.UsingGlitchFiltering = 1;
     defparam QuadDec_M2.UsingIndexInput = 0;
 
@@ -4578,11 +4578,11 @@ module top ;
 
     Timer_v2_70_11 Timer_1 (
         .reset(Net_6060),
-        .interrupt(Net_6158),
+        .interrupt(Net_6165),
         .enable(1'b1),
         .trigger(1'b1),
         .capture(1'b0),
-        .capture_out(Net_6162),
+        .capture_out(Net_6169),
         .tc(Net_6134),
         .clock(Net_6058));
     defparam Timer_1.CaptureCount = 2;
