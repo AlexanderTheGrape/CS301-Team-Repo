@@ -79,11 +79,6 @@ void Quad_Dec_response()
     {
         
     }
-    
-    
-    
-    
-        
 }    
 
 void print_ADC()
@@ -109,21 +104,38 @@ void print_ADC()
 void cycle_PWM()
 {
     uint16 fluct;
-    
-    for(fluct = 30; fluct <= 100; fluct++)
-    {
-        PWM_1_WriteCompare(fluct);
-        PWM_2_WriteCompare(fluct);
-        CyDelay(30);
+    if (direction == 0){
+        for(fluct = 25; fluct < 100; fluct++)
+        {
+            PWM_1_WriteCompare(fluct);
+            PWM_2_WriteCompare(fluct);
+            CyDelay(30);
+        }
+        
+        for(fluct = 100; fluct > 25; fluct--)
+        {
+            PWM_1_WriteCompare(fluct);
+            PWM_2_WriteCompare(fluct);
+            CyDelay(30);
+        }
+    } else {
+        for(fluct = 100; fluct > 25; fluct--)
+        {
+            PWM_1_WriteCompare(fluct);
+            PWM_2_WriteCompare(fluct);
+            CyDelay(30);
+        }
+        
+        for(fluct = 25; fluct < 100; fluct++)
+        {
+            PWM_1_WriteCompare(fluct);
+            PWM_2_WriteCompare(fluct);
+            CyDelay(30);
+        }
     }
-    
-    for(fluct = 100; fluct >= 30; fluct--)
-    {
-        PWM_1_WriteCompare(fluct);
-        PWM_2_WriteCompare(fluct);
-        CyDelay(30);
-    }
-    
+    direction = !direction;
+    M1_IN2_Write(direction);
+    M2_IN2_Write(direction);
 }
 
 int main()
@@ -137,8 +149,6 @@ int main()
         PWM_1_Start();// starting the pwm
         PWM_2_Start();// starting the pwm
     }
-    
-    
     
     if(ENABLE_ADC)
     {
@@ -157,8 +167,6 @@ int main()
         Timer_1_Start();
         
         //isr_quad1_Start();
-       
-        
     }
 
 // ------USB SETUP ----------------    

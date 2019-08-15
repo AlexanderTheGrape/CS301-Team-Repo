@@ -1,6 +1,6 @@
 // ======================================================================
 // CS301_Class.v generated from TopDesign.cysch
-// 08/12/2019 at 16:58
+// 08/15/2019 at 18:21
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -2306,8 +2306,6 @@ module top ;
           wire  Net_6058;
           wire  Net_6060;
           wire  Net_1497;
-          wire  Net_362;
-          wire  Net_368;
           wire  Net_2460;
           wire  Net_2404;
           wire  Net_3437;
@@ -2451,7 +2449,7 @@ module top ;
 		  .oe_sync(1'b0),
 		  .output_clk_en(0),
 		  .output_clock_mode(1'b0),
-		  .output_conn(1'b1),
+		  .output_conn(1'b0),
 		  .output_mode(1'b0),
 		  .output_reset(0),
 		  .output_sync(1'b0),
@@ -2484,7 +2482,7 @@ module top ;
 		  .input_buffer_sel(2'b00))
 		M1_IN2
 		 (.oe(tmpOE__M1_IN2_net),
-		  .y({Net_362}),
+		  .y({1'b0}),
 		  .fb({tmpFB_0__M1_IN2_net[0:0]}),
 		  .io({tmpIO_0__M1_IN2_net[0:0]}),
 		  .siovref(tmpSIOVREF__M1_IN2_net),
@@ -2601,7 +2599,7 @@ module top ;
 		  .oe_sync(1'b0),
 		  .output_clk_en(0),
 		  .output_clock_mode(1'b0),
-		  .output_conn(1'b1),
+		  .output_conn(1'b0),
 		  .output_mode(1'b0),
 		  .output_reset(0),
 		  .output_sync(1'b0),
@@ -2634,7 +2632,7 @@ module top ;
 		  .input_buffer_sel(2'b00))
 		M2_IN2
 		 (.oe(tmpOE__M2_IN2_net),
-		  .y({Net_368}),
+		  .y({1'b0}),
 		  .fb({tmpFB_0__M2_IN2_net[0:0]}),
 		  .io({tmpIO_0__M2_IN2_net[0:0]}),
 		  .siovref(tmpSIOVREF__M2_IN2_net),
@@ -2732,12 +2730,6 @@ module top ;
 		  .out_reset({1'b0}));
 
 	assign tmpOE__M2_D1_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
-
-
-    assign Net_368 = ~Net_2460;
-
-
-    assign Net_362 = ~Net_2404;
 
     QuadDec_v3_0_3 QuadDec_M2 (
         .quad_A(Net_729),

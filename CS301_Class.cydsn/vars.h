@@ -36,6 +36,8 @@ uint8 flag_rf_transmission_active = UNKNOWN; // [TRUE if receieving data, FALSE 
 uint8 flag_receive_ADC = 0;
 int16 adc_result;
 
+uint8 direction = 0;
+
 //==========================================
 // Quad decoder
 uint8 flag_calc_wheelspeed = 0;

@@ -2,7 +2,7 @@
 --	Conversion of CS301_Class.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Mon Aug 12 16:58:31 2019
+--	Thu Aug 15 18:21:25 2019
 --
 
 USE cypress.cypress.all;
@@ -23,7 +23,6 @@ SIGNAL zero : bit;
 SIGNAL one : bit;
 SIGNAL tmpINTERRUPT_0__M1_IN1_net_0 : bit;
 SIGNAL tmpOE__M1_IN2_net_0 : bit;
-SIGNAL Net_362 : bit;
 SIGNAL tmpFB_0__M1_IN2_net_0 : bit;
 SIGNAL tmpIO_0__M1_IN2_net_0 : bit;
 TERMINAL tmpSIOVREF__M1_IN2_net_0 : bit;
@@ -35,7 +34,6 @@ SIGNAL tmpIO_0__M2_IN1_net_0 : bit;
 TERMINAL tmpSIOVREF__M2_IN1_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__M2_IN1_net_0 : bit;
 SIGNAL tmpOE__M2_IN2_net_0 : bit;
-SIGNAL Net_368 : bit;
 SIGNAL tmpFB_0__M2_IN2_net_0 : bit;
 SIGNAL tmpIO_0__M2_IN2_net_0 : bit;
 TERMINAL tmpSIOVREF__M2_IN2_net_0 : bit;
@@ -1800,10 +1798,6 @@ tmpOE__M1_IN1_net_0 <=  ('1') ;
 
 \QuadDec_M1:Net_611\ <= ((not \QuadDec_M1:Net_1251\ and not \QuadDec_M1:Net_1264\ and \QuadDec_M1:Net_1275\));
 
-Net_368 <= (not Net_2460);
-
-Net_362 <= (not Net_2404);
-
 \QuadDec_M2:Cnt16:CounterUDB:reload\ <= (\QuadDec_M2:Cnt16:CounterUDB:overflow\
 	OR \QuadDec_M2:Cnt16:CounterUDB:status_1\
 	OR \QuadDec_M2:Net_1260\);
@@ -2326,7 +2320,7 @@ M1_IN2:cy_psoc3_pins_v1_10
 		invert_out_reset=>'0',
 		io_voltage=>"",
 		layout_mode=>"CONTIGUOUS",
-		output_conn=>"1",
+		output_conn=>"0",
 		output_sync=>"0",
 		output_clk_en=>'0',
 		output_mode=>"0",
@@ -2366,7 +2360,7 @@ M1_IN2:cy_psoc3_pins_v1_10
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__M1_IN1_net_0),
-		y=>Net_362,
+		y=>(Net_2183),
 		fb=>(tmpFB_0__M1_IN2_net_0),
 		analog=>(open),
 		io=>(tmpIO_0__M1_IN2_net_0),
@@ -2466,7 +2460,7 @@ M2_IN2:cy_psoc3_pins_v1_10
 		invert_out_reset=>'0',
 		io_voltage=>"",
 		layout_mode=>"CONTIGUOUS",
-		output_conn=>"1",
+		output_conn=>"0",
 		output_sync=>"0",
 		output_clk_en=>'0',
 		output_mode=>"0",
@@ -2506,7 +2500,7 @@ M2_IN2:cy_psoc3_pins_v1_10
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__M1_IN1_net_0),
-		y=>Net_368,
+		y=>(Net_2183),
 		fb=>(tmpFB_0__M2_IN2_net_0),
 		analog=>(open),
 		io=>(tmpIO_0__M2_IN2_net_0),

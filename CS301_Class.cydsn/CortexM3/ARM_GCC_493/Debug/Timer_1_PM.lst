@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 1
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccLbKlzA.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 1
   24:.\Generated_Source\PSoC5/Timer_1_PM.c **** /*******************************************************************************
   25:.\Generated_Source\PSoC5/Timer_1_PM.c **** * Function Name: Timer_1_SaveConfig
   26:.\Generated_Source\PSoC5/Timer_1_PM.c **** ********************************************************************************
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 2
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccLbKlzA.s 			page 2
 
 
   27:.\Generated_Source\PSoC5/Timer_1_PM.c **** *
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 1
   58 0024 5A71     		strb	r2, [r3, #5]
   54:.\Generated_Source\PSoC5/Timer_1_PM.c ****         #endif /* Backup the enable state of the Timer component */
   55:.\Generated_Source\PSoC5/Timer_1_PM.c ****     #endif /* Backup non retention registers in UDB implementation. All fixed function registers ar
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 3
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccLbKlzA.s 			page 3
 
 
   56:.\Generated_Source\PSoC5/Timer_1_PM.c **** }
@@ -128,7 +128,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 1
   62              		.align	2
   63              	.L2:
   64 0028 00000000 		.word	Timer_1_backup
-  65 002c 8A650040 		.word	1073767818
+  65 002c 8A640040 		.word	1073767562
   66              		.cfi_endproc
   67              	.LFE0:
   68              		.size	Timer_1_SaveConfig, .-Timer_1_SaveConfig
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 1
   87              		.loc 1 81 0
   88 0004 074B     		ldr	r3, .L5
   89 0006 5B88     		ldrh	r3, [r3, #2]
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 4
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccLbKlzA.s 			page 4
 
 
   90 0008 1846     		mov	r0, r3
@@ -209,7 +209,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 1
  105 0022 00BF     		.align	2
  106              	.L5:
  107 0024 00000000 		.word	Timer_1_backup
- 108 0028 8A650040 		.word	1073767818
+ 108 0028 8A640040 		.word	1073767562
  109              		.cfi_endproc
  110              	.LFE1:
  111              		.size	Timer_1_RestoreConfig, .-Timer_1_RestoreConfig
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 1
  106:.\Generated_Source\PSoC5/Timer_1_PM.c **** *
  107:.\Generated_Source\PSoC5/Timer_1_PM.c **** * Global variables:
  108:.\Generated_Source\PSoC5/Timer_1_PM.c **** *  Timer_1_backup.TimerEnableState:  Is modified depending on the
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 5
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccLbKlzA.s 			page 5
 
 
  109:.\Generated_Source\PSoC5/Timer_1_PM.c **** *  enable state of the block before entering sleep mode.
@@ -298,12 +298,12 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 1
  153              		.loc 1 129 0
  154 0028 80BD     		pop	{r7, pc}
  155              	.L11:
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 6
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccLbKlzA.s 			page 6
 
 
  156 002a 00BF     		.align	2
  157              	.L10:
- 158 002c 79640040 		.word	1073767545
+ 158 002c 7D640040 		.word	1073767549
  159 0030 00000000 		.word	Timer_1_backup
  160              		.cfi_endproc
  161              	.LFE2:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 1
  185 000a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
  186 000c 012B     		cmp	r3, #1
  187 000e 01D1     		bne	.L12
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 7
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccLbKlzA.s 			page 7
 
 
  155:.\Generated_Source\PSoC5/Timer_1_PM.c ****         {     /* Enable Timer's operation */
@@ -392,7 +392,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 1
  211 000c 05010000 		.4byte	.LASF25
  212 0010 01       		.byte	0x1
  213 0011 D1010000 		.4byte	.LASF26
- 214 0015 C9000000 		.4byte	.LASF27
+ 214 0015 6A000000 		.4byte	.LASF27
  215 0019 00000000 		.4byte	.Ldebug_ranges0+0
  216 001d 00000000 		.4byte	0
  217 0021 00000000 		.4byte	.Ldebug_line0
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 1
  237 0044 FC000000 		.4byte	.LASF4
  238 0048 02       		.uleb128 0x2
  239 0049 04       		.byte	0x4
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 8
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccLbKlzA.s 			page 8
 
 
  240 004a 07       		.byte	0x7
@@ -430,7 +430,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 1
  246 0056 02       		.uleb128 0x2
  247 0057 08       		.byte	0x8
  248 0058 07       		.byte	0x7
- 249 0059 6A000000 		.4byte	.LASF7
+ 249 0059 98000000 		.4byte	.LASF7
  250 005d 03       		.uleb128 0x3
  251 005e 04       		.byte	0x4
  252 005f 05       		.byte	0x5
@@ -478,10 +478,10 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 1
  294 00b3 43       		.byte	0x43
  295 00b4 E9000000 		.4byte	0xe9
  296 00b8 07       		.uleb128 0x7
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 9
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccLbKlzA.s 			page 9
 
 
- 297 00b9 96000000 		.4byte	.LASF16
+ 297 00b9 C4000000 		.4byte	.LASF16
  298 00bd 03       		.byte	0x3
  299 00be 45       		.byte	0x45
  300 00bf 6B000000 		.4byte	0x6b
@@ -499,7 +499,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 1
  312 00d7 6B000000 		.4byte	0x6b
  313 00db 04       		.byte	0x4
  314 00dc 07       		.uleb128 0x7
- 315 00dd 81000000 		.4byte	.LASF19
+ 315 00dd AF000000 		.4byte	.LASF19
  316 00e1 03       		.byte	0x3
  317 00e2 4F       		.byte	0x4f
  318 00e3 6B000000 		.4byte	0x6b
@@ -511,7 +511,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 1
  324 00ef 53       		.byte	0x53
  325 00f0 B0000000 		.4byte	0xb0
  326 00f4 09       		.uleb128 0x9
- 327 00f5 A7000000 		.4byte	.LASF21
+ 327 00f5 D5000000 		.4byte	.LASF21
  328 00f9 01       		.byte	0x1
  329 00fa 2B       		.byte	0x2b
  330 00fb 00000000 		.4byte	.LFB0
@@ -535,10 +535,10 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 1
  348 0125 01       		.uleb128 0x1
  349 0126 9C       		.byte	0x9c
  350 0127 09       		.uleb128 0x9
- 351 0128 BA000000 		.4byte	.LASF24
+ 351 0128 E8000000 		.4byte	.LASF24
  352 012c 01       		.byte	0x1
  353 012d 96       		.byte	0x96
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 10
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccLbKlzA.s 			page 10
 
 
  354 012e 00000000 		.4byte	.LFB3
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 1
  408 0027 00       		.byte	0
  409 0028 00       		.byte	0
  410 0029 04       		.uleb128 0x4
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 11
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccLbKlzA.s 			page 11
 
 
  411 002a 16       		.uleb128 0x16
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 1
  465 0060 3B       		.uleb128 0x3b
  466 0061 0B       		.uleb128 0xb
  467 0062 49       		.uleb128 0x49
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 12
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccLbKlzA.s 			page 12
 
 
  468 0063 13       		.uleb128 0x13
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 1
  522 0020 00000000 		.4byte	.LFB2
  523 0024 34000000 		.4byte	.LFE2-.LFB2
  524 0028 00000000 		.4byte	.LFB3
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 13
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccLbKlzA.s 			page 13
 
 
  525 002c 1C000000 		.4byte	.LFE3-.LFB3
@@ -778,47 +778,47 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 1
  557              	.LASF5:
  558 0058 6C6F6E67 		.ascii	"long unsigned int\000"
  558      20756E73 
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 14
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccLbKlzA.s 			page 14
 
 
  558      69676E65 
  558      6420696E 
  558      7400
- 559              	.LASF7:
- 560 006a 6C6F6E67 		.ascii	"long long unsigned int\000"
- 560      206C6F6E 
- 560      6720756E 
- 560      7369676E 
- 560      65642069 
- 561              	.LASF19:
- 562 0081 54696D65 		.ascii	"TimerControlRegister\000"
- 562      72436F6E 
- 562      74726F6C 
- 562      52656769 
- 562      73746572 
- 563              	.LASF16:
- 564 0096 54696D65 		.ascii	"TimerEnableState\000"
- 564      72456E61 
- 564      626C6553 
- 564      74617465 
- 564      00
- 565              	.LASF21:
- 566 00a7 54696D65 		.ascii	"Timer_1_SaveConfig\000"
- 566      725F315F 
- 566      53617665 
- 566      436F6E66 
- 566      696700
- 567              	.LASF24:
- 568 00ba 54696D65 		.ascii	"Timer_1_Wakeup\000"
+ 559              	.LASF27:
+ 560 006a 443A5C43 		.ascii	"D:\\CS301GP1\\CS301-Team-Repo\\CS301_Class.cydsn\000"
+ 560      53333031 
+ 560      4750315C 
+ 560      43533330 
+ 560      312D5465 
+ 561              	.LASF7:
+ 562 0098 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 562      206C6F6E 
+ 562      6720756E 
+ 562      7369676E 
+ 562      65642069 
+ 563              	.LASF19:
+ 564 00af 54696D65 		.ascii	"TimerControlRegister\000"
+ 564      72436F6E 
+ 564      74726F6C 
+ 564      52656769 
+ 564      73746572 
+ 565              	.LASF16:
+ 566 00c4 54696D65 		.ascii	"TimerEnableState\000"
+ 566      72456E61 
+ 566      626C6553 
+ 566      74617465 
+ 566      00
+ 567              	.LASF21:
+ 568 00d5 54696D65 		.ascii	"Timer_1_SaveConfig\000"
  568      725F315F 
- 568      57616B65 
- 568      757000
- 569              	.LASF27:
- 570 00c9 443A5C47 		.ascii	"D:\\GP1CS301\\CS301-Team-Repo\\CS301_Class.cydsn\000"
- 570      50314353 
- 570      3330315C 
- 570      43533330 
- 570      312D5465 
+ 568      53617665 
+ 568      436F6E66 
+ 568      696700
+ 569              	.LASF24:
+ 570 00e8 54696D65 		.ascii	"Timer_1_Wakeup\000"
+ 570      725F315F 
+ 570      57616B65 
+ 570      757000
  571              	.LASF13:
  572 00f7 63686172 		.ascii	"char\000"
  572      00
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 1
  577      6E203232 
  577      31323230 
  578 016b 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 15
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccLbKlzA.s 			page 15
 
 
  578      66756E63 
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 1
  601              	.LASF15:
  602 0236 73697A65 		.ascii	"sizetype\000"
  602      74797065 
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccMbA2XX.s 			page 16
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccLbKlzA.s 			page 16
 
 
  602      00

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc6SMG8d.s 			page 1
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc2nAz4D.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc6SMG8d.s 			page 1
   29:.\Generated_Source\PSoC5/CONTROL.c **** *
   30:.\Generated_Source\PSoC5/CONTROL.c **** * Parameters:
   31:.\Generated_Source\PSoC5/CONTROL.c **** *  control:  The value to be assigned to the Control Register.
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc6SMG8d.s 			page 2
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc2nAz4D.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/CONTROL.c **** *
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc6SMG8d.s 			page 1
   43:.\Generated_Source\PSoC5/CONTROL.c **** /*******************************************************************************
   44:.\Generated_Source\PSoC5/CONTROL.c **** * Function Name: CONTROL_Read
   45:.\Generated_Source\PSoC5/CONTROL.c **** ********************************************************************************
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc6SMG8d.s 			page 3
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc2nAz4D.s 			page 3
 
 
   46:.\Generated_Source\PSoC5/CONTROL.c **** *
@@ -178,11 +178,11 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc6SMG8d.s 			page 1
  109 000b 01       		.uleb128 0x1
  110 000c 09000000 		.4byte	.LASF14
  111 0010 01       		.byte	0x1
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc6SMG8d.s 			page 4
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc2nAz4D.s 			page 4
 
 
  112 0011 74010000 		.4byte	.LASF15
- 113 0015 36010000 		.4byte	.LASF16
+ 113 0015 9D000000 		.4byte	.LASF16
  114 0019 00000000 		.4byte	.Ldebug_ranges0+0
  115 001d 00000000 		.4byte	0
  116 0021 00000000 		.4byte	.Ldebug_line0
@@ -193,7 +193,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc6SMG8d.s 			page 1
  121 002c 02       		.uleb128 0x2
  122 002d 01       		.byte	0x1
  123 002e 08       		.byte	0x8
- 124 002f 9D000000 		.4byte	.LASF1
+ 124 002f 0A010000 		.4byte	.LASF1
  125 0033 02       		.uleb128 0x2
  126 0034 02       		.byte	0x2
  127 0035 05       		.byte	0x5
@@ -201,7 +201,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc6SMG8d.s 			page 1
  129 003a 02       		.uleb128 0x2
  130 003b 02       		.byte	0x2
  131 003c 07       		.byte	0x7
- 132 003d CF000000 		.4byte	.LASF3
+ 132 003d EF000000 		.4byte	.LASF3
  133 0041 02       		.uleb128 0x2
  134 0042 04       		.byte	0x4
  135 0043 05       		.byte	0x5
@@ -209,15 +209,15 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc6SMG8d.s 			page 1
  137 0048 02       		.uleb128 0x2
  138 0049 04       		.byte	0x4
  139 004a 07       		.byte	0x7
- 140 004b BD000000 		.4byte	.LASF5
+ 140 004b DD000000 		.4byte	.LASF5
  141 004f 02       		.uleb128 0x2
  142 0050 08       		.byte	0x8
  143 0051 05       		.byte	0x5
- 144 0052 23010000 		.4byte	.LASF6
+ 144 0052 51010000 		.4byte	.LASF6
  145 0056 02       		.uleb128 0x2
  146 0057 08       		.byte	0x8
  147 0058 07       		.byte	0x7
- 148 0059 FE000000 		.4byte	.LASF7
+ 148 0059 2C010000 		.4byte	.LASF7
  149 005d 03       		.uleb128 0x3
  150 005e 04       		.byte	0x4
  151 005f 05       		.byte	0x5
@@ -225,7 +225,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc6SMG8d.s 			page 1
  153 0064 02       		.uleb128 0x2
  154 0065 04       		.byte	0x4
  155 0066 07       		.byte	0x7
- 156 0067 F1000000 		.4byte	.LASF8
+ 156 0067 1F010000 		.4byte	.LASF8
  157 006b 04       		.uleb128 0x4
  158 006c 6E010000 		.4byte	.LASF12
  159 0070 02       		.byte	0x2
@@ -238,23 +238,23 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc6SMG8d.s 			page 1
  166 007e 02       		.uleb128 0x2
  167 007f 08       		.byte	0x8
  168 0080 04       		.byte	0x4
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc6SMG8d.s 			page 5
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc2nAz4D.s 			page 5
 
 
- 169 0081 EA000000 		.4byte	.LASF10
+ 169 0081 18010000 		.4byte	.LASF10
  170 0085 02       		.uleb128 0x2
  171 0086 01       		.byte	0x1
  172 0087 08       		.byte	0x8
- 173 0088 31010000 		.4byte	.LASF11
+ 173 0088 5F010000 		.4byte	.LASF11
  174 008c 04       		.uleb128 0x4
- 175 008d AB000000 		.4byte	.LASF13
+ 175 008d CB000000 		.4byte	.LASF13
  176 0091 02       		.byte	0x2
  177 0092 3C02     		.2byte	0x23c
  178 0094 98000000 		.4byte	0x98
  179 0098 05       		.uleb128 0x5
  180 0099 6B000000 		.4byte	0x6b
  181 009d 06       		.uleb128 0x6
- 182 009e 15010000 		.4byte	.LASF17
+ 182 009e 43010000 		.4byte	.LASF17
  183 00a2 01       		.byte	0x1
  184 00a3 25       		.byte	0x25
  185 00a4 00000000 		.4byte	.LFB0
@@ -263,7 +263,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc6SMG8d.s 			page 1
  188 00ad 9C       		.byte	0x9c
  189 00ae C1000000 		.4byte	0xc1
  190 00b2 07       		.uleb128 0x7
- 191 00b3 E2000000 		.4byte	.LASF18
+ 191 00b3 02010000 		.4byte	.LASF18
  192 00b7 01       		.byte	0x1
  193 00b8 25       		.byte	0x25
  194 00b9 6B000000 		.4byte	0x6b
@@ -272,7 +272,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc6SMG8d.s 			page 1
  197 00bf 77       		.sleb128 -9
  198 00c0 00       		.byte	0
  199 00c1 08       		.uleb128 0x8
- 200 00c2 B0000000 		.4byte	.LASF19
+ 200 00c2 D0000000 		.4byte	.LASF19
  201 00c6 01       		.byte	0x1
  202 00c7 39       		.byte	0x39
  203 00c8 6B000000 		.4byte	0x6b
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc6SMG8d.s 			page 1
  223 000c 17       		.uleb128 0x17
  224 000d 11       		.uleb128 0x11
  225 000e 01       		.uleb128 0x1
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc6SMG8d.s 			page 6
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc2nAz4D.s 			page 6
 
 
  226 000f 10       		.uleb128 0x10
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc6SMG8d.s 			page 1
  280 0045 0B       		.uleb128 0xb
  281 0046 3B       		.uleb128 0x3b
  282 0047 0B       		.uleb128 0xb
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc6SMG8d.s 			page 7
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc2nAz4D.s 			page 7
 
 
  283 0048 27       		.uleb128 0x27
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc6SMG8d.s 			page 1
  337 0080 00       		.byte	0
  338              		.section	.debug_aranges,"",%progbits
  339 0000 24000000 		.4byte	0x24
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc6SMG8d.s 			page 8
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc2nAz4D.s 			page 8
 
 
  340 0004 0200     		.2byte	0x2
@@ -471,74 +471,74 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc6SMG8d.s 			page 1
  369              	.LASF9:
  370 0097 666C6F61 		.ascii	"float\000"
  370      7400
- 371              	.LASF1:
- 372 009d 756E7369 		.ascii	"unsigned char\000"
- 372      676E6564 
- 372      20636861 
- 372      7200
+ 371              	.LASF16:
+ 372 009d 443A5C43 		.ascii	"D:\\CS301GP1\\CS301-Team-Repo\\CS301_Class.cydsn\000"
+ 372      53333031 
+ 372      4750315C 
+ 372      43533330 
+ 372      312D5465 
  373              	.LASF13:
- 374 00ab 72656738 		.ascii	"reg8\000"
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc6SMG8d.s 			page 9
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc2nAz4D.s 			page 9
 
 
+ 374 00cb 72656738 		.ascii	"reg8\000"
  374      00
  375              	.LASF19:
- 376 00b0 434F4E54 		.ascii	"CONTROL_Read\000"
+ 376 00d0 434F4E54 		.ascii	"CONTROL_Read\000"
  376      524F4C5F 
  376      52656164 
  376      00
  377              	.LASF5:
- 378 00bd 6C6F6E67 		.ascii	"long unsigned int\000"
+ 378 00dd 6C6F6E67 		.ascii	"long unsigned int\000"
  378      20756E73 
  378      69676E65 
  378      6420696E 
  378      7400
  379              	.LASF3:
- 380 00cf 73686F72 		.ascii	"short unsigned int\000"
+ 380 00ef 73686F72 		.ascii	"short unsigned int\000"
  380      7420756E 
  380      7369676E 
  380      65642069 
  380      6E7400
  381              	.LASF18:
- 382 00e2 636F6E74 		.ascii	"control\000"
+ 382 0102 636F6E74 		.ascii	"control\000"
  382      726F6C00 
- 383              	.LASF10:
- 384 00ea 646F7562 		.ascii	"double\000"
- 384      6C6500
- 385              	.LASF8:
- 386 00f1 756E7369 		.ascii	"unsigned int\000"
- 386      676E6564 
- 386      20696E74 
- 386      00
- 387              	.LASF7:
- 388 00fe 6C6F6E67 		.ascii	"long long unsigned int\000"
- 388      206C6F6E 
- 388      6720756E 
- 388      7369676E 
- 388      65642069 
- 389              	.LASF17:
- 390 0115 434F4E54 		.ascii	"CONTROL_Write\000"
- 390      524F4C5F 
- 390      57726974 
- 390      6500
- 391              	.LASF6:
- 392 0123 6C6F6E67 		.ascii	"long long int\000"
- 392      206C6F6E 
- 392      6720696E 
- 392      7400
- 393              	.LASF11:
- 394 0131 63686172 		.ascii	"char\000"
- 394      00
- 395              	.LASF16:
- 396 0136 443A5C47 		.ascii	"D:\\GP1CS301\\CS301-Team-Repo\\CS301_Class.cydsn\000"
- 396      50314353 
- 396      3330315C 
- 396      43533330 
- 396      312D5465 
+ 383              	.LASF1:
+ 384 010a 756E7369 		.ascii	"unsigned char\000"
+ 384      676E6564 
+ 384      20636861 
+ 384      7200
+ 385              	.LASF10:
+ 386 0118 646F7562 		.ascii	"double\000"
+ 386      6C6500
+ 387              	.LASF8:
+ 388 011f 756E7369 		.ascii	"unsigned int\000"
+ 388      676E6564 
+ 388      20696E74 
+ 388      00
+ 389              	.LASF7:
+ 390 012c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 390      206C6F6E 
+ 390      6720756E 
+ 390      7369676E 
+ 390      65642069 
+ 391              	.LASF17:
+ 392 0143 434F4E54 		.ascii	"CONTROL_Write\000"
+ 392      524F4C5F 
+ 392      57726974 
+ 392      6500
+ 393              	.LASF6:
+ 394 0151 6C6F6E67 		.ascii	"long long int\000"
+ 394      206C6F6E 
+ 394      6720696E 
+ 394      7400
+ 395              	.LASF11:
+ 396 015f 63686172 		.ascii	"char\000"
+ 396      00
  397              	.LASF2:
  398 0164 73686F72 		.ascii	"short int\000"
  398      7420696E 
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc6SMG8d.s 			page 10
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\cc2nAz4D.s 			page 10
 
 
  398      7400
