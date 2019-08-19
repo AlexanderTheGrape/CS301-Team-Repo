@@ -67,19 +67,42 @@ void Quad_Dec_response()
     
     usbPutString(wheel_2_str);
     
-    int16 relativeSpeed = quad_count1 - quad_count2;
+    int16 leftSpeed = quad_count1;
+    int16 rightSpeed = quad_count2;
     
-    //if rs is positive, quad count 1 is larger
-    //if rs is negative, quad count 2 is larger
-    if(relativeSpeed > 0)
-    {
-        
+    int16 leftSpeedLimit = 30;
+    int16 rightSpeedLimit = 30;
+    
+    int16 left_direction = 1;
+    int16 right_direction = 1;
+    
+    if (leftSpeed < 0) {
+        left_direction = -1;
+    } else {
+        left_direction = 1;
     }
-    else if (relativeSpeed < 0)
-    {
-        
+    if (rightSpeed < 0) {
+        right_direction = 1;
+    } else {
+        right_direction = -1;
     }
-}    
+    
+    if (abs(leftSpeed) > leftSpeedLimit){
+        left_duty_cycle = left_duty_cycle + (-1 * left_direction);
+    } else if (abs(leftSpeed) < leftSpeedLimit) {
+        left_duty_cycle = left_duty_cycle + left_direction;
+    }
+    
+    if (abs(rightSpeed) > rightSpeedLimit){
+        right_duty_cycle = right_duty_cycle + (-1 * right_direction);
+    } else if (abs(rightSpeed) < rightSpeedLimit) {
+        right_duty_cycle = right_duty_cycle + right_direction;
+    }
+    
+    PWM_1_WriteCompare(left_duty_cycle);
+    PWM_2_WriteCompare(right_duty_cycle);
+        
+}
 
 void print_ADC()
 {
@@ -105,28 +128,28 @@ void cycle_PWM()
 {
     uint16 fluct;
     if (direction == 0){
-        for(fluct = 25; fluct < 100; fluct++)
+        for(fluct = 30; fluct < 70; fluct++)
         {
             PWM_1_WriteCompare(fluct);
             PWM_2_WriteCompare(fluct);
             CyDelay(30);
         }
         
-        for(fluct = 100; fluct > 25; fluct--)
+        for(fluct = 70; fluct > 30; fluct--)
         {
             PWM_1_WriteCompare(fluct);
             PWM_2_WriteCompare(fluct);
             CyDelay(30);
         }
     } else {
-        for(fluct = 100; fluct > 25; fluct--)
+        for(fluct = 70; fluct > 30; fluct--)
         {
             PWM_1_WriteCompare(fluct);
             PWM_2_WriteCompare(fluct);
             CyDelay(30);
         }
         
-        for(fluct = 25; fluct < 100; fluct++)
+        for(fluct = 30; fluct < 70; fluct++)
         {
             PWM_1_WriteCompare(fluct);
             PWM_2_WriteCompare(fluct);

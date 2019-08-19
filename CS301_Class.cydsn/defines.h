@@ -10,7 +10,7 @@
  * ========================================
 */
 // Code setup
-#define USE_USB
+//#define USE_USB
 
 //* ========================================
 #define FALSE 0
@@ -49,8 +49,8 @@
 #define COAST_ON CONTROL_Write(0b11);
 
 #define ENABLE_PWM 1
-#define ENABLE_CYCLE 1
-#define ENABLE_QUAD 0
+#define ENABLE_CYCLE 0
+#define ENABLE_QUAD 1
 
 #define PWM_MAX 255     // maximum value of duty cycle
 #define PWM_MIN 0       // minimum value of duty cycle

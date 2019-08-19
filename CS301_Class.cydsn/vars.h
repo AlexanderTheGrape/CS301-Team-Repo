@@ -44,6 +44,9 @@ uint8 flag_calc_wheelspeed = 0;
 int16 quad_count1 = 0;
 int16 quad_count2 = 0;
 
+int16 left_duty_cycle = 50;
+int16 right_duty_cycle = 50;
+
 
 //* ========================================
 char displaystring[BUF_SIZE] = "CS301 2016\n";
