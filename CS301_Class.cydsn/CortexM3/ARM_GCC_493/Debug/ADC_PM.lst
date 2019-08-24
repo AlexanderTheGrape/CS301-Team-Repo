@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\amon838\AppData\Local\Temp\ccslcyMf.s 			page 1
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccLknG8I.s 			page 1
 
 
    1              		.syntax unified
@@ -18,696 +18,820 @@ ARM GAS  C:\Users\amon838\AppData\Local\Temp\ccslcyMf.s 			page 1
   15              		.text
   16              	.Ltext0:
   17              		.cfi_sections	.debug_frame
-  18              		.section	.text.ADC_Sleep,"ax",%progbits
+  18              		.bss
   19              		.align	2
-  20              		.global	ADC_Sleep
-  21              		.thumb
-  22              		.thumb_func
-  23              		.type	ADC_Sleep, %function
-  24              	ADC_Sleep:
-  25              	.LFB0:
-  26              		.file 1 ".\\Generated_Source\\PSoC5\\ADC_PM.c"
+  20              	ADC_backup:
+  21 0000 00       		.space	1
+  22 0001 000000   		.section	.text.ADC_SaveConfig,"ax",%progbits
+  23              		.align	2
+  24              		.global	ADC_SaveConfig
+  25              		.thumb
+  26              		.thumb_func
+  27              		.type	ADC_SaveConfig, %function
+  28              	ADC_SaveConfig:
+  29              	.LFB0:
+  30              		.file 1 ".\\Generated_Source\\PSoC5\\ADC_PM.c"
    1:.\Generated_Source\PSoC5/ADC_PM.c **** /*******************************************************************************
    2:.\Generated_Source\PSoC5/ADC_PM.c **** * File Name: ADC_PM.c
-   3:.\Generated_Source\PSoC5/ADC_PM.c **** * Version 2.0
+   3:.\Generated_Source\PSoC5/ADC_PM.c **** * Version 3.0
    4:.\Generated_Source\PSoC5/ADC_PM.c **** *
    5:.\Generated_Source\PSoC5/ADC_PM.c **** * Description:
-   6:.\Generated_Source\PSoC5/ADC_PM.c **** *  This file contains the setup, control and status commands to support
-   7:.\Generated_Source\PSoC5/ADC_PM.c **** *  component operations in low power mode.
-   8:.\Generated_Source\PSoC5/ADC_PM.c **** *
-   9:.\Generated_Source\PSoC5/ADC_PM.c **** * Note:
-  10:.\Generated_Source\PSoC5/ADC_PM.c **** *
-  11:.\Generated_Source\PSoC5/ADC_PM.c **** ********************************************************************************
-  12:.\Generated_Source\PSoC5/ADC_PM.c **** * Copyright 2012-2015, Cypress Semiconductor Corporation.  All rights reserved.
-  13:.\Generated_Source\PSoC5/ADC_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
-  14:.\Generated_Source\PSoC5/ADC_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
-  15:.\Generated_Source\PSoC5/ADC_PM.c **** * the software package with which this file was provided.
-  16:.\Generated_Source\PSoC5/ADC_PM.c **** *******************************************************************************/
-  17:.\Generated_Source\PSoC5/ADC_PM.c **** 
-  18:.\Generated_Source\PSoC5/ADC_PM.c **** #include "ADC.h"
-  19:.\Generated_Source\PSoC5/ADC_PM.c **** #include "ADC_SAR.h"
-  20:.\Generated_Source\PSoC5/ADC_PM.c **** #if(ADC_CLOCK_SOURCE == ADC_CLOCK_INTERNAL)
-  21:.\Generated_Source\PSoC5/ADC_PM.c ****     #include "ADC_IntClock.h"
-  22:.\Generated_Source\PSoC5/ADC_PM.c **** #endif   /* ADC_CLOCK_SOURCE == ADC_CLOCK_INTERNAL */
+   6:.\Generated_Source\PSoC5/ADC_PM.c **** *  This file provides Sleep/WakeUp APIs functionality.
+   7:.\Generated_Source\PSoC5/ADC_PM.c **** *
+   8:.\Generated_Source\PSoC5/ADC_PM.c **** * Note:
+   9:.\Generated_Source\PSoC5/ADC_PM.c **** *
+  10:.\Generated_Source\PSoC5/ADC_PM.c **** ********************************************************************************
+  11:.\Generated_Source\PSoC5/ADC_PM.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  12:.\Generated_Source\PSoC5/ADC_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
+  13:.\Generated_Source\PSoC5/ADC_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  14:.\Generated_Source\PSoC5/ADC_PM.c **** * the software package with which this file was provided.
+  15:.\Generated_Source\PSoC5/ADC_PM.c **** *******************************************************************************/
+  16:.\Generated_Source\PSoC5/ADC_PM.c **** 
+  17:.\Generated_Source\PSoC5/ADC_PM.c **** #include "ADC.h"
+  18:.\Generated_Source\PSoC5/ADC_PM.c **** 
+  19:.\Generated_Source\PSoC5/ADC_PM.c **** 
+  20:.\Generated_Source\PSoC5/ADC_PM.c **** /***************************************
+  21:.\Generated_Source\PSoC5/ADC_PM.c **** * Local data allocation
+  22:.\Generated_Source\PSoC5/ADC_PM.c **** ***************************************/
   23:.\Generated_Source\PSoC5/ADC_PM.c **** 
-  24:.\Generated_Source\PSoC5/ADC_PM.c **** 
-  25:.\Generated_Source\PSoC5/ADC_PM.c **** /*******************************************************************************
-  26:.\Generated_Source\PSoC5/ADC_PM.c **** * Function Name: ADC_Sleep
-  27:.\Generated_Source\PSoC5/ADC_PM.c **** ********************************************************************************
-  28:.\Generated_Source\PSoC5/ADC_PM.c **** *
-  29:.\Generated_Source\PSoC5/ADC_PM.c **** * Summary:
-  30:.\Generated_Source\PSoC5/ADC_PM.c **** *  Stops the ADC operation and saves the configuration registers and component
-  31:.\Generated_Source\PSoC5/ADC_PM.c **** *  enable state. Should be called just prior to entering sleep
-ARM GAS  C:\Users\amon838\AppData\Local\Temp\ccslcyMf.s 			page 2
+  24:.\Generated_Source\PSoC5/ADC_PM.c **** static ADC_BACKUP_STRUCT  ADC_backup =
+  25:.\Generated_Source\PSoC5/ADC_PM.c **** {
+  26:.\Generated_Source\PSoC5/ADC_PM.c ****     ADC_DISABLED
+  27:.\Generated_Source\PSoC5/ADC_PM.c **** };
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccLknG8I.s 			page 2
 
 
-  32:.\Generated_Source\PSoC5/ADC_PM.c **** *
-  33:.\Generated_Source\PSoC5/ADC_PM.c **** * Parameters:
-  34:.\Generated_Source\PSoC5/ADC_PM.c **** *  None.
-  35:.\Generated_Source\PSoC5/ADC_PM.c **** *
-  36:.\Generated_Source\PSoC5/ADC_PM.c **** * Return:
-  37:.\Generated_Source\PSoC5/ADC_PM.c **** *  None.
-  38:.\Generated_Source\PSoC5/ADC_PM.c **** *
-  39:.\Generated_Source\PSoC5/ADC_PM.c **** * Side Effects:
-  40:.\Generated_Source\PSoC5/ADC_PM.c **** *  None.
-  41:.\Generated_Source\PSoC5/ADC_PM.c **** *
-  42:.\Generated_Source\PSoC5/ADC_PM.c **** * Reentrant:
-  43:.\Generated_Source\PSoC5/ADC_PM.c **** *  No.
-  44:.\Generated_Source\PSoC5/ADC_PM.c **** *
-  45:.\Generated_Source\PSoC5/ADC_PM.c **** *******************************************************************************/
-  46:.\Generated_Source\PSoC5/ADC_PM.c **** void ADC_Sleep(void)
-  47:.\Generated_Source\PSoC5/ADC_PM.c **** {
-  27              		.loc 1 47 0
-  28              		.cfi_startproc
-  29              		@ args = 0, pretend = 0, frame = 0
-  30              		@ frame_needed = 1, uses_anonymous_args = 0
-  31 0000 80B5     		push	{r7, lr}
-  32              		.cfi_def_cfa_offset 8
-  33              		.cfi_offset 7, -8
-  34              		.cfi_offset 14, -4
-  35 0002 00AF     		add	r7, sp, #0
-  36              		.cfi_def_cfa_register 7
-  48:.\Generated_Source\PSoC5/ADC_PM.c ****     ADC_SAR_Stop();
-  37              		.loc 1 48 0
-  38 0004 FFF7FEFF 		bl	ADC_SAR_Stop
-  49:.\Generated_Source\PSoC5/ADC_PM.c ****     ADC_SAR_Sleep();
-  39              		.loc 1 49 0
-  40 0008 FFF7FEFF 		bl	ADC_SAR_Sleep
-  50:.\Generated_Source\PSoC5/ADC_PM.c ****     ADC_Disable();
-  41              		.loc 1 50 0
-  42 000c FFF7FEFF 		bl	ADC_Disable
-  51:.\Generated_Source\PSoC5/ADC_PM.c **** 
-  52:.\Generated_Source\PSoC5/ADC_PM.c ****     #if(ADC_CLOCK_SOURCE == ADC_CLOCK_INTERNAL)
-  53:.\Generated_Source\PSoC5/ADC_PM.c ****         ADC_IntClock_Stop();
-  43              		.loc 1 53 0
-  44 0010 FFF7FEFF 		bl	ADC_IntClock_Stop
-  54:.\Generated_Source\PSoC5/ADC_PM.c ****     #endif   /* ADC_CLOCK_SOURCE == ADC_CLOCK_INTERNAL */
-  55:.\Generated_Source\PSoC5/ADC_PM.c **** }
-  45              		.loc 1 55 0
-  46 0014 80BD     		pop	{r7, pc}
-  47              		.cfi_endproc
-  48              	.LFE0:
-  49              		.size	ADC_Sleep, .-ADC_Sleep
-  50 0016 00BF     		.section	.text.ADC_Wakeup,"ax",%progbits
-  51              		.align	2
-  52              		.global	ADC_Wakeup
-  53              		.thumb
-  54              		.thumb_func
-  55              		.type	ADC_Wakeup, %function
-  56              	ADC_Wakeup:
-  57              	.LFB1:
-  56:.\Generated_Source\PSoC5/ADC_PM.c **** 
-  57:.\Generated_Source\PSoC5/ADC_PM.c **** 
-ARM GAS  C:\Users\amon838\AppData\Local\Temp\ccslcyMf.s 			page 3
+  28:.\Generated_Source\PSoC5/ADC_PM.c **** 
+  29:.\Generated_Source\PSoC5/ADC_PM.c **** 
+  30:.\Generated_Source\PSoC5/ADC_PM.c **** /*******************************************************************************
+  31:.\Generated_Source\PSoC5/ADC_PM.c **** * Function Name: ADC_SaveConfig
+  32:.\Generated_Source\PSoC5/ADC_PM.c **** ********************************************************************************
+  33:.\Generated_Source\PSoC5/ADC_PM.c **** *
+  34:.\Generated_Source\PSoC5/ADC_PM.c **** * Summary:
+  35:.\Generated_Source\PSoC5/ADC_PM.c **** *  Saves the current user configuration.
+  36:.\Generated_Source\PSoC5/ADC_PM.c **** *
+  37:.\Generated_Source\PSoC5/ADC_PM.c **** * Parameters:
+  38:.\Generated_Source\PSoC5/ADC_PM.c **** *  None.
+  39:.\Generated_Source\PSoC5/ADC_PM.c **** *
+  40:.\Generated_Source\PSoC5/ADC_PM.c **** * Return:
+  41:.\Generated_Source\PSoC5/ADC_PM.c **** *  None.
+  42:.\Generated_Source\PSoC5/ADC_PM.c **** *
+  43:.\Generated_Source\PSoC5/ADC_PM.c **** *******************************************************************************/
+  44:.\Generated_Source\PSoC5/ADC_PM.c **** void ADC_SaveConfig(void)
+  45:.\Generated_Source\PSoC5/ADC_PM.c **** {
+  31              		.loc 1 45 0
+  32              		.cfi_startproc
+  33              		@ args = 0, pretend = 0, frame = 0
+  34              		@ frame_needed = 1, uses_anonymous_args = 0
+  35              		@ link register save eliminated.
+  36 0000 80B4     		push	{r7}
+  37              		.cfi_def_cfa_offset 4
+  38              		.cfi_offset 7, -4
+  39 0002 00AF     		add	r7, sp, #0
+  40              		.cfi_def_cfa_register 7
+  46:.\Generated_Source\PSoC5/ADC_PM.c ****     /* All configuration registers are marked as [reset_all_retention] */
+  47:.\Generated_Source\PSoC5/ADC_PM.c **** }
+  41              		.loc 1 47 0
+  42 0004 BD46     		mov	sp, r7
+  43              		.cfi_def_cfa_register 13
+  44              		@ sp needed
+  45 0006 5DF8047B 		ldr	r7, [sp], #4
+  46              		.cfi_restore 7
+  47              		.cfi_def_cfa_offset 0
+  48 000a 7047     		bx	lr
+  49              		.cfi_endproc
+  50              	.LFE0:
+  51              		.size	ADC_SaveConfig, .-ADC_SaveConfig
+  52              		.section	.text.ADC_RestoreConfig,"ax",%progbits
+  53              		.align	2
+  54              		.global	ADC_RestoreConfig
+  55              		.thumb
+  56              		.thumb_func
+  57              		.type	ADC_RestoreConfig, %function
+  58              	ADC_RestoreConfig:
+  59              	.LFB1:
+  48:.\Generated_Source\PSoC5/ADC_PM.c **** 
+  49:.\Generated_Source\PSoC5/ADC_PM.c **** 
+  50:.\Generated_Source\PSoC5/ADC_PM.c **** /*******************************************************************************
+  51:.\Generated_Source\PSoC5/ADC_PM.c **** * Function Name: ADC_RestoreConfig
+  52:.\Generated_Source\PSoC5/ADC_PM.c **** ********************************************************************************
+  53:.\Generated_Source\PSoC5/ADC_PM.c **** *
+  54:.\Generated_Source\PSoC5/ADC_PM.c **** * Summary:
+  55:.\Generated_Source\PSoC5/ADC_PM.c **** *  Restores the current user configuration.
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccLknG8I.s 			page 3
 
 
-  58:.\Generated_Source\PSoC5/ADC_PM.c **** /*******************************************************************************
-  59:.\Generated_Source\PSoC5/ADC_PM.c **** * Function Name: ADC_Wakeup
-  60:.\Generated_Source\PSoC5/ADC_PM.c **** ********************************************************************************
-  61:.\Generated_Source\PSoC5/ADC_PM.c **** *
-  62:.\Generated_Source\PSoC5/ADC_PM.c **** * Summary:
-  63:.\Generated_Source\PSoC5/ADC_PM.c **** *  Restores the component enable state and configuration registers. This should
-  64:.\Generated_Source\PSoC5/ADC_PM.c **** *  be called just after awaking from sleep mode
-  65:.\Generated_Source\PSoC5/ADC_PM.c **** *
-  66:.\Generated_Source\PSoC5/ADC_PM.c **** * Parameters:
-  67:.\Generated_Source\PSoC5/ADC_PM.c **** *  None.
-  68:.\Generated_Source\PSoC5/ADC_PM.c **** *
-  69:.\Generated_Source\PSoC5/ADC_PM.c **** * Return:
-  70:.\Generated_Source\PSoC5/ADC_PM.c **** *  None.
-  71:.\Generated_Source\PSoC5/ADC_PM.c **** *
-  72:.\Generated_Source\PSoC5/ADC_PM.c **** * Side Effects:
-  73:.\Generated_Source\PSoC5/ADC_PM.c **** *  None.
-  74:.\Generated_Source\PSoC5/ADC_PM.c **** *
-  75:.\Generated_Source\PSoC5/ADC_PM.c **** * Reentrant:
-  76:.\Generated_Source\PSoC5/ADC_PM.c **** *  No.
-  77:.\Generated_Source\PSoC5/ADC_PM.c **** *
-  78:.\Generated_Source\PSoC5/ADC_PM.c **** *******************************************************************************/
-  79:.\Generated_Source\PSoC5/ADC_PM.c **** void ADC_Wakeup(void)
-  80:.\Generated_Source\PSoC5/ADC_PM.c **** {
-  58              		.loc 1 80 0
-  59              		.cfi_startproc
-  60              		@ args = 0, pretend = 0, frame = 0
-  61              		@ frame_needed = 1, uses_anonymous_args = 0
-  62 0000 80B5     		push	{r7, lr}
-  63              		.cfi_def_cfa_offset 8
-  64              		.cfi_offset 7, -8
-  65              		.cfi_offset 14, -4
-  66 0002 00AF     		add	r7, sp, #0
-  67              		.cfi_def_cfa_register 7
-  81:.\Generated_Source\PSoC5/ADC_PM.c ****     ADC_SAR_Wakeup();
-  68              		.loc 1 81 0
-  69 0004 FFF7FEFF 		bl	ADC_SAR_Wakeup
-  82:.\Generated_Source\PSoC5/ADC_PM.c ****     ADC_SAR_Enable();
-  70              		.loc 1 82 0
-  71 0008 FFF7FEFF 		bl	ADC_SAR_Enable
-  83:.\Generated_Source\PSoC5/ADC_PM.c **** 
-  84:.\Generated_Source\PSoC5/ADC_PM.c ****     #if(ADC_CLOCK_SOURCE == ADC_CLOCK_INTERNAL)
-  85:.\Generated_Source\PSoC5/ADC_PM.c ****         ADC_IntClock_Start();
-  72              		.loc 1 85 0
-  73 000c FFF7FEFF 		bl	ADC_IntClock_Start
-  86:.\Generated_Source\PSoC5/ADC_PM.c ****     #endif   /* ADC_CLOCK_SOURCE == ADC_CLOCK_INTERNAL */
-  87:.\Generated_Source\PSoC5/ADC_PM.c **** 
-  88:.\Generated_Source\PSoC5/ADC_PM.c ****     /* The block is ready to use 10 us after the SAR enable signal is set high. */
-  89:.\Generated_Source\PSoC5/ADC_PM.c ****     CyDelayUs(10u);
-  74              		.loc 1 89 0
-  75 0010 0A20     		movs	r0, #10
-  76 0012 FFF7FEFF 		bl	CyDelayUs
-  90:.\Generated_Source\PSoC5/ADC_PM.c ****     
-  91:.\Generated_Source\PSoC5/ADC_PM.c ****     ADC_Enable();
-  77              		.loc 1 91 0
-  78 0016 FFF7FEFF 		bl	ADC_Enable
-  92:.\Generated_Source\PSoC5/ADC_PM.c **** 
-  93:.\Generated_Source\PSoC5/ADC_PM.c ****     #if(ADC_SAMPLE_MODE == ADC_SAMPLE_MODE_FREE_RUNNING)
-ARM GAS  C:\Users\amon838\AppData\Local\Temp\ccslcyMf.s 			page 4
+  56:.\Generated_Source\PSoC5/ADC_PM.c **** *
+  57:.\Generated_Source\PSoC5/ADC_PM.c **** * Parameters:
+  58:.\Generated_Source\PSoC5/ADC_PM.c **** *  None.
+  59:.\Generated_Source\PSoC5/ADC_PM.c **** *
+  60:.\Generated_Source\PSoC5/ADC_PM.c **** * Return:
+  61:.\Generated_Source\PSoC5/ADC_PM.c **** *  None.
+  62:.\Generated_Source\PSoC5/ADC_PM.c **** *
+  63:.\Generated_Source\PSoC5/ADC_PM.c **** *******************************************************************************/
+  64:.\Generated_Source\PSoC5/ADC_PM.c **** void ADC_RestoreConfig(void)
+  65:.\Generated_Source\PSoC5/ADC_PM.c **** {
+  60              		.loc 1 65 0
+  61              		.cfi_startproc
+  62              		@ args = 0, pretend = 0, frame = 0
+  63              		@ frame_needed = 1, uses_anonymous_args = 0
+  64              		@ link register save eliminated.
+  65 0000 80B4     		push	{r7}
+  66              		.cfi_def_cfa_offset 4
+  67              		.cfi_offset 7, -4
+  68 0002 00AF     		add	r7, sp, #0
+  69              		.cfi_def_cfa_register 7
+  66:.\Generated_Source\PSoC5/ADC_PM.c ****     /* All congiguration registers are marked as [reset_all_retention] */
+  67:.\Generated_Source\PSoC5/ADC_PM.c **** }
+  70              		.loc 1 67 0
+  71 0004 BD46     		mov	sp, r7
+  72              		.cfi_def_cfa_register 13
+  73              		@ sp needed
+  74 0006 5DF8047B 		ldr	r7, [sp], #4
+  75              		.cfi_restore 7
+  76              		.cfi_def_cfa_offset 0
+  77 000a 7047     		bx	lr
+  78              		.cfi_endproc
+  79              	.LFE1:
+  80              		.size	ADC_RestoreConfig, .-ADC_RestoreConfig
+  81              		.section	.text.ADC_Sleep,"ax",%progbits
+  82              		.align	2
+  83              		.global	ADC_Sleep
+  84              		.thumb
+  85              		.thumb_func
+  86              		.type	ADC_Sleep, %function
+  87              	ADC_Sleep:
+  88              	.LFB2:
+  68:.\Generated_Source\PSoC5/ADC_PM.c **** 
+  69:.\Generated_Source\PSoC5/ADC_PM.c **** 
+  70:.\Generated_Source\PSoC5/ADC_PM.c **** /*******************************************************************************
+  71:.\Generated_Source\PSoC5/ADC_PM.c **** * Function Name: ADC_Sleep
+  72:.\Generated_Source\PSoC5/ADC_PM.c **** ********************************************************************************
+  73:.\Generated_Source\PSoC5/ADC_PM.c **** *
+  74:.\Generated_Source\PSoC5/ADC_PM.c **** * Summary:
+  75:.\Generated_Source\PSoC5/ADC_PM.c **** *  This is the preferred routine to prepare the component for sleep.
+  76:.\Generated_Source\PSoC5/ADC_PM.c **** *  The ADC_Sleep() routine saves the current component state,
+  77:.\Generated_Source\PSoC5/ADC_PM.c **** *  then it calls the ADC_Stop() function.
+  78:.\Generated_Source\PSoC5/ADC_PM.c **** *
+  79:.\Generated_Source\PSoC5/ADC_PM.c **** * Parameters:
+  80:.\Generated_Source\PSoC5/ADC_PM.c **** *  None.
+  81:.\Generated_Source\PSoC5/ADC_PM.c **** *
+  82:.\Generated_Source\PSoC5/ADC_PM.c **** * Return:
+  83:.\Generated_Source\PSoC5/ADC_PM.c **** *  None.
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccLknG8I.s 			page 4
 
 
-  94:.\Generated_Source\PSoC5/ADC_PM.c ****         ADC_SAR_StartConvert();
-  79              		.loc 1 94 0
-  80 001a FFF7FEFF 		bl	ADC_SAR_StartConvert
-  95:.\Generated_Source\PSoC5/ADC_PM.c ****     #endif /* (ADC_SAMPLE_MODE == ADC_SAMPLE_MODE_FREE_RUNNING) */
-  96:.\Generated_Source\PSoC5/ADC_PM.c **** 
-  97:.\Generated_Source\PSoC5/ADC_PM.c ****     (void) CY_GET_REG8(ADC_STATUS_PTR);
-  81              		.loc 1 97 0
-  82 001e 014B     		ldr	r3, .L3
-  83 0020 1B78     		ldrb	r3, [r3]
-  98:.\Generated_Source\PSoC5/ADC_PM.c **** }
-  84              		.loc 1 98 0
-  85 0022 80BD     		pop	{r7, pc}
-  86              	.L4:
-  87              		.align	2
-  88              	.L3:
-  89 0024 6B640040 		.word	1073767531
-  90              		.cfi_endproc
-  91              	.LFE1:
-  92              		.size	ADC_Wakeup, .-ADC_Wakeup
-  93              		.section	.text.ADC_SaveConfig,"ax",%progbits
-  94              		.align	2
-  95              		.global	ADC_SaveConfig
-  96              		.thumb
-  97              		.thumb_func
-  98              		.type	ADC_SaveConfig, %function
-  99              	ADC_SaveConfig:
- 100              	.LFB2:
-  99:.\Generated_Source\PSoC5/ADC_PM.c **** 
- 100:.\Generated_Source\PSoC5/ADC_PM.c **** 
- 101:.\Generated_Source\PSoC5/ADC_PM.c **** /*******************************************************************************
- 102:.\Generated_Source\PSoC5/ADC_PM.c **** * Function Name: ADC_SaveConfig
- 103:.\Generated_Source\PSoC5/ADC_PM.c **** ********************************************************************************
- 104:.\Generated_Source\PSoC5/ADC_PM.c **** *
- 105:.\Generated_Source\PSoC5/ADC_PM.c **** * Summary:
- 106:.\Generated_Source\PSoC5/ADC_PM.c **** *  Save the current configuration of ADC non-retention registers
- 107:.\Generated_Source\PSoC5/ADC_PM.c **** *
- 108:.\Generated_Source\PSoC5/ADC_PM.c **** * Parameters:
- 109:.\Generated_Source\PSoC5/ADC_PM.c **** *  None.
- 110:.\Generated_Source\PSoC5/ADC_PM.c **** *
- 111:.\Generated_Source\PSoC5/ADC_PM.c **** * Return:
- 112:.\Generated_Source\PSoC5/ADC_PM.c **** *  None.
- 113:.\Generated_Source\PSoC5/ADC_PM.c **** *
- 114:.\Generated_Source\PSoC5/ADC_PM.c **** * Side Effects:
- 115:.\Generated_Source\PSoC5/ADC_PM.c **** *  None.
- 116:.\Generated_Source\PSoC5/ADC_PM.c **** *
- 117:.\Generated_Source\PSoC5/ADC_PM.c **** * Reentrant:
- 118:.\Generated_Source\PSoC5/ADC_PM.c **** *  No.
- 119:.\Generated_Source\PSoC5/ADC_PM.c **** *
- 120:.\Generated_Source\PSoC5/ADC_PM.c **** *******************************************************************************/
- 121:.\Generated_Source\PSoC5/ADC_PM.c **** void ADC_SaveConfig(void)
- 122:.\Generated_Source\PSoC5/ADC_PM.c **** {
- 101              		.loc 1 122 0
- 102              		.cfi_startproc
- 103              		@ args = 0, pretend = 0, frame = 0
- 104              		@ frame_needed = 1, uses_anonymous_args = 0
- 105              		@ link register save eliminated.
- 106 0000 80B4     		push	{r7}
-ARM GAS  C:\Users\amon838\AppData\Local\Temp\ccslcyMf.s 			page 5
+  84:.\Generated_Source\PSoC5/ADC_PM.c **** *
+  85:.\Generated_Source\PSoC5/ADC_PM.c **** * Global Variables:
+  86:.\Generated_Source\PSoC5/ADC_PM.c **** *  ADC_backup - The structure field 'enableState' is modified
+  87:.\Generated_Source\PSoC5/ADC_PM.c **** *  depending on the enable state of the block before entering to sleep mode.
+  88:.\Generated_Source\PSoC5/ADC_PM.c **** *
+  89:.\Generated_Source\PSoC5/ADC_PM.c **** *******************************************************************************/
+  90:.\Generated_Source\PSoC5/ADC_PM.c **** void ADC_Sleep(void)
+  91:.\Generated_Source\PSoC5/ADC_PM.c **** {
+  89              		.loc 1 91 0
+  90              		.cfi_startproc
+  91              		@ args = 0, pretend = 0, frame = 0
+  92              		@ frame_needed = 1, uses_anonymous_args = 0
+  93 0000 80B5     		push	{r7, lr}
+  94              		.cfi_def_cfa_offset 8
+  95              		.cfi_offset 7, -8
+  96              		.cfi_offset 14, -4
+  97 0002 00AF     		add	r7, sp, #0
+  98              		.cfi_def_cfa_register 7
+  92:.\Generated_Source\PSoC5/ADC_PM.c ****     if((ADC_PWRMGR_SAR_REG  & ADC_ACT_PWR_SAR_EN) != 0u)
+  99              		.loc 1 92 0
+ 100 0004 0D4B     		ldr	r3, .L8
+ 101 0006 1B78     		ldrb	r3, [r3]
+ 102 0008 DBB2     		uxtb	r3, r3
+ 103 000a 03F00203 		and	r3, r3, #2
+ 104 000e 002B     		cmp	r3, #0
+ 105 0010 10D0     		beq	.L4
+  93:.\Generated_Source\PSoC5/ADC_PM.c ****     {
+  94:.\Generated_Source\PSoC5/ADC_PM.c ****         if((ADC_SAR_CSR0_REG & ADC_SAR_SOF_START_CONV) != 0u)
+ 106              		.loc 1 94 0
+ 107 0012 0B4B     		ldr	r3, .L8+4
+ 108 0014 1B78     		ldrb	r3, [r3]
+ 109 0016 DBB2     		uxtb	r3, r3
+ 110 0018 03F00103 		and	r3, r3, #1
+ 111 001c 002B     		cmp	r3, #0
+ 112 001e 03D0     		beq	.L5
+  95:.\Generated_Source\PSoC5/ADC_PM.c ****         {
+  96:.\Generated_Source\PSoC5/ADC_PM.c ****             ADC_backup.enableState = ADC_ENABLED | ADC_STARTED;
+ 113              		.loc 1 96 0
+ 114 0020 084B     		ldr	r3, .L8+8
+ 115 0022 0322     		movs	r2, #3
+ 116 0024 1A70     		strb	r2, [r3]
+ 117 0026 02E0     		b	.L6
+ 118              	.L5:
+  97:.\Generated_Source\PSoC5/ADC_PM.c ****         }
+  98:.\Generated_Source\PSoC5/ADC_PM.c ****         else
+  99:.\Generated_Source\PSoC5/ADC_PM.c ****         {
+ 100:.\Generated_Source\PSoC5/ADC_PM.c ****             ADC_backup.enableState = ADC_ENABLED;
+ 119              		.loc 1 100 0
+ 120 0028 064B     		ldr	r3, .L8+8
+ 121 002a 0122     		movs	r2, #1
+ 122 002c 1A70     		strb	r2, [r3]
+ 123              	.L6:
+ 101:.\Generated_Source\PSoC5/ADC_PM.c ****         }
+ 102:.\Generated_Source\PSoC5/ADC_PM.c ****         ADC_Stop();
+ 124              		.loc 1 102 0
+ 125 002e FFF7FEFF 		bl	ADC_Stop
+ 126 0032 02E0     		b	.L3
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccLknG8I.s 			page 5
 
 
- 107              		.cfi_def_cfa_offset 4
- 108              		.cfi_offset 7, -4
- 109 0002 00AF     		add	r7, sp, #0
- 110              		.cfi_def_cfa_register 7
- 123:.\Generated_Source\PSoC5/ADC_PM.c **** 
- 124:.\Generated_Source\PSoC5/ADC_PM.c **** }
- 111              		.loc 1 124 0
- 112 0004 BD46     		mov	sp, r7
- 113              		.cfi_def_cfa_register 13
- 114              		@ sp needed
- 115 0006 5DF8047B 		ldr	r7, [sp], #4
- 116              		.cfi_restore 7
- 117              		.cfi_def_cfa_offset 0
- 118 000a 7047     		bx	lr
- 119              		.cfi_endproc
- 120              	.LFE2:
- 121              		.size	ADC_SaveConfig, .-ADC_SaveConfig
- 122              		.section	.text.ADC_RestoreConfig,"ax",%progbits
- 123              		.align	2
- 124              		.global	ADC_RestoreConfig
- 125              		.thumb
- 126              		.thumb_func
- 127              		.type	ADC_RestoreConfig, %function
- 128              	ADC_RestoreConfig:
- 129              	.LFB3:
- 125:.\Generated_Source\PSoC5/ADC_PM.c **** 
- 126:.\Generated_Source\PSoC5/ADC_PM.c **** 
- 127:.\Generated_Source\PSoC5/ADC_PM.c **** /*******************************************************************************
- 128:.\Generated_Source\PSoC5/ADC_PM.c **** * Function Name: ADC_RestoreConfig
- 129:.\Generated_Source\PSoC5/ADC_PM.c **** ********************************************************************************
+ 127              	.L4:
+ 103:.\Generated_Source\PSoC5/ADC_PM.c ****     }
+ 104:.\Generated_Source\PSoC5/ADC_PM.c ****     else
+ 105:.\Generated_Source\PSoC5/ADC_PM.c ****     {
+ 106:.\Generated_Source\PSoC5/ADC_PM.c ****         ADC_backup.enableState = ADC_DISABLED;
+ 128              		.loc 1 106 0
+ 129 0034 034B     		ldr	r3, .L8+8
+ 130 0036 0022     		movs	r2, #0
+ 131 0038 1A70     		strb	r2, [r3]
+ 132              	.L3:
+ 107:.\Generated_Source\PSoC5/ADC_PM.c ****     }
+ 108:.\Generated_Source\PSoC5/ADC_PM.c **** }
+ 133              		.loc 1 108 0
+ 134 003a 80BD     		pop	{r7, pc}
+ 135              	.L9:
+ 136              		.align	2
+ 137              	.L8:
+ 138 003c AB430040 		.word	1073759147
+ 139 0040 08590040 		.word	1073764616
+ 140 0044 00000000 		.word	ADC_backup
+ 141              		.cfi_endproc
+ 142              	.LFE2:
+ 143              		.size	ADC_Sleep, .-ADC_Sleep
+ 144              		.section	.text.ADC_Wakeup,"ax",%progbits
+ 145              		.align	2
+ 146              		.global	ADC_Wakeup
+ 147              		.thumb
+ 148              		.thumb_func
+ 149              		.type	ADC_Wakeup, %function
+ 150              	ADC_Wakeup:
+ 151              	.LFB3:
+ 109:.\Generated_Source\PSoC5/ADC_PM.c **** 
+ 110:.\Generated_Source\PSoC5/ADC_PM.c **** 
+ 111:.\Generated_Source\PSoC5/ADC_PM.c **** /*******************************************************************************
+ 112:.\Generated_Source\PSoC5/ADC_PM.c **** * Function Name: ADC_Wakeup
+ 113:.\Generated_Source\PSoC5/ADC_PM.c **** ********************************************************************************
+ 114:.\Generated_Source\PSoC5/ADC_PM.c **** *
+ 115:.\Generated_Source\PSoC5/ADC_PM.c **** * Summary:
+ 116:.\Generated_Source\PSoC5/ADC_PM.c **** *  This is the preferred routine to restore the component to the state when
+ 117:.\Generated_Source\PSoC5/ADC_PM.c **** *  ADC_Sleep() was called. If the component was enabled before the
+ 118:.\Generated_Source\PSoC5/ADC_PM.c **** *  ADC_Sleep() function was called, the
+ 119:.\Generated_Source\PSoC5/ADC_PM.c **** *  ADC_Wakeup() function also re-enables the component.
+ 120:.\Generated_Source\PSoC5/ADC_PM.c **** *
+ 121:.\Generated_Source\PSoC5/ADC_PM.c **** * Parameters:
+ 122:.\Generated_Source\PSoC5/ADC_PM.c **** *  None.
+ 123:.\Generated_Source\PSoC5/ADC_PM.c **** *
+ 124:.\Generated_Source\PSoC5/ADC_PM.c **** * Return:
+ 125:.\Generated_Source\PSoC5/ADC_PM.c **** *  None.
+ 126:.\Generated_Source\PSoC5/ADC_PM.c **** *
+ 127:.\Generated_Source\PSoC5/ADC_PM.c **** * Global Variables:
+ 128:.\Generated_Source\PSoC5/ADC_PM.c **** *  ADC_backup - The structure field 'enableState' is used to
+ 129:.\Generated_Source\PSoC5/ADC_PM.c **** *  restore the enable state of block after wakeup from sleep mode.
  130:.\Generated_Source\PSoC5/ADC_PM.c **** *
- 131:.\Generated_Source\PSoC5/ADC_PM.c **** * Summary:
- 132:.\Generated_Source\PSoC5/ADC_PM.c **** *  Restores the configuration of ADC non-retention registers
- 133:.\Generated_Source\PSoC5/ADC_PM.c **** *
- 134:.\Generated_Source\PSoC5/ADC_PM.c **** * Parameters:
- 135:.\Generated_Source\PSoC5/ADC_PM.c **** *  None.
- 136:.\Generated_Source\PSoC5/ADC_PM.c **** *
- 137:.\Generated_Source\PSoC5/ADC_PM.c **** * Return:
- 138:.\Generated_Source\PSoC5/ADC_PM.c **** *  None.
- 139:.\Generated_Source\PSoC5/ADC_PM.c **** *
- 140:.\Generated_Source\PSoC5/ADC_PM.c **** * Side Effects:
- 141:.\Generated_Source\PSoC5/ADC_PM.c **** *  None.
- 142:.\Generated_Source\PSoC5/ADC_PM.c **** *
- 143:.\Generated_Source\PSoC5/ADC_PM.c **** * Reentrant:
- 144:.\Generated_Source\PSoC5/ADC_PM.c **** *  No.
- 145:.\Generated_Source\PSoC5/ADC_PM.c **** *
- 146:.\Generated_Source\PSoC5/ADC_PM.c **** *******************************************************************************/
- 147:.\Generated_Source\PSoC5/ADC_PM.c **** void ADC_RestoreConfig(void)
- 148:.\Generated_Source\PSoC5/ADC_PM.c **** {
- 130              		.loc 1 148 0
- 131              		.cfi_startproc
- 132              		@ args = 0, pretend = 0, frame = 0
- 133              		@ frame_needed = 1, uses_anonymous_args = 0
- 134              		@ link register save eliminated.
- 135 0000 80B4     		push	{r7}
- 136              		.cfi_def_cfa_offset 4
- 137              		.cfi_offset 7, -4
-ARM GAS  C:\Users\amon838\AppData\Local\Temp\ccslcyMf.s 			page 6
+ 131:.\Generated_Source\PSoC5/ADC_PM.c **** *******************************************************************************/
+ 132:.\Generated_Source\PSoC5/ADC_PM.c **** void ADC_Wakeup(void)
+ 133:.\Generated_Source\PSoC5/ADC_PM.c **** {
+ 152              		.loc 1 133 0
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccLknG8I.s 			page 6
 
 
- 138 0002 00AF     		add	r7, sp, #0
- 139              		.cfi_def_cfa_register 7
- 149:.\Generated_Source\PSoC5/ADC_PM.c **** 
- 150:.\Generated_Source\PSoC5/ADC_PM.c **** }
- 140              		.loc 1 150 0
- 141 0004 BD46     		mov	sp, r7
- 142              		.cfi_def_cfa_register 13
- 143              		@ sp needed
- 144 0006 5DF8047B 		ldr	r7, [sp], #4
- 145              		.cfi_restore 7
- 146              		.cfi_def_cfa_offset 0
- 147 000a 7047     		bx	lr
- 148              		.cfi_endproc
- 149              	.LFE3:
- 150              		.size	ADC_RestoreConfig, .-ADC_RestoreConfig
- 151              		.text
- 152              	.Letext0:
- 153              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
- 154              		.section	.debug_info,"",%progbits
- 155              	.Ldebug_info0:
- 156 0000 E5000000 		.4byte	0xe5
- 157 0004 0400     		.2byte	0x4
- 158 0006 00000000 		.4byte	.Ldebug_abbrev0
- 159 000a 04       		.byte	0x4
- 160 000b 01       		.uleb128 0x1
- 161 000c 9C000000 		.4byte	.LASF19
- 162 0010 01       		.byte	0x1
- 163 0011 56010000 		.4byte	.LASF20
- 164 0015 90010000 		.4byte	.LASF21
- 165 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 166 001d 00000000 		.4byte	0
- 167 0021 00000000 		.4byte	.Ldebug_line0
- 168 0025 02       		.uleb128 0x2
- 169 0026 01       		.byte	0x1
- 170 0027 06       		.byte	0x6
- 171 0028 44010000 		.4byte	.LASF0
- 172 002c 02       		.uleb128 0x2
- 173 002d 01       		.byte	0x1
- 174 002e 08       		.byte	0x8
- 175 002f 76000000 		.4byte	.LASF1
- 176 0033 02       		.uleb128 0x2
- 177 0034 02       		.byte	0x2
- 178 0035 05       		.byte	0x5
- 179 0036 78010000 		.4byte	.LASF2
- 180 003a 02       		.uleb128 0x2
- 181 003b 02       		.byte	0x2
- 182 003c 07       		.byte	0x7
- 183 003d 31010000 		.4byte	.LASF3
- 184 0041 02       		.uleb128 0x2
- 185 0042 04       		.byte	0x4
- 186 0043 05       		.byte	0x5
- 187 0044 93000000 		.4byte	.LASF4
- 188 0048 02       		.uleb128 0x2
- 189 0049 04       		.byte	0x4
- 190 004a 07       		.byte	0x7
- 191 004b 21000000 		.4byte	.LASF5
- 192 004f 02       		.uleb128 0x2
-ARM GAS  C:\Users\amon838\AppData\Local\Temp\ccslcyMf.s 			page 7
+ 153              		.cfi_startproc
+ 154              		@ args = 0, pretend = 0, frame = 0
+ 155              		@ frame_needed = 1, uses_anonymous_args = 0
+ 156 0000 80B5     		push	{r7, lr}
+ 157              		.cfi_def_cfa_offset 8
+ 158              		.cfi_offset 7, -8
+ 159              		.cfi_offset 14, -4
+ 160 0002 00AF     		add	r7, sp, #0
+ 161              		.cfi_def_cfa_register 7
+ 134:.\Generated_Source\PSoC5/ADC_PM.c ****     if(ADC_backup.enableState != ADC_DISABLED)
+ 162              		.loc 1 134 0
+ 163 0004 074B     		ldr	r3, .L12
+ 164 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 165 0008 002B     		cmp	r3, #0
+ 166 000a 09D0     		beq	.L10
+ 135:.\Generated_Source\PSoC5/ADC_PM.c ****     {
+ 136:.\Generated_Source\PSoC5/ADC_PM.c ****         ADC_Enable();
+ 167              		.loc 1 136 0
+ 168 000c FFF7FEFF 		bl	ADC_Enable
+ 137:.\Generated_Source\PSoC5/ADC_PM.c ****         #if(ADC_DEFAULT_CONV_MODE != ADC__HARDWARE_TRIGGER)
+ 138:.\Generated_Source\PSoC5/ADC_PM.c ****             if((ADC_backup.enableState & ADC_STARTED) != 0u)
+ 169              		.loc 1 138 0
+ 170 0010 044B     		ldr	r3, .L12
+ 171 0012 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 172 0014 03F00203 		and	r3, r3, #2
+ 173 0018 002B     		cmp	r3, #0
+ 174 001a 01D0     		beq	.L10
+ 139:.\Generated_Source\PSoC5/ADC_PM.c ****             {
+ 140:.\Generated_Source\PSoC5/ADC_PM.c ****                 ADC_StartConvert();
+ 175              		.loc 1 140 0
+ 176 001c FFF7FEFF 		bl	ADC_StartConvert
+ 177              	.L10:
+ 141:.\Generated_Source\PSoC5/ADC_PM.c ****             }
+ 142:.\Generated_Source\PSoC5/ADC_PM.c ****         #endif /* End ADC_DEFAULT_CONV_MODE != ADC__HARDWARE_TRIGGER */
+ 143:.\Generated_Source\PSoC5/ADC_PM.c ****     }
+ 144:.\Generated_Source\PSoC5/ADC_PM.c **** }
+ 178              		.loc 1 144 0
+ 179 0020 80BD     		pop	{r7, pc}
+ 180              	.L13:
+ 181 0022 00BF     		.align	2
+ 182              	.L12:
+ 183 0024 00000000 		.word	ADC_backup
+ 184              		.cfi_endproc
+ 185              	.LFE3:
+ 186              		.size	ADC_Wakeup, .-ADC_Wakeup
+ 187              		.text
+ 188              	.Letext0:
+ 189              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 190              		.file 3 ".\\Generated_Source\\PSoC5\\ADC.h"
+ 191              		.section	.debug_info,"",%progbits
+ 192              	.Ldebug_info0:
+ 193 0000 0F010000 		.4byte	0x10f
+ 194 0004 0400     		.2byte	0x4
+ 195 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 196 000a 04       		.byte	0x4
+ 197 000b 01       		.uleb128 0x1
+ 198 000c 20000000 		.4byte	.LASF19
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccLknG8I.s 			page 7
 
 
- 193 0050 08       		.byte	0x8
- 194 0051 05       		.byte	0x5
- 195 0052 00000000 		.4byte	.LASF6
- 196 0056 02       		.uleb128 0x2
- 197 0057 08       		.byte	0x8
- 198 0058 07       		.byte	0x7
- 199 0059 33000000 		.4byte	.LASF7
- 200 005d 03       		.uleb128 0x3
- 201 005e 04       		.byte	0x4
- 202 005f 05       		.byte	0x5
- 203 0060 696E7400 		.ascii	"int\000"
- 204 0064 02       		.uleb128 0x2
- 205 0065 04       		.byte	0x4
- 206 0066 07       		.byte	0x7
- 207 0067 0E000000 		.4byte	.LASF8
- 208 006b 04       		.uleb128 0x4
- 209 006c 1B000000 		.4byte	.LASF12
- 210 0070 02       		.byte	0x2
- 211 0071 9201     		.2byte	0x192
- 212 0073 2C000000 		.4byte	0x2c
- 213 0077 02       		.uleb128 0x2
- 214 0078 04       		.byte	0x4
- 215 0079 04       		.byte	0x4
- 216 007a 50010000 		.4byte	.LASF9
- 217 007e 02       		.uleb128 0x2
- 218 007f 08       		.byte	0x8
- 219 0080 04       		.byte	0x4
- 220 0081 2A010000 		.4byte	.LASF10
- 221 0085 02       		.uleb128 0x2
- 222 0086 01       		.byte	0x1
- 223 0087 08       		.byte	0x8
- 224 0088 84000000 		.4byte	.LASF11
- 225 008c 04       		.uleb128 0x4
- 226 008d 82010000 		.4byte	.LASF13
- 227 0091 02       		.byte	0x2
- 228 0092 3C02     		.2byte	0x23c
- 229 0094 98000000 		.4byte	0x98
- 230 0098 05       		.uleb128 0x5
- 231 0099 6B000000 		.4byte	0x6b
- 232 009d 02       		.uleb128 0x2
- 233 009e 04       		.byte	0x4
- 234 009f 07       		.byte	0x7
- 235 00a0 87010000 		.4byte	.LASF14
- 236 00a4 06       		.uleb128 0x6
- 237 00a5 89000000 		.4byte	.LASF15
- 238 00a9 01       		.byte	0x1
- 239 00aa 2E       		.byte	0x2e
- 240 00ab 00000000 		.4byte	.LFB0
- 241 00af 16000000 		.4byte	.LFE0-.LFB0
- 242 00b3 01       		.uleb128 0x1
- 243 00b4 9C       		.byte	0x9c
- 244 00b5 06       		.uleb128 0x6
- 245 00b6 5C000000 		.4byte	.LASF16
- 246 00ba 01       		.byte	0x1
- 247 00bb 4F       		.byte	0x4f
- 248 00bc 00000000 		.4byte	.LFB1
- 249 00c0 28000000 		.4byte	.LFE1-.LFB1
-ARM GAS  C:\Users\amon838\AppData\Local\Temp\ccslcyMf.s 			page 8
+ 199 0010 01       		.byte	0x1
+ 200 0011 AE000000 		.4byte	.LASF20
+ 201 0015 19010000 		.4byte	.LASF21
+ 202 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 203 001d 00000000 		.4byte	0
+ 204 0021 00000000 		.4byte	.Ldebug_line0
+ 205 0025 02       		.uleb128 0x2
+ 206 0026 01       		.byte	0x1
+ 207 0027 06       		.byte	0x6
+ 208 0028 BE010000 		.4byte	.LASF0
+ 209 002c 02       		.uleb128 0x2
+ 210 002d 01       		.byte	0x1
+ 211 002e 08       		.byte	0x8
+ 212 002f D0000000 		.4byte	.LASF1
+ 213 0033 02       		.uleb128 0x2
+ 214 0034 02       		.byte	0x2
+ 215 0035 05       		.byte	0x5
+ 216 0036 99010000 		.4byte	.LASF2
+ 217 003a 02       		.uleb128 0x2
+ 218 003b 02       		.byte	0x2
+ 219 003c 07       		.byte	0x7
+ 220 003d F5000000 		.4byte	.LASF3
+ 221 0041 02       		.uleb128 0x2
+ 222 0042 04       		.byte	0x4
+ 223 0043 05       		.byte	0x5
+ 224 0044 A9010000 		.4byte	.LASF4
+ 225 0048 02       		.uleb128 0x2
+ 226 0049 04       		.byte	0x4
+ 227 004a 07       		.byte	0x7
+ 228 004b E3000000 		.4byte	.LASF5
+ 229 004f 02       		.uleb128 0x2
+ 230 0050 08       		.byte	0x8
+ 231 0051 05       		.byte	0x5
+ 232 0052 62010000 		.4byte	.LASF6
+ 233 0056 02       		.uleb128 0x2
+ 234 0057 08       		.byte	0x8
+ 235 0058 07       		.byte	0x7
+ 236 0059 4B010000 		.4byte	.LASF7
+ 237 005d 03       		.uleb128 0x3
+ 238 005e 04       		.byte	0x4
+ 239 005f 05       		.byte	0x5
+ 240 0060 696E7400 		.ascii	"int\000"
+ 241 0064 02       		.uleb128 0x2
+ 242 0065 04       		.byte	0x4
+ 243 0066 07       		.byte	0x7
+ 244 0067 3E010000 		.4byte	.LASF8
+ 245 006b 04       		.uleb128 0x4
+ 246 006c A3010000 		.4byte	.LASF12
+ 247 0070 02       		.byte	0x2
+ 248 0071 9201     		.2byte	0x192
+ 249 0073 2C000000 		.4byte	0x2c
+ 250 0077 02       		.uleb128 0x2
+ 251 0078 04       		.byte	0x4
+ 252 0079 04       		.byte	0x4
+ 253 007a 0B000000 		.4byte	.LASF9
+ 254 007e 02       		.uleb128 0x2
+ 255 007f 08       		.byte	0x8
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccLknG8I.s 			page 8
 
 
- 250 00c4 01       		.uleb128 0x1
- 251 00c5 9C       		.byte	0x9c
- 252 00c6 07       		.uleb128 0x7
- 253 00c7 67000000 		.4byte	.LASF17
- 254 00cb 01       		.byte	0x1
- 255 00cc 79       		.byte	0x79
- 256 00cd 00000000 		.4byte	.LFB2
- 257 00d1 0C000000 		.4byte	.LFE2-.LFB2
- 258 00d5 01       		.uleb128 0x1
- 259 00d6 9C       		.byte	0x9c
- 260 00d7 07       		.uleb128 0x7
- 261 00d8 4A000000 		.4byte	.LASF18
- 262 00dc 01       		.byte	0x1
- 263 00dd 93       		.byte	0x93
- 264 00de 00000000 		.4byte	.LFB3
- 265 00e2 0C000000 		.4byte	.LFE3-.LFB3
- 266 00e6 01       		.uleb128 0x1
- 267 00e7 9C       		.byte	0x9c
- 268 00e8 00       		.byte	0
- 269              		.section	.debug_abbrev,"",%progbits
- 270              	.Ldebug_abbrev0:
- 271 0000 01       		.uleb128 0x1
- 272 0001 11       		.uleb128 0x11
- 273 0002 01       		.byte	0x1
- 274 0003 25       		.uleb128 0x25
- 275 0004 0E       		.uleb128 0xe
- 276 0005 13       		.uleb128 0x13
- 277 0006 0B       		.uleb128 0xb
- 278 0007 03       		.uleb128 0x3
- 279 0008 0E       		.uleb128 0xe
- 280 0009 1B       		.uleb128 0x1b
- 281 000a 0E       		.uleb128 0xe
- 282 000b 55       		.uleb128 0x55
- 283 000c 17       		.uleb128 0x17
- 284 000d 11       		.uleb128 0x11
- 285 000e 01       		.uleb128 0x1
- 286 000f 10       		.uleb128 0x10
- 287 0010 17       		.uleb128 0x17
- 288 0011 00       		.byte	0
- 289 0012 00       		.byte	0
- 290 0013 02       		.uleb128 0x2
- 291 0014 24       		.uleb128 0x24
- 292 0015 00       		.byte	0
- 293 0016 0B       		.uleb128 0xb
- 294 0017 0B       		.uleb128 0xb
- 295 0018 3E       		.uleb128 0x3e
- 296 0019 0B       		.uleb128 0xb
- 297 001a 03       		.uleb128 0x3
- 298 001b 0E       		.uleb128 0xe
- 299 001c 00       		.byte	0
- 300 001d 00       		.byte	0
- 301 001e 03       		.uleb128 0x3
- 302 001f 24       		.uleb128 0x24
- 303 0020 00       		.byte	0
- 304 0021 0B       		.uleb128 0xb
- 305 0022 0B       		.uleb128 0xb
- 306 0023 3E       		.uleb128 0x3e
-ARM GAS  C:\Users\amon838\AppData\Local\Temp\ccslcyMf.s 			page 9
+ 256 0080 04       		.byte	0x4
+ 257 0081 12010000 		.4byte	.LASF10
+ 258 0085 02       		.uleb128 0x2
+ 259 0086 01       		.byte	0x1
+ 260 0087 08       		.byte	0x8
+ 261 0088 82010000 		.4byte	.LASF11
+ 262 008c 04       		.uleb128 0x4
+ 263 008d DE000000 		.4byte	.LASF13
+ 264 0091 02       		.byte	0x2
+ 265 0092 3C02     		.2byte	0x23c
+ 266 0094 98000000 		.4byte	0x98
+ 267 0098 05       		.uleb128 0x5
+ 268 0099 6B000000 		.4byte	0x6b
+ 269 009d 06       		.uleb128 0x6
+ 270 009e 01       		.byte	0x1
+ 271 009f 03       		.byte	0x3
+ 272 00a0 2A       		.byte	0x2a
+ 273 00a1 B2000000 		.4byte	0xb2
+ 274 00a5 07       		.uleb128 0x7
+ 275 00a6 B2010000 		.4byte	.LASF22
+ 276 00aa 03       		.byte	0x3
+ 277 00ab 2C       		.byte	0x2c
+ 278 00ac 6B000000 		.4byte	0x6b
+ 279 00b0 00       		.byte	0
+ 280 00b1 00       		.byte	0
+ 281 00b2 08       		.uleb128 0x8
+ 282 00b3 70010000 		.4byte	.LASF14
+ 283 00b7 03       		.byte	0x3
+ 284 00b8 2D       		.byte	0x2d
+ 285 00b9 9D000000 		.4byte	0x9d
+ 286 00bd 09       		.uleb128 0x9
+ 287 00be 11000000 		.4byte	.LASF15
+ 288 00c2 01       		.byte	0x1
+ 289 00c3 2C       		.byte	0x2c
+ 290 00c4 00000000 		.4byte	.LFB0
+ 291 00c8 0C000000 		.4byte	.LFE0-.LFB0
+ 292 00cc 01       		.uleb128 0x1
+ 293 00cd 9C       		.byte	0x9c
+ 294 00ce 09       		.uleb128 0x9
+ 295 00cf 87010000 		.4byte	.LASF16
+ 296 00d3 01       		.byte	0x1
+ 297 00d4 40       		.byte	0x40
+ 298 00d5 00000000 		.4byte	.LFB1
+ 299 00d9 0C000000 		.4byte	.LFE1-.LFB1
+ 300 00dd 01       		.uleb128 0x1
+ 301 00de 9C       		.byte	0x9c
+ 302 00df 0A       		.uleb128 0xa
+ 303 00e0 08010000 		.4byte	.LASF17
+ 304 00e4 01       		.byte	0x1
+ 305 00e5 5A       		.byte	0x5a
+ 306 00e6 00000000 		.4byte	.LFB2
+ 307 00ea 48000000 		.4byte	.LFE2-.LFB2
+ 308 00ee 01       		.uleb128 0x1
+ 309 00ef 9C       		.byte	0x9c
+ 310 00f0 0A       		.uleb128 0xa
+ 311 00f1 00000000 		.4byte	.LASF18
+ 312 00f5 01       		.byte	0x1
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccLknG8I.s 			page 9
 
 
- 307 0024 0B       		.uleb128 0xb
- 308 0025 03       		.uleb128 0x3
- 309 0026 08       		.uleb128 0x8
- 310 0027 00       		.byte	0
- 311 0028 00       		.byte	0
- 312 0029 04       		.uleb128 0x4
- 313 002a 16       		.uleb128 0x16
- 314 002b 00       		.byte	0
- 315 002c 03       		.uleb128 0x3
- 316 002d 0E       		.uleb128 0xe
- 317 002e 3A       		.uleb128 0x3a
- 318 002f 0B       		.uleb128 0xb
- 319 0030 3B       		.uleb128 0x3b
- 320 0031 05       		.uleb128 0x5
- 321 0032 49       		.uleb128 0x49
- 322 0033 13       		.uleb128 0x13
- 323 0034 00       		.byte	0
- 324 0035 00       		.byte	0
- 325 0036 05       		.uleb128 0x5
- 326 0037 35       		.uleb128 0x35
- 327 0038 00       		.byte	0
- 328 0039 49       		.uleb128 0x49
- 329 003a 13       		.uleb128 0x13
- 330 003b 00       		.byte	0
- 331 003c 00       		.byte	0
- 332 003d 06       		.uleb128 0x6
- 333 003e 2E       		.uleb128 0x2e
- 334 003f 00       		.byte	0
- 335 0040 3F       		.uleb128 0x3f
- 336 0041 19       		.uleb128 0x19
- 337 0042 03       		.uleb128 0x3
- 338 0043 0E       		.uleb128 0xe
- 339 0044 3A       		.uleb128 0x3a
- 340 0045 0B       		.uleb128 0xb
- 341 0046 3B       		.uleb128 0x3b
- 342 0047 0B       		.uleb128 0xb
- 343 0048 27       		.uleb128 0x27
- 344 0049 19       		.uleb128 0x19
- 345 004a 11       		.uleb128 0x11
- 346 004b 01       		.uleb128 0x1
- 347 004c 12       		.uleb128 0x12
- 348 004d 06       		.uleb128 0x6
- 349 004e 40       		.uleb128 0x40
- 350 004f 18       		.uleb128 0x18
- 351 0050 9642     		.uleb128 0x2116
- 352 0052 19       		.uleb128 0x19
- 353 0053 00       		.byte	0
- 354 0054 00       		.byte	0
- 355 0055 07       		.uleb128 0x7
- 356 0056 2E       		.uleb128 0x2e
- 357 0057 00       		.byte	0
- 358 0058 3F       		.uleb128 0x3f
- 359 0059 19       		.uleb128 0x19
- 360 005a 03       		.uleb128 0x3
- 361 005b 0E       		.uleb128 0xe
- 362 005c 3A       		.uleb128 0x3a
- 363 005d 0B       		.uleb128 0xb
-ARM GAS  C:\Users\amon838\AppData\Local\Temp\ccslcyMf.s 			page 10
+ 313 00f6 84       		.byte	0x84
+ 314 00f7 00000000 		.4byte	.LFB3
+ 315 00fb 28000000 		.4byte	.LFE3-.LFB3
+ 316 00ff 01       		.uleb128 0x1
+ 317 0100 9C       		.byte	0x9c
+ 318 0101 0B       		.uleb128 0xb
+ 319 0102 CA010000 		.4byte	.LASF23
+ 320 0106 01       		.byte	0x1
+ 321 0107 18       		.byte	0x18
+ 322 0108 B2000000 		.4byte	0xb2
+ 323 010c 05       		.uleb128 0x5
+ 324 010d 03       		.byte	0x3
+ 325 010e 00000000 		.4byte	ADC_backup
+ 326 0112 00       		.byte	0
+ 327              		.section	.debug_abbrev,"",%progbits
+ 328              	.Ldebug_abbrev0:
+ 329 0000 01       		.uleb128 0x1
+ 330 0001 11       		.uleb128 0x11
+ 331 0002 01       		.byte	0x1
+ 332 0003 25       		.uleb128 0x25
+ 333 0004 0E       		.uleb128 0xe
+ 334 0005 13       		.uleb128 0x13
+ 335 0006 0B       		.uleb128 0xb
+ 336 0007 03       		.uleb128 0x3
+ 337 0008 0E       		.uleb128 0xe
+ 338 0009 1B       		.uleb128 0x1b
+ 339 000a 0E       		.uleb128 0xe
+ 340 000b 55       		.uleb128 0x55
+ 341 000c 17       		.uleb128 0x17
+ 342 000d 11       		.uleb128 0x11
+ 343 000e 01       		.uleb128 0x1
+ 344 000f 10       		.uleb128 0x10
+ 345 0010 17       		.uleb128 0x17
+ 346 0011 00       		.byte	0
+ 347 0012 00       		.byte	0
+ 348 0013 02       		.uleb128 0x2
+ 349 0014 24       		.uleb128 0x24
+ 350 0015 00       		.byte	0
+ 351 0016 0B       		.uleb128 0xb
+ 352 0017 0B       		.uleb128 0xb
+ 353 0018 3E       		.uleb128 0x3e
+ 354 0019 0B       		.uleb128 0xb
+ 355 001a 03       		.uleb128 0x3
+ 356 001b 0E       		.uleb128 0xe
+ 357 001c 00       		.byte	0
+ 358 001d 00       		.byte	0
+ 359 001e 03       		.uleb128 0x3
+ 360 001f 24       		.uleb128 0x24
+ 361 0020 00       		.byte	0
+ 362 0021 0B       		.uleb128 0xb
+ 363 0022 0B       		.uleb128 0xb
+ 364 0023 3E       		.uleb128 0x3e
+ 365 0024 0B       		.uleb128 0xb
+ 366 0025 03       		.uleb128 0x3
+ 367 0026 08       		.uleb128 0x8
+ 368 0027 00       		.byte	0
+ 369 0028 00       		.byte	0
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccLknG8I.s 			page 10
 
 
- 364 005e 3B       		.uleb128 0x3b
- 365 005f 0B       		.uleb128 0xb
- 366 0060 27       		.uleb128 0x27
- 367 0061 19       		.uleb128 0x19
- 368 0062 11       		.uleb128 0x11
- 369 0063 01       		.uleb128 0x1
- 370 0064 12       		.uleb128 0x12
- 371 0065 06       		.uleb128 0x6
- 372 0066 40       		.uleb128 0x40
- 373 0067 18       		.uleb128 0x18
- 374 0068 9742     		.uleb128 0x2117
- 375 006a 19       		.uleb128 0x19
- 376 006b 00       		.byte	0
- 377 006c 00       		.byte	0
- 378 006d 00       		.byte	0
- 379              		.section	.debug_aranges,"",%progbits
- 380 0000 34000000 		.4byte	0x34
- 381 0004 0200     		.2byte	0x2
- 382 0006 00000000 		.4byte	.Ldebug_info0
- 383 000a 04       		.byte	0x4
- 384 000b 00       		.byte	0
- 385 000c 0000     		.2byte	0
- 386 000e 0000     		.2byte	0
- 387 0010 00000000 		.4byte	.LFB0
- 388 0014 16000000 		.4byte	.LFE0-.LFB0
- 389 0018 00000000 		.4byte	.LFB1
- 390 001c 28000000 		.4byte	.LFE1-.LFB1
- 391 0020 00000000 		.4byte	.LFB2
- 392 0024 0C000000 		.4byte	.LFE2-.LFB2
- 393 0028 00000000 		.4byte	.LFB3
- 394 002c 0C000000 		.4byte	.LFE3-.LFB3
- 395 0030 00000000 		.4byte	0
- 396 0034 00000000 		.4byte	0
- 397              		.section	.debug_ranges,"",%progbits
- 398              	.Ldebug_ranges0:
- 399 0000 00000000 		.4byte	.LFB0
- 400 0004 16000000 		.4byte	.LFE0
- 401 0008 00000000 		.4byte	.LFB1
- 402 000c 28000000 		.4byte	.LFE1
- 403 0010 00000000 		.4byte	.LFB2
- 404 0014 0C000000 		.4byte	.LFE2
- 405 0018 00000000 		.4byte	.LFB3
- 406 001c 0C000000 		.4byte	.LFE3
- 407 0020 00000000 		.4byte	0
- 408 0024 00000000 		.4byte	0
- 409              		.section	.debug_line,"",%progbits
- 410              	.Ldebug_line0:
- 411 0000 99000000 		.section	.debug_str,"MS",%progbits,1
- 411      02004500 
- 411      00000201 
- 411      FB0E0D00 
- 411      01010101 
- 412              	.LASF6:
- 413 0000 6C6F6E67 		.ascii	"long long int\000"
- 413      206C6F6E 
- 413      6720696E 
- 413      7400
-ARM GAS  C:\Users\amon838\AppData\Local\Temp\ccslcyMf.s 			page 11
+ 370 0029 04       		.uleb128 0x4
+ 371 002a 16       		.uleb128 0x16
+ 372 002b 00       		.byte	0
+ 373 002c 03       		.uleb128 0x3
+ 374 002d 0E       		.uleb128 0xe
+ 375 002e 3A       		.uleb128 0x3a
+ 376 002f 0B       		.uleb128 0xb
+ 377 0030 3B       		.uleb128 0x3b
+ 378 0031 05       		.uleb128 0x5
+ 379 0032 49       		.uleb128 0x49
+ 380 0033 13       		.uleb128 0x13
+ 381 0034 00       		.byte	0
+ 382 0035 00       		.byte	0
+ 383 0036 05       		.uleb128 0x5
+ 384 0037 35       		.uleb128 0x35
+ 385 0038 00       		.byte	0
+ 386 0039 49       		.uleb128 0x49
+ 387 003a 13       		.uleb128 0x13
+ 388 003b 00       		.byte	0
+ 389 003c 00       		.byte	0
+ 390 003d 06       		.uleb128 0x6
+ 391 003e 13       		.uleb128 0x13
+ 392 003f 01       		.byte	0x1
+ 393 0040 0B       		.uleb128 0xb
+ 394 0041 0B       		.uleb128 0xb
+ 395 0042 3A       		.uleb128 0x3a
+ 396 0043 0B       		.uleb128 0xb
+ 397 0044 3B       		.uleb128 0x3b
+ 398 0045 0B       		.uleb128 0xb
+ 399 0046 01       		.uleb128 0x1
+ 400 0047 13       		.uleb128 0x13
+ 401 0048 00       		.byte	0
+ 402 0049 00       		.byte	0
+ 403 004a 07       		.uleb128 0x7
+ 404 004b 0D       		.uleb128 0xd
+ 405 004c 00       		.byte	0
+ 406 004d 03       		.uleb128 0x3
+ 407 004e 0E       		.uleb128 0xe
+ 408 004f 3A       		.uleb128 0x3a
+ 409 0050 0B       		.uleb128 0xb
+ 410 0051 3B       		.uleb128 0x3b
+ 411 0052 0B       		.uleb128 0xb
+ 412 0053 49       		.uleb128 0x49
+ 413 0054 13       		.uleb128 0x13
+ 414 0055 38       		.uleb128 0x38
+ 415 0056 0B       		.uleb128 0xb
+ 416 0057 00       		.byte	0
+ 417 0058 00       		.byte	0
+ 418 0059 08       		.uleb128 0x8
+ 419 005a 16       		.uleb128 0x16
+ 420 005b 00       		.byte	0
+ 421 005c 03       		.uleb128 0x3
+ 422 005d 0E       		.uleb128 0xe
+ 423 005e 3A       		.uleb128 0x3a
+ 424 005f 0B       		.uleb128 0xb
+ 425 0060 3B       		.uleb128 0x3b
+ 426 0061 0B       		.uleb128 0xb
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccLknG8I.s 			page 11
 
 
- 414              	.LASF8:
- 415 000e 756E7369 		.ascii	"unsigned int\000"
- 415      676E6564 
- 415      20696E74 
- 415      00
- 416              	.LASF12:
- 417 001b 75696E74 		.ascii	"uint8\000"
- 417      3800
- 418              	.LASF5:
- 419 0021 6C6F6E67 		.ascii	"long unsigned int\000"
- 419      20756E73 
- 419      69676E65 
- 419      6420696E 
- 419      7400
- 420              	.LASF7:
- 421 0033 6C6F6E67 		.ascii	"long long unsigned int\000"
- 421      206C6F6E 
- 421      6720756E 
- 421      7369676E 
- 421      65642069 
- 422              	.LASF18:
- 423 004a 4144435F 		.ascii	"ADC_RestoreConfig\000"
- 423      52657374 
- 423      6F726543 
- 423      6F6E6669 
- 423      6700
- 424              	.LASF16:
- 425 005c 4144435F 		.ascii	"ADC_Wakeup\000"
- 425      57616B65 
- 425      757000
- 426              	.LASF17:
- 427 0067 4144435F 		.ascii	"ADC_SaveConfig\000"
- 427      53617665 
- 427      436F6E66 
- 427      696700
- 428              	.LASF1:
- 429 0076 756E7369 		.ascii	"unsigned char\000"
- 429      676E6564 
- 429      20636861 
- 429      7200
- 430              	.LASF11:
- 431 0084 63686172 		.ascii	"char\000"
- 431      00
- 432              	.LASF15:
- 433 0089 4144435F 		.ascii	"ADC_Sleep\000"
- 433      536C6565 
- 433      7000
- 434              	.LASF4:
- 435 0093 6C6F6E67 		.ascii	"long int\000"
- 435      20696E74 
- 435      00
- 436              	.LASF19:
- 437 009c 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 437      4320342E 
- 437      392E3320 
- 437      32303135 
- 437      30333033 
-ARM GAS  C:\Users\amon838\AppData\Local\Temp\ccslcyMf.s 			page 12
+ 427 0062 49       		.uleb128 0x49
+ 428 0063 13       		.uleb128 0x13
+ 429 0064 00       		.byte	0
+ 430 0065 00       		.byte	0
+ 431 0066 09       		.uleb128 0x9
+ 432 0067 2E       		.uleb128 0x2e
+ 433 0068 00       		.byte	0
+ 434 0069 3F       		.uleb128 0x3f
+ 435 006a 19       		.uleb128 0x19
+ 436 006b 03       		.uleb128 0x3
+ 437 006c 0E       		.uleb128 0xe
+ 438 006d 3A       		.uleb128 0x3a
+ 439 006e 0B       		.uleb128 0xb
+ 440 006f 3B       		.uleb128 0x3b
+ 441 0070 0B       		.uleb128 0xb
+ 442 0071 27       		.uleb128 0x27
+ 443 0072 19       		.uleb128 0x19
+ 444 0073 11       		.uleb128 0x11
+ 445 0074 01       		.uleb128 0x1
+ 446 0075 12       		.uleb128 0x12
+ 447 0076 06       		.uleb128 0x6
+ 448 0077 40       		.uleb128 0x40
+ 449 0078 18       		.uleb128 0x18
+ 450 0079 9742     		.uleb128 0x2117
+ 451 007b 19       		.uleb128 0x19
+ 452 007c 00       		.byte	0
+ 453 007d 00       		.byte	0
+ 454 007e 0A       		.uleb128 0xa
+ 455 007f 2E       		.uleb128 0x2e
+ 456 0080 00       		.byte	0
+ 457 0081 3F       		.uleb128 0x3f
+ 458 0082 19       		.uleb128 0x19
+ 459 0083 03       		.uleb128 0x3
+ 460 0084 0E       		.uleb128 0xe
+ 461 0085 3A       		.uleb128 0x3a
+ 462 0086 0B       		.uleb128 0xb
+ 463 0087 3B       		.uleb128 0x3b
+ 464 0088 0B       		.uleb128 0xb
+ 465 0089 27       		.uleb128 0x27
+ 466 008a 19       		.uleb128 0x19
+ 467 008b 11       		.uleb128 0x11
+ 468 008c 01       		.uleb128 0x1
+ 469 008d 12       		.uleb128 0x12
+ 470 008e 06       		.uleb128 0x6
+ 471 008f 40       		.uleb128 0x40
+ 472 0090 18       		.uleb128 0x18
+ 473 0091 9642     		.uleb128 0x2116
+ 474 0093 19       		.uleb128 0x19
+ 475 0094 00       		.byte	0
+ 476 0095 00       		.byte	0
+ 477 0096 0B       		.uleb128 0xb
+ 478 0097 34       		.uleb128 0x34
+ 479 0098 00       		.byte	0
+ 480 0099 03       		.uleb128 0x3
+ 481 009a 0E       		.uleb128 0xe
+ 482 009b 3A       		.uleb128 0x3a
+ 483 009c 0B       		.uleb128 0xb
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccLknG8I.s 			page 12
 
 
- 438 00cf 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 438      20726576 
- 438      6973696F 
- 438      6E203232 
- 438      31323230 
- 439 0102 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 439      66756E63 
- 439      74696F6E 
- 439      2D736563 
- 439      74696F6E 
- 440              	.LASF10:
- 441 012a 646F7562 		.ascii	"double\000"
- 441      6C6500
- 442              	.LASF3:
- 443 0131 73686F72 		.ascii	"short unsigned int\000"
- 443      7420756E 
- 443      7369676E 
- 443      65642069 
- 443      6E7400
- 444              	.LASF0:
- 445 0144 7369676E 		.ascii	"signed char\000"
- 445      65642063 
- 445      68617200 
- 446              	.LASF9:
- 447 0150 666C6F61 		.ascii	"float\000"
- 447      7400
- 448              	.LASF20:
- 449 0156 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\ADC_PM.c\000"
- 449      6E657261 
- 449      7465645F 
- 449      536F7572 
- 449      63655C50 
- 450              	.LASF2:
- 451 0178 73686F72 		.ascii	"short int\000"
- 451      7420696E 
- 451      7400
- 452              	.LASF13:
- 453 0182 72656738 		.ascii	"reg8\000"
- 453      00
- 454              	.LASF14:
- 455 0187 73697A65 		.ascii	"sizetype\000"
- 455      74797065 
- 455      00
- 456              	.LASF21:
- 457 0190 443A5C67 		.ascii	"D:\\git\\CS301-Team-Repo\\CS301_Class.cydsn\000"
- 457      69745C43 
- 457      53333031 
- 457      2D546561 
- 457      6D2D5265 
- 458              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
+ 484 009d 3B       		.uleb128 0x3b
+ 485 009e 0B       		.uleb128 0xb
+ 486 009f 49       		.uleb128 0x49
+ 487 00a0 13       		.uleb128 0x13
+ 488 00a1 02       		.uleb128 0x2
+ 489 00a2 18       		.uleb128 0x18
+ 490 00a3 00       		.byte	0
+ 491 00a4 00       		.byte	0
+ 492 00a5 00       		.byte	0
+ 493              		.section	.debug_aranges,"",%progbits
+ 494 0000 34000000 		.4byte	0x34
+ 495 0004 0200     		.2byte	0x2
+ 496 0006 00000000 		.4byte	.Ldebug_info0
+ 497 000a 04       		.byte	0x4
+ 498 000b 00       		.byte	0
+ 499 000c 0000     		.2byte	0
+ 500 000e 0000     		.2byte	0
+ 501 0010 00000000 		.4byte	.LFB0
+ 502 0014 0C000000 		.4byte	.LFE0-.LFB0
+ 503 0018 00000000 		.4byte	.LFB1
+ 504 001c 0C000000 		.4byte	.LFE1-.LFB1
+ 505 0020 00000000 		.4byte	.LFB2
+ 506 0024 48000000 		.4byte	.LFE2-.LFB2
+ 507 0028 00000000 		.4byte	.LFB3
+ 508 002c 28000000 		.4byte	.LFE3-.LFB3
+ 509 0030 00000000 		.4byte	0
+ 510 0034 00000000 		.4byte	0
+ 511              		.section	.debug_ranges,"",%progbits
+ 512              	.Ldebug_ranges0:
+ 513 0000 00000000 		.4byte	.LFB0
+ 514 0004 0C000000 		.4byte	.LFE0
+ 515 0008 00000000 		.4byte	.LFB1
+ 516 000c 0C000000 		.4byte	.LFE1
+ 517 0010 00000000 		.4byte	.LFB2
+ 518 0014 48000000 		.4byte	.LFE2
+ 519 0018 00000000 		.4byte	.LFB3
+ 520 001c 28000000 		.4byte	.LFE3
+ 521 0020 00000000 		.4byte	0
+ 522 0024 00000000 		.4byte	0
+ 523              		.section	.debug_line,"",%progbits
+ 524              	.Ldebug_line0:
+ 525 0000 A1000000 		.section	.debug_str,"MS",%progbits,1
+ 525      02004E00 
+ 525      00000201 
+ 525      FB0E0D00 
+ 525      01010101 
+ 526              	.LASF18:
+ 527 0000 4144435F 		.ascii	"ADC_Wakeup\000"
+ 527      57616B65 
+ 527      757000
+ 528              	.LASF9:
+ 529 000b 666C6F61 		.ascii	"float\000"
+ 529      7400
+ 530              	.LASF15:
+ 531 0011 4144435F 		.ascii	"ADC_SaveConfig\000"
+ 531      53617665 
+ 531      436F6E66 
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccLknG8I.s 			page 13
+
+
+ 531      696700
+ 532              	.LASF19:
+ 533 0020 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 533      4320342E 
+ 533      392E3320 
+ 533      32303135 
+ 533      30333033 
+ 534 0053 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 534      20726576 
+ 534      6973696F 
+ 534      6E203232 
+ 534      31323230 
+ 535 0086 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 535      66756E63 
+ 535      74696F6E 
+ 535      2D736563 
+ 535      74696F6E 
+ 536              	.LASF20:
+ 537 00ae 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\ADC_PM.c\000"
+ 537      6E657261 
+ 537      7465645F 
+ 537      536F7572 
+ 537      63655C50 
+ 538              	.LASF1:
+ 539 00d0 756E7369 		.ascii	"unsigned char\000"
+ 539      676E6564 
+ 539      20636861 
+ 539      7200
+ 540              	.LASF13:
+ 541 00de 72656738 		.ascii	"reg8\000"
+ 541      00
+ 542              	.LASF5:
+ 543 00e3 6C6F6E67 		.ascii	"long unsigned int\000"
+ 543      20756E73 
+ 543      69676E65 
+ 543      6420696E 
+ 543      7400
+ 544              	.LASF3:
+ 545 00f5 73686F72 		.ascii	"short unsigned int\000"
+ 545      7420756E 
+ 545      7369676E 
+ 545      65642069 
+ 545      6E7400
+ 546              	.LASF17:
+ 547 0108 4144435F 		.ascii	"ADC_Sleep\000"
+ 547      536C6565 
+ 547      7000
+ 548              	.LASF10:
+ 549 0112 646F7562 		.ascii	"double\000"
+ 549      6C6500
+ 550              	.LASF21:
+ 551 0119 443A5C43 		.ascii	"D:\\CS301-Team-Repo\\CS301_Class.cydsn\000"
+ 551      53333031 
+ 551      2D546561 
+ 551      6D2D5265 
+ 551      706F5C43 
+ 552              	.LASF8:
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccLknG8I.s 			page 14
+
+
+ 553 013e 756E7369 		.ascii	"unsigned int\000"
+ 553      676E6564 
+ 553      20696E74 
+ 553      00
+ 554              	.LASF7:
+ 555 014b 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 555      206C6F6E 
+ 555      6720756E 
+ 555      7369676E 
+ 555      65642069 
+ 556              	.LASF6:
+ 557 0162 6C6F6E67 		.ascii	"long long int\000"
+ 557      206C6F6E 
+ 557      6720696E 
+ 557      7400
+ 558              	.LASF14:
+ 559 0170 4144435F 		.ascii	"ADC_BACKUP_STRUCT\000"
+ 559      4241434B 
+ 559      55505F53 
+ 559      54525543 
+ 559      5400
+ 560              	.LASF11:
+ 561 0182 63686172 		.ascii	"char\000"
+ 561      00
+ 562              	.LASF16:
+ 563 0187 4144435F 		.ascii	"ADC_RestoreConfig\000"
+ 563      52657374 
+ 563      6F726543 
+ 563      6F6E6669 
+ 563      6700
+ 564              	.LASF2:
+ 565 0199 73686F72 		.ascii	"short int\000"
+ 565      7420696E 
+ 565      7400
+ 566              	.LASF12:
+ 567 01a3 75696E74 		.ascii	"uint8\000"
+ 567      3800
+ 568              	.LASF4:
+ 569 01a9 6C6F6E67 		.ascii	"long int\000"
+ 569      20696E74 
+ 569      00
+ 570              	.LASF22:
+ 571 01b2 656E6162 		.ascii	"enableState\000"
+ 571      6C655374 
+ 571      61746500 
+ 572              	.LASF0:
+ 573 01be 7369676E 		.ascii	"signed char\000"
+ 573      65642063 
+ 573      68617200 
+ 574              	.LASF23:
+ 575 01ca 4144435F 		.ascii	"ADC_backup\000"
+ 575      6261636B 
+ 575      757000
+ 576              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

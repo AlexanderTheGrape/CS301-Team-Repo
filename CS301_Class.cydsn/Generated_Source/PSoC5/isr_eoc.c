@@ -168,16 +168,16 @@ CY_ISR(isr_eoc_Interrupt)
 
     /*  Place your Interrupt code here. */
     /* `#START isr_eoc_Interrupt` */
-    adcvalue[0] = ADC_GetResult16(0);
-    adcvalue[1] = ADC_GetResult16(1);
-    adcvalue[2] = ADC_GetResult16(2);
-    adcvalue[3] = ADC_GetResult16(3);
-    adcvalue[4] = ADC_GetResult16(4);
-    adcvalue[5] = ADC_GetResult16(5);
-    adcvalue[6] = ADC_GetResult16(6);
-    adcvalue[7] = ADC_GetResult16(7);
-    dataready_flag = 1;
-
+//    adcvalue[0] = ADC_GetResult16(0);
+//    adcvalue[1] = ADC_GetResult16(1);
+//    adcvalue[2] = ADC_GetResult16(2);
+//    adcvalue[3] = ADC_GetResult16(3);
+//    adcvalue[4] = ADC_GetResult16(4);
+//    adcvalue[5] = ADC_GetResult16(5);
+//    adcvalue[6] = ADC_GetResult16(6);
+//    adcvalue[7] = ADC_GetResult16(7);
+//    dataready_flag = 1;
+//
     /* `#END` */
 }
 

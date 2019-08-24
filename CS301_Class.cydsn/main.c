@@ -35,12 +35,22 @@ void usbPutChar(char c);
 void handle_usb();
 //* ========================================
 
+void setSpeed(int right, int left){
+    leftSpeedLimit = right;
+    rightSpeedLimit = left;
+}
+
+void brakeMotor(){
+    setSpeed(0, 0);
+}
+
 //ADC:
 CY_ISR (adc_isr)
 {
-    adc_result = ADC_GetResult16(0);
+    //adc_result = ADC_GetResult16(0);
+    adc_result = ADC_GetResult16();
     flag_receive_ADC = 1;
-    LED_Write(~LED_Read());
+    //LED_Write(~LED_Read());
 }
 
 CY_ISR (isr_quad1)
@@ -51,6 +61,17 @@ CY_ISR (isr_quad1)
     QuadDec_M1_SetCounter(0);
     QuadDec_M2_SetCounter(0);
     flag_calc_wheelspeed = 1;
+}
+
+CY_ISR (Stop_on_line)
+{
+    brakeMotor();
+}
+
+CY_ISR (button)
+{
+    LED_Write(~LED_Read());
+    setSpeed(5, 5);
 }
 
 void Quad_Dec_response()
@@ -69,9 +90,6 @@ void Quad_Dec_response()
     
     int16 leftSpeed = quad_count1;
     int16 rightSpeed = quad_count2;
-    
-    int16 leftSpeedLimit = 30;
-    int16 rightSpeedLimit = 30;
     
     int16 left_direction = 1;
     int16 right_direction = 1;
@@ -113,12 +131,13 @@ void print_ADC()
         flag_receive_ADC = 0;
         
        // int8 channel = ADC_
-        int16 converted_val = (484 * adc_result) / 4096;
+        float scalingFactor = 0.972;
+        int16 converted_val = (5000 * adc_result) / 4096 * scalingFactor * 2;
         
         char result_str[16];
-        sprintf(result_str, "%d\n\r", converted_val);
+        sprintf(result_str, "Battery Voltage: %dmv\n\r", converted_val);
         
-        usbPutString(result_str);
+        //usbPutString(result_str);
     }
 }
 
@@ -190,6 +209,11 @@ int main()
         Timer_1_Start();
         
         //isr_quad1_Start();
+    }
+    
+    if(ENABLE_STOP){
+        isr_OnLine_StartEx(Stop_on_line);
+        isr_button_StartEx(button);
     }
 
 // ------USB SETUP ----------------    

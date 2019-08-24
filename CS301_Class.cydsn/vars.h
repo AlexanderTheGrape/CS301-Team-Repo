@@ -44,8 +44,15 @@ uint8 flag_calc_wheelspeed = 0;
 int16 quad_count1 = 0;
 int16 quad_count2 = 0;
 
-int16 left_duty_cycle = 50;
-int16 right_duty_cycle = 50;
+int16 left_duty_cycle = 0;
+int16 right_duty_cycle = 0;
+
+//Motor controll================
+int16 leftSpeedLimit = 0;
+int16 rightSpeedLimit = 0;
+
+// Flags =======================
+uint8 brakeFlag;
 
 
 //* ========================================

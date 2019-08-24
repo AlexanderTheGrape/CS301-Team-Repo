@@ -42,7 +42,7 @@
 //* ========================================
 
 //ADC
-#define ENABLE_ADC 0
+#define ENABLE_ADC 1
 
 // Motor
 #define COAST_OFF CONTROL_Write(0);
@@ -51,6 +51,7 @@
 #define ENABLE_PWM 1
 #define ENABLE_CYCLE 0
 #define ENABLE_QUAD 1
+#define ENABLE_STOP 1
 
 #define PWM_MAX 255     // maximum value of duty cycle
 #define PWM_MIN 0       // minimum value of duty cycle
