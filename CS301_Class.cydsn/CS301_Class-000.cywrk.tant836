@@ -520,7 +520,15 @@
 </userData>
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
-<OpenDocs />
+<OpenDocs>
+<name v=".\CS301_Class.cydwr" />
+<name v=".\vars.h" />
+<name v=".\main.c" />
+<name v=".\defines.h" />
+<name v=".\TopDesign\TopDesign.cysch" />
+<name v=".\Generated_Source\PSoC5\isr_eoc.c" />
+<name v=".\Generated_Source\PSoC5\Timer_1.c" />
+</OpenDocs>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

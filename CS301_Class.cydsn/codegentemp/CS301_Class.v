@@ -1,6 +1,6 @@
 // ======================================================================
 // CS301_Class.v generated from TopDesign.cysch
-// 08/24/2019 at 17:12
+// 08/24/2019 at 17:53
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -1744,7 +1744,7 @@ module top ;
           wire  Net_6287;
           wire  Net_6286;
     electrical  Net_6285;
-          wire  Net_6343;
+          wire  Net_6416;
           wire  Net_6324;
           wire  Net_6323;
           wire  Net_6322;
@@ -2652,7 +2652,7 @@ module top ;
 	cy_clock_v1_0
 		#(.id("36d0ecf2-00c4-44f5-94b8-7231ba6a2a4c"),
 		  .source_clock_id("315365C3-2E3E-4f04-84A2-BB564A173261"),
-		  .divisor(115),
+		  .divisor(16),
 		  .period("0"),
 		  .is_direct(0),
 		  .is_digital(1))

@@ -42,6 +42,10 @@ void setSpeed(int right, int left){
 
 void brakeMotor(){
     setSpeed(0, 0);
+    PWM_1_WriteCompare(0);
+    PWM_2_WriteCompare(0);
+    right_duty_cycle = 0;
+    left_duty_cycle = 0;
 }
 
 //ADC:
@@ -71,7 +75,7 @@ CY_ISR (Stop_on_line)
 CY_ISR (button)
 {
     LED_Write(~LED_Read());
-    setSpeed(5, 5);
+    setSpeed(30, 30);
 }
 
 void Quad_Dec_response()
@@ -80,8 +84,8 @@ void Quad_Dec_response()
     if (!flag_calc_wheelspeed) return;
     flag_calc_wheelspeed = 0;
     
-    char wheel_1_str [16];
-    char wheel_2_str [16];
+    char wheel_1_str [64];
+    char wheel_2_str [64];
     sprintf(wheel_1_str, "quad count 1 is: %d\n\r", quad_count1);
     usbPutString(wheel_1_str);
     sprintf(wheel_2_str, "quad count 2 is: %d\n\r", quad_count2);
@@ -94,29 +98,44 @@ void Quad_Dec_response()
     int16 left_direction = 1;
     int16 right_direction = 1;
     
-    if (leftSpeed < 0) {
-        left_direction = -1;
-    } else {
+    if (leftSpeed >= 0) {
         left_direction = 1;
+    } else {
+        left_direction = -1;
     }
-    if (rightSpeed < 0) {
+    if (rightSpeed <= 0) {
         right_direction = 1;
     } else {
         right_direction = -1;
     }
     
     if (abs(leftSpeed) > leftSpeedLimit){
+        //sprintf(wheel_1_str,"Left wheel too fast! Slowing down \r\n");
+        usbPutString(wheel_1_str);
+        
         left_duty_cycle = left_duty_cycle + (-1 * left_direction);
     } else if (abs(leftSpeed) < leftSpeedLimit) {
+       // sprintf(wheel_1_str,"Left wheel too slow! Speeding up \r\n");
+        usbPutString(wheel_1_str);
         left_duty_cycle = left_duty_cycle + left_direction;
     }
     
     if (abs(rightSpeed) > rightSpeedLimit){
+        sprintf(wheel_2_str,"Right wheel too fast! Slowing down \r\n");
+        usbPutString(wheel_2_str);
         right_duty_cycle = right_duty_cycle + (-1 * right_direction);
+        sprintf(wheel_2_str,"Right wheel duty cycle is now:%d\r\n", right_duty_cycle);
+        usbPutString(wheel_2_str);
     } else if (abs(rightSpeed) < rightSpeedLimit) {
+        sprintf(wheel_2_str,"Right wheel too slow, speeding up! \r\n");
+        usbPutString(wheel_2_str);
+        sprintf(wheel_2_str,"Right wheel duty cycle is now:%d\r\n", right_duty_cycle);
+        usbPutString(wheel_2_str);
         right_duty_cycle = right_duty_cycle + right_direction;
     }
     
+    if(right_duty_cycle < 0) right_duty_cycle = 0;
+    if(left_duty_cycle < 0) left_duty_cycle = 0;
     PWM_1_WriteCompare(left_duty_cycle);
     PWM_2_WriteCompare(right_duty_cycle);
         
