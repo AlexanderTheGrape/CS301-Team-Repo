@@ -55,6 +55,10 @@ int16 rightSpeedLimit = 0;
 uint8 brakeFlag;
 uint8 portOpen = 1;
 
+//Voltage measurements
+int16 prevVoltage;
+int16 prevVoltage2;
+
 //* ========================================
 char displaystring[BUF_SIZE] = "CS301 2016\n";
 char line[BUF_SIZE], entry[BUF_SIZE];
@@ -79,7 +83,11 @@ typedef struct data_main {
     int16			g2_speed;		//
     int16		g2_direction;	//
 } vtype1;    
+struct data_main buffer_state;
 struct data_main system_state;
+
+uint8 byteCount = 0;
+char packet[2];
 //* ========================================
 
 

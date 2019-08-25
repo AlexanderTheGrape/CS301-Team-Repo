@@ -35,6 +35,129 @@ void usbPutChar(char c);
 //void handle_usb();
 //* ========================================
 
+
+void handle_rx_binary()
+{
+    if(flag_rx == 1)
+    {    
+        flag_rx = 0;
+        
+        uint16 packet_bytes = (packet[1] << 8) | (packet[0]);
+        //uint16 packet_bytes = packet[0] & packet[1];
+        char byte_packet[12];
+        char string_packet[12];
+        //sprintf(string_packet, "%d", packet_bytes);
+        //sprintf(byte_packet, "%d", (int8)packet[0]);
+       // sprintf(string_packet, "%d", packet_bytes);
+        //usbPutString(string_packet);
+       // usbPutString(string_packet);
+       // usbPutChar(' ');
+        
+        switch(byteCount)
+        {
+            case 4:
+                //usbPutString("RSSI:");
+                //usbPutString(byte_packet);
+                //usbPutString("\r\n");
+                buffer_state.rssi = packet[0];
+                buffer_state.index = packet[1];
+            break;
+            case 6:
+                //usbPutString("robot_x:");
+                //usbPutString(string_packet);
+                //usbPutString("\r\n");
+                buffer_state.robot_xpos = packet_bytes;
+            break;
+            case 8:
+                //usbPutString("robot_y:");
+                //usbPutString(string_packet);
+                //usbPutString("\r\n");
+                buffer_state.robot_ypos = packet_bytes;
+            break;
+            case 10:
+                //usbPutString("robot_dir:");
+                //usbPutString(string_packet);
+                //usbPutString("\r\n");
+                buffer_state.robot_orientation = packet_bytes;
+            break;
+            case 12:
+                //usbPutString("g0_x:");
+                //usbPutString(string_packet);
+                //usbPutString("\r\n");
+                buffer_state.g0_xpos = packet_bytes;
+            break;
+            case 14:
+                //usbPutString("g0_y:");
+                //usbPutString(string_packet);
+                //usbPutString("\r\n");
+                buffer_state.g0_ypos = packet_bytes;
+            break;
+            case 16:
+                //usbPutString("g0_speed:");
+                //usbPutString(string_packet);
+                //usbPutString("\r\n");
+                buffer_state.g0_speed = packet_bytes;
+            break;
+            case 18:
+                //usbPutString("g1_dir:");
+                //usbPutString(string_packet);
+                //usbPutString("\r\n");
+                buffer_state.g0_direction = packet_bytes;
+            break;
+            case 20:
+                //usbPutString("g1_x:");
+                //usbPutString(string_packet);
+                //usbPutString("\r\n");
+                buffer_state.g1_xpos = packet_bytes;
+            break;
+            case 22:
+                //usbPutString("g1_y:");
+                //usbPutString(string_packet);
+                //usbPutString("\r\n");
+                buffer_state.g1_ypos = packet_bytes;
+            break;
+            case 24:
+                //usbPutString("g1_speed:");
+                //usbPutString(string_packet);
+                //usbPutString("\r\n");
+                buffer_state.g1_speed = packet_bytes;
+            break;
+            case 26:
+                //usbPutString("g1_dir:");
+                //usbPutString(string_packet);
+                //usbPutString("\r\n");
+                buffer_state.g1_direction = packet_bytes;
+            break;
+            case 28:
+                //usbPutString("g2_x:");
+                //usbPutString(string_packet);
+                //usbPutString("\r\n");
+                buffer_state.g2_xpos = packet_bytes;
+            break;
+            case 30:
+                //usbPutString("g2_y:");
+                //usbPutString(string_packet);
+                //usbPutString("\r\n");
+                buffer_state.g2_ypos = packet_bytes;
+            break;
+            case 32:
+                //usbPutString("g1_speed:");
+                //usbPutString(string_packet);
+                //usbPutString("\r\n");
+                buffer_state.g2_speed = packet_bytes;
+            break;
+            case 34:
+                buffer_state.g2_direction = packet_bytes;
+                //usbPutString("g2_dir:");
+                //usbPutString(string_packet);
+                //usbPutString("\r\n");
+                
+            break;
+        }
+        
+    }
+}
+
 void setSpeed(int right, int left){
     leftSpeedLimit = right;
     rightSpeedLimit = left;
@@ -46,6 +169,31 @@ void brakeMotor(){
     PWM_2_WriteCompare(0);
     right_duty_cycle = 0;
     left_duty_cycle = 0;
+}
+
+//Binary RF Data
+CY_ISR(rxInt){
+    char rf_char = UART_GetChar();
+    if(rf_char == SOP){
+            //we should evalute whether the last packet was valid by measuring the length of data
+            if(byteCount == 35)
+            {
+                system_state = buffer_state;
+            }
+            byteCount = 2; //2 for legacy purposes - fix this
+            flag_rx = 0;
+             //LED_Write(~LED_Read()); //flash an LED so we know the interrupt is called
+        }
+        else
+        {
+            packet[byteCount % 2] = rf_char;
+           
+            if(byteCount % 2 == 1) //we have received a whole 16-bit packet
+            {
+                flag_rx = 1;
+            }
+            byteCount = (byteCount + 1);
+        }
 }
 
 //ADC:
@@ -91,10 +239,10 @@ void Quad_Dec_response()
     char wheel_1_str [64];
     char wheel_2_str [64];
     sprintf(wheel_1_str, "quad count 1 is: %d\n\r", quad_count1);
-    usbPutString(wheel_1_str);
+    //usbPutString(wheel_1_str);
     sprintf(wheel_2_str, "quad count 2 is: %d\n\r", quad_count2);
     
-    usbPutString(wheel_2_str);
+    //usbPutString(wheel_2_str);
     
     int16 leftSpeed = quad_count1;
     int16 rightSpeed = quad_count2;
@@ -115,26 +263,26 @@ void Quad_Dec_response()
     
     if (abs(leftSpeed) > leftSpeedLimit){
         //sprintf(wheel_1_str,"Left wheel too fast! Slowing down \r\n");
-        usbPutString(wheel_1_str);
+        //usbPutString(wheel_1_str);
         
         left_duty_cycle = left_duty_cycle + (-1 * left_direction);
     } else if (abs(leftSpeed) < leftSpeedLimit) {
        // sprintf(wheel_1_str,"Left wheel too slow! Speeding up \r\n");
-        usbPutString(wheel_1_str);
+        //usbPutString(wheel_1_str);
         left_duty_cycle = left_duty_cycle + left_direction;
     }
     
     if (abs(rightSpeed) > rightSpeedLimit){
         sprintf(wheel_2_str,"Right wheel too fast! Slowing down \r\n");
-        usbPutString(wheel_2_str);
+       // usbPutString(wheel_2_str);
         right_duty_cycle = right_duty_cycle + (-1 * right_direction);
         sprintf(wheel_2_str,"Right wheel duty cycle is now:%d\r\n", right_duty_cycle);
-        usbPutString(wheel_2_str);
+        //usbPutString(wheel_2_str);
     } else if (abs(rightSpeed) < rightSpeedLimit) {
         sprintf(wheel_2_str,"Right wheel too slow, speeding up! \r\n");
-        usbPutString(wheel_2_str);
+        //usbPutString(wheel_2_str);
         sprintf(wheel_2_str,"Right wheel duty cycle is now:%d\r\n", right_duty_cycle);
-        usbPutString(wheel_2_str);
+        //usbPutString(wheel_2_str);
         right_duty_cycle = right_duty_cycle + right_direction;
     }
     
@@ -158,6 +306,9 @@ void print_ADC()
        // int8 channel = ADC_
         float scalingFactor = 0.972;
         int16 converted_val = (5000 * adc_result) / 4096 * scalingFactor * 2;
+        converted_val = (converted_val + prevVoltage + prevVoltage2) / 3; //smooth rapid changes in the voltage
+        prevVoltage2 = prevVoltage;
+        prevVoltage = converted_val;
         
         char result_str[16];
         sprintf(result_str, "Battery Voltage: %dmv\n\r", converted_val);
@@ -263,6 +414,11 @@ int main()
         if(ENABLE_PWM && ENABLE_CYCLE) cycle_PWM();
         if(ENABLE_ADC) print_ADC();
         if(ENABLE_QUAD) Quad_Dec_response();
+        
+        if(BIN_ENABLED == 1)
+        {
+            handle_rx_binary();
+        }
         
         //handle_usb();        
     }   

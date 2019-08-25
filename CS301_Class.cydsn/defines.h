@@ -41,6 +41,9 @@
 #define DB2_TOGGLE_LED  DB2_Write(~DB2_Read())
 //* ========================================
 
+//RF
+#define BIN_ENABLED 1
+
 //ADC
 #define ENABLE_ADC 1
 
