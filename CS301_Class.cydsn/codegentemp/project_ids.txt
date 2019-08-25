@@ -1,5 +1,5 @@
-D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\CS301_Class.cyprj|a2d9ba55-4a4b-408b-9049-6281819e3f30
 C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|810179b8-a225-4944-a9c9-2b4bca62ea41
 C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|91517501-fe61-43b0-bcdb-8fb3ec1f117b
 C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|c6206ad6-d75a-4a2d-9e92-e9075bd6f60d
 C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|6c61a3b4-9a42-44f7-a969-2e06cad779e5
+D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\CS301_Class.cyprj|8f0e3b88-0d2c-4e1a-b893-969234ea13da

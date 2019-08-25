@@ -2,7 +2,7 @@
 --	Conversion of CS301_Class.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Sun Aug 25 14:46:12 2019
+--	Sun Aug 25 16:25:11 2019
 --
 
 USE cypress.cypress.all;
@@ -1029,16 +1029,16 @@ SIGNAL \PWM_1:Net_113\ : bit;
 SIGNAL \PWM_1:Net_63\ : bit;
 SIGNAL \PWM_1:Net_57\ : bit;
 SIGNAL \PWM_1:Net_54\ : bit;
-SIGNAL Net_4327 : bit;
-SIGNAL Net_4324 : bit;
+SIGNAL Net_6740 : bit;
+SIGNAL Net_6737 : bit;
 SIGNAL \PWM_1:Net_114\ : bit;
 SIGNAL \PWM_2:Net_107\ : bit;
 SIGNAL \PWM_2:Net_113\ : bit;
 SIGNAL \PWM_2:Net_63\ : bit;
 SIGNAL \PWM_2:Net_57\ : bit;
 SIGNAL \PWM_2:Net_54\ : bit;
-SIGNAL Net_3221 : bit;
-SIGNAL Net_3218 : bit;
+SIGNAL Net_6751 : bit;
+SIGNAL Net_6748 : bit;
 SIGNAL \PWM_2:Net_114\ : bit;
 SIGNAL tmpOE__LED_net_0 : bit;
 SIGNAL tmpFB_0__LED_net_0 : bit;

@@ -1,6 +1,6 @@
 // ======================================================================
 // CS301_Class.v generated from TopDesign.cysch
-// 08/25/2019 at 14:46
+// 08/25/2019 at 16:25
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -892,7 +892,7 @@ module ADC_SAR_v3_0_4 (
 
 endmodule
 
-// Timer_v2_70(CaptureAlternatingFall=false, CaptureAlternatingRise=false, CaptureCount=2, CaptureCounterEnabled=false, CaptureInputEnabled=false, CaptureMode=0, CONTROL3=1, ControlRegRemoved=0, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG8, CySetRegReplacementString=CY_SET_REG8, DeviceFamily=PSoC5, EnableMode=0, FF16=false, FF8=true, FixedFunction=true, FixedFunctionUsed=1, HWCaptureCounterEnabled=false, InterruptOnCapture=false, InterruptOnFIFOFull=false, InterruptOnTC=false, IntOnCapture=0, IntOnFIFOFull=0, IntOnTC=0, NumberOfCaptures=1, param45=1, Period=99, RegDefReplacementString=reg8, RegSizeReplacementString=uint8, Resolution=8, RstStatusReplacementString=rstSts, RunMode=0, SiliconRevision=0, SoftwareCaptureModeEnabled=false, SoftwareTriggerModeEnabled=false, TriggerInputEnabled=false, TriggerMode=0, UDB16=false, UDB24=false, UDB32=false, UDB8=false, UDBControlReg=false, UsesHWEnable=0, VerilogSectionReplacementString=sT8, CY_API_CALLBACK_HEADER_INCLUDE=, CY_COMPONENT_NAME=Timer_v2_70, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=Timer_TS, CY_INSTANCE_SHORT_NAME=Timer_TS, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=70, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=Timer_TS, )
+// Timer_v2_70(CaptureAlternatingFall=false, CaptureAlternatingRise=false, CaptureCount=2, CaptureCounterEnabled=false, CaptureInputEnabled=false, CaptureMode=0, CONTROL3=1, ControlRegRemoved=0, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG16, CySetRegReplacementString=CY_SET_REG16, DeviceFamily=PSoC5, EnableMode=0, FF16=true, FF8=false, FixedFunction=true, FixedFunctionUsed=1, HWCaptureCounterEnabled=false, InterruptOnCapture=false, InterruptOnFIFOFull=false, InterruptOnTC=false, IntOnCapture=0, IntOnFIFOFull=0, IntOnTC=0, NumberOfCaptures=1, param45=1, Period=49999, RegDefReplacementString=reg16, RegSizeReplacementString=uint16, Resolution=16, RstStatusReplacementString=rstSts, RunMode=0, SiliconRevision=0, SoftwareCaptureModeEnabled=false, SoftwareTriggerModeEnabled=false, TriggerInputEnabled=false, TriggerMode=0, UDB16=false, UDB24=false, UDB32=false, UDB8=false, UDBControlReg=false, UsesHWEnable=0, VerilogSectionReplacementString=sT16, CY_API_CALLBACK_HEADER_INCLUDE=, CY_COMPONENT_NAME=Timer_v2_70, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=Timer_TS, CY_INSTANCE_SHORT_NAME=Timer_TS, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=70, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=Timer_TS, )
 module Timer_v2_70_5 (
     clock,
     reset,
@@ -916,7 +916,7 @@ module Timer_v2_70_5 (
     parameter DeviceFamily = "PSoC5";
     parameter InterruptOnCapture = 0;
     parameter InterruptOnTC = 0;
-    parameter Resolution = 8;
+    parameter Resolution = 16;
     parameter SiliconRevision = "0";
 
           wire  Net_261;
@@ -1690,28 +1690,28 @@ module top ;
           wire  Net_3485;
           wire  Net_3405;
           wire  Net_3228;
-          wire  Net_3227;
-          wire  Net_3226;
-          wire  Net_3225;
-          wire  Net_3224;
-          wire  Net_3223;
-          wire  Net_3222;
-          wire  Net_3221;
-          wire  Net_3220;
-          wire  Net_3219;
-          wire  Net_3218;
-          wire  Net_3217;
-          wire  Net_4333;
-          wire  Net_4332;
-          wire  Net_4331;
-          wire  Net_4330;
-          wire  Net_4329;
-          wire  Net_4328;
-          wire  Net_4327;
-          wire  Net_4326;
-          wire  Net_4325;
-          wire  Net_4324;
-          wire  Net_4323;
+          wire  Net_6757;
+          wire  Net_6756;
+          wire  Net_6755;
+          wire  Net_6754;
+          wire  Net_6753;
+          wire  Net_6752;
+          wire  Net_6751;
+          wire  Net_6750;
+          wire  Net_6749;
+          wire  Net_6748;
+          wire  Net_6747;
+          wire  Net_6746;
+          wire  Net_6745;
+          wire  Net_6744;
+          wire  Net_6743;
+          wire  Net_6742;
+          wire  Net_6741;
+          wire  Net_6740;
+          wire  Net_6739;
+          wire  Net_6738;
+          wire  Net_6737;
+          wire  Net_6736;
           wire  Net_3438;
           wire  Net_3403;
           wire  Net_3402;
@@ -1754,6 +1754,7 @@ module top ;
           wire  Net_3247;
           wire  Net_3246;
           wire  Net_1849;
+          wire  Net_2460;
           wire  Net_6307;
           wire  Net_6320;
           wire  Net_6319;
@@ -1762,7 +1763,6 @@ module top ;
           wire  Net_6058;
           wire  Net_6060;
           wire  Net_1497;
-          wire  Net_2460;
           wire  Net_2404;
           wire  Net_3437;
           wire  Net_3406;
@@ -2784,7 +2784,7 @@ module top ;
     defparam Timer_TS.DeviceFamily = "PSoC5";
     defparam Timer_TS.InterruptOnCapture = 0;
     defparam Timer_TS.InterruptOnTC = 0;
-    defparam Timer_TS.Resolution = 8;
+    defparam Timer_TS.Resolution = 16;
     defparam Timer_TS.SiliconRevision = "0";
 
     USBFS_v3_0_6 USBUART (
@@ -3089,35 +3089,35 @@ module top ;
     PWM_v3_30_8 PWM_1 (
         .reset(1'b0),
         .clock(CLK24M),
-        .tc(Net_4324),
-        .pwm1(Net_4325),
-        .pwm2(Net_4326),
-        .interrupt(Net_4327),
+        .tc(Net_6737),
+        .pwm1(Net_6738),
+        .pwm2(Net_6739),
+        .interrupt(Net_6740),
         .capture(1'b0),
         .kill(Net_2183),
         .enable(1'b1),
         .trigger(1'b0),
         .cmp_sel(1'b0),
         .pwm(Net_2404),
-        .ph1(Net_4332),
-        .ph2(Net_4333));
+        .ph1(Net_6745),
+        .ph2(Net_6746));
     defparam PWM_1.Resolution = 8;
 
     PWM_v3_30_9 PWM_2 (
         .reset(1'b0),
         .clock(CLK24M),
-        .tc(Net_3218),
-        .pwm1(Net_3219),
-        .pwm2(Net_3220),
-        .interrupt(Net_3221),
+        .tc(Net_6748),
+        .pwm1(Net_6749),
+        .pwm2(Net_6750),
+        .interrupt(Net_6751),
         .capture(1'b0),
         .kill(Net_2183),
         .enable(1'b1),
         .trigger(1'b0),
         .cmp_sel(1'b0),
         .pwm(Net_2460),
-        .ph1(Net_3226),
-        .ph2(Net_3227));
+        .ph1(Net_6756),
+        .ph2(Net_6757));
     defparam PWM_2.Resolution = 8;
 
 

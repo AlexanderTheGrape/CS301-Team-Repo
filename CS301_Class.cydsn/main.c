@@ -74,7 +74,12 @@ CY_ISR (Stop_on_line)
 
 CY_ISR (button)
 {
-    setSpeed(25, 25);
+    setSpeed(20, 20);
+}
+
+CY_ISR(isr_adcTimer)
+{
+    ADC_StartConvert();
 }
 
 void Quad_Dec_response()
@@ -97,15 +102,15 @@ void Quad_Dec_response()
     int16 left_direction = 1;
     int16 right_direction = 1;
     
-    if (leftSpeed >= 0) {
-        left_direction = 1;
-    } else {
+    if (leftSpeed > 0) {
         left_direction = -1;
-    }
-    if (rightSpeed <= 0) {
-        right_direction = 1;
     } else {
+        left_direction = 1;
+    }
+    if (rightSpeed < 0) {
         right_direction = -1;
+    } else {
+        right_direction = 1;
     }
     
     if (abs(leftSpeed) > leftSpeedLimit){
@@ -216,7 +221,11 @@ int main()
     {
         ADC_Start();
         isr_eoc_StartEx(adc_isr);
-        ADC_StartConvert();
+        //ADC_StartConvert();
+        
+        //start the ADC timer for software trigger mode
+        Timer_TS_Start();
+        isr_TS_StartEx(isr_adcTimer);
     }
     
     if (ENABLE_QUAD)

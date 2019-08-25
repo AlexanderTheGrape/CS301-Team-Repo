@@ -516,6 +516,7 @@
 <name v=".\CS301_Class.cydwr" />
 <name v=".\main.c" />
 <name v=".\defines.h" />
+<name v=".\vars.h" />
 </OpenDocs>
 <config v="" />
 <AutoUpdate v="true" />
