@@ -32,7 +32,7 @@
 //* ========================================
 void usbPutString(char *s);
 void usbPutChar(char c);
-void handle_usb();
+//void handle_usb();
 //* ========================================
 
 void setSpeed(int right, int left){
@@ -74,8 +74,7 @@ CY_ISR (Stop_on_line)
 
 CY_ISR (button)
 {
-    LED_Write(~LED_Read());
-    setSpeed(30, 30);
+    setSpeed(25, 25);
 }
 
 void Quad_Dec_response()
@@ -136,6 +135,8 @@ void Quad_Dec_response()
     
     if(right_duty_cycle < 0) right_duty_cycle = 0;
     if(left_duty_cycle < 0) left_duty_cycle = 0;
+    if(right_duty_cycle > 100) right_duty_cycle = 100;
+    if(left_duty_cycle > 100) left_duty_cycle = 100;
     PWM_1_WriteCompare(left_duty_cycle);
     PWM_2_WriteCompare(right_duty_cycle);
         
@@ -202,7 +203,7 @@ void cycle_PWM()
 int main()
 {  
 
-// --------------------------------    
+// -------------------------------------------------------------------------------MAIN-----------------------------MAIN---------------------------MAIN  
 // ----- INITIALIZATIONS ----------
     CYGlobalIntEnable;
     if(ENABLE_PWM)
@@ -235,11 +236,15 @@ int main()
         isr_button_StartEx(button);
     }
 
-// ------USB SETUP ----------------    
-#ifdef USE_USB    
-    USBUART_Start(0,USBUART_5V_OPERATION);
-#endif        
-        
+    // ------USB SETUP ----------------    
+    if (USE_USB){    
+        USBUART_Start(0,USBUART_5V_OPERATION);
+        if (USBUART_GetConfiguration())
+            {
+                 USBUART_CDC_Init();
+            }
+    }
+    
     RF_BT_SELECT_Write(0);
 
     //usbPutString("Started");
@@ -250,13 +255,7 @@ int main()
         if(ENABLE_ADC) print_ADC();
         if(ENABLE_QUAD) Quad_Dec_response();
         
-        handle_usb();
-        if (flag_KB_string == 1)
-        {
-            usbPutString(line);
-            flag_KB_string = 0;
-        }     
-        
+        //handle_usb();        
     }   
 }
 //* ========================================
@@ -265,21 +264,37 @@ void usbPutString(char *s)
 // !! Assumes that *s is a string with allocated space >=64 chars     
 //  Since USB implementation retricts data packets to 64 chars, this function truncates the
 //  length to 62 char (63rd char is a '!')
-
-#ifdef USE_USB     
-    while (USBUART_CDCIsReady() == 0);
-    s[63]='\0';
-    s[62]='!';
-    USBUART_PutData((uint8*)s,strlen(s));
-#endif
+    if (USE_USB && portOpen)    
+    {
+            uint32 cnt = 0;
+            while (USBUART_CDCIsReady() == 0)
+            {
+                cnt++;
+                if(cnt == 3000000){
+                    portOpen = 0;
+                    return;
+                }
+            }
+            s[63]='\0';
+            s[62]='!';
+            USBUART_PutData((uint8*)s,strlen(s));
+    }
 }
 //* ========================================
 void usbPutChar(char c)
 {
-#ifdef USE_USB     
-    while (USBUART_CDCIsReady() == 0);
-    USBUART_PutChar(c);
-#endif    
+    if (USE_USB && portOpen)    
+    {    
+        uint32 cnt = 0;
+        while (USBUART_CDCIsReady() == 0){
+            cnt++;
+            if(cnt == 3000000){
+                portOpen = 0;
+                return;
+            }
+        }
+        USBUART_PutChar(c);
+    }    
 }
 //* ========================================
 
@@ -287,39 +302,14 @@ void uart_set_PWM()
 {
     uint8 c;
      if (USBUART_DataIsReady() != 0)
-        {  
+       {  
             c = USBUART_GetChar();
             
             if(c <= 100 && c > 0){
                 PWM_1_WriteCompare(c);
                 usbPutString(c);
             }
-        }
+       }
 }
-
-void handle_usb()
-{
-    // handles input at terminal, echos it back to the terminal
-    // turn echo OFF, key emulation: only CR
-    // entered string is made available in 'line' and 'flag_KB_string' is set
-    
-    static uint8 usbStarted = FALSE;
-    static uint16 usbBufCount = 0;
-
-    if (!usbStarted)
-    {
-        if (USBUART_GetConfiguration())
-        {
-            USBUART_CDC_Init();
-            usbStarted = TRUE;
-            usbPutString("Started\n");
-        }
-    }
-    else
-    {
-       
-    }    
-}
-
 
 /* [] END OF FILE */

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
   29:.\Generated_Source\PSoC5/isr_button.c **** /* `#START isr_button_intc` */
   30:.\Generated_Source\PSoC5/isr_button.c **** 
   31:.\Generated_Source\PSoC5/isr_button.c **** /* `#END` */
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 2
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/isr_button.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
   42              		.loc 1 70 0
   43 000e 0720     		movs	r0, #7
   44 0010 FFF7FEFF 		bl	isr_button_SetPriority
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 3
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 3
 
 
   71:.\Generated_Source\PSoC5/isr_button.c **** 
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
   64              		.loc 1 105 0
   65              		.cfi_startproc
   66              		@ args = 0, pretend = 0, frame = 8
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 4
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 4
 
 
   67              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  122:.\Generated_Source\PSoC5/isr_button.c **** ********************************************************************************
  123:.\Generated_Source\PSoC5/isr_button.c **** *
  124:.\Generated_Source\PSoC5/isr_button.c **** * Summary:
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 5
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 5
 
 
  125:.\Generated_Source\PSoC5/isr_button.c **** *   Disables and removes the interrupt.
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  147:.\Generated_Source\PSoC5/isr_button.c **** *
  148:.\Generated_Source\PSoC5/isr_button.c **** * Summary:
  149:.\Generated_Source\PSoC5/isr_button.c **** *   The default Interrupt Service Routine for isr_button.
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 6
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 6
 
 
  150:.\Generated_Source\PSoC5/isr_button.c **** *
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  175:.\Generated_Source\PSoC5/isr_button.c **** ********************************************************************************
  176:.\Generated_Source\PSoC5/isr_button.c **** *
  177:.\Generated_Source\PSoC5/isr_button.c **** * Summary:
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 7
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 7
 
 
  178:.\Generated_Source\PSoC5/isr_button.c **** *   Change the ISR vector for the Interrupt. Note calling isr_button_Start
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  190              		.cfi_def_cfa_offset 4
  191 0018 BD46     		mov	sp, r7
  192              		.cfi_def_cfa_register 13
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 8
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 8
 
 
  193              		@ sp needed
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  226 0006 054B     		ldr	r3, .L14
  227 0008 1B68     		ldr	r3, [r3]
  228 000a 7B60     		str	r3, [r7, #4]
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 9
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 9
 
 
  229:.\Generated_Source\PSoC5/isr_button.c **** 
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  254:.\Generated_Source\PSoC5/isr_button.c **** * Return:
  255:.\Generated_Source\PSoC5/isr_button.c **** *   None
  256:.\Generated_Source\PSoC5/isr_button.c **** *
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 10
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 10
 
 
  257:.\Generated_Source\PSoC5/isr_button.c **** *******************************************************************************/
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  266:.\Generated_Source\PSoC5/isr_button.c **** ********************************************************************************
  267:.\Generated_Source\PSoC5/isr_button.c **** *
  268:.\Generated_Source\PSoC5/isr_button.c **** * Summary:
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 11
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 11
 
 
  269:.\Generated_Source\PSoC5/isr_button.c **** *   Gets the Priority of the Interrupt.
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  337 0020 08E400E0 		.word	-536812536
  338              		.cfi_endproc
  339              	.LFE7:
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 12
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 12
 
 
  340              		.size	isr_button_GetPriority, .-isr_button_GetPriority
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  371              	.L25:
  372              		.align	2
  373              	.L24:
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 13
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 13
 
 
  374 0014 00E100E0 		.word	-536813312
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  408              	.L28:
  332:.\Generated_Source\PSoC5/isr_button.c **** }
  409              		.loc 1 332 0 is_stmt 1 discriminator 4
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 14
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 14
 
 
  410 0016 1846     		mov	r0, r3
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  444 0004 034B     		ldr	r3, .L33
  445 0006 4FF48072 		mov	r2, #256
  446 000a 1A60     		str	r2, [r3]
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 15
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 15
 
 
  353:.\Generated_Source\PSoC5/isr_button.c **** }
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  476              		.cfi_def_cfa_offset 4
  477              		.cfi_offset 7, -4
  478 0002 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 16
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 16
 
 
  479              		.cfi_def_cfa_register 7
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  508              		.cfi_startproc
  509              		@ args = 0, pretend = 0, frame = 0
  510              		@ frame_needed = 1, uses_anonymous_args = 0
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 17
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 17
 
 
  511              		@ link register save eliminated.
@@ -998,10 +998,10 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  543 0006 00000000 		.4byte	.Ldebug_abbrev0
  544 000a 04       		.byte	0x4
  545 000b 01       		.uleb128 0x1
- 546 000c CE000000 		.4byte	.LASF33
+ 546 000c B6000000 		.4byte	.LASF33
  547 0010 01       		.byte	0x1
- 548 0011 4A020000 		.4byte	.LASF34
- 549 0015 81010000 		.4byte	.LASF35
+ 548 0011 25020000 		.4byte	.LASF34
+ 549 0015 A0020000 		.4byte	.LASF35
  550 0019 00000000 		.4byte	.Ldebug_ranges0+0
  551 001d 00000000 		.4byte	0
  552 0021 00000000 		.4byte	.Ldebug_line0
@@ -1012,46 +1012,46 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  557 002c 03       		.uleb128 0x3
  558 002d 04       		.byte	0x4
  559 002e 07       		.byte	0x7
- 560 002f B6010000 		.4byte	.LASF0
+ 560 002f 91010000 		.4byte	.LASF0
  561 0033 03       		.uleb128 0x3
  562 0034 01       		.byte	0x1
  563 0035 06       		.byte	0x6
- 564 0036 A2020000 		.4byte	.LASF1
+ 564 0036 7D020000 		.4byte	.LASF1
  565 003a 03       		.uleb128 0x3
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 18
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 18
 
 
  566 003b 01       		.byte	0x1
  567 003c 08       		.byte	0x8
- 568 003d 9A000000 		.4byte	.LASF2
+ 568 003d 82000000 		.4byte	.LASF2
  569 0041 03       		.uleb128 0x3
  570 0042 02       		.byte	0x2
  571 0043 05       		.byte	0x5
- 572 0044 40020000 		.4byte	.LASF3
+ 572 0044 1B020000 		.4byte	.LASF3
  573 0048 03       		.uleb128 0x3
  574 0049 02       		.byte	0x2
  575 004a 07       		.byte	0x7
- 576 004b 81000000 		.4byte	.LASF4
+ 576 004b 69000000 		.4byte	.LASF4
  577 004f 03       		.uleb128 0x3
  578 0050 04       		.byte	0x4
  579 0051 05       		.byte	0x5
- 580 0052 99020000 		.4byte	.LASF5
+ 580 0052 74020000 		.4byte	.LASF5
  581 0056 03       		.uleb128 0x3
  582 0057 04       		.byte	0x4
  583 0058 07       		.byte	0x7
- 584 0059 AD000000 		.4byte	.LASF6
+ 584 0059 95000000 		.4byte	.LASF6
  585 005d 03       		.uleb128 0x3
  586 005e 08       		.byte	0x8
  587 005f 05       		.byte	0x5
- 588 0060 1E020000 		.4byte	.LASF7
+ 588 0060 F9010000 		.4byte	.LASF7
  589 0064 03       		.uleb128 0x3
  590 0065 08       		.byte	0x8
  591 0066 07       		.byte	0x7
- 592 0067 CB010000 		.4byte	.LASF8
+ 592 0067 A6010000 		.4byte	.LASF8
  593 006b 03       		.uleb128 0x3
  594 006c 04       		.byte	0x4
  595 006d 07       		.byte	0x7
- 596 006e 15020000 		.4byte	.LASF9
+ 596 006e F0010000 		.4byte	.LASF9
  597 0072 04       		.uleb128 0x4
  598 0073 04       		.byte	0x4
  599 0074 78000000 		.4byte	0x78
@@ -1059,30 +1059,30 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  601 0079 03       		.uleb128 0x3
  602 007a 01       		.byte	0x1
  603 007b 08       		.byte	0x8
- 604 007c 2C020000 		.4byte	.LASF10
+ 604 007c 07020000 		.4byte	.LASF10
  605 0080 06       		.uleb128 0x6
- 606 0081 BF000000 		.4byte	.LASF11
+ 606 0081 A7000000 		.4byte	.LASF11
  607 0085 02       		.byte	0x2
  608 0086 9201     		.2byte	0x192
  609 0088 3A000000 		.4byte	0x3a
  610 008c 06       		.uleb128 0x6
- 611 008d 63010000 		.4byte	.LASF12
+ 611 008d 4B010000 		.4byte	.LASF12
  612 0091 02       		.byte	0x2
  613 0092 9401     		.2byte	0x194
  614 0094 56000000 		.4byte	0x56
  615 0098 03       		.uleb128 0x3
  616 0099 04       		.byte	0x4
  617 009a 04       		.byte	0x4
- 618 009b 94000000 		.4byte	.LASF13
+ 618 009b 7C000000 		.4byte	.LASF13
  619 009f 03       		.uleb128 0x3
  620 00a0 08       		.byte	0x8
  621 00a1 04       		.byte	0x4
- 622 00a2 5C010000 		.4byte	.LASF14
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 19
+ 622 00a2 44010000 		.4byte	.LASF14
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 19
 
 
  623 00a6 06       		.uleb128 0x6
- 624 00a7 A8000000 		.4byte	.LASF15
+ 624 00a7 90000000 		.4byte	.LASF15
  625 00ab 02       		.byte	0x2
  626 00ac 3C02     		.2byte	0x23c
  627 00ae B2000000 		.4byte	0xb2
@@ -1096,12 +1096,12 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  635 00c3 07       		.uleb128 0x7
  636 00c4 8C000000 		.4byte	0x8c
  637 00c8 06       		.uleb128 0x6
- 638 00c9 F3010000 		.4byte	.LASF17
+ 638 00c9 CE010000 		.4byte	.LASF17
  639 00cd 02       		.byte	0x2
  640 00ce 4E02     		.2byte	0x24e
  641 00d0 72000000 		.4byte	0x72
  642 00d4 08       		.uleb128 0x8
- 643 00d5 E2010000 		.4byte	.LASF18
+ 643 00d5 BD010000 		.4byte	.LASF18
  644 00d9 01       		.byte	0x1
  645 00da 3D       		.byte	0x3d
  646 00db 00000000 		.4byte	.LFB0
@@ -1109,7 +1109,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  648 00e3 01       		.uleb128 0x1
  649 00e4 9C       		.byte	0x9c
  650 00e5 09       		.uleb128 0x9
- 651 00e6 86020000 		.4byte	.LASF21
+ 651 00e6 61020000 		.4byte	.LASF21
  652 00ea 01       		.byte	0x1
  653 00eb 68       		.byte	0x68
  654 00ec 00000000 		.4byte	.LFB1
@@ -1118,7 +1118,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  657 00f5 9C       		.byte	0x9c
  658 00f6 09010000 		.4byte	0x109
  659 00fa 0A       		.uleb128 0xa
- 660 00fb C3010000 		.4byte	.LASF23
+ 660 00fb 9E010000 		.4byte	.LASF23
  661 00ff 01       		.byte	0x1
  662 0100 68       		.byte	0x68
  663 0101 C8000000 		.4byte	0xc8
@@ -1127,7 +1127,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  666 0107 74       		.sleb128 -12
  667 0108 00       		.byte	0
  668 0109 08       		.uleb128 0x8
- 669 010a A6010000 		.4byte	.LASF19
+ 669 010a 81010000 		.4byte	.LASF19
  670 010e 01       		.byte	0x1
  671 010f 86       		.byte	0x86
  672 0110 00000000 		.4byte	.LFB2
@@ -1135,10 +1135,10 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  674 0118 01       		.uleb128 0x1
  675 0119 9C       		.byte	0x9c
  676 011a 0B       		.uleb128 0xb
- 677 011b 19000000 		.4byte	.LASF20
+ 677 011b 2E000000 		.4byte	.LASF20
  678 011f 01       		.byte	0x1
  679 0120 A0       		.byte	0xa0
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 20
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 20
 
 
  680 0121 00000000 		.4byte	.LFB3
@@ -1146,7 +1146,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  682 0129 01       		.uleb128 0x1
  683 012a 9C       		.byte	0x9c
  684 012b 0C       		.uleb128 0xc
- 685 012c 00020000 		.4byte	.LASF22
+ 685 012c DB010000 		.4byte	.LASF22
  686 0130 01       		.byte	0x1
  687 0131 C8       		.byte	0xc8
  688 0132 00000000 		.4byte	.LFB4
@@ -1155,7 +1155,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  691 013b 9C       		.byte	0x9c
  692 013c 5D010000 		.4byte	0x15d
  693 0140 0A       		.uleb128 0xa
- 694 0141 C3010000 		.4byte	.LASF23
+ 694 0141 9E010000 		.4byte	.LASF23
  695 0145 01       		.byte	0x1
  696 0146 C8       		.byte	0xc8
  697 0147 C8000000 		.4byte	0xc8
@@ -1163,7 +1163,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  699 014c 91       		.byte	0x91
  700 014d 6C       		.sleb128 -20
  701 014e 0D       		.uleb128 0xd
- 702 014f 31020000 		.4byte	.LASF24
+ 702 014f 0C020000 		.4byte	.LASF24
  703 0153 01       		.byte	0x1
  704 0154 CA       		.byte	0xca
  705 0155 5D010000 		.4byte	0x15d
@@ -1175,7 +1175,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  711 015e 04       		.byte	0x4
  712 015f C8000000 		.4byte	0xc8
  713 0163 0E       		.uleb128 0xe
- 714 0164 2E000000 		.4byte	.LASF27
+ 714 0164 19000000 		.4byte	.LASF27
  715 0168 01       		.byte	0x1
  716 0169 E0       		.byte	0xe0
  717 016a C8000000 		.4byte	0xc8
@@ -1185,7 +1185,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  721 0177 9C       		.byte	0x9c
  722 0178 8B010000 		.4byte	0x18b
  723 017c 0D       		.uleb128 0xd
- 724 017d 31020000 		.4byte	.LASF24
+ 724 017d 0C020000 		.4byte	.LASF24
  725 0181 01       		.byte	0x1
  726 0182 E2       		.byte	0xe2
  727 0183 5D010000 		.4byte	0x15d
@@ -1194,11 +1194,11 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  730 0189 74       		.sleb128 -12
  731 018a 00       		.byte	0
  732 018b 0F       		.uleb128 0xf
- 733 018c AE020000 		.4byte	.LASF25
+ 733 018c 89020000 		.4byte	.LASF25
  734 0190 01       		.byte	0x1
  735 0191 0201     		.2byte	0x102
  736 0193 00000000 		.4byte	.LFB6
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 21
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 21
 
 
  737 0197 24000000 		.4byte	.LFE6-.LFB6
@@ -1206,7 +1206,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  739 019c 9C       		.byte	0x9c
  740 019d B1010000 		.4byte	0x1b1
  741 01a1 10       		.uleb128 0x10
- 742 01a2 C5000000 		.4byte	.LASF26
+ 742 01a2 AD000000 		.4byte	.LASF26
  743 01a6 01       		.byte	0x1
  744 01a7 0201     		.2byte	0x102
  745 01a9 80000000 		.4byte	0x80
@@ -1215,7 +1215,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  748 01af 77       		.sleb128 -9
  749 01b0 00       		.byte	0
  750 01b1 11       		.uleb128 0x11
- 751 01b2 6A010000 		.4byte	.LASF28
+ 751 01b2 52010000 		.4byte	.LASF28
  752 01b6 01       		.byte	0x1
  753 01b7 1801     		.2byte	0x118
  754 01b9 80000000 		.4byte	0x80
@@ -1225,7 +1225,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  758 01c6 9C       		.byte	0x9c
  759 01c7 DB010000 		.4byte	0x1db
  760 01cb 12       		.uleb128 0x12
- 761 01cc C5000000 		.4byte	.LASF26
+ 761 01cc AD000000 		.4byte	.LASF26
  762 01d0 01       		.byte	0x1
  763 01d1 1A01     		.2byte	0x11a
  764 01d3 80000000 		.4byte	0x80
@@ -1234,7 +1234,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  767 01d9 77       		.sleb128 -9
  768 01da 00       		.byte	0
  769 01db 13       		.uleb128 0x13
- 770 01dc 5B000000 		.4byte	.LASF29
+ 770 01dc 43000000 		.4byte	.LASF29
  771 01e0 01       		.byte	0x1
  772 01e1 3301     		.2byte	0x133
  773 01e3 00000000 		.4byte	.LFB8
@@ -1242,7 +1242,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  775 01eb 01       		.uleb128 0x1
  776 01ec 9C       		.byte	0x9c
  777 01ed 14       		.uleb128 0x14
- 778 01ee 6D000000 		.4byte	.LASF36
+ 778 01ee 55000000 		.4byte	.LASF36
  779 01f2 01       		.byte	0x1
  780 01f3 4801     		.2byte	0x148
  781 01f5 80000000 		.4byte	0x80
@@ -1258,11 +1258,11 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  791 020f 18000000 		.4byte	.LFE10-.LFB10
  792 0213 01       		.uleb128 0x1
  793 0214 9C       		.byte	0x9c
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 22
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 22
 
 
  794 0215 13       		.uleb128 0x13
- 795 0216 70020000 		.4byte	.LASF31
+ 795 0216 4B020000 		.4byte	.LASF31
  796 021a 01       		.byte	0x1
  797 021b 7801     		.2byte	0x178
  798 021d 00000000 		.4byte	.LFB11
@@ -1270,7 +1270,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  800 0225 01       		.uleb128 0x1
  801 0226 9C       		.byte	0x9c
  802 0227 13       		.uleb128 0x13
- 803 0228 43000000 		.4byte	.LASF32
+ 803 0228 69010000 		.4byte	.LASF32
  804 022c 01       		.byte	0x1
  805 022d 9101     		.2byte	0x191
  806 022f 00000000 		.4byte	.LFB12
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  848 0023 3E       		.uleb128 0x3e
  849 0024 0B       		.uleb128 0xb
  850 0025 03       		.uleb128 0x3
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 23
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 23
 
 
  851 0026 0E       		.uleb128 0xe
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  905 005c 12       		.uleb128 0x12
  906 005d 06       		.uleb128 0x6
  907 005e 40       		.uleb128 0x40
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 24
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 24
 
 
  908 005f 18       		.uleb128 0x18
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  962 0097 3B       		.uleb128 0x3b
  963 0098 0B       		.uleb128 0xb
  964 0099 27       		.uleb128 0x27
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 25
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 25
 
 
  965 009a 19       		.uleb128 0x19
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  1019 00d2 3F       		.uleb128 0x3f
  1020 00d3 19       		.uleb128 0x19
  1021 00d4 03       		.uleb128 0x3
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 26
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 26
 
 
  1022 00d5 0E       		.uleb128 0xe
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  1076 010d 05       		.uleb128 0x5
  1077 010e 49       		.uleb128 0x49
  1078 010f 13       		.uleb128 0x13
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 27
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 27
 
 
  1079 0110 02       		.uleb128 0x2
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  1133 0147 0B       		.uleb128 0xb
  1134 0148 3B       		.uleb128 0x3b
  1135 0149 05       		.uleb128 0x5
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 28
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 28
 
 
  1136 014a 27       		.uleb128 0x27
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  1190 0030 00000000 		.4byte	.LFB4
  1191 0034 24000000 		.4byte	.LFE4-.LFB4
  1192 0038 00000000 		.4byte	.LFB5
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 29
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 29
 
 
  1193 003c 20000000 		.4byte	.LFE5-.LFB5
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  1243              	.LASF30:
  1244 0000 6973725F 		.ascii	"isr_button_Disable\000"
  1244      62757474 
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 30
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 30
 
 
  1244      6F6E5F44 
@@ -1747,196 +1747,196 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 1
  1245              	.LASF16:
  1246 0013 72656733 		.ascii	"reg32\000"
  1246      3200
- 1247              	.LASF20:
- 1248 0019 6973725F 		.ascii	"isr_button_Interrupt\000"
+ 1247              	.LASF27:
+ 1248 0019 6973725F 		.ascii	"isr_button_GetVector\000"
  1248      62757474 
- 1248      6F6E5F49 
- 1248      6E746572 
- 1248      72757074 
- 1249              	.LASF27:
- 1250 002e 6973725F 		.ascii	"isr_button_GetVector\000"
+ 1248      6F6E5F47 
+ 1248      65745665 
+ 1248      63746F72 
+ 1249              	.LASF20:
+ 1250 002e 6973725F 		.ascii	"isr_button_Interrupt\000"
  1250      62757474 
- 1250      6F6E5F47 
- 1250      65745665 
- 1250      63746F72 
- 1251              	.LASF32:
- 1252 0043 6973725F 		.ascii	"isr_button_ClearPending\000"
+ 1250      6F6E5F49 
+ 1250      6E746572 
+ 1250      72757074 
+ 1251              	.LASF29:
+ 1252 0043 6973725F 		.ascii	"isr_button_Enable\000"
  1252      62757474 
- 1252      6F6E5F43 
- 1252      6C656172 
- 1252      50656E64 
- 1253              	.LASF29:
- 1254 005b 6973725F 		.ascii	"isr_button_Enable\000"
+ 1252      6F6E5F45 
+ 1252      6E61626C 
+ 1252      6500
+ 1253              	.LASF36:
+ 1254 0055 6973725F 		.ascii	"isr_button_GetState\000"
  1254      62757474 
- 1254      6F6E5F45 
- 1254      6E61626C 
- 1254      6500
- 1255              	.LASF36:
- 1256 006d 6973725F 		.ascii	"isr_button_GetState\000"
- 1256      62757474 
- 1256      6F6E5F47 
- 1256      65745374 
- 1256      61746500 
- 1257              	.LASF4:
- 1258 0081 73686F72 		.ascii	"short unsigned int\000"
- 1258      7420756E 
- 1258      7369676E 
- 1258      65642069 
- 1258      6E7400
- 1259              	.LASF13:
- 1260 0094 666C6F61 		.ascii	"float\000"
- 1260      7400
- 1261              	.LASF2:
- 1262 009a 756E7369 		.ascii	"unsigned char\000"
- 1262      676E6564 
- 1262      20636861 
- 1262      7200
- 1263              	.LASF15:
- 1264 00a8 72656738 		.ascii	"reg8\000"
- 1264      00
- 1265              	.LASF6:
- 1266 00ad 6C6F6E67 		.ascii	"long unsigned int\000"
- 1266      20756E73 
- 1266      69676E65 
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 31
+ 1254      6F6E5F47 
+ 1254      65745374 
+ 1254      61746500 
+ 1255              	.LASF4:
+ 1256 0069 73686F72 		.ascii	"short unsigned int\000"
+ 1256      7420756E 
+ 1256      7369676E 
+ 1256      65642069 
+ 1256      6E7400
+ 1257              	.LASF13:
+ 1258 007c 666C6F61 		.ascii	"float\000"
+ 1258      7400
+ 1259              	.LASF2:
+ 1260 0082 756E7369 		.ascii	"unsigned char\000"
+ 1260      676E6564 
+ 1260      20636861 
+ 1260      7200
+ 1261              	.LASF15:
+ 1262 0090 72656738 		.ascii	"reg8\000"
+ 1262      00
+ 1263              	.LASF6:
+ 1264 0095 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1264      20756E73 
+ 1264      69676E65 
+ 1264      6420696E 
+ 1264      7400
+ 1265              	.LASF11:
+ 1266 00a7 75696E74 		.ascii	"uint8\000"
+ 1266      3800
+ 1267              	.LASF26:
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 31
 
 
- 1266      6420696E 
- 1266      7400
- 1267              	.LASF11:
- 1268 00bf 75696E74 		.ascii	"uint8\000"
- 1268      3800
- 1269              	.LASF26:
- 1270 00c5 7072696F 		.ascii	"priority\000"
- 1270      72697479 
- 1270      00
- 1271              	.LASF33:
- 1272 00ce 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 1272      4320342E 
- 1272      392E3320 
- 1272      32303135 
- 1272      30333033 
- 1273 0101 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 1273      20726576 
- 1273      6973696F 
- 1273      6E203232 
- 1273      31323230 
- 1274 0134 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 1274      66756E63 
- 1274      74696F6E 
- 1274      2D736563 
- 1274      74696F6E 
- 1275              	.LASF14:
- 1276 015c 646F7562 		.ascii	"double\000"
- 1276      6C6500
- 1277              	.LASF12:
- 1278 0163 75696E74 		.ascii	"uint32\000"
- 1278      333200
- 1279              	.LASF28:
- 1280 016a 6973725F 		.ascii	"isr_button_GetPriority\000"
+ 1268 00ad 7072696F 		.ascii	"priority\000"
+ 1268      72697479 
+ 1268      00
+ 1269              	.LASF33:
+ 1270 00b6 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1270      4320342E 
+ 1270      392E3320 
+ 1270      32303135 
+ 1270      30333033 
+ 1271 00e9 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1271      20726576 
+ 1271      6973696F 
+ 1271      6E203232 
+ 1271      31323230 
+ 1272 011c 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1272      66756E63 
+ 1272      74696F6E 
+ 1272      2D736563 
+ 1272      74696F6E 
+ 1273              	.LASF14:
+ 1274 0144 646F7562 		.ascii	"double\000"
+ 1274      6C6500
+ 1275              	.LASF12:
+ 1276 014b 75696E74 		.ascii	"uint32\000"
+ 1276      333200
+ 1277              	.LASF28:
+ 1278 0152 6973725F 		.ascii	"isr_button_GetPriority\000"
+ 1278      62757474 
+ 1278      6F6E5F47 
+ 1278      65745072 
+ 1278      696F7269 
+ 1279              	.LASF32:
+ 1280 0169 6973725F 		.ascii	"isr_button_ClearPending\000"
  1280      62757474 
- 1280      6F6E5F47 
- 1280      65745072 
- 1280      696F7269 
- 1281              	.LASF35:
- 1282 0181 443A5C43 		.ascii	"D:\\CS301-Team-Repo\\CS301_Class.cydsn\000"
- 1282      53333031 
- 1282      2D546561 
- 1282      6D2D5265 
- 1282      706F5C43 
- 1283              	.LASF19:
- 1284 01a6 6973725F 		.ascii	"isr_button_Stop\000"
- 1284      62757474 
- 1284      6F6E5F53 
- 1284      746F7000 
- 1285              	.LASF0:
- 1286 01b6 756E7369 		.ascii	"unsigned int\000"
- 1286      676E6564 
- 1286      20696E74 
- 1286      00
- 1287              	.LASF23:
- 1288 01c3 61646472 		.ascii	"address\000"
- 1288      65737300 
- 1289              	.LASF8:
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 32
+ 1280      6F6E5F43 
+ 1280      6C656172 
+ 1280      50656E64 
+ 1281              	.LASF19:
+ 1282 0181 6973725F 		.ascii	"isr_button_Stop\000"
+ 1282      62757474 
+ 1282      6F6E5F53 
+ 1282      746F7000 
+ 1283              	.LASF0:
+ 1284 0191 756E7369 		.ascii	"unsigned int\000"
+ 1284      676E6564 
+ 1284      20696E74 
+ 1284      00
+ 1285              	.LASF23:
+ 1286 019e 61646472 		.ascii	"address\000"
+ 1286      65737300 
+ 1287              	.LASF8:
+ 1288 01a6 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1288      206C6F6E 
+ 1288      6720756E 
+ 1288      7369676E 
+ 1288      65642069 
+ 1289              	.LASF18:
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 32
 
 
- 1290 01cb 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1290      206C6F6E 
- 1290      6720756E 
- 1290      7369676E 
- 1290      65642069 
- 1291              	.LASF18:
- 1292 01e2 6973725F 		.ascii	"isr_button_Start\000"
- 1292      62757474 
- 1292      6F6E5F53 
- 1292      74617274 
+ 1290 01bd 6973725F 		.ascii	"isr_button_Start\000"
+ 1290      62757474 
+ 1290      6F6E5F53 
+ 1290      74617274 
+ 1290      00
+ 1291              	.LASF17:
+ 1292 01ce 63796973 		.ascii	"cyisraddress\000"
+ 1292      72616464 
+ 1292      72657373 
  1292      00
- 1293              	.LASF17:
- 1294 01f3 63796973 		.ascii	"cyisraddress\000"
- 1294      72616464 
- 1294      72657373 
- 1294      00
- 1295              	.LASF22:
- 1296 0200 6973725F 		.ascii	"isr_button_SetVector\000"
- 1296      62757474 
- 1296      6F6E5F53 
- 1296      65745665 
- 1296      63746F72 
- 1297              	.LASF9:
- 1298 0215 73697A65 		.ascii	"sizetype\000"
- 1298      74797065 
- 1298      00
- 1299              	.LASF7:
- 1300 021e 6C6F6E67 		.ascii	"long long int\000"
- 1300      206C6F6E 
- 1300      6720696E 
- 1300      7400
- 1301              	.LASF10:
- 1302 022c 63686172 		.ascii	"char\000"
- 1302      00
- 1303              	.LASF24:
- 1304 0231 72616D56 		.ascii	"ramVectorTable\000"
- 1304      6563746F 
- 1304      72546162 
- 1304      6C6500
- 1305              	.LASF3:
- 1306 0240 73686F72 		.ascii	"short int\000"
- 1306      7420696E 
- 1306      7400
- 1307              	.LASF34:
- 1308 024a 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\isr_button.c\000"
- 1308      6E657261 
- 1308      7465645F 
- 1308      536F7572 
- 1308      63655C50 
- 1309              	.LASF31:
- 1310 0270 6973725F 		.ascii	"isr_button_SetPending\000"
+ 1293              	.LASF22:
+ 1294 01db 6973725F 		.ascii	"isr_button_SetVector\000"
+ 1294      62757474 
+ 1294      6F6E5F53 
+ 1294      65745665 
+ 1294      63746F72 
+ 1295              	.LASF9:
+ 1296 01f0 73697A65 		.ascii	"sizetype\000"
+ 1296      74797065 
+ 1296      00
+ 1297              	.LASF7:
+ 1298 01f9 6C6F6E67 		.ascii	"long long int\000"
+ 1298      206C6F6E 
+ 1298      6720696E 
+ 1298      7400
+ 1299              	.LASF10:
+ 1300 0207 63686172 		.ascii	"char\000"
+ 1300      00
+ 1301              	.LASF24:
+ 1302 020c 72616D56 		.ascii	"ramVectorTable\000"
+ 1302      6563746F 
+ 1302      72546162 
+ 1302      6C6500
+ 1303              	.LASF3:
+ 1304 021b 73686F72 		.ascii	"short int\000"
+ 1304      7420696E 
+ 1304      7400
+ 1305              	.LASF34:
+ 1306 0225 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\isr_button.c\000"
+ 1306      6E657261 
+ 1306      7465645F 
+ 1306      536F7572 
+ 1306      63655C50 
+ 1307              	.LASF31:
+ 1308 024b 6973725F 		.ascii	"isr_button_SetPending\000"
+ 1308      62757474 
+ 1308      6F6E5F53 
+ 1308      65745065 
+ 1308      6E64696E 
+ 1309              	.LASF21:
+ 1310 0261 6973725F 		.ascii	"isr_button_StartEx\000"
  1310      62757474 
  1310      6F6E5F53 
- 1310      65745065 
- 1310      6E64696E 
- 1311              	.LASF21:
- 1312 0286 6973725F 		.ascii	"isr_button_StartEx\000"
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cc31TuWd.s 			page 33
+ 1310      74617274 
+ 1310      457800
+ 1311              	.LASF5:
+ 1312 0274 6C6F6E67 		.ascii	"long int\000"
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccCT2tBZ.s 			page 33
 
 
- 1312      62757474 
- 1312      6F6E5F53 
- 1312      74617274 
- 1312      457800
- 1313              	.LASF5:
- 1314 0299 6C6F6E67 		.ascii	"long int\000"
- 1314      20696E74 
- 1314      00
- 1315              	.LASF1:
- 1316 02a2 7369676E 		.ascii	"signed char\000"
- 1316      65642063 
- 1316      68617200 
- 1317              	.LASF25:
- 1318 02ae 6973725F 		.ascii	"isr_button_SetPriority\000"
- 1318      62757474 
- 1318      6F6E5F53 
- 1318      65745072 
- 1318      696F7269 
+ 1312      20696E74 
+ 1312      00
+ 1313              	.LASF1:
+ 1314 027d 7369676E 		.ascii	"signed char\000"
+ 1314      65642063 
+ 1314      68617200 
+ 1315              	.LASF25:
+ 1316 0289 6973725F 		.ascii	"isr_button_SetPriority\000"
+ 1316      62757474 
+ 1316      6F6E5F53 
+ 1316      65745072 
+ 1316      696F7269 
+ 1317              	.LASF35:
+ 1318 02a0 443A5C67 		.ascii	"D:\\gp1\\CS301-Team-Repo\\CS301_Class.cydsn\000"
+ 1318      70315C43 
+ 1318      53333031 
+ 1318      2D546561 
+ 1318      6D2D5265 
  1319              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

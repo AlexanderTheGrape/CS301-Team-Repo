@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
   30:.\Generated_Source\PSoC5/cyfitter_cfg.c ****     #define CYPACKED_ATTR __attribute__ ((packed))
   31:.\Generated_Source\PSoC5/cyfitter_cfg.c ****     #define CYALIGNED __attribute__ ((aligned))
   32:.\Generated_Source\PSoC5/cyfitter_cfg.c ****     #define CY_CFG_UNUSED __attribute__ ((unused))
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 2
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 2
 
 
   33:.\Generated_Source\PSoC5/cyfitter_cfg.c ****     #ifndef CY_CFG_SECTION
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
   47              		.cfi_def_cfa_offset 8
   48 0016 BD46     		mov	sp, r7
   49              		.cfi_def_cfa_register 13
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 3
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 3
 
 
   50              		@ sp needed
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
   97              	CYCONFIGCPYCODE:
   98              	.LFB2:
   73:.\Generated_Source\PSoC5/cyfitter_cfg.c **** CY_CFG_UNUSED
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 4
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 4
 
 
   74:.\Generated_Source\PSoC5/cyfitter_cfg.c **** static void CYCONFIGCPYCODE(void *dest, const void *src, size_t n);
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
   91:.\Generated_Source\PSoC5/cyfitter_cfg.c **** * Function Name: CyClockStartupError
   92:.\Generated_Source\PSoC5/cyfitter_cfg.c **** ********************************************************************************
   93:.\Generated_Source\PSoC5/cyfitter_cfg.c **** * Summary:
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 5
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 5
 
 
   94:.\Generated_Source\PSoC5/cyfitter_cfg.c **** *  If an error is encountered during clock configuration (crystal startup error,
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  160              		.type	cfg_write_bytes32, %function
  161              	cfg_write_bytes32:
  162              	.LFB4:
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 6
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 6
 
 
  124:.\Generated_Source\PSoC5/cyfitter_cfg.c **** }
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  171 0002 87B0     		sub	sp, sp, #28
  172              		.cfi_def_cfa_offset 32
  173 0004 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 7
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 7
 
 
  174              		.cfi_def_cfa_register 7
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  218 004a 0B70     		strb	r3, [r1]
  180:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 			j++;
  219              		.loc 1 180 0
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 8
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 8
 
 
  220 004c 3B69     		ldr	r3, [r7, #16]
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  190:.\Generated_Source\PSoC5/cyfitter_cfg.c **** * Summary:
  191:.\Generated_Source\PSoC5/cyfitter_cfg.c **** *  Performs the initialization of all of the clocks in the device based on the
  192:.\Generated_Source\PSoC5/cyfitter_cfg.c **** *  settings in the Clock tab of the DWR.  This includes enabling the requested
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 9
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 9
 
 
  193:.\Generated_Source\PSoC5/cyfitter_cfg.c **** *  clocks and setting the necessary dividers to produce the desired frequency. 
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  215:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_CLKDIST_DCFG2_CFG0 + 0x2u), 0x18u);
  294              		.loc 1 215 0
  295 0024 3C4B     		ldr	r3, .L16+20
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 10
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 10
 
 
  296 0026 1822     		movs	r2, #24
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  230:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	/* Configure PLL based on settings from Clock DWR */
  231:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG16((void CYFAR *)(CYREG_FASTCLK_PLL_P), 0x0919u);
  336              		.loc 1 231 0
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 11
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 11
 
 
  337 0064 374B     		ldr	r3, .L16+64
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  381              	.L13:
  239:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	}
  240:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	/* If we ran out of time the PLL didn't lock so go to the error function */
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 12
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 12
 
 
  241:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	if (timeout == 0u)
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  419 00ec 1D4A     		ldr	r2, .L16+96
  420 00ee 1D4B     		ldr	r3, .L16+96
  421 00f0 1B78     		ldrb	r3, [r3]
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 13
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 13
 
 
  422 00f2 DBB2     		uxtb	r3, r3
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  263:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  264:.\Generated_Source\PSoC5/cyfitter_cfg.c **** /*******************************************************************************
  265:.\Generated_Source\PSoC5/cyfitter_cfg.c **** * Function Name: AnalogSetDefault
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 14
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 14
 
 
  266:.\Generated_Source\PSoC5/cyfitter_cfg.c **** ********************************************************************************
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  504 0028 1B09     		lsrs	r3, r3, #4
  505 002a DBB2     		uxtb	r3, r3
  506 002c 1370     		strb	r3, [r2]
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 15
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 15
 
 
  287:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	/* Disable PRES while setting up SAR voltage reference */
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  298:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_RESET_CR4), (cr4));
  550              		.loc 1 298 0
  551 0076 054A     		ldr	r2, .L19+4
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 16
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 16
 
 
  552 0078 BB79     		ldrb	r3, [r7, #6]
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  314:.\Generated_Source\PSoC5/cyfitter_cfg.c **** *  enabled - 1 to enable the pumps, 0 to disable the pumps
  315:.\Generated_Source\PSoC5/cyfitter_cfg.c **** *
  316:.\Generated_Source\PSoC5/cyfitter_cfg.c **** * Return:
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 17
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 17
 
 
  317:.\Generated_Source\PSoC5/cyfitter_cfg.c **** *  void
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  629 002e 1437     		adds	r7, r7, #20
  630              		.cfi_def_cfa_offset 4
  631 0030 BD46     		mov	sp, r7
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 18
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 18
 
 
  632              		.cfi_def_cfa_register 13
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  663 0004 00AF     		add	r7, sp, #0
  664              		.cfi_def_cfa_register 7
  356:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #ifdef CYGlobalIntDisable
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 19
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 19
 
 
  357:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	/* Disable interrupts by default. Let user enable if/when they want. */
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  387:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 			{(void CYFAR *)(CYREG_BCTL0_MDCLK_EN), 32u},
  388:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 		};
  389:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 20
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 20
 
 
  390:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 		uint8 CYDATA i;
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  728 0066 2C4A     		ldr	r2, .L29+16
  729 0068 2B4B     		ldr	r3, .L29+16
  730 006a 1B78     		ldrb	r3, [r3]
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 21
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 21
 
 
  731 006c DBB2     		uxtb	r3, r3
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  773 00be 0A22     		movs	r2, #10
  774 00c0 FFF7FEFF 		bl	CYCONFIGCPY
  415:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	CYCONFIGCPY((void CYFAR *)(CYREG_PRT2_DR), (const void CYFAR *)(BS_IOPINS0_2_VAL), 10u);
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 22
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 22
 
 
  775              		.loc 1 415 0
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  817              	.L29:
  818 0108 00480040 		.word	1073760256
  819 010c E8460040 		.word	1073759976
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 23
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 23
 
 
  820 0110 00000000 		.word	cfg_memset_list.4882
@@ -1378,11 +1378,11 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  874 000b 01       		.uleb128 0x1
  875 000c DF000000 		.4byte	.LASF44
  876 0010 01       		.byte	0x1
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 24
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 24
 
 
- 877 0011 6B020000 		.4byte	.LASF45
- 878 0015 C1010000 		.4byte	.LASF46
+ 877 0011 46020000 		.4byte	.LASF45
+ 878 0015 B7020000 		.4byte	.LASF46
  879 0019 00000000 		.4byte	.Ldebug_ranges0+0
  880 001d 00000000 		.4byte	0
  881 0021 00000000 		.4byte	.Ldebug_line0
@@ -1398,11 +1398,11 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  891 0037 04       		.uleb128 0x4
  892 0038 04       		.byte	0x4
  893 0039 07       		.byte	0x7
- 894 003a E6010000 		.4byte	.LASF0
+ 894 003a C1010000 		.4byte	.LASF0
  895 003e 04       		.uleb128 0x4
  896 003f 01       		.byte	0x1
  897 0040 06       		.byte	0x6
- 898 0041 BB020000 		.4byte	.LASF1
+ 898 0041 96020000 		.4byte	.LASF1
  899 0045 04       		.uleb128 0x4
  900 0046 01       		.byte	0x1
  901 0047 08       		.byte	0x8
@@ -1410,7 +1410,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  903 004c 04       		.uleb128 0x4
  904 004d 02       		.byte	0x2
  905 004e 05       		.byte	0x5
- 906 004f 61020000 		.4byte	.LASF3
+ 906 004f 3C020000 		.4byte	.LASF3
  907 0053 04       		.uleb128 0x4
  908 0054 02       		.byte	0x2
  909 0055 07       		.byte	0x7
@@ -1418,7 +1418,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  911 005a 04       		.uleb128 0x4
  912 005b 04       		.byte	0x4
  913 005c 05       		.byte	0x5
- 914 005d 9B020000 		.4byte	.LASF5
+ 914 005d 76020000 		.4byte	.LASF5
  915 0061 04       		.uleb128 0x4
  916 0062 04       		.byte	0x4
  917 0063 07       		.byte	0x7
@@ -1426,24 +1426,24 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  919 0068 04       		.uleb128 0x4
  920 0069 08       		.byte	0x8
  921 006a 05       		.byte	0x5
- 922 006b 31020000 		.4byte	.LASF7
+ 922 006b 0C020000 		.4byte	.LASF7
  923 006f 04       		.uleb128 0x4
  924 0070 08       		.byte	0x8
  925 0071 07       		.byte	0x7
- 926 0072 FB010000 		.4byte	.LASF8
+ 926 0072 D6010000 		.4byte	.LASF8
  927 0076 04       		.uleb128 0x4
  928 0077 04       		.byte	0x4
  929 0078 07       		.byte	0x7
- 930 0079 28020000 		.4byte	.LASF9
+ 930 0079 03020000 		.4byte	.LASF9
  931 007d 05       		.uleb128 0x5
  932 007e 04       		.byte	0x4
  933 007f 04       		.uleb128 0x4
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 25
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 25
 
 
  934 0080 01       		.byte	0x1
  935 0081 08       		.byte	0x8
- 936 0082 A4020000 		.4byte	.LASF10
+ 936 0082 7F020000 		.4byte	.LASF10
  937 0086 06       		.uleb128 0x6
  938 0087 AB000000 		.4byte	.LASF12
  939 008b 03       		.byte	0x3
@@ -1487,7 +1487,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  977 00dd 80       		.byte	0x80
  978 00de FB000000 		.4byte	0xfb
  979 00e2 09       		.uleb128 0x9
- 980 00e3 5A020000 		.4byte	.LASF19
+ 980 00e3 35020000 		.4byte	.LASF19
  981 00e7 01       		.byte	0x1
  982 00e8 82       		.byte	0x82
  983 00e9 86000000 		.4byte	0x86
@@ -1498,12 +1498,12 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  988 00f4 83       		.byte	0x83
  989 00f5 86000000 		.4byte	0x86
  990 00f9 01       		.byte	0x1
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 26
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 26
 
 
  991 00fa 00       		.byte	0
  992 00fb 03       		.uleb128 0x3
- 993 00fc 47020000 		.4byte	.LASF21
+ 993 00fc 22020000 		.4byte	.LASF21
  994 0100 01       		.byte	0x1
  995 0101 84       		.byte	0x84
  996 0102 DA000000 		.4byte	0xda
@@ -1534,7 +1534,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  1021 0132 70       		.sleb128 -16
  1022 0133 00       		.byte	0
  1023 0134 0A       		.uleb128 0xa
- 1024 0135 D0020000 		.4byte	.LASF23
+ 1024 0135 AB020000 		.4byte	.LASF23
  1025 0139 01       		.byte	0x1
  1026 013a 45       		.byte	0x45
  1027 013b 00000000 		.4byte	.LFB1
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  1045 0162 02       		.uleb128 0x2
  1046 0163 91       		.byte	0x91
  1047 0164 70       		.sleb128 -16
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 27
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 27
 
 
  1048 0165 0B       		.uleb128 0xb
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  1102 01c7 9C       		.byte	0x9c
  1103 01c8 DB010000 		.4byte	0x1db
  1104 01cc 0C       		.uleb128 0xc
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 28
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 28
 
 
  1105 01cd B0010000 		.4byte	.LASF27
@@ -1674,11 +1674,11 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  1155 0225 14000000 		.4byte	.LBB2
  1156 0229 4A000000 		.4byte	.LBE2-.LBB2
  1157 022d 12       		.uleb128 0x12
- 1158 022e 1F020000 		.4byte	.LASF31
+ 1158 022e FA010000 		.4byte	.LASF31
  1159 0232 01       		.byte	0x1
  1160 0233 AE       		.byte	0xae
  1161 0234 9E000000 		.4byte	0x9e
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 29
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 29
 
 
  1162 0238 02       		.uleb128 0x2
@@ -1714,7 +1714,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  1192 0271 9C       		.byte	0x9c
  1193 0272 93020000 		.4byte	0x293
  1194 0276 12       		.uleb128 0x12
- 1195 0277 3F020000 		.4byte	.LASF34
+ 1195 0277 1A020000 		.4byte	.LASF34
  1196 027b 01       		.byte	0x1
  1197 027c CD       		.byte	0xcd
  1198 027d 9E000000 		.4byte	0x9e
@@ -1738,12 +1738,12 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  1216 029f B8000000 		.4byte	.LFE6-.LFB6
  1217 02a3 01       		.uleb128 0x1
  1218 02a4 9C       		.byte	0x9c
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 30
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 30
 
 
  1219 02a5 D7020000 		.4byte	0x2d7
  1220 02a9 15       		.uleb128 0x15
- 1221 02aa A9020000 		.4byte	.LASF37
+ 1221 02aa 84020000 		.4byte	.LASF37
  1222 02ae 01       		.byte	0x1
  1223 02af 1A01     		.2byte	0x11a
  1224 02b1 86000000 		.4byte	0x86
@@ -1777,7 +1777,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  1252 02e8 9C       		.byte	0x9c
  1253 02e9 0C030000 		.4byte	0x30c
  1254 02ed 18       		.uleb128 0x18
- 1255 02ee 93020000 		.4byte	.LASF38
+ 1255 02ee 6E020000 		.4byte	.LASF38
  1256 02f2 01       		.byte	0x1
  1257 02f3 4001     		.2byte	0x140
  1258 02f5 86000000 		.4byte	0x86
@@ -1785,7 +1785,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  1260 02fa 91       		.byte	0x91
  1261 02fb 6F       		.sleb128 -17
  1262 02fc 15       		.uleb128 0x15
- 1263 02fd C7020000 		.4byte	.LASF39
+ 1263 02fd A2020000 		.4byte	.LASF39
  1264 0301 01       		.byte	0x1
  1265 0302 4201     		.2byte	0x142
  1266 0304 86000000 		.4byte	0x86
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  1273 0311 01       		.byte	0x1
  1274 0312 6201     		.2byte	0x162
  1275 0314 00000000 		.4byte	.LFB8
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 31
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 31
 
 
  1276 0318 60010000 		.4byte	.LFE8-.LFB8
@@ -1813,7 +1813,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  1285 032a 7501     		.2byte	0x175
  1286 032c 4B030000 		.4byte	0x34b
  1287 0330 1B       		.uleb128 0x1b
- 1288 0331 F3010000 		.4byte	.LASF40
+ 1288 0331 CE010000 		.4byte	.LASF40
  1289 0335 01       		.byte	0x1
  1290 0336 7601     		.2byte	0x176
  1291 0338 7D000000 		.4byte	0x7d
@@ -1826,7 +1826,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  1298 0349 04       		.byte	0x4
  1299 034a 00       		.byte	0
  1300 034b 06       		.uleb128 0x6
- 1301 034c 12020000 		.4byte	.LASF42
+ 1301 034c ED010000 		.4byte	.LASF42
  1302 0350 01       		.byte	0x1
  1303 0351 7801     		.2byte	0x178
  1304 0353 27030000 		.4byte	0x327
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  1330 038b 11       		.uleb128 0x11
  1331 038c 2E000000 		.4byte	.LBB4
  1332 0390 22000000 		.4byte	.LBE4-.LBB4
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 32
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 32
 
 
  1333 0394 16       		.uleb128 0x16
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  1387 0023 3A       		.uleb128 0x3a
  1388 0024 0B       		.uleb128 0xb
  1389 0025 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 33
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 33
 
 
  1390 0026 0B       		.uleb128 0xb
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  1444 005c 00       		.byte	0
  1445 005d 00       		.byte	0
  1446 005e 09       		.uleb128 0x9
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 34
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 34
 
 
  1447 005f 0D       		.uleb128 0xd
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  1501 0096 00       		.byte	0
  1502 0097 03       		.uleb128 0x3
  1503 0098 0E       		.uleb128 0xe
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 35
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 35
 
 
  1504 0099 3A       		.uleb128 0x3a
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  1558 00d0 3B       		.uleb128 0x3b
  1559 00d1 0B       		.uleb128 0xb
  1560 00d2 49       		.uleb128 0x49
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 36
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 36
 
 
  1561 00d3 13       		.uleb128 0x13
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  1615 010a 19       		.uleb128 0x19
  1616 010b 01       		.uleb128 0x1
  1617 010c 13       		.uleb128 0x13
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 37
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 37
 
 
  1618 010d 00       		.byte	0
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  1672 0144 13       		.uleb128 0x13
  1673 0145 00       		.byte	0
  1674 0146 00       		.byte	0
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 38
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 38
 
 
  1675 0147 18       		.uleb128 0x18
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  1729 017e 03       		.uleb128 0x3
  1730 017f 0E       		.uleb128 0xe
  1731 0180 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 39
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 39
 
 
  1732 0181 0B       		.uleb128 0xb
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  1786 0058 00000000 		.4byte	0
  1787 005c 00000000 		.4byte	0
  1788              		.section	.debug_ranges,"",%progbits
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 40
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 40
 
 
  1789              	.Ldebug_ranges0:
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  1828 003a 73686F72 		.ascii	"short unsigned int\000"
  1828      7420756E 
  1828      7369676E 
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 41
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 41
 
 
  1828      65642069 
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  1853              	.LASF44:
  1854 00df 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
  1854      4320342E 
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 42
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 42
 
 
  1854      392E3320 
@@ -2506,98 +2506,98 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 1
  1871              	.LASF14:
  1872 01ba 75696E74 		.ascii	"uint32\000"
  1872      333200
- 1873              	.LASF46:
- 1874 01c1 443A5C43 		.ascii	"D:\\CS301-Team-Repo\\CS301_Class.cydsn\000"
- 1874      53333031 
- 1874      2D546561 
- 1874      6D2D5265 
- 1874      706F5C43 
- 1875              	.LASF0:
- 1876 01e6 756E7369 		.ascii	"unsigned int\000"
- 1876      676E6564 
- 1876      20696E74 
- 1876      00
- 1877              	.LASF40:
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 43
+ 1873              	.LASF0:
+ 1874 01c1 756E7369 		.ascii	"unsigned int\000"
+ 1874      676E6564 
+ 1874      20696E74 
+ 1874      00
+ 1875              	.LASF40:
+ 1876 01ce 61646472 		.ascii	"address\000"
+ 1876      65737300 
+ 1877              	.LASF8:
+ 1878 01d6 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1878      206C6F6E 
+ 1878      6720756E 
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 43
 
 
- 1878 01f3 61646472 		.ascii	"address\000"
- 1878      65737300 
- 1879              	.LASF8:
- 1880 01fb 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1880      206C6F6E 
- 1880      6720756E 
- 1880      7369676E 
- 1880      65642069 
- 1881              	.LASF42:
- 1882 0212 6366675F 		.ascii	"cfg_memset_t\000"
- 1882      6D656D73 
- 1882      65745F74 
+ 1878      7369676E 
+ 1878      65642069 
+ 1879              	.LASF42:
+ 1880 01ed 6366675F 		.ascii	"cfg_memset_t\000"
+ 1880      6D656D73 
+ 1880      65745F74 
+ 1880      00
+ 1881              	.LASF31:
+ 1882 01fa 62617365 		.ascii	"baseAddr\000"
+ 1882      41646472 
  1882      00
- 1883              	.LASF31:
- 1884 021f 62617365 		.ascii	"baseAddr\000"
- 1884      41646472 
+ 1883              	.LASF9:
+ 1884 0203 73697A65 		.ascii	"sizetype\000"
+ 1884      74797065 
  1884      00
- 1885              	.LASF9:
- 1886 0228 73697A65 		.ascii	"sizetype\000"
- 1886      74797065 
- 1886      00
- 1887              	.LASF7:
- 1888 0231 6C6F6E67 		.ascii	"long long int\000"
- 1888      206C6F6E 
- 1888      6720696E 
- 1888      7400
- 1889              	.LASF34:
- 1890 023f 74696D65 		.ascii	"timeout\000"
- 1890      6F757400 
- 1891              	.LASF21:
- 1892 0247 63795F63 		.ascii	"cy_cfg_addrvalue_t\000"
- 1892      66675F61 
- 1892      64647276 
- 1892      616C7565 
- 1892      5F7400
- 1893              	.LASF19:
- 1894 025a 6F666673 		.ascii	"offset\000"
- 1894      657400
- 1895              	.LASF3:
- 1896 0261 73686F72 		.ascii	"short int\000"
- 1896      7420696E 
- 1896      7400
- 1897              	.LASF45:
- 1898 026b 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\cyfitter_cfg.c\000"
- 1898      6E657261 
- 1898      7465645F 
- 1898      536F7572 
- 1898      63655C50 
- 1899              	.LASF38:
- 1900 0293 656E6162 		.ascii	"enabled\000"
- 1900      6C656400 
- 1901              	.LASF5:
- 1902 029b 6C6F6E67 		.ascii	"long int\000"
- 1902      20696E74 
+ 1885              	.LASF7:
+ 1886 020c 6C6F6E67 		.ascii	"long long int\000"
+ 1886      206C6F6E 
+ 1886      6720696E 
+ 1886      7400
+ 1887              	.LASF34:
+ 1888 021a 74696D65 		.ascii	"timeout\000"
+ 1888      6F757400 
+ 1889              	.LASF21:
+ 1890 0222 63795F63 		.ascii	"cy_cfg_addrvalue_t\000"
+ 1890      66675F61 
+ 1890      64647276 
+ 1890      616C7565 
+ 1890      5F7400
+ 1891              	.LASF19:
+ 1892 0235 6F666673 		.ascii	"offset\000"
+ 1892      657400
+ 1893              	.LASF3:
+ 1894 023c 73686F72 		.ascii	"short int\000"
+ 1894      7420696E 
+ 1894      7400
+ 1895              	.LASF45:
+ 1896 0246 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\cyfitter_cfg.c\000"
+ 1896      6E657261 
+ 1896      7465645F 
+ 1896      536F7572 
+ 1896      63655C50 
+ 1897              	.LASF38:
+ 1898 026e 656E6162 		.ascii	"enabled\000"
+ 1898      6C656400 
+ 1899              	.LASF5:
+ 1900 0276 6C6F6E67 		.ascii	"long int\000"
+ 1900      20696E74 
+ 1900      00
+ 1901              	.LASF10:
+ 1902 027f 63686172 		.ascii	"char\000"
  1902      00
- 1903              	.LASF10:
- 1904 02a4 63686172 		.ascii	"char\000"
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccssMJIg.s 			page 44
+ 1903              	.LASF37:
+ 1904 0284 62675F78 		.ascii	"bg_xover_inl_trim\000"
+ 1904      6F766572 
+ 1904      5F696E6C 
+ 1904      5F747269 
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccc2vN1N.s 			page 44
 
 
- 1904      00
- 1905              	.LASF37:
- 1906 02a9 62675F78 		.ascii	"bg_xover_inl_trim\000"
- 1906      6F766572 
- 1906      5F696E6C 
- 1906      5F747269 
- 1906      6D00
- 1907              	.LASF1:
- 1908 02bb 7369676E 		.ascii	"signed char\000"
- 1908      65642063 
- 1908      68617200 
- 1909              	.LASF39:
- 1910 02c7 72656756 		.ascii	"regValue\000"
- 1910      616C7565 
- 1910      00
- 1911              	.LASF23:
- 1912 02d0 4359434F 		.ascii	"CYCONFIGCPY\000"
- 1912      4E464947 
- 1912      43505900 
+ 1904      6D00
+ 1905              	.LASF1:
+ 1906 0296 7369676E 		.ascii	"signed char\000"
+ 1906      65642063 
+ 1906      68617200 
+ 1907              	.LASF39:
+ 1908 02a2 72656756 		.ascii	"regValue\000"
+ 1908      616C7565 
+ 1908      00
+ 1909              	.LASF23:
+ 1910 02ab 4359434F 		.ascii	"CYCONFIGCPY\000"
+ 1910      4E464947 
+ 1910      43505900 
+ 1911              	.LASF46:
+ 1912 02b7 443A5C67 		.ascii	"D:\\gp1\\CS301-Team-Repo\\CS301_Class.cydsn\000"
+ 1912      70315C43 
+ 1912      53333031 
+ 1912      2D546561 
+ 1912      6D2D5265 
  1913              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

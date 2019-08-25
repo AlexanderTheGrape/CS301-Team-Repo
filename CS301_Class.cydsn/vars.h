@@ -53,7 +53,7 @@ int16 rightSpeedLimit = 0;
 
 // Flags =======================
 uint8 brakeFlag;
-
+uint8 portOpen = 1;
 
 //* ========================================
 char displaystring[BUF_SIZE] = "CS301 2016\n";
