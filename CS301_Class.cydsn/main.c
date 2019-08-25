@@ -157,7 +157,7 @@ void print_ADC()
         char result_str[16];
         sprintf(result_str, "Battery Voltage: %dmv\n\r", converted_val);
         
-        //usbPutString(result_str);
+        usbPutString(result_str);
     }
 }
 

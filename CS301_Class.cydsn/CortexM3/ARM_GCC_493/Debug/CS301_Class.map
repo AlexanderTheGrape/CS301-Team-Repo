@@ -225,7 +225,7 @@ Discarded input sections
  .text.ADC_SetPower
                 0x00000000       0x40 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC.o)
  .text.ADC_StopConvert
-                0x00000000       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC.o)
+                0x00000000       0x30 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC.o)
  .text.ADC_IsEndConversion
                 0x00000000       0x40 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC.o)
  .text.ADC_GetResult8
@@ -971,7 +971,7 @@ END GROUP
                 0x00000800                ee_size = (CY_APPL_LOADABLE && ! (CY_EE_IN_BTLDR))?(CY_EE_SIZE / CY_APPL_MAX):CY_EE_SIZE
                 0x00000000                PROVIDE (CY_ECC_OFFSET, ecc_offset)
 
-.text           0x00000000     0x48c8
+.text           0x00000000     0x4928
  CREATE_OBJECT_SYMBOLS
                 0x00000000                PROVIDE (__cy_interrupt_vector, RomVectors)
  *(.romvectors)
@@ -1008,536 +1008,535 @@ END GROUP
                 0x00000158      0x260 .\CortexM3\ARM_GCC_493\Debug\main.o
                 0x00000158                Quad_Dec_response
  .text.print_ADC
-                0x000003b8       0x7c .\CortexM3\ARM_GCC_493\Debug\main.o
+                0x000003b8       0x84 .\CortexM3\ARM_GCC_493\Debug\main.o
                 0x000003b8                print_ADC
- .text.main     0x00000434       0x70 .\CortexM3\ARM_GCC_493\Debug\main.o
-                0x00000434                main
+ .text.main     0x0000043c       0x70 .\CortexM3\ARM_GCC_493\Debug\main.o
+                0x0000043c                main
  .text.usbPutString
-                0x000004a4       0x68 .\CortexM3\ARM_GCC_493\Debug\main.o
-                0x000004a4                usbPutString
+                0x000004ac       0x68 .\CortexM3\ARM_GCC_493\Debug\main.o
+                0x000004ac                usbPutString
  .text.IntDefaultHandler
-                0x0000050c        0x8 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
-                0x0000050c                IntDefaultHandler
- .text._sbrk    0x00000514       0x50 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
-                0x00000514                _sbrk
- .text.Start_c  0x00000564       0x98 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
-                0x00000564                Start_c
+                0x00000514        0x8 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+                0x00000514                IntDefaultHandler
+ .text._sbrk    0x0000051c       0x50 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+                0x0000051c                _sbrk
+ .text.Start_c  0x0000056c       0x98 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+                0x0000056c                Start_c
  .text.initialize_psoc
-                0x000005fc       0x8c .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
-                0x000005fc                initialize_psoc
+                0x00000604       0x8c .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+                0x00000604                initialize_psoc
  .text.CYMEMZERO
-                0x00000688       0x1c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyfitter_cfg.o)
+                0x00000690       0x1c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyfitter_cfg.o)
  .text.CYCONFIGCPY
-                0x000006a4       0x1c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyfitter_cfg.o)
+                0x000006ac       0x1c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyfitter_cfg.o)
  .text.CyClockStartupError
-                0x000006c0        0xc .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyfitter_cfg.o)
+                0x000006c8        0xc .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyfitter_cfg.o)
  .text.cfg_write_bytes32
-                0x000006cc       0x74 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyfitter_cfg.o)
+                0x000006d4       0x74 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyfitter_cfg.o)
  .text.ClockSetup
-                0x00000740      0x168 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyfitter_cfg.o)
+                0x00000748      0x168 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyfitter_cfg.o)
  .text.AnalogSetDefault
-                0x000008a8       0xb8 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyfitter_cfg.o)
+                0x000008b0       0xb8 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyfitter_cfg.o)
  .text.cyfitter_cfg
-                0x00000960      0x160 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyfitter_cfg.o)
-                0x00000960                cyfitter_cfg
+                0x00000968      0x1ac .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyfitter_cfg.o)
+                0x00000968                cyfitter_cfg
  .text.ADC_Start
-                0x00000ac0       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC.o)
-                0x00000ac0                ADC_Start
+                0x00000b14       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC.o)
+                0x00000b14                ADC_Start
  .text.ADC_Init
-                0x00000ae0       0x44 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC.o)
-                0x00000ae0                ADC_Init
+                0x00000b34       0x44 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC.o)
+                0x00000b34                ADC_Init
  .text.ADC_Enable
-                0x00000b24       0xf4 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC.o)
-                0x00000b24                ADC_Enable
+                0x00000b78       0xf4 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC.o)
+                0x00000b78                ADC_Enable
  .text.ADC_SetResolution
-                0x00000c18       0x50 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC.o)
-                0x00000c18                ADC_SetResolution
+                0x00000c6c       0x50 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC.o)
+                0x00000c6c                ADC_SetResolution
  .text.ADC_StartConvert
-                0x00000c68       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC.o)
-                0x00000c68                ADC_StartConvert
+                0x00000cbc       0x30 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC.o)
+                0x00000cbc                ADC_StartConvert
  .text.ADC_GetResult16
-                0x00000c88       0x34 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC.o)
-                0x00000c88                ADC_GetResult16
+                0x00000cec       0x34 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC.o)
+                0x00000cec                ADC_GetResult16
  .text.ADC_CalcGain
-                0x00000cbc       0x80 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC.o)
- .text.ADC_ISR  0x00000d3c        0xc .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC_INT.o)
-                0x00000d3c                ADC_ISR
+                0x00000d20       0x80 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC.o)
+ .text.ADC_ISR  0x00000da0        0xc .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC_INT.o)
+                0x00000da0                ADC_ISR
  .text.USBUART_Start
-                0x00000d48       0x38 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART.o)
-                0x00000d48                USBUART_Start
+                0x00000dac       0x38 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART.o)
+                0x00000dac                USBUART_Start
  .text.USBUART_Init
-                0x00000d80      0x1a0 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART.o)
-                0x00000d80                USBUART_Init
+                0x00000de4      0x1a0 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART.o)
+                0x00000de4                USBUART_Init
  .text.USBUART_InitComponent
-                0x00000f20      0x100 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART.o)
-                0x00000f20                USBUART_InitComponent
+                0x00000f84      0x100 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART.o)
+                0x00000f84                USBUART_InitComponent
  .text.USBUART_ReInitComponent
-                0x00001020       0x68 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART.o)
-                0x00001020                USBUART_ReInitComponent
+                0x00001084       0x68 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART.o)
+                0x00001084                USBUART_ReInitComponent
  .text.USBUART_GetConfiguration
-                0x00001088       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART.o)
-                0x00001088                USBUART_GetConfiguration
+                0x000010ec       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART.o)
+                0x000010ec                USBUART_GetConfiguration
  .text.USBUART_GetEPState
-                0x000010a0       0x2c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART.o)
-                0x000010a0                USBUART_GetEPState
+                0x00001104       0x2c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART.o)
+                0x00001104                USBUART_GetEPState
  .text.USBUART_LoadInEP
-                0x000010cc       0xf8 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART.o)
-                0x000010cc                USBUART_LoadInEP
+                0x00001130       0xf8 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART.o)
+                0x00001130                USBUART_LoadInEP
  .text.USBUART_EnableOutEP
-                0x000011c4       0x54 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART.o)
-                0x000011c4                USBUART_EnableOutEP
+                0x00001228       0x54 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART.o)
+                0x00001228                USBUART_EnableOutEP
  .text.USBUART_DispatchCDCClassRqst
-                0x00001218       0xe8 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cdc.o)
-                0x00001218                USBUART_DispatchCDCClassRqst
+                0x0000127c       0xe8 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cdc.o)
+                0x0000127c                USBUART_DispatchCDCClassRqst
  .text.USBUART_GetInterfaceComPort
-                0x00001300       0x60 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cdc.o)
-                0x00001300                USBUART_GetInterfaceComPort
+                0x00001364       0x60 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cdc.o)
+                0x00001364                USBUART_GetInterfaceComPort
  .text.USBUART_CDC_Init
-                0x00001360       0xa8 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cdc.o)
-                0x00001360                USBUART_CDC_Init
+                0x000013c4       0xa8 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cdc.o)
+                0x000013c4                USBUART_CDC_Init
  .text.USBUART_PutData
-                0x00001408       0x6c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cdc.o)
-                0x00001408                USBUART_PutData
+                0x0000146c       0x6c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cdc.o)
+                0x0000146c                USBUART_PutData
  .text.USBUART_CDCIsReady
-                0x00001474       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cdc.o)
-                0x00001474                USBUART_CDCIsReady
+                0x000014d8       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cdc.o)
+                0x000014d8                USBUART_CDCIsReady
  .text.USBUART_Cdc_EpInit
-                0x00001498       0x94 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cdc.o)
-                0x00001498                USBUART_Cdc_EpInit
+                0x000014fc       0x94 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cdc.o)
+                0x000014fc                USBUART_Cdc_EpInit
  .text.USBUART_EP_0_ISR
-                0x0000152c       0xf8 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
-                0x0000152c                USBUART_EP_0_ISR
+                0x00001590       0xf8 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
+                0x00001590                USBUART_EP_0_ISR
  .text.USBUART_HandleSetup
-                0x00001624       0x88 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
-                0x00001624                USBUART_HandleSetup
+                0x00001688       0x88 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
+                0x00001688                USBUART_HandleSetup
  .text.USBUART_HandleIN
-                0x000016ac       0x4c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
-                0x000016ac                USBUART_HandleIN
+                0x00001710       0x4c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
+                0x00001710                USBUART_HandleIN
  .text.USBUART_HandleOUT
-                0x000016f8       0x58 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
-                0x000016f8                USBUART_HandleOUT
+                0x0000175c       0x58 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
+                0x0000175c                USBUART_HandleOUT
  .text.USBUART_LoadEP0
-                0x00001750       0xd0 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
-                0x00001750                USBUART_LoadEP0
+                0x000017b4       0xd0 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
+                0x000017b4                USBUART_LoadEP0
  .text.USBUART_InitControlRead
-                0x00001820       0x70 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
-                0x00001820                USBUART_InitControlRead
+                0x00001884       0x70 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
+                0x00001884                USBUART_InitControlRead
  .text.USBUART_InitZeroLengthControlTransfer
-                0x00001890       0x44 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
-                0x00001890                USBUART_InitZeroLengthControlTransfer
+                0x000018f4       0x44 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
+                0x000018f4                USBUART_InitZeroLengthControlTransfer
  .text.USBUART_ControlReadDataStage
-                0x000018d4        0xc .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
-                0x000018d4                USBUART_ControlReadDataStage
+                0x00001938        0xc .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
+                0x00001938                USBUART_ControlReadDataStage
  .text.USBUART_ControlReadStatusStage
-                0x000018e0       0x40 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
-                0x000018e0                USBUART_ControlReadStatusStage
+                0x00001944       0x40 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
+                0x00001944                USBUART_ControlReadStatusStage
  .text.USBUART_InitControlWrite
-                0x00001920       0x64 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
-                0x00001920                USBUART_InitControlWrite
+                0x00001984       0x64 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
+                0x00001984                USBUART_InitControlWrite
  .text.USBUART_ControlWriteDataStage
-                0x00001984       0xb4 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
-                0x00001984                USBUART_ControlWriteDataStage
+                0x000019e8       0xb4 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
+                0x000019e8                USBUART_ControlWriteDataStage
  .text.USBUART_ControlWriteStatusStage
-                0x00001a38       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
-                0x00001a38                USBUART_ControlWriteStatusStage
+                0x00001a9c       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
+                0x00001a9c                USBUART_ControlWriteStatusStage
  .text.USBUART_InitNoDataControlTransfer
-                0x00001a58       0x38 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
-                0x00001a58                USBUART_InitNoDataControlTransfer
+                0x00001abc       0x38 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
+                0x00001abc                USBUART_InitNoDataControlTransfer
  .text.USBUART_NoDataControlStatusStage
-                0x00001a90       0x48 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
-                0x00001a90                USBUART_NoDataControlStatusStage
+                0x00001af4       0x48 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
+                0x00001af4                USBUART_NoDataControlStatusStage
  .text.USBUART_UpdateStatusBlock
-                0x00001ad8       0x40 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
-                0x00001ad8                USBUART_UpdateStatusBlock
+                0x00001b3c       0x40 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
+                0x00001b3c                USBUART_UpdateStatusBlock
  .text.USBUART_InitializeStatusBlock
-                0x00001b18       0x34 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
-                0x00001b18                USBUART_InitializeStatusBlock
+                0x00001b7c       0x34 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
+                0x00001b7c                USBUART_InitializeStatusBlock
  .text.USBUART_EP_1_ISR
-                0x00001b4c       0x54 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_episr.o)
-                0x00001b4c                USBUART_EP_1_ISR
+                0x00001bb0       0x54 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_episr.o)
+                0x00001bb0                USBUART_EP_1_ISR
  .text.USBUART_EP_2_ISR
-                0x00001ba0       0x54 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_episr.o)
-                0x00001ba0                USBUART_EP_2_ISR
+                0x00001c04       0x54 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_episr.o)
+                0x00001c04                USBUART_EP_2_ISR
  .text.USBUART_EP_3_ISR
-                0x00001bf4       0x5c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_episr.o)
-                0x00001bf4                USBUART_EP_3_ISR
+                0x00001c58       0x5c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_episr.o)
+                0x00001c58                USBUART_EP_3_ISR
  .text.USBUART_SOF_ISR
-                0x00001c50        0xc .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_episr.o)
-                0x00001c50                USBUART_SOF_ISR
+                0x00001cb4        0xc .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_episr.o)
+                0x00001cb4                USBUART_SOF_ISR
  .text.USBUART_BUS_RESET_ISR
-                0x00001c5c        0xc .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_episr.o)
-                0x00001c5c                USBUART_BUS_RESET_ISR
+                0x00001cc0        0xc .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_episr.o)
+                0x00001cc0                USBUART_BUS_RESET_ISR
  .text.USBUART_DP_ISR
-                0x00001c68        0xc .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_pm.o)
-                0x00001c68                USBUART_DP_ISR
+                0x00001ccc        0xc .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_pm.o)
+                0x00001ccc                USBUART_DP_ISR
  .text.USBUART_HandleStandardRqst
-                0x00001c74      0x48c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
-                0x00001c74                USBUART_HandleStandardRqst
+                0x00001cd8      0x48c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
+                0x00001cd8                USBUART_HandleStandardRqst
  .text.USBUART_ReadDieID
-                0x00002100       0xd4 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
-                0x00002100                USBUART_ReadDieID
+                0x00002164       0xd4 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
+                0x00002164                USBUART_ReadDieID
  .text.USBUART_ConfigReg
-                0x000021d4      0x11c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
-                0x000021d4                USBUART_ConfigReg
+                0x00002238      0x11c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
+                0x00002238                USBUART_ConfigReg
  .text.USBUART_Config
-                0x000022f0      0x394 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
-                0x000022f0                USBUART_Config
+                0x00002354      0x394 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
+                0x00002354                USBUART_Config
  .text.USBUART_ConfigAltChanged
-                0x00002684      0x23c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
-                0x00002684                USBUART_ConfigAltChanged
+                0x000026e8      0x23c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
+                0x000026e8                USBUART_ConfigAltChanged
  .text.USBUART_GetConfigTablePtr
-                0x000028c0       0x54 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
-                0x000028c0                USBUART_GetConfigTablePtr
+                0x00002924       0x54 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
+                0x00002924                USBUART_GetConfigTablePtr
  .text.USBUART_GetDeviceTablePtr
-                0x00002914       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
-                0x00002914                USBUART_GetDeviceTablePtr
+                0x00002978       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
+                0x00002978                USBUART_GetDeviceTablePtr
  .text.USBUART_GetInterfaceClassTablePtr
-                0x00002938       0x4c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
-                0x00002938                USBUART_GetInterfaceClassTablePtr
+                0x0000299c       0x4c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
+                0x0000299c                USBUART_GetInterfaceClassTablePtr
  .text.USBUART_SetEndpointHalt
-                0x00002984       0xdc .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
-                0x00002984                USBUART_SetEndpointHalt
+                0x000029e8       0xdc .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
+                0x000029e8                USBUART_SetEndpointHalt
  .text.USBUART_ClearEndpointHalt
-                0x00002a60      0x130 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
-                0x00002a60                USBUART_ClearEndpointHalt
+                0x00002ac4      0x130 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
+                0x00002ac4                USBUART_ClearEndpointHalt
  .text.USBUART_ValidateAlternateSetting
-                0x00002b90       0x70 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
-                0x00002b90                USBUART_ValidateAlternateSetting
+                0x00002bf4       0x70 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
+                0x00002bf4                USBUART_ValidateAlternateSetting
  .text.USBUART_HandleVendorRqst
-                0x00002c00       0x54 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_vnd.o)
-                0x00002c00                USBUART_HandleVendorRqst
+                0x00002c64       0x54 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_vnd.o)
+                0x00002c64                USBUART_HandleVendorRqst
  .text.USBUART_Dp_ClearInterrupt
-                0x00002c54       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_Dp.o)
-                0x00002c54                USBUART_Dp_ClearInterrupt
- *fill*         0x00002c74        0x4 
- .text          0x00002c78       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyBootAsmGnu.o)
-                0x00002c78                CyDelayCycles
-                0x00002c88                CyEnterCriticalSection
-                0x00002c90                CyExitCriticalSection
- .text.CyHalt   0x00002c98       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyLib.o)
-                0x00002c98                CyHalt
+                0x00002cb8       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_Dp.o)
+                0x00002cb8                USBUART_Dp_ClearInterrupt
+ .text          0x00002cd8       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyBootAsmGnu.o)
+                0x00002cd8                CyDelayCycles
+                0x00002ce8                CyEnterCriticalSection
+                0x00002cf0                CyExitCriticalSection
+ .text.CyHalt   0x00002cf8       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyLib.o)
+                0x00002cf8                CyHalt
  .text.CyDelayUs
-                0x00002cb0       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyLib.o)
-                0x00002cb0                CyDelayUs
+                0x00002d10       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyLib.o)
+                0x00002d10                CyDelayUs
  .text.CyIntSetVector
-                0x00002cd4       0x50 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyLib.o)
-                0x00002cd4                CyIntSetVector
+                0x00002d34       0x50 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyLib.o)
+                0x00002d34                CyIntSetVector
  .text.CyIntSetPriority
-                0x00002d24       0x44 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyLib.o)
-                0x00002d24                CyIntSetPriority
+                0x00002d84       0x44 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyLib.o)
+                0x00002d84                CyIntSetPriority
  .text.CyGetUniqueId
-                0x00002d68       0xc4 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyLib.o)
-                0x00002d68                CyGetUniqueId
+                0x00002dc8       0xc4 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyLib.o)
+                0x00002dc8                CyGetUniqueId
  .text.PWM_1_Start
-                0x00002e2c       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_1.o)
-                0x00002e2c                PWM_1_Start
+                0x00002e8c       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_1.o)
+                0x00002e8c                PWM_1_Start
  .text.PWM_1_Init
-                0x00002e4c       0xbc .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_1.o)
-                0x00002e4c                PWM_1_Init
+                0x00002eac       0xbc .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_1.o)
+                0x00002eac                PWM_1_Init
  .text.PWM_1_Enable
-                0x00002f08       0x48 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_1.o)
-                0x00002f08                PWM_1_Enable
+                0x00002f68       0x48 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_1.o)
+                0x00002f68                PWM_1_Enable
  .text.PWM_1_WritePeriod
-                0x00002f50       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_1.o)
-                0x00002f50                PWM_1_WritePeriod
+                0x00002fb0       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_1.o)
+                0x00002fb0                PWM_1_WritePeriod
  .text.PWM_1_WriteCompare
-                0x00002f70       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_1.o)
-                0x00002f70                PWM_1_WriteCompare
+                0x00002fd0       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_1.o)
+                0x00002fd0                PWM_1_WriteCompare
  .text.PWM_1_SetInterruptMode
-                0x00002f90       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_1.o)
-                0x00002f90                PWM_1_SetInterruptMode
+                0x00002ff0       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_1.o)
+                0x00002ff0                PWM_1_SetInterruptMode
  .text.isr_eoc_StartEx
-                0x00002fb0       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_eoc.o)
-                0x00002fb0                isr_eoc_StartEx
+                0x00003010       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_eoc.o)
+                0x00003010                isr_eoc_StartEx
  .text.isr_eoc_SetVector
-                0x00002fd4       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_eoc.o)
-                0x00002fd4                isr_eoc_SetVector
+                0x00003034       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_eoc.o)
+                0x00003034                isr_eoc_SetVector
  .text.isr_eoc_SetPriority
-                0x00002ff8       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_eoc.o)
-                0x00002ff8                isr_eoc_SetPriority
+                0x00003058       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_eoc.o)
+                0x00003058                isr_eoc_SetPriority
  .text.isr_eoc_Enable
-                0x0000301c       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_eoc.o)
-                0x0000301c                isr_eoc_Enable
+                0x0000307c       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_eoc.o)
+                0x0000307c                isr_eoc_Enable
  .text.isr_eoc_Disable
-                0x00003034       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_eoc.o)
-                0x00003034                isr_eoc_Disable
+                0x00003094       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_eoc.o)
+                0x00003094                isr_eoc_Disable
  .text.PWM_2_Start
-                0x0000304c       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_2.o)
-                0x0000304c                PWM_2_Start
+                0x000030ac       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_2.o)
+                0x000030ac                PWM_2_Start
  .text.PWM_2_Init
-                0x0000306c       0xbc .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_2.o)
-                0x0000306c                PWM_2_Init
+                0x000030cc       0xbc .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_2.o)
+                0x000030cc                PWM_2_Init
  .text.PWM_2_Enable
-                0x00003128       0x48 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_2.o)
-                0x00003128                PWM_2_Enable
+                0x00003188       0x48 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_2.o)
+                0x00003188                PWM_2_Enable
  .text.PWM_2_WritePeriod
-                0x00003170       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_2.o)
-                0x00003170                PWM_2_WritePeriod
+                0x000031d0       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_2.o)
+                0x000031d0                PWM_2_WritePeriod
  .text.PWM_2_WriteCompare
-                0x00003190       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_2.o)
-                0x00003190                PWM_2_WriteCompare
+                0x000031f0       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_2.o)
+                0x000031f0                PWM_2_WriteCompare
  .text.PWM_2_SetInterruptMode
-                0x000031b0       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_2.o)
-                0x000031b0                PWM_2_SetInterruptMode
+                0x00003210       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_2.o)
+                0x00003210                PWM_2_SetInterruptMode
  .text.QuadDec_M1_Init
-                0x000031d0        0xc .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1.o)
-                0x000031d0                QuadDec_M1_Init
+                0x00003230        0xc .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1.o)
+                0x00003230                QuadDec_M1_Init
  .text.QuadDec_M1_Enable
-                0x000031dc       0x3c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1.o)
-                0x000031dc                QuadDec_M1_Enable
+                0x0000323c       0x3c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1.o)
+                0x0000323c                QuadDec_M1_Enable
  .text.QuadDec_M1_Start
-                0x00003218       0x2c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1.o)
-                0x00003218                QuadDec_M1_Start
+                0x00003278       0x2c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1.o)
+                0x00003278                QuadDec_M1_Start
  .text.QuadDec_M1_GetCounter
-                0x00003244       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1.o)
-                0x00003244                QuadDec_M1_GetCounter
+                0x000032a4       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1.o)
+                0x000032a4                QuadDec_M1_GetCounter
  .text.QuadDec_M1_SetCounter
-                0x00003268       0x34 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1.o)
-                0x00003268                QuadDec_M1_SetCounter
+                0x000032c8       0x34 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1.o)
+                0x000032c8                QuadDec_M1_SetCounter
  .text.QuadDec_M1_GetEvents
-                0x0000329c       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1.o)
-                0x0000329c                QuadDec_M1_GetEvents
+                0x000032fc       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1.o)
+                0x000032fc                QuadDec_M1_GetEvents
  .text.QuadDec_M1_SetInterruptMask
-                0x000032bc       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1.o)
-                0x000032bc                QuadDec_M1_SetInterruptMask
+                0x0000331c       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1.o)
+                0x0000331c                QuadDec_M1_SetInterruptMask
  .text.QuadDec_M2_Init
-                0x000032dc        0xc .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2.o)
-                0x000032dc                QuadDec_M2_Init
+                0x0000333c        0xc .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2.o)
+                0x0000333c                QuadDec_M2_Init
  .text.QuadDec_M2_Enable
-                0x000032e8       0x3c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2.o)
-                0x000032e8                QuadDec_M2_Enable
+                0x00003348       0x3c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2.o)
+                0x00003348                QuadDec_M2_Enable
  .text.QuadDec_M2_Start
-                0x00003324       0x2c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2.o)
-                0x00003324                QuadDec_M2_Start
+                0x00003384       0x2c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2.o)
+                0x00003384                QuadDec_M2_Start
  .text.QuadDec_M2_GetCounter
-                0x00003350       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2.o)
-                0x00003350                QuadDec_M2_GetCounter
+                0x000033b0       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2.o)
+                0x000033b0                QuadDec_M2_GetCounter
  .text.QuadDec_M2_SetCounter
-                0x00003374       0x34 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2.o)
-                0x00003374                QuadDec_M2_SetCounter
+                0x000033d4       0x34 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2.o)
+                0x000033d4                QuadDec_M2_SetCounter
  .text.QuadDec_M2_GetEvents
-                0x000033a8       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2.o)
-                0x000033a8                QuadDec_M2_GetEvents
+                0x00003408       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2.o)
+                0x00003408                QuadDec_M2_GetEvents
  .text.QuadDec_M2_SetInterruptMask
-                0x000033c8       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2.o)
-                0x000033c8                QuadDec_M2_SetInterruptMask
+                0x00003428       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2.o)
+                0x00003428                QuadDec_M2_SetInterruptMask
  .text.QuadDec_M1_Cnt16_Init
-                0x000033e8       0x80 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
-                0x000033e8                QuadDec_M1_Cnt16_Init
+                0x00003448       0x80 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
+                0x00003448                QuadDec_M1_Cnt16_Init
  .text.QuadDec_M1_Cnt16_Enable
-                0x00003468       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
-                0x00003468                QuadDec_M1_Cnt16_Enable
+                0x000034c8       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
+                0x000034c8                QuadDec_M1_Cnt16_Enable
  .text.QuadDec_M1_Cnt16_Start
-                0x00003488       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
-                0x00003488                QuadDec_M1_Cnt16_Start
+                0x000034e8       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
+                0x000034e8                QuadDec_M1_Cnt16_Start
  .text.QuadDec_M1_Cnt16_SetInterruptMode
-                0x000034a8       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
-                0x000034a8                QuadDec_M1_Cnt16_SetInterruptMode
+                0x00003508       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
+                0x00003508                QuadDec_M1_Cnt16_SetInterruptMode
  .text.QuadDec_M1_Cnt16_ReadStatusRegister
-                0x000034c8       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
-                0x000034c8                QuadDec_M1_Cnt16_ReadStatusRegister
+                0x00003528       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
+                0x00003528                QuadDec_M1_Cnt16_ReadStatusRegister
  .text.QuadDec_M1_Cnt16_WriteCounter
-                0x000034e0       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
-                0x000034e0                QuadDec_M1_Cnt16_WriteCounter
+                0x00003540       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
+                0x00003540                QuadDec_M1_Cnt16_WriteCounter
  .text.QuadDec_M1_Cnt16_ReadCounter
-                0x00003500       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
-                0x00003500                QuadDec_M1_Cnt16_ReadCounter
+                0x00003560       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
+                0x00003560                QuadDec_M1_Cnt16_ReadCounter
  .text.QuadDec_M1_Cnt16_ReadCapture
-                0x00003520       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
-                0x00003520                QuadDec_M1_Cnt16_ReadCapture
+                0x00003580       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
+                0x00003580                QuadDec_M1_Cnt16_ReadCapture
  .text.QuadDec_M1_Cnt16_WritePeriod
-                0x00003538       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
-                0x00003538                QuadDec_M1_Cnt16_WritePeriod
+                0x00003598       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
+                0x00003598                QuadDec_M1_Cnt16_WritePeriod
  .text.QuadDec_M1_Cnt16_WriteCompare
-                0x00003558       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
-                0x00003558                QuadDec_M1_Cnt16_WriteCompare
+                0x000035b8       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
+                0x000035b8                QuadDec_M1_Cnt16_WriteCompare
  .text.QuadDec_M1_Cnt16_ClearFIFO
-                0x00003578       0x1c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
-                0x00003578                QuadDec_M1_Cnt16_ClearFIFO
+                0x000035d8       0x1c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
+                0x000035d8                QuadDec_M1_Cnt16_ClearFIFO
  .text.QuadDec_M2_Cnt16_Init
-                0x00003594       0x80 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
-                0x00003594                QuadDec_M2_Cnt16_Init
+                0x000035f4       0x80 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
+                0x000035f4                QuadDec_M2_Cnt16_Init
  .text.QuadDec_M2_Cnt16_Enable
-                0x00003614       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
-                0x00003614                QuadDec_M2_Cnt16_Enable
+                0x00003674       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
+                0x00003674                QuadDec_M2_Cnt16_Enable
  .text.QuadDec_M2_Cnt16_Start
-                0x00003634       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
-                0x00003634                QuadDec_M2_Cnt16_Start
+                0x00003694       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
+                0x00003694                QuadDec_M2_Cnt16_Start
  .text.QuadDec_M2_Cnt16_SetInterruptMode
-                0x00003654       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
-                0x00003654                QuadDec_M2_Cnt16_SetInterruptMode
+                0x000036b4       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
+                0x000036b4                QuadDec_M2_Cnt16_SetInterruptMode
  .text.QuadDec_M2_Cnt16_ReadStatusRegister
-                0x00003674       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
-                0x00003674                QuadDec_M2_Cnt16_ReadStatusRegister
+                0x000036d4       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
+                0x000036d4                QuadDec_M2_Cnt16_ReadStatusRegister
  .text.QuadDec_M2_Cnt16_WriteCounter
-                0x0000368c       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
-                0x0000368c                QuadDec_M2_Cnt16_WriteCounter
+                0x000036ec       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
+                0x000036ec                QuadDec_M2_Cnt16_WriteCounter
  .text.QuadDec_M2_Cnt16_ReadCounter
-                0x000036ac       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
-                0x000036ac                QuadDec_M2_Cnt16_ReadCounter
+                0x0000370c       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
+                0x0000370c                QuadDec_M2_Cnt16_ReadCounter
  .text.QuadDec_M2_Cnt16_ReadCapture
-                0x000036cc       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
-                0x000036cc                QuadDec_M2_Cnt16_ReadCapture
+                0x0000372c       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
+                0x0000372c                QuadDec_M2_Cnt16_ReadCapture
  .text.QuadDec_M2_Cnt16_WritePeriod
-                0x000036e4       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
-                0x000036e4                QuadDec_M2_Cnt16_WritePeriod
+                0x00003744       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
+                0x00003744                QuadDec_M2_Cnt16_WritePeriod
  .text.QuadDec_M2_Cnt16_WriteCompare
-                0x00003704       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
-                0x00003704                QuadDec_M2_Cnt16_WriteCompare
+                0x00003764       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
+                0x00003764                QuadDec_M2_Cnt16_WriteCompare
  .text.QuadDec_M2_Cnt16_ClearFIFO
-                0x00003724       0x1c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
-                0x00003724                QuadDec_M2_Cnt16_ClearFIFO
+                0x00003784       0x1c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
+                0x00003784                QuadDec_M2_Cnt16_ClearFIFO
  .text.RF_BT_SELECT_Write
-                0x00003740       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(RF_BT_SELECT.o)
-                0x00003740                RF_BT_SELECT_Write
+                0x000037a0       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(RF_BT_SELECT.o)
+                0x000037a0                RF_BT_SELECT_Write
  .text.isr_quad1_StartEx
-                0x00003760       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_quad1.o)
-                0x00003760                isr_quad1_StartEx
+                0x000037c0       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_quad1.o)
+                0x000037c0                isr_quad1_StartEx
  .text.isr_quad1_SetVector
-                0x00003784       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_quad1.o)
-                0x00003784                isr_quad1_SetVector
+                0x000037e4       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_quad1.o)
+                0x000037e4                isr_quad1_SetVector
  .text.isr_quad1_SetPriority
-                0x000037a8       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_quad1.o)
-                0x000037a8                isr_quad1_SetPriority
+                0x00003808       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_quad1.o)
+                0x00003808                isr_quad1_SetPriority
  .text.isr_quad1_Enable
-                0x000037cc       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_quad1.o)
-                0x000037cc                isr_quad1_Enable
+                0x0000382c       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_quad1.o)
+                0x0000382c                isr_quad1_Enable
  .text.isr_quad1_Disable
-                0x000037e4       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_quad1.o)
-                0x000037e4                isr_quad1_Disable
+                0x00003844       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_quad1.o)
+                0x00003844                isr_quad1_Disable
  .text.Timer_1_Init
-                0x000037fc       0x4c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(Timer_1.o)
-                0x000037fc                Timer_1_Init
+                0x0000385c       0x4c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(Timer_1.o)
+                0x0000385c                Timer_1_Init
  .text.Timer_1_Enable
-                0x00003848       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(Timer_1.o)
-                0x00003848                Timer_1_Enable
+                0x000038a8       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(Timer_1.o)
+                0x000038a8                Timer_1_Enable
  .text.Timer_1_Start
-                0x00003868       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(Timer_1.o)
-                0x00003868                Timer_1_Start
+                0x000038c8       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(Timer_1.o)
+                0x000038c8                Timer_1_Start
  .text.Timer_1_SetInterruptMode
-                0x00003888       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(Timer_1.o)
-                0x00003888                Timer_1_SetInterruptMode
+                0x000038e8       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(Timer_1.o)
+                0x000038e8                Timer_1_SetInterruptMode
  .text.Timer_1_ReadStatusRegister
-                0x000038a8       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(Timer_1.o)
-                0x000038a8                Timer_1_ReadStatusRegister
+                0x00003908       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(Timer_1.o)
+                0x00003908                Timer_1_ReadStatusRegister
  .text.Timer_1_WritePeriod
-                0x000038c0       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(Timer_1.o)
-                0x000038c0                Timer_1_WritePeriod
+                0x00003920       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(Timer_1.o)
+                0x00003920                Timer_1_WritePeriod
  .text.Timer_1_ReadCapture
-                0x000038e0       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(Timer_1.o)
-                0x000038e0                Timer_1_ReadCapture
+                0x00003940       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(Timer_1.o)
+                0x00003940                Timer_1_ReadCapture
  .text.Timer_1_WriteCounter
-                0x000038f8       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(Timer_1.o)
-                0x000038f8                Timer_1_WriteCounter
+                0x00003958       0x20 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(Timer_1.o)
+                0x00003958                Timer_1_WriteCounter
  .text.Timer_1_ClearFIFO
-                0x00003918       0x1c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(Timer_1.o)
-                0x00003918                Timer_1_ClearFIFO
+                0x00003978       0x1c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(Timer_1.o)
+                0x00003978                Timer_1_ClearFIFO
  .text.ADC_theACLK_SetModeRegister
-                0x00003934       0x34 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC_theACLK.o)
-                0x00003934                ADC_theACLK_SetModeRegister
+                0x00003994       0x34 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC_theACLK.o)
+                0x00003994                ADC_theACLK_SetModeRegister
  .text.isr_OnLine_StartEx
-                0x00003968       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_OnLine.o)
-                0x00003968                isr_OnLine_StartEx
+                0x000039c8       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_OnLine.o)
+                0x000039c8                isr_OnLine_StartEx
  .text.isr_OnLine_SetVector
-                0x0000398c       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_OnLine.o)
-                0x0000398c                isr_OnLine_SetVector
+                0x000039ec       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_OnLine.o)
+                0x000039ec                isr_OnLine_SetVector
  .text.isr_OnLine_SetPriority
-                0x000039b0       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_OnLine.o)
-                0x000039b0                isr_OnLine_SetPriority
+                0x00003a10       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_OnLine.o)
+                0x00003a10                isr_OnLine_SetPriority
  .text.isr_OnLine_Enable
-                0x000039d4       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_OnLine.o)
-                0x000039d4                isr_OnLine_Enable
+                0x00003a34       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_OnLine.o)
+                0x00003a34                isr_OnLine_Enable
  .text.isr_OnLine_Disable
-                0x000039ec       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_OnLine.o)
-                0x000039ec                isr_OnLine_Disable
+                0x00003a4c       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_OnLine.o)
+                0x00003a4c                isr_OnLine_Disable
  .text.isr_button_StartEx
-                0x00003a04       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_button.o)
-                0x00003a04                isr_button_StartEx
+                0x00003a64       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_button.o)
+                0x00003a64                isr_button_StartEx
  .text.isr_button_SetVector
-                0x00003a28       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_button.o)
-                0x00003a28                isr_button_SetVector
+                0x00003a88       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_button.o)
+                0x00003a88                isr_button_SetVector
  .text.isr_button_SetPriority
-                0x00003a4c       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_button.o)
-                0x00003a4c                isr_button_SetPriority
+                0x00003aac       0x24 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_button.o)
+                0x00003aac                isr_button_SetPriority
  .text.isr_button_Enable
-                0x00003a70       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_button.o)
-                0x00003a70                isr_button_Enable
+                0x00003ad0       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_button.o)
+                0x00003ad0                isr_button_Enable
  .text.isr_button_Disable
-                0x00003a88       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_button.o)
-                0x00003a88                isr_button_Disable
+                0x00003ae8       0x18 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_button.o)
+                0x00003ae8                isr_button_Disable
  .text.USBUART_DispatchClassRqst
-                0x00003aa0       0x7c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cls.o)
-                0x00003aa0                USBUART_DispatchClassRqst
- .text          0x00003b1c      0x21c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_arm_addsubsf3.o)
-                0x00003b1c                __aeabi_frsub
-                0x00003b24                __subsf3
-                0x00003b24                __aeabi_fsub
-                0x00003b28                __aeabi_fadd
-                0x00003b28                __addsf3
-                0x00003c88                __aeabi_ui2f
-                0x00003c88                __floatunsisf
-                0x00003c90                __aeabi_i2f
-                0x00003c90                __floatsisf
-                0x00003cac                __aeabi_ul2f
-                0x00003cac                __floatundisf
-                0x00003cbc                __aeabi_l2f
-                0x00003cbc                __floatdisf
- .text          0x00003d38      0x2a0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_arm_muldivsf3.o)
-                0x00003d38                __mulsf3
-                0x00003d38                __aeabi_fmul
-                0x00003ea0                __aeabi_fdiv
-                0x00003ea0                __divsf3
- .text          0x00003fd8       0x4c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_arm_fixsfsi.o)
-                0x00003fd8                __aeabi_f2iz
-                0x00003fd8                __fixsfsi
- .text.__errno  0x00004024        0xc c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
-                0x00004024                __errno
+                0x00003b00       0x7c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cls.o)
+                0x00003b00                USBUART_DispatchClassRqst
+ .text          0x00003b7c      0x21c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_arm_addsubsf3.o)
+                0x00003b7c                __aeabi_frsub
+                0x00003b84                __subsf3
+                0x00003b84                __aeabi_fsub
+                0x00003b88                __aeabi_fadd
+                0x00003b88                __addsf3
+                0x00003ce8                __aeabi_ui2f
+                0x00003ce8                __floatunsisf
+                0x00003cf0                __aeabi_i2f
+                0x00003cf0                __floatsisf
+                0x00003d0c                __aeabi_ul2f
+                0x00003d0c                __floatundisf
+                0x00003d1c                __aeabi_l2f
+                0x00003d1c                __floatdisf
+ .text          0x00003d98      0x2a0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_arm_muldivsf3.o)
+                0x00003d98                __mulsf3
+                0x00003d98                __aeabi_fmul
+                0x00003f00                __aeabi_fdiv
+                0x00003f00                __divsf3
+ .text          0x00004038       0x4c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a(_arm_fixsfsi.o)
+                0x00004038                __aeabi_f2iz
+                0x00004038                __fixsfsi
+ .text.__errno  0x00004084        0xc c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+                0x00004084                __errno
  .text.__libc_init_array
-                0x00004030       0x4c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
-                0x00004030                __libc_init_array
- .text.memcpy   0x0000407c       0x16 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy.o)
-                0x0000407c                memcpy
- .text.memset   0x00004092       0x10 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
-                0x00004092                memset
- *fill*         0x000040a2        0x2 
- .text.sprintf  0x000040a4       0x48 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sprintf.o)
-                0x000040a4                siprintf
-                0x000040a4                sprintf
- .text.strlen   0x000040ec       0x10 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strlen.o)
-                0x000040ec                strlen
+                0x00004090       0x4c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+                0x00004090                __libc_init_array
+ .text.memcpy   0x000040dc       0x16 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy.o)
+                0x000040dc                memcpy
+ .text.memset   0x000040f2       0x10 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+                0x000040f2                memset
+ *fill*         0x00004102        0x2 
+ .text.sprintf  0x00004104       0x48 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sprintf.o)
+                0x00004104                siprintf
+                0x00004104                sprintf
+ .text.strlen   0x0000414c       0x10 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strlen.o)
+                0x0000414c                strlen
  .text.__ssputs_r
-                0x000040fc       0xb2 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
-                0x000040fc                __ssputs_r
- *fill*         0x000041ae        0x2 
+                0x0000415c       0xb2 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x0000415c                __ssputs_r
+ *fill*         0x0000420e        0x2 
  .text._svfprintf_r
-                0x000041b0      0x1e4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
-                0x000041b0                _svfiprintf_r
-                0x000041b0                _svfprintf_r
+                0x00004210      0x1e4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x00004210                _svfiprintf_r
+                0x00004210                _svfprintf_r
  .text._printf_common
-                0x00004394       0xea c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
-                0x00004394                _printf_common
- *fill*         0x0000447e        0x2 
+                0x000043f4       0xea c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x000043f4                _printf_common
+ *fill*         0x000044de        0x2 
  .text._printf_i
-                0x00004480      0x240 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
-                0x00004480                _printf_i
- .text.memchr   0x000046c0       0x1c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memchr.o)
-                0x000046c0                memchr
- .text.memmove  0x000046dc       0x36 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memmove.o)
-                0x000046dc                memmove
- *fill*         0x00004712        0x2 
- .text._free_r  0x00004714       0x88 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-freer.o)
-                0x00004714                _free_r
+                0x000044e0      0x240 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x000044e0                _printf_i
+ .text.memchr   0x00004720       0x1c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memchr.o)
+                0x00004720                memchr
+ .text.memmove  0x0000473c       0x36 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memmove.o)
+                0x0000473c                memmove
+ *fill*         0x00004772        0x2 
+ .text._free_r  0x00004774       0x88 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-freer.o)
+                0x00004774                _free_r
  .text._malloc_r
-                0x0000479c       0xac c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
-                0x0000479c                _malloc_r
+                0x000047fc       0xac c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x000047fc                _malloc_r
  .text._realloc_r
-                0x00004848       0x4c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-reallocr.o)
-                0x00004848                _realloc_r
- .text._sbrk_r  0x00004894       0x20 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sbrkr.o)
-                0x00004894                _sbrk_r
+                0x000048a8       0x4c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-reallocr.o)
+                0x000048a8                _realloc_r
+ .text._sbrk_r  0x000048f4       0x20 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sbrkr.o)
+                0x000048f4                _sbrk_r
  .text._malloc_usable_size_r
-                0x000048b4       0x14 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
-                0x000048b4                _malloc_usable_size_r
+                0x00004914       0x14 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
+                0x00004914                _malloc_usable_size_r
  *(.plt)
  *(.gnu.warning)
  *(.glue_7t)
@@ -1550,99 +1549,98 @@ END GROUP
  *(.ARM.extab* .gnu.linkonce.armextab.*)
  *(.gcc_except_table)
 
-.v4_bx          0x000048c8        0x0
+.v4_bx          0x00004928        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x000048c8        0x0
+.iplt           0x00004928        0x0
  .iplt          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
 
 .eh_frame_hdr
  *(.eh_frame_hdr)
 
-.eh_frame       0x000048c8        0x4
+.eh_frame       0x00004928        0x4
  *(.eh_frame)
- .eh_frame      0x000048c8        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
- .eh_frame      0x000048c8        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtend.o
-                0x000048cc                PROVIDE (__exidx_start, .)
+ .eh_frame      0x00004928        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
+ .eh_frame      0x00004928        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtend.o
+                0x0000492c                PROVIDE (__exidx_start, .)
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x000048cc                __exidx_end = .
+                0x0000492c                __exidx_end = .
 
-.rodata         0x000048cc      0x30c
+.rodata         0x0000492c      0x31c
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata        0x000048cc       0xbc .\CortexM3\ARM_GCC_493\Debug\main.o
- .rodata        0x00004988       0x30 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyfitter_cfg.o)
- .rodata        0x000049b8       0x14 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
- .rodata        0x000049cc      0x19c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_descr.o)
-                0x000049cc                USBUART_DEVICE0_DESCR
-                0x000049e0                USBUART_DEVICE0_CONFIGURATION0_DESCR
-                0x00004a24                USBUART_STRING_DESCRIPTORS
-                0x00004ac4                USBUART_SN_STRING_DESCRIPTOR
-                0x00004ac8                USBUART_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE
-                0x00004ae0                USBUART_DEVICE0_CONFIGURATION0_INTERFACE_CLASS
-                0x00004ae4                USBUART_DEVICE0_CONFIGURATION0_TABLE
-                0x00004b0c                USBUART_DEVICE0_TABLE
-                0x00004b24                USBUART_TABLE
-                0x00004b2c                USBUART_MSOS_DESCRIPTOR
-                0x00004b40                USBUART_MSOS_CONFIGURATION_DESCR
+ .rodata        0x0000492c       0xbc .\CortexM3\ARM_GCC_493\Debug\main.o
+ .rodata        0x000049e8       0x44 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyfitter_cfg.o)
+ .rodata        0x00004a2c       0x14 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
+ .rodata        0x00004a40      0x19c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_descr.o)
+                0x00004a40                USBUART_DEVICE0_DESCR
+                0x00004a54                USBUART_DEVICE0_CONFIGURATION0_DESCR
+                0x00004a98                USBUART_STRING_DESCRIPTORS
+                0x00004b38                USBUART_SN_STRING_DESCRIPTOR
+                0x00004b3c                USBUART_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE
+                0x00004b54                USBUART_DEVICE0_CONFIGURATION0_INTERFACE_CLASS
+                0x00004b58                USBUART_DEVICE0_CONFIGURATION0_TABLE
+                0x00004b80                USBUART_DEVICE0_TABLE
+                0x00004b98                USBUART_TABLE
+                0x00004ba0                USBUART_MSOS_DESCRIPTOR
+                0x00004bb4                USBUART_MSOS_CONFIGURATION_DESCR
  .rodata.str1.1
-                0x00004b68        0x2 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x00004bdc        0x2 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
  .rodata.str1.1
-                0x00004b6a       0x11 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x00004bde       0x11 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
  .rodata.str1.1
-                0x00004b7b       0x22 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
-                0x00004ba0                . = ALIGN (0x4)
- *fill*         0x00004b9d        0x3 
+                0x00004bef       0x22 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x00004c14                . = ALIGN (0x4)
+ *fill*         0x00004c11        0x3 
  *(.init)
- .init          0x00004ba0        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crti.o
-                0x00004ba0                _init
- .init          0x00004ba4        0x8 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtn.o
-                0x00004bac                . = ALIGN (0x4)
-                0x00004bac                __preinit_array_start = .
+ .init          0x00004c14        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crti.o
+                0x00004c14                _init
+ .init          0x00004c18        0x8 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtn.o
+                0x00004c20                . = ALIGN (0x4)
+                0x00004c20                __preinit_array_start = .
  *(.preinit_array)
-                0x00004bac                __preinit_array_end = .
-                0x00004bac                . = ALIGN (0x4)
-                0x00004bac                __init_array_start = .
+                0x00004c20                __preinit_array_end = .
+                0x00004c20                . = ALIGN (0x4)
+                0x00004c20                __init_array_start = .
  *(SORT(.init_array.*))
  *(.init_array)
- .init_array    0x00004bac        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
- .init_array    0x00004bb0        0x4 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
-                0x00004bb4                __init_array_end = .
-                0x00004bb4                . = ALIGN (0x4)
+ .init_array    0x00004c20        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
+ .init_array    0x00004c24        0x4 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+                0x00004c28                __init_array_end = .
+                0x00004c28                . = ALIGN (0x4)
  *(.fini)
- .fini          0x00004bb4        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crti.o
-                0x00004bb4                _fini
- .fini          0x00004bb8        0x8 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtn.o
-                0x00004bc0                . = ALIGN (0x4)
-                0x00004bc0                __fini_array_start = .
+ .fini          0x00004c28        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crti.o
+                0x00004c28                _fini
+ .fini          0x00004c2c        0x8 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtn.o
+                0x00004c34                . = ALIGN (0x4)
+                0x00004c34                __fini_array_start = .
  *(.fini_array)
- .fini_array    0x00004bc0        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
+ .fini_array    0x00004c34        0x4 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
  *(SORT(.fini_array.*))
-                0x00004bc4                __fini_array_end = .
-                0x00004bc4                . = ALIGN (0x4)
+                0x00004c38                __fini_array_end = .
+                0x00004c38                . = ALIGN (0x4)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
-                0x00004bc4                . = ALIGN (0x4)
+                0x00004c38                . = ALIGN (0x4)
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
-                0x00004bc4                . = ALIGN (0x4)
-                0x00004bc4                __cy_regions = .
-                0x00004bc4        0x4 LONG 0x4bd8 __cy_region_init_ram
-                0x00004bc8        0x4 LONG 0x1fff8108 __cy_region_start_data
-                0x00004bcc        0x4 LONG 0xe0 __cy_region_init_size_ram
-                0x00004bd0        0x4 LONG 0x228 __cy_region_zero_size_ram
-                0x00004bd4                __cy_regions_end = .
-                0x00004bd8                . = ALIGN (0x8)
- *fill*         0x00004bd4        0x4 
-                0x00004bd8                _etext = .
+                0x00004c38                . = ALIGN (0x4)
+                0x00004c38                __cy_regions = .
+                0x00004c38        0x4 LONG 0x4c48 __cy_region_init_ram
+                0x00004c3c        0x4 LONG 0x1fff8108 __cy_region_start_data
+                0x00004c40        0x4 LONG 0xe0 __cy_region_init_size_ram
+                0x00004c44        0x4 LONG 0x228 __cy_region_zero_size_ram
+                0x00004c48                __cy_regions_end = .
+                0x00004c48                . = ALIGN (0x8)
+                0x00004c48                _etext = .
 
 .cy_checksum_exclude
-                0x00004bd8        0x0
+                0x00004c48        0x0
  *(.cy_checksum_exclude)
 
 .ramvectors     0x1fff8000      0x100
@@ -1657,7 +1655,7 @@ END GROUP
  .noinit        0x1fff8104        0x1 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyLib.o)
                 0x1fff8104                CyResetStatus
 
-.data           0x1fff8108       0xe0 load address 0x00004bd8
+.data           0x1fff8108       0xe0 load address 0x00004c48
                 0x1fff8108                __cy_region_start_data = .
  *(.jcr)
  .jcr           0x1fff8108        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
@@ -1688,10 +1686,10 @@ END GROUP
  *(.ram)
                 0x1fff81e8                _edata = .
 
-.igot.plt       0x1fff81e8        0x0 load address 0x00004cb8
+.igot.plt       0x1fff81e8        0x0 load address 0x00004d28
  .igot.plt      0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
 
-.bss            0x1fff81e8      0x228 load address 0x00004cb8
+.bss            0x1fff81e8      0x228 load address 0x00004d28
                 0x1fff81e8                PROVIDE (__bss_start__, .)
  *(.shbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
@@ -1800,11 +1798,11 @@ END GROUP
                 0x1fff8410                __end = .
                 0x1fff8410                PROVIDE (end, .)
                 0x1fff8410                PROVIDE (__bss_end__, .)
-                0x00004bd8                __cy_region_init_ram = LOADADDR (.data)
+                0x00004c48                __cy_region_init_ram = LOADADDR (.data)
                 0x000000e0                __cy_region_init_size_ram = (_edata - ADDR (.data))
                 0x00000228                __cy_region_zero_size_ram = (_end - _edata)
 
-.heap           0x1fff8410       0x80 load address 0x00004cb8
+.heap           0x1fff8410       0x80 load address 0x00004d28
                 0x1fff8410                . = _end
                 0x1fff8490                . = (. + 0x80)
  *fill*         0x1fff8410       0x80 
@@ -1824,9 +1822,9 @@ END GROUP
 .cyloadablemeta
  *(.cyloadablemeta)
 
-.cyconfigecc    0x80000000      0xcf8
+.cyconfigecc    0x80000000      0xd70
  *(.cyconfigecc)
- .cyconfigecc   0x80000000      0xcf8 .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
+ .cyconfigecc   0x80000000      0xd70 .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
                 0x80000000                cy_meta_configecc
 
 .cycustnvl      0x90000000        0x4
@@ -1855,7 +1853,7 @@ END GROUP
  .cymeta        0x90500000        0xc .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
                 0x90500000                cy_metadata
 
-.rel.dyn        0x00004cb8        0x0 load address 0x9050000c
+.rel.dyn        0x00004d28        0x0 load address 0x9050000c
  .rel.iplt      0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m/crtbegin.o
 
 .stab
@@ -1956,125 +1954,125 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x7849
+.debug_info     0x00000000     0x7901
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x61c .\CortexM3\ARM_GCC_493\Debug\main.o
  .debug_info    0x0000061c      0x147 .\CortexM3\ARM_GCC_493\Debug\tacho.o
  .debug_info    0x00000763      0x13f .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
  .debug_info    0x000008a2      0x313 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
- .debug_info    0x00000bb5      0x3b1 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyfitter_cfg.o)
- .debug_info    0x00000f66      0x478 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC.o)
- .debug_info    0x000013de       0x92 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC_INT.o)
- .debug_info    0x00001470      0x70b .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART.o)
- .debug_info    0x00001b7b      0x903 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cdc.o)
- .debug_info    0x0000247e      0x521 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
- .debug_info    0x0000299f      0x22f .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_episr.o)
- .debug_info    0x00002bce      0x186 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_pm.o)
- .debug_info    0x00002d54      0x950 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
- .debug_info    0x000036a4      0x19d .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_vnd.o)
- .debug_info    0x00003841      0x171 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_Dp.o)
- .debug_info    0x000039b2       0x79 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyBootAsmGnu.o)
- .debug_info    0x00003a2b      0xe34 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyLib.o)
- .debug_info    0x0000485f      0x561 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyPm.o)
- .debug_info    0x00004dc0      0x22e .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_1.o)
- .debug_info    0x00004fee      0x11e .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(M1_IN2.o)
- .debug_info    0x0000510c      0x11e .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(M2_IN2.o)
- .debug_info    0x0000522a      0x261 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_eoc.o)
- .debug_info    0x0000548b      0x22e .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_2.o)
- .debug_info    0x000056b9      0x201 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1.o)
- .debug_info    0x000058ba      0x201 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2.o)
- .debug_info    0x00005abb      0x28a .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
- .debug_info    0x00005d45      0x28a .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
- .debug_info    0x00005fcf       0xd7 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(RF_BT_SELECT.o)
- .debug_info    0x000060a6      0x23a .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_quad1.o)
- .debug_info    0x000062e0      0x254 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(Timer_1.o)
- .debug_info    0x00006534      0x25d .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC_theACLK.o)
- .debug_info    0x00006791      0x23a .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_OnLine.o)
- .debug_info    0x000069cb      0x23a .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_button.o)
- .debug_info    0x00006c05      0x1bc .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cls.o)
- .debug_info    0x00006dc1      0x2cb .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_descr.o)
- .debug_info    0x0000708c      0x36a .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyFlash.o)
- .debug_info    0x000073f6      0x453 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CySpc.o)
+ .debug_info    0x00000bb5      0x469 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyfitter_cfg.o)
+ .debug_info    0x0000101e      0x478 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC.o)
+ .debug_info    0x00001496       0x92 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC_INT.o)
+ .debug_info    0x00001528      0x70b .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART.o)
+ .debug_info    0x00001c33      0x903 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cdc.o)
+ .debug_info    0x00002536      0x521 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
+ .debug_info    0x00002a57      0x22f .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_episr.o)
+ .debug_info    0x00002c86      0x186 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_pm.o)
+ .debug_info    0x00002e0c      0x950 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
+ .debug_info    0x0000375c      0x19d .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_vnd.o)
+ .debug_info    0x000038f9      0x171 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_Dp.o)
+ .debug_info    0x00003a6a       0x79 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyBootAsmGnu.o)
+ .debug_info    0x00003ae3      0xe34 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyLib.o)
+ .debug_info    0x00004917      0x561 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyPm.o)
+ .debug_info    0x00004e78      0x22e .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_1.o)
+ .debug_info    0x000050a6      0x11e .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(M1_IN2.o)
+ .debug_info    0x000051c4      0x11e .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(M2_IN2.o)
+ .debug_info    0x000052e2      0x261 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_eoc.o)
+ .debug_info    0x00005543      0x22e .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_2.o)
+ .debug_info    0x00005771      0x201 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1.o)
+ .debug_info    0x00005972      0x201 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2.o)
+ .debug_info    0x00005b73      0x28a .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
+ .debug_info    0x00005dfd      0x28a .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
+ .debug_info    0x00006087       0xd7 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(RF_BT_SELECT.o)
+ .debug_info    0x0000615e      0x23a .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_quad1.o)
+ .debug_info    0x00006398      0x254 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(Timer_1.o)
+ .debug_info    0x000065ec      0x25d .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC_theACLK.o)
+ .debug_info    0x00006849      0x23a .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_OnLine.o)
+ .debug_info    0x00006a83      0x23a .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_button.o)
+ .debug_info    0x00006cbd      0x1bc .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cls.o)
+ .debug_info    0x00006e79      0x2cb .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_descr.o)
+ .debug_info    0x00007144      0x36a .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyFlash.o)
+ .debug_info    0x000074ae      0x453 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CySpc.o)
 
-.debug_abbrev   0x00000000     0x2a68
+.debug_abbrev   0x00000000     0x2a82
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x1a6 .\CortexM3\ARM_GCC_493\Debug\main.o
  .debug_abbrev  0x000001a6       0x96 .\CortexM3\ARM_GCC_493\Debug\tacho.o
  .debug_abbrev  0x0000023c       0x77 .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
  .debug_abbrev  0x000002b3      0x1a7 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
- .debug_abbrev  0x0000045a      0x19d .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyfitter_cfg.o)
- .debug_abbrev  0x000005f7      0x173 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC.o)
- .debug_abbrev  0x0000076a       0x42 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC_INT.o)
- .debug_abbrev  0x000007ac      0x1f3 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART.o)
- .debug_abbrev  0x0000099f      0x233 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cdc.o)
- .debug_abbrev  0x00000bd2      0x161 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
- .debug_abbrev  0x00000d33       0xfd .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_episr.o)
- .debug_abbrev  0x00000e30       0xd1 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_pm.o)
- .debug_abbrev  0x00000f01      0x1c2 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
- .debug_abbrev  0x000010c3       0xc5 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_vnd.o)
- .debug_abbrev  0x00001188       0x90 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_Dp.o)
- .debug_abbrev  0x00001218       0x14 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyBootAsmGnu.o)
- .debug_abbrev  0x0000122c      0x217 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyLib.o)
- .debug_abbrev  0x00001443      0x161 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyPm.o)
- .debug_abbrev  0x000015a4      0x116 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_1.o)
- .debug_abbrev  0x000016ba       0x90 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(M1_IN2.o)
- .debug_abbrev  0x0000174a       0x90 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(M2_IN2.o)
- .debug_abbrev  0x000017da      0x190 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_eoc.o)
- .debug_abbrev  0x0000196a      0x116 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_2.o)
- .debug_abbrev  0x00001a80      0x130 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1.o)
- .debug_abbrev  0x00001bb0      0x130 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2.o)
- .debug_abbrev  0x00001ce0      0x12c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
- .debug_abbrev  0x00001e0c      0x12c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
- .debug_abbrev  0x00001f38       0x81 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(RF_BT_SELECT.o)
- .debug_abbrev  0x00001fb9      0x172 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_quad1.o)
- .debug_abbrev  0x0000212b      0x11b .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(Timer_1.o)
- .debug_abbrev  0x00002246      0x11d .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC_theACLK.o)
- .debug_abbrev  0x00002363      0x172 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_OnLine.o)
- .debug_abbrev  0x000024d5      0x172 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_button.o)
- .debug_abbrev  0x00002647       0xc5 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cls.o)
- .debug_abbrev  0x0000270c       0xb4 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_descr.o)
- .debug_abbrev  0x000027c0      0x13c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyFlash.o)
- .debug_abbrev  0x000028fc      0x16c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CySpc.o)
+ .debug_abbrev  0x0000045a      0x1b7 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyfitter_cfg.o)
+ .debug_abbrev  0x00000611      0x173 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC.o)
+ .debug_abbrev  0x00000784       0x42 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC_INT.o)
+ .debug_abbrev  0x000007c6      0x1f3 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART.o)
+ .debug_abbrev  0x000009b9      0x233 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cdc.o)
+ .debug_abbrev  0x00000bec      0x161 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
+ .debug_abbrev  0x00000d4d       0xfd .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_episr.o)
+ .debug_abbrev  0x00000e4a       0xd1 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_pm.o)
+ .debug_abbrev  0x00000f1b      0x1c2 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
+ .debug_abbrev  0x000010dd       0xc5 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_vnd.o)
+ .debug_abbrev  0x000011a2       0x90 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_Dp.o)
+ .debug_abbrev  0x00001232       0x14 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyBootAsmGnu.o)
+ .debug_abbrev  0x00001246      0x217 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyLib.o)
+ .debug_abbrev  0x0000145d      0x161 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyPm.o)
+ .debug_abbrev  0x000015be      0x116 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_1.o)
+ .debug_abbrev  0x000016d4       0x90 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(M1_IN2.o)
+ .debug_abbrev  0x00001764       0x90 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(M2_IN2.o)
+ .debug_abbrev  0x000017f4      0x190 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_eoc.o)
+ .debug_abbrev  0x00001984      0x116 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_2.o)
+ .debug_abbrev  0x00001a9a      0x130 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1.o)
+ .debug_abbrev  0x00001bca      0x130 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2.o)
+ .debug_abbrev  0x00001cfa      0x12c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
+ .debug_abbrev  0x00001e26      0x12c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
+ .debug_abbrev  0x00001f52       0x81 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(RF_BT_SELECT.o)
+ .debug_abbrev  0x00001fd3      0x172 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_quad1.o)
+ .debug_abbrev  0x00002145      0x11b .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(Timer_1.o)
+ .debug_abbrev  0x00002260      0x11d .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC_theACLK.o)
+ .debug_abbrev  0x0000237d      0x172 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_OnLine.o)
+ .debug_abbrev  0x000024ef      0x172 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_button.o)
+ .debug_abbrev  0x00002661       0xc5 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cls.o)
+ .debug_abbrev  0x00002726       0xb4 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_descr.o)
+ .debug_abbrev  0x000027da      0x13c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyFlash.o)
+ .debug_abbrev  0x00002916      0x16c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CySpc.o)
 
-.debug_line     0x00000000     0x3fbb
+.debug_line     0x00000000     0x3fe8
  *(.debug_line)
- .debug_line    0x00000000      0x338 .\CortexM3\ARM_GCC_493\Debug\main.o
- .debug_line    0x00000338      0x180 .\CortexM3\ARM_GCC_493\Debug\tacho.o
- .debug_line    0x000004b8       0x53 .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
- .debug_line    0x0000050b      0x1d6 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
- .debug_line    0x000006e1      0x20b .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyfitter_cfg.o)
- .debug_line    0x000008ec      0x207 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC.o)
- .debug_line    0x00000af3       0x55 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC_INT.o)
- .debug_line    0x00000b48      0x304 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART.o)
- .debug_line    0x00000e4c      0x30e .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cdc.o)
- .debug_line    0x0000115a      0x21c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
- .debug_line    0x00001376       0xf4 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_episr.o)
- .debug_line    0x0000146a       0xe8 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_pm.o)
- .debug_line    0x00001552      0x458 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
- .debug_line    0x000019aa       0x91 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_vnd.o)
- .debug_line    0x00001a3b       0xc0 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_Dp.o)
- .debug_line    0x00001afb       0x68 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyBootAsmGnu.o)
- .debug_line    0x00001b63      0x872 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyLib.o)
- .debug_line    0x000023d5      0x381 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyPm.o)
- .debug_line    0x00002756      0x142 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_1.o)
- .debug_line    0x00002898       0x97 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(M1_IN2.o)
- .debug_line    0x0000292f       0x97 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(M2_IN2.o)
- .debug_line    0x000029c6      0x272 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_eoc.o)
- .debug_line    0x00002c38      0x142 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_2.o)
- .debug_line    0x00002d7a      0x10c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1.o)
- .debug_line    0x00002e86      0x10c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2.o)
- .debug_line    0x00002f92      0x190 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
- .debug_line    0x00003122      0x190 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
- .debug_line    0x000032b2       0x77 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(RF_BT_SELECT.o)
- .debug_line    0x00003329      0x16d .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_quad1.o)
- .debug_line    0x00003496      0x172 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(Timer_1.o)
- .debug_line    0x00003608      0x1bf .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC_theACLK.o)
- .debug_line    0x000037c7      0x16e .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_OnLine.o)
- .debug_line    0x00003935      0x16e .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_button.o)
- .debug_line    0x00003aa3       0x97 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cls.o)
- .debug_line    0x00003b3a       0x63 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_descr.o)
- .debug_line    0x00003b9d      0x207 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyFlash.o)
- .debug_line    0x00003da4      0x217 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CySpc.o)
+ .debug_line    0x00000000      0x339 .\CortexM3\ARM_GCC_493\Debug\main.o
+ .debug_line    0x00000339      0x180 .\CortexM3\ARM_GCC_493\Debug\tacho.o
+ .debug_line    0x000004b9       0x53 .\CortexM3\ARM_GCC_493\Debug\cymetadata.o
+ .debug_line    0x0000050c      0x1d6 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
+ .debug_line    0x000006e2      0x235 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyfitter_cfg.o)
+ .debug_line    0x00000917      0x209 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC.o)
+ .debug_line    0x00000b20       0x55 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC_INT.o)
+ .debug_line    0x00000b75      0x304 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART.o)
+ .debug_line    0x00000e79      0x30e .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cdc.o)
+ .debug_line    0x00001187      0x21c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
+ .debug_line    0x000013a3       0xf4 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_episr.o)
+ .debug_line    0x00001497       0xe8 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_pm.o)
+ .debug_line    0x0000157f      0x458 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
+ .debug_line    0x000019d7       0x91 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_vnd.o)
+ .debug_line    0x00001a68       0xc0 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_Dp.o)
+ .debug_line    0x00001b28       0x68 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyBootAsmGnu.o)
+ .debug_line    0x00001b90      0x872 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyLib.o)
+ .debug_line    0x00002402      0x381 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyPm.o)
+ .debug_line    0x00002783      0x142 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_1.o)
+ .debug_line    0x000028c5       0x97 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(M1_IN2.o)
+ .debug_line    0x0000295c       0x97 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(M2_IN2.o)
+ .debug_line    0x000029f3      0x272 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_eoc.o)
+ .debug_line    0x00002c65      0x142 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_2.o)
+ .debug_line    0x00002da7      0x10c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1.o)
+ .debug_line    0x00002eb3      0x10c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2.o)
+ .debug_line    0x00002fbf      0x190 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
+ .debug_line    0x0000314f      0x190 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
+ .debug_line    0x000032df       0x77 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(RF_BT_SELECT.o)
+ .debug_line    0x00003356      0x16d .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_quad1.o)
+ .debug_line    0x000034c3      0x172 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(Timer_1.o)
+ .debug_line    0x00003635      0x1bf .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC_theACLK.o)
+ .debug_line    0x000037f4      0x16e .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_OnLine.o)
+ .debug_line    0x00003962      0x16e .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_button.o)
+ .debug_line    0x00003ad0       0x97 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cls.o)
+ .debug_line    0x00003b67       0x63 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_descr.o)
+ .debug_line    0x00003bca      0x207 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyFlash.o)
+ .debug_line    0x00003dd1      0x217 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CySpc.o)
 
 .debug_frame    0x00000000     0x4518
  *(.debug_frame)
@@ -2134,7 +2132,7 @@ END GROUP
  .debug_frame   0x0000449c       0x20 c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
  .debug_frame   0x000044bc       0x5c c:/program files (x86)/cypress/psoc creator/3.3/psoc creator/import/gnu/arm/4.9.3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-reent.o)
 
-.debug_str      0x00000000     0x3a5c
+.debug_str      0x00000000     0x3a91
  *(.debug_str)
  .debug_str     0x00000000      0x457 .\CortexM3\ARM_GCC_493\Debug\main.o
                                 0x4dc (size before relaxing)
@@ -2144,69 +2142,69 @@ END GROUP
                                 0x1d3 (size before relaxing)
  .debug_str     0x00000507      0x137 .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o
                                 0x2b4 (size before relaxing)
- .debug_str     0x0000063e      0x150 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyfitter_cfg.o)
-                                0x2e0 (size before relaxing)
- .debug_str     0x0000078e      0x1d2 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC.o)
+ .debug_str     0x0000063e      0x185 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyfitter_cfg.o)
+                                0x315 (size before relaxing)
+ .debug_str     0x000007c3      0x1d2 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC.o)
                                 0x38a (size before relaxing)
- .debug_str     0x00000960       0x2b .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC_INT.o)
+ .debug_str     0x00000995       0x2b .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC_INT.o)
                                 0x178 (size before relaxing)
- .debug_str     0x0000098b      0x41e .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART.o)
+ .debug_str     0x000009c0      0x41e .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART.o)
                                 0x5c8 (size before relaxing)
- .debug_str     0x00000da9      0x4d4 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cdc.o)
+ .debug_str     0x00000dde      0x4d4 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cdc.o)
                                 0x6f7 (size before relaxing)
- .debug_str     0x0000127d      0x298 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
+ .debug_str     0x000012b2      0x298 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_drv.o)
                                 0x5d7 (size before relaxing)
- .debug_str     0x00001515       0x82 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_episr.o)
+ .debug_str     0x0000154a       0x82 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_episr.o)
                                 0x2a4 (size before relaxing)
- .debug_str     0x00001597       0xae .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_pm.o)
+ .debug_str     0x000015cc       0xae .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_pm.o)
                                 0x248 (size before relaxing)
- .debug_str     0x00001645      0x2bd .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
+ .debug_str     0x0000167a      0x2bd .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_std.o)
                                 0x737 (size before relaxing)
- .debug_str     0x00001902       0x61 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_vnd.o)
+ .debug_str     0x00001937       0x61 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_vnd.o)
                                 0x254 (size before relaxing)
- .debug_str     0x00001963       0xb7 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_Dp.o)
+ .debug_str     0x00001998       0xb7 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_Dp.o)
                                 0x22a (size before relaxing)
- .debug_str     0x00001a1a      0x7d3 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyLib.o)
+ .debug_str     0x00001a4f      0x7d3 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyLib.o)
                                 0x9af (size before relaxing)
- .debug_str     0x000021ed      0x367 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyPm.o)
+ .debug_str     0x00002222      0x367 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(cyPm.o)
                                 0x514 (size before relaxing)
- .debug_str     0x00002554      0x135 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_1.o)
+ .debug_str     0x00002589      0x135 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_1.o)
                                 0x2aa (size before relaxing)
- .debug_str     0x00002689       0x62 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(M1_IN2.o)
+ .debug_str     0x000026be       0x62 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(M1_IN2.o)
                                 0x1d0 (size before relaxing)
- .debug_str     0x000026eb       0x62 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(M2_IN2.o)
+ .debug_str     0x00002720       0x62 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(M2_IN2.o)
                                 0x1d0 (size before relaxing)
- .debug_str     0x0000274d      0x104 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_eoc.o)
+ .debug_str     0x00002782      0x104 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_eoc.o)
                                 0x2be (size before relaxing)
- .debug_str     0x00002851      0x10b .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_2.o)
+ .debug_str     0x00002886      0x10b .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(PWM_2.o)
                                 0x2aa (size before relaxing)
- .debug_str     0x0000295c       0xfc .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1.o)
+ .debug_str     0x00002991       0xfc .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1.o)
                                 0x292 (size before relaxing)
- .debug_str     0x00002a58       0xf5 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2.o)
+ .debug_str     0x00002a8d       0xf5 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2.o)
                                 0x292 (size before relaxing)
- .debug_str     0x00002b4d      0x24f .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
+ .debug_str     0x00002b82      0x24f .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M1_Cnt16.o)
                                 0x3d9 (size before relaxing)
- .debug_str     0x00002d9c      0x238 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
+ .debug_str     0x00002dd1      0x238 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(QuadDec_M2_Cnt16.o)
                                 0x3d9 (size before relaxing)
- .debug_str     0x00002fd4       0x4d .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(RF_BT_SELECT.o)
+ .debug_str     0x00003009       0x4d .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(RF_BT_SELECT.o)
                                 0x1ad (size before relaxing)
- .debug_str     0x00003021      0x120 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_quad1.o)
+ .debug_str     0x00003056      0x120 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_quad1.o)
                                 0x2bb (size before relaxing)
- .debug_str     0x00003141      0x17c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(Timer_1.o)
+ .debug_str     0x00003176      0x17c .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(Timer_1.o)
                                 0x30f (size before relaxing)
- .debug_str     0x000032bd      0x194 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC_theACLK.o)
+ .debug_str     0x000032f2      0x194 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(ADC_theACLK.o)
                                 0x307 (size before relaxing)
- .debug_str     0x00003451      0x12e .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_OnLine.o)
+ .debug_str     0x00003486      0x12e .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_OnLine.o)
                                 0x2c9 (size before relaxing)
- .debug_str     0x0000357f      0x12e .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_button.o)
+ .debug_str     0x000035b4      0x12e .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(isr_button.o)
                                 0x2c9 (size before relaxing)
- .debug_str     0x000036ad       0x41 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cls.o)
+ .debug_str     0x000036e2       0x41 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_cls.o)
                                 0x26c (size before relaxing)
- .debug_str     0x000036ee      0x106 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_descr.o)
+ .debug_str     0x00003723      0x106 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(USBUART_descr.o)
                                 0x36f (size before relaxing)
- .debug_str     0x000037f4      0x147 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyFlash.o)
+ .debug_str     0x00003829      0x147 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CyFlash.o)
                                 0x2d3 (size before relaxing)
- .debug_str     0x0000393b      0x121 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CySpc.o)
+ .debug_str     0x00003970      0x121 .\CortexM3\ARM_GCC_493\Debug\CS301_Class.a(CySpc.o)
                                 0x2d0 (size before relaxing)
 
 .debug_loc

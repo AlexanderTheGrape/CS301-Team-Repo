@@ -165,7 +165,7 @@ extern volatile int16 ADC_shift;
 
 /* Default config values from user parameters */
 #define ADC_DEFAULT_RESOLUTION     (12u)   /* ADC resolution selected with parameters.*/
-#define ADC_DEFAULT_CONV_MODE      (0u)        /* Default conversion method */
+#define ADC_DEFAULT_CONV_MODE      (1u)        /* Default conversion method */
 #define ADC_DEFAULT_INTERNAL_CLK   (1u)             /* Default clock selection */
 #define ADC_DEFAULT_REFERENCE      (1u)         /* Default reference */
 #define ADC_DEFAULT_RANGE          (1u)       /* ADC Input Range selection */
