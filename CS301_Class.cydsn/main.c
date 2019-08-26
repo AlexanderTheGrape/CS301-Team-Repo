@@ -176,7 +176,7 @@ CY_ISR(rxInt){
     char rf_char = UART_GetChar();
     if(rf_char == SOP){
             //we should evalute whether the last packet was valid by measuring the length of data
-            if(byteCount == 35)
+            if(byteCount == 34)
             {
                 system_state = buffer_state;
             }
@@ -202,6 +202,7 @@ CY_ISR (adc_isr)
     //adc_result = ADC_GetResult16(0);
     adc_result = ADC_GetResult16();
     flag_receive_ADC = 1;
+    flag_print_rf = 1;
     //LED_Write(~LED_Read());
 }
 
@@ -317,6 +318,27 @@ void print_ADC()
     }
 }
 
+void print_RF()
+{
+    if(flag_print_rf == 1)
+    {
+        char printString[16];
+        flag_print_rf = 0;
+        usbPutString("RSSI:");
+        sprintf(printString, "%d\r\n", system_state.rssi);
+        usbPutString(printString);
+        usbPutString("robot_x:");
+        sprintf(printString, "%d\r\n", system_state.robot_xpos);
+        usbPutString(printString);
+        usbPutString("robot_y:");
+        sprintf(printString, "%d\r\n", system_state.robot_ypos);
+        usbPutString(printString);
+        usbPutString("robot_dir:");
+        sprintf(printString, "%d\r\n", system_state.robot_orientation);
+        usbPutString(printString);
+    }
+}
+
 
 //PWM:
 void cycle_PWM()
@@ -405,6 +427,11 @@ int main()
             }
     }
     
+    if(BIN_ENABLED){
+        isrRF_RX_StartEx(rxInt);
+        UART_Start();
+    }
+    
     RF_BT_SELECT_Write(0);
 
     //usbPutString("Started");
@@ -418,6 +445,7 @@ int main()
         if(BIN_ENABLED == 1)
         {
             handle_rx_binary();
+            print_RF();
         }
         
         //handle_usb();        

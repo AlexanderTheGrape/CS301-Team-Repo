@@ -6,7 +6,7 @@
 
 #Build Date:         Apr 25 2016 12:55:34
 
-#File Generated:     Aug 25 2019 16:25:12
+#File Generated:     Aug 26 2019 15:11:31
 
 #Purpose:            
 
@@ -88,7 +88,7 @@ Clock: Clock_1              | Frequency: N/A       | Target:   0.0 MHz
 Clock: Clock_PWM            | Frequency: N/A       | Target:   1.0 MHz
 Clock: Clock_PWM(fixed-function) | Frequency: N/A       | Target:   1.0 MHz
 Clock: Clock_QENC           | Frequency:  42.6 MHz | Target:  12.0 MHz
-Clock: CyBUS_CLK            | Frequency:  52.5 MHz | Target:  60.0 MHz
+Clock: CyBUS_CLK            | Frequency:  54.3 MHz | Target:  60.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  60.0 MHz
@@ -113,13 +113,13 @@ Clock: Clock2(fixed-function) | Frequency: N/A       | Target:   0.1 MHz
 Clock: Clock_1              | Frequency: N/A       | Target:   0.0 MHz
 Clock: Clock_PWM            | Frequency: N/A       | Target:   1.0 MHz
 Clock: Clock_PWM(fixed-function) | Frequency: N/A       | Target:   1.0 MHz
-Clock: Clock_QENC           | Frequency:  42.6 MHz | Target:  12.0 MHz
-Clock: CyBUS_CLK            | Frequency:  55.8 MHz | Target:  60.0 MHz
+Clock: Clock_QENC           | Frequency:  35.4 MHz | Target:  12.0 MHz
+Clock: CyBUS_CLK            | Frequency:   6.9 MHz | Target:  60.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  60.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  60.0 MHz
-Clock: UART_IntClock        | Frequency:  50.5 MHz | Target:   0.5 MHz
+Clock: UART_IntClock        | Frequency:   6.9 MHz | Target:   0.5 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -162,7 +162,7 @@ Clock: Clock2(fixed-function) | Frequency: N/A       | Target:   0.1 MHz
 Clock: Clock_1              | Frequency: N/A       | Target:   0.0 MHz
 Clock: Clock_PWM            | Frequency: N/A       | Target:   1.0 MHz
 Clock: Clock_PWM(fixed-function) | Frequency: N/A       | Target:   1.0 MHz
-Clock: Clock_QENC           | Frequency:  32.1 MHz | Target:  12.0 MHz
+Clock: Clock_QENC           | Frequency:  32.5 MHz | Target:  12.0 MHz
 Clock: CyBUS_CLK            | Frequency:   7.4 MHz | Target:  60.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz

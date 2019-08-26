@@ -1,5 +1,5 @@
 -- Project:   CS301_Class
--- Generated: 08/25/2019 16:25:12
+-- Generated: 08/26/2019 15:11:31
 -- PSoC Creator  3.3 CP3
 
 ENTITY CS301_Class IS
@@ -392,7 +392,7 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE lib_model OF M1_D1(0) : LABEL IS "iocell16";
     ATTRIBUTE Location OF M1_D1(0) : LABEL IS "P3[3]";
     ATTRIBUTE lib_model OF Rx_1(0) : LABEL IS "iocell17";
-    ATTRIBUTE Location OF Rx_1(0) : LABEL IS "P12[6]";
+    ATTRIBUTE Location OF Rx_1(0) : LABEL IS "P1[6]";
     ATTRIBUTE lib_model OF Tx_1(0) : LABEL IS "iocell18";
     ATTRIBUTE Location OF Tx_1(0) : LABEL IS "P2[3]";
     ATTRIBUTE lib_model OF LED(0) : LABEL IS "iocell19";
