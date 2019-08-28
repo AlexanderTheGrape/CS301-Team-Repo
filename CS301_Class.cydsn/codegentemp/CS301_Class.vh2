@@ -2,7 +2,7 @@
 --	Conversion of CS301_Class.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Mon Aug 26 15:11:30 2019
+--	Wed Aug 28 15:19:07 2019
 --
 
 USE cypress.cypress.all;
@@ -15,7 +15,7 @@ ARCHITECTURE R_T_L OF top_RTL IS
 SIGNAL Net_2183 : bit;
 SIGNAL CLK24M : bit;
 SIGNAL tmpOE__M1_IN1_net_0 : bit;
-SIGNAL Net_2404 : bit;
+SIGNAL Net_6779 : bit;
 SIGNAL tmpFB_0__M1_IN1_net_0 : bit;
 SIGNAL tmpIO_0__M1_IN1_net_0 : bit;
 TERMINAL tmpSIOVREF__M1_IN1_net_0 : bit;
@@ -23,18 +23,18 @@ SIGNAL zero : bit;
 SIGNAL one : bit;
 SIGNAL tmpINTERRUPT_0__M1_IN1_net_0 : bit;
 SIGNAL tmpOE__M1_IN2_net_0 : bit;
-SIGNAL tmpFB_0__M1_IN2_net_0 : bit;
+SIGNAL Net_6787 : bit;
 SIGNAL tmpIO_0__M1_IN2_net_0 : bit;
 TERMINAL tmpSIOVREF__M1_IN2_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__M1_IN2_net_0 : bit;
 SIGNAL tmpOE__M2_IN1_net_0 : bit;
-SIGNAL Net_2460 : bit;
+SIGNAL Net_6766 : bit;
 SIGNAL tmpFB_0__M2_IN1_net_0 : bit;
 SIGNAL tmpIO_0__M2_IN1_net_0 : bit;
 TERMINAL tmpSIOVREF__M2_IN1_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__M2_IN1_net_0 : bit;
 SIGNAL tmpOE__M2_IN2_net_0 : bit;
-SIGNAL tmpFB_0__M2_IN2_net_0 : bit;
+SIGNAL Net_6767 : bit;
 SIGNAL tmpIO_0__M2_IN2_net_0 : bit;
 TERMINAL tmpSIOVREF__M2_IN2_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__M2_IN2_net_0 : bit;
@@ -1029,6 +1029,7 @@ SIGNAL \PWM_1:Net_113\ : bit;
 SIGNAL \PWM_1:Net_63\ : bit;
 SIGNAL \PWM_1:Net_57\ : bit;
 SIGNAL \PWM_1:Net_54\ : bit;
+SIGNAL Net_6774 : bit;
 SIGNAL Net_6740 : bit;
 SIGNAL Net_6737 : bit;
 SIGNAL \PWM_1:Net_114\ : bit;
@@ -1037,6 +1038,7 @@ SIGNAL \PWM_2:Net_113\ : bit;
 SIGNAL \PWM_2:Net_63\ : bit;
 SIGNAL \PWM_2:Net_57\ : bit;
 SIGNAL \PWM_2:Net_54\ : bit;
+SIGNAL Net_2460 : bit;
 SIGNAL Net_6751 : bit;
 SIGNAL Net_6748 : bit;
 SIGNAL \PWM_2:Net_114\ : bit;
@@ -1284,6 +1286,10 @@ SIGNAL \Timer_1:TimerUDB:sT16:timerdp:f1_blk_stat_reg_1\ : bit;
 ATTRIBUTE port_state_att of \Timer_1:TimerUDB:sT16:timerdp:f1_blk_stat_reg_1\:SIGNAL IS 2;
 SIGNAL \Timer_1:Net_102\ : bit;
 SIGNAL \Timer_1:Net_266\ : bit;
+SIGNAL \mux_1:tmp__mux_1_reg\ : bit;
+SIGNAL Net_6765 : bit;
+SIGNAL \mux_2:tmp__mux_2_reg\ : bit;
+SIGNAL Net_6778 : bit;
 SIGNAL \QuadDec_M1:Net_1251\\D\ : bit;
 SIGNAL \QuadDec_M1:Cnt16:CounterUDB:prevCapture\\D\ : bit;
 SIGNAL \QuadDec_M1:Cnt16:CounterUDB:overflow_reg_i\\D\ : bit;
@@ -1626,6 +1632,12 @@ Net_3394D <= ((not \UART:BUART:reset_reg\ and \UART:BUART:tx_state_2\)
 
 \Timer_1:TimerUDB:status_tc\ <= ((\Timer_1:TimerUDB:control_7\ and \Timer_1:TimerUDB:per_zero\));
 
+Net_6766 <= ((not Net_2460 and Net_6767)
+	OR (not Net_6767 and Net_2460));
+
+Net_6779 <= ((not Net_6774 and Net_6787)
+	OR (not Net_6787 and Net_6774));
+
 Clock_PWM:cy_clock_v1_0
 	GENERIC MAP(cy_registers=>"",
 		id=>"a546ed34-a261-4a1a-9275-f79fefc0e1bf",
@@ -1693,7 +1705,7 @@ M1_IN1:cy_psoc3_pins_v1_10
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__M1_IN1_net_0),
-		y=>Net_2404,
+		y=>Net_6779,
 		fb=>(tmpFB_0__M1_IN1_net_0),
 		analog=>(open),
 		io=>(tmpIO_0__M1_IN1_net_0),
@@ -1733,7 +1745,7 @@ M1_IN2:cy_psoc3_pins_v1_10
 		oe_conn=>"0",
 		oe_reset=>'0',
 		pin_aliases=>"",
-		pin_mode=>"O",
+		pin_mode=>"B",
 		por_state=>4,
 		sio_group_cnt=>0,
 		sio_hifreq=>"00000000",
@@ -1747,7 +1759,7 @@ M1_IN2:cy_psoc3_pins_v1_10
 		slew_rate=>"0",
 		spanning=>'0',
 		sw_only=>'0',
-		vtrip=>"10",
+		vtrip=>"00",
 		width=>1,
 		port_alias_required=>'0',
 		port_alias_group=>"",
@@ -1764,7 +1776,7 @@ M1_IN2:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__M1_IN1_net_0),
 		y=>(Net_2183),
-		fb=>(tmpFB_0__M1_IN2_net_0),
+		fb=>Net_6787,
 		analog=>(open),
 		io=>(tmpIO_0__M1_IN2_net_0),
 		siovref=>(tmpSIOVREF__M1_IN2_net_0),
@@ -1833,7 +1845,7 @@ M2_IN1:cy_psoc3_pins_v1_10
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__M1_IN1_net_0),
-		y=>Net_2460,
+		y=>Net_6766,
 		fb=>(tmpFB_0__M2_IN1_net_0),
 		analog=>(open),
 		io=>(tmpIO_0__M2_IN1_net_0),
@@ -1873,7 +1885,7 @@ M2_IN2:cy_psoc3_pins_v1_10
 		oe_conn=>"0",
 		oe_reset=>'0',
 		pin_aliases=>"",
-		pin_mode=>"O",
+		pin_mode=>"B",
 		por_state=>4,
 		sio_group_cnt=>0,
 		sio_hifreq=>"00000000",
@@ -1887,7 +1899,7 @@ M2_IN2:cy_psoc3_pins_v1_10
 		slew_rate=>"0",
 		spanning=>'0',
 		sw_only=>'0',
-		vtrip=>"10",
+		vtrip=>"00",
 		width=>1,
 		port_alias_required=>'0',
 		port_alias_group=>"",
@@ -1904,7 +1916,7 @@ M2_IN2:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__M1_IN1_net_0),
 		y=>(Net_2183),
-		fb=>(tmpFB_0__M2_IN2_net_0),
+		fb=>Net_6767,
 		analog=>(open),
 		io=>(tmpIO_0__M2_IN2_net_0),
 		siovref=>(tmpSIOVREF__M2_IN2_net_0),
@@ -3846,7 +3858,7 @@ Tx_1:cy_psoc3_pins_v1_10
 		capture=>Net_2183,
 		timer_reset=>Net_2183,
 		tc=>\PWM_1:Net_63\,
-		compare=>Net_2404,
+		compare=>Net_6774,
 		interrupt=>\PWM_1:Net_54\);
 \PWM_2:PWMHW\:cy_psoc3_timer_v1_0
 	GENERIC MAP(cy_registers=>"")

@@ -1,6 +1,6 @@
 -- ======================================================================
 -- CS301_Class.ctl generated from CS301_Class
--- 08/26/2019 at 15:11
+-- 08/28/2019 at 15:19
 -- This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 -- ======================================================================
 

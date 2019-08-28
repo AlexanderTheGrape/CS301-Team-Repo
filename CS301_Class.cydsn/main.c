@@ -26,6 +26,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <project.h>
+#include <math.h>
 //* ========================================
 #include "defines.h"
 #include "vars.h"
@@ -223,6 +224,9 @@ CY_ISR (Stop_on_line)
 
 CY_ISR (button)
 {
+    direction = !direction;
+    M1_IN2_Write(direction);
+    M2_IN2_Write(direction);
     setSpeed(20, 20);
 }
 
@@ -247,45 +251,52 @@ void Quad_Dec_response()
     
     int16 leftSpeed = quad_count1;
     int16 rightSpeed = quad_count2;
-    
-    int16 left_direction = 1;
-    int16 right_direction = 1;
-    
-    if (leftSpeed > 0) {
-        left_direction = -1;
-    } else {
-        left_direction = 1;
-    }
-    if (rightSpeed < 0) {
-        right_direction = -1;
-    } else {
-        right_direction = 1;
-    }
-    
-    if (abs(leftSpeed) > leftSpeedLimit){
-        //sprintf(wheel_1_str,"Left wheel too fast! Slowing down \r\n");
-        //usbPutString(wheel_1_str);
-        
-        left_duty_cycle = left_duty_cycle + (-1 * left_direction);
-    } else if (abs(leftSpeed) < leftSpeedLimit) {
-       // sprintf(wheel_1_str,"Left wheel too slow! Speeding up \r\n");
-        //usbPutString(wheel_1_str);
-        left_duty_cycle = left_duty_cycle + left_direction;
-    }
-    
-    if (abs(rightSpeed) > rightSpeedLimit){
-        sprintf(wheel_2_str,"Right wheel too fast! Slowing down \r\n");
-       // usbPutString(wheel_2_str);
-        right_duty_cycle = right_duty_cycle + (-1 * right_direction);
-        sprintf(wheel_2_str,"Right wheel duty cycle is now:%d\r\n", right_duty_cycle);
-        //usbPutString(wheel_2_str);
-    } else if (abs(rightSpeed) < rightSpeedLimit) {
-        sprintf(wheel_2_str,"Right wheel too slow, speeding up! \r\n");
-        //usbPutString(wheel_2_str);
-        sprintf(wheel_2_str,"Right wheel duty cycle is now:%d\r\n", right_duty_cycle);
-        //usbPutString(wheel_2_str);
-        right_duty_cycle = right_duty_cycle + right_direction;
-    }
+//    
+//    int16 left_direction = 1;
+//    int16 right_direction = 1;
+//    
+//    if (leftSpeed > 0) {
+//        left_direction = -1;
+//    } else {
+//        left_direction = 1;
+//    }
+//    if (rightSpeed < 0) {
+//        right_direction = -1;
+//    } else {
+//        right_direction = 1;
+//    }
+//    
+    int interCalc = leftSpeedLimit - abs(leftSpeed);
+    int nextSpeed = (abs(interCalc) / interCalc) * sqrt(abs(interCalc));
+    left_duty_cycle = left_duty_cycle + nextSpeed;
+    interCalc = rightSpeedLimit - abs(rightSpeed);
+    nextSpeed = (abs(interCalc) / interCalc) * sqrt(abs(interCalc));
+    right_duty_cycle = right_duty_cycle + nextSpeed;
+//    
+//    if (abs(leftSpeed) > leftSpeedLimit){
+//        //sprintf(wheel_1_str,"Left wheel too fast! Slowing down \r\n");
+//        //usbPutString(wheel_1_str);
+//        
+//        left_duty_cycle = left_duty_cycle + (-1 * left_direction);
+//    } else if (abs(leftSpeed) < leftSpeedLimit) {
+//       // sprintf(wheel_1_str,"Left wheel too slow! Speeding up \r\n");
+//        //usbPutString(wheel_1_str);
+//        left_duty_cycle = left_duty_cycle + left_direction;
+//    }
+//    
+//    if (abs(rightSpeed) > rightSpeedLimit){
+//        sprintf(wheel_2_str,"Right wheel too fast! Slowing down \r\n");
+//       // usbPutString(wheel_2_str);
+//        right_duty_cycle = right_duty_cycle + (-1 * right_direction);
+//        sprintf(wheel_2_str,"Right wheel duty cycle is now:%d\r\n", right_duty_cycle);
+//        //usbPutString(wheel_2_str);
+//    } else if (abs(rightSpeed) < rightSpeedLimit) {
+//        sprintf(wheel_2_str,"Right wheel too slow, speeding up! \r\n");
+//        //usbPutString(wheel_2_str);
+//        sprintf(wheel_2_str,"Right wheel duty cycle is now:%d\r\n", right_duty_cycle);
+//        //usbPutString(wheel_2_str);
+//        right_duty_cycle = right_duty_cycle + right_direction;
+//    }
     
     if(right_duty_cycle < 0) right_duty_cycle = 0;
     if(left_duty_cycle < 0) left_duty_cycle = 0;

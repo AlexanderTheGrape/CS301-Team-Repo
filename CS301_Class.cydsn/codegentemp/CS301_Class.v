@@ -1,6 +1,6 @@
 // ======================================================================
 // CS301_Class.v generated from TopDesign.cysch
-// 08/26/2019 at 15:11
+// 08/28/2019 at 15:19
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -1753,7 +1753,14 @@ module top ;
           wire  Net_3248;
           wire  Net_3247;
           wire  Net_3246;
+          wire  Net_6766;
+          wire  Net_6779;
           wire  Net_1849;
+          wire  Net_6787;
+          wire  Net_6778;
+          wire  Net_6774;
+          wire  Net_6767;
+          wire  Net_6765;
           wire  Net_2460;
           wire  Net_6307;
           wire  Net_6320;
@@ -1763,7 +1770,6 @@ module top ;
           wire  Net_6058;
           wire  Net_6060;
           wire  Net_1497;
-          wire  Net_2404;
           wire  Net_3437;
           wire  Net_3406;
           wire  Net_3349;
@@ -1856,7 +1862,7 @@ module top ;
 		  .input_buffer_sel(2'b00))
 		M1_IN1
 		 (.oe(tmpOE__M1_IN1_net),
-		  .y({Net_2404}),
+		  .y({Net_6779}),
 		  .fb({tmpFB_0__M1_IN1_net[0:0]}),
 		  .io({tmpIO_0__M1_IN1_net[0:0]}),
 		  .siovref(tmpSIOVREF__M1_IN1_net),
@@ -1871,7 +1877,6 @@ module top ;
 	assign tmpOE__M1_IN1_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
 	wire [0:0] tmpOE__M1_IN2_net;
-	wire [0:0] tmpFB_0__M1_IN2_net;
 	wire [0:0] tmpIO_0__M1_IN2_net;
 	wire [0:0] tmpINTERRUPT_0__M1_IN2_net;
 	electrical [0:0] tmpSIOVREF__M1_IN2_net;
@@ -1909,7 +1914,7 @@ module top ;
 		  .pa_out_clock_en(-1),
 		  .pa_out_reset(-1),
 		  .pin_aliases(""),
-		  .pin_mode("O"),
+		  .pin_mode("B"),
 		  .por_state(4),
 		  .sio_group_cnt(0),
 		  .sio_hyst(1'b1),
@@ -1923,7 +1928,7 @@ module top ;
 		  .slew_rate(1'b0),
 		  .spanning(0),
 		  .use_annotation(1'b0),
-		  .vtrip(2'b10),
+		  .vtrip(2'b00),
 		  .width(1),
 		  .ovt_hyst_trim(1'b0),
 		  .ovt_needed(1'b0),
@@ -1932,7 +1937,7 @@ module top ;
 		M1_IN2
 		 (.oe(tmpOE__M1_IN2_net),
 		  .y({1'b0}),
-		  .fb({tmpFB_0__M1_IN2_net[0:0]}),
+		  .fb({Net_6787}),
 		  .io({tmpIO_0__M1_IN2_net[0:0]}),
 		  .siovref(tmpSIOVREF__M1_IN2_net),
 		  .interrupt({tmpINTERRUPT_0__M1_IN2_net[0:0]}),
@@ -2006,7 +2011,7 @@ module top ;
 		  .input_buffer_sel(2'b00))
 		M2_IN1
 		 (.oe(tmpOE__M2_IN1_net),
-		  .y({Net_2460}),
+		  .y({Net_6766}),
 		  .fb({tmpFB_0__M2_IN1_net[0:0]}),
 		  .io({tmpIO_0__M2_IN1_net[0:0]}),
 		  .siovref(tmpSIOVREF__M2_IN1_net),
@@ -2021,7 +2026,6 @@ module top ;
 	assign tmpOE__M2_IN1_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
 	wire [0:0] tmpOE__M2_IN2_net;
-	wire [0:0] tmpFB_0__M2_IN2_net;
 	wire [0:0] tmpIO_0__M2_IN2_net;
 	wire [0:0] tmpINTERRUPT_0__M2_IN2_net;
 	electrical [0:0] tmpSIOVREF__M2_IN2_net;
@@ -2059,7 +2063,7 @@ module top ;
 		  .pa_out_clock_en(-1),
 		  .pa_out_reset(-1),
 		  .pin_aliases(""),
-		  .pin_mode("O"),
+		  .pin_mode("B"),
 		  .por_state(4),
 		  .sio_group_cnt(0),
 		  .sio_hyst(1'b1),
@@ -2073,7 +2077,7 @@ module top ;
 		  .slew_rate(1'b0),
 		  .spanning(0),
 		  .use_annotation(1'b0),
-		  .vtrip(2'b10),
+		  .vtrip(2'b00),
 		  .width(1),
 		  .ovt_hyst_trim(1'b0),
 		  .ovt_needed(1'b0),
@@ -2082,7 +2086,7 @@ module top ;
 		M2_IN2
 		 (.oe(tmpOE__M2_IN2_net),
 		  .y({1'b0}),
-		  .fb({tmpFB_0__M2_IN2_net[0:0]}),
+		  .fb({Net_6767}),
 		  .io({tmpIO_0__M2_IN2_net[0:0]}),
 		  .siovref(tmpSIOVREF__M2_IN2_net),
 		  .interrupt({tmpINTERRUPT_0__M2_IN2_net[0:0]}),
@@ -3098,7 +3102,7 @@ module top ;
         .enable(1'b1),
         .trigger(1'b0),
         .cmp_sel(1'b0),
-        .pwm(Net_2404),
+        .pwm(Net_6774),
         .ph1(Net_6745),
         .ph2(Net_6746));
     defparam PWM_1.Resolution = 8;
@@ -3597,6 +3601,42 @@ module top ;
     defparam Timer_1.InterruptOnTC = 1;
     defparam Timer_1.Resolution = 16;
     defparam Timer_1.SiliconRevision = "0";
+
+    // -- Mux start --
+    if (1)
+    begin : mux_1
+        reg  tmp__mux_1_reg;
+        always @(Net_2460 or Net_6765 or Net_6767)
+        begin
+            case (Net_6767)
+                1'b0 :  tmp__mux_1_reg = Net_2460;
+                1'b1 :  tmp__mux_1_reg = Net_6765;
+            endcase
+        end
+        assign Net_6766 = tmp__mux_1_reg;
+    end
+    // -- Mux end --
+
+
+    assign Net_6765 = ~Net_2460;
+
+    // -- Mux start --
+    if (1)
+    begin : mux_2
+        reg  tmp__mux_2_reg;
+        always @(Net_6774 or Net_6778 or Net_6787)
+        begin
+            case (Net_6787)
+                1'b0 :  tmp__mux_2_reg = Net_6774;
+                1'b1 :  tmp__mux_2_reg = Net_6778;
+            endcase
+        end
+        assign Net_6779 = tmp__mux_2_reg;
+    end
+    // -- Mux end --
+
+
+    assign Net_6778 = ~Net_6774;
 
 
 
