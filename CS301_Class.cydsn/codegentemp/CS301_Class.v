@@ -1,6 +1,6 @@
 // ======================================================================
 // CS301_Class.v generated from TopDesign.cysch
-// 08/28/2019 at 15:19
+// 09/13/2019 at 16:16
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -2490,11 +2490,11 @@ module top ;
 
 	assign tmpOE__M2_QB_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
-	wire [0:0] tmpOE__A0_net;
-	wire [0:0] tmpFB_0__A0_net;
-	wire [0:0] tmpIO_0__A0_net;
-	wire [0:0] tmpINTERRUPT_0__A0_net;
-	electrical [0:0] tmpSIOVREF__A0_net;
+	wire [0:0] tmpOE__ADC_in0_net;
+	wire [0:0] tmpFB_0__ADC_in0_net;
+	wire [0:0] tmpIO_0__ADC_in0_net;
+	wire [0:0] tmpINTERRUPT_0__ADC_in0_net;
+	electrical [0:0] tmpSIOVREF__ADC_in0_net;
 
 	cy_psoc3_pins_v1_10
 		#(.id("0bcf7c42-2f2e-4728-87df-b06d8e2a47ff"),
@@ -2549,14 +2549,14 @@ module top ;
 		  .ovt_needed(1'b0),
 		  .ovt_slew_control(2'b00),
 		  .input_buffer_sel(2'b00))
-		A0
-		 (.oe(tmpOE__A0_net),
+		ADC_in0
+		 (.oe(tmpOE__ADC_in0_net),
 		  .y({1'b0}),
-		  .fb({tmpFB_0__A0_net[0:0]}),
+		  .fb({tmpFB_0__ADC_in0_net[0:0]}),
 		  .analog({Net_4756}),
-		  .io({tmpIO_0__A0_net[0:0]}),
-		  .siovref(tmpSIOVREF__A0_net),
-		  .interrupt({tmpINTERRUPT_0__A0_net[0:0]}),
+		  .io({tmpIO_0__ADC_in0_net[0:0]}),
+		  .siovref(tmpSIOVREF__ADC_in0_net),
+		  .interrupt({tmpINTERRUPT_0__ADC_in0_net[0:0]}),
 		  .in_clock({1'b0}),
 		  .in_clock_en({1'b1}),
 		  .in_reset({1'b0}),
@@ -2564,7 +2564,7 @@ module top ;
 		  .out_clock_en({1'b1}),
 		  .out_reset({1'b0}));
 
-	assign tmpOE__A0_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+	assign tmpOE__ADC_in0_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
 	wire [0:0] tmpOE__Light_Sensor_net;
 	wire [0:0] tmpIO_0__Light_Sensor_net;
@@ -2671,7 +2671,7 @@ module top ;
 
 	cy_psoc3_pins_v1_10
 		#(.id("db74110c-032a-4e4b-b367-a78baf7e61df"),
-		  .drive_mode(3'b001),
+		  .drive_mode(3'b011),
 		  .ibuf_enabled(1'b1),
 		  .init_dr_st(1'b0),
 		  .input_clk_en(0),

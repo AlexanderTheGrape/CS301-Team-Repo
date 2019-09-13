@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: A0.c  
+* File Name: ADC_in0.c  
 * Version 2.20
 *
 * Description:
@@ -15,15 +15,15 @@
 *******************************************************************************/
 
 #include "cytypes.h"
-#include "A0.h"
+#include "ADC_in0.h"
 
 /* APIs are not generated for P15[7:6] on PSoC 5 */
 #if !(CY_PSOC5A &&\
-	 A0__PORT == 15 && ((A0__MASK & 0xC0) != 0))
+	 ADC_in0__PORT == 15 && ((ADC_in0__MASK & 0xC0) != 0))
 
 
 /*******************************************************************************
-* Function Name: A0_Write
+* Function Name: ADC_in0_Write
 ****************************************************************************//**
 *
 * \brief Writes the value to the physical port (data output register), masking
@@ -52,17 +52,17 @@
 *  this function.
 *
 * \funcusage
-*  \snippet A0_SUT.c usage_A0_Write
+*  \snippet ADC_in0_SUT.c usage_ADC_in0_Write
 *******************************************************************************/
-void A0_Write(uint8 value)
+void ADC_in0_Write(uint8 value)
 {
-    uint8 staticBits = (A0_DR & (uint8)(~A0_MASK));
-    A0_DR = staticBits | ((uint8)(value << A0_SHIFT) & A0_MASK);
+    uint8 staticBits = (ADC_in0_DR & (uint8)(~ADC_in0_MASK));
+    ADC_in0_DR = staticBits | ((uint8)(value << ADC_in0_SHIFT) & ADC_in0_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: A0_SetDriveMode
+* Function Name: ADC_in0_SetDriveMode
 ****************************************************************************//**
 *
 * \brief Sets the drive mode for each of the Pins component's pins.
@@ -85,16 +85,16 @@ void A0_Write(uint8 value)
 *  APIs (primary method) or disable interrupts around this function.
 *
 * \funcusage
-*  \snippet A0_SUT.c usage_A0_SetDriveMode
+*  \snippet ADC_in0_SUT.c usage_ADC_in0_SetDriveMode
 *******************************************************************************/
-void A0_SetDriveMode(uint8 mode)
+void ADC_in0_SetDriveMode(uint8 mode)
 {
-	CyPins_SetPinDriveMode(A0_0, mode);
+	CyPins_SetPinDriveMode(ADC_in0_0, mode);
 }
 
 
 /*******************************************************************************
-* Function Name: A0_Read
+* Function Name: ADC_in0_Read
 ****************************************************************************//**
 *
 * \brief Reads the associated physical port (pin status register) and masks 
@@ -108,16 +108,16 @@ void A0_SetDriveMode(uint8 mode)
 *  The current value for the pins in the component as a right justified number.
 *
 * \funcusage
-*  \snippet A0_SUT.c usage_A0_Read  
+*  \snippet ADC_in0_SUT.c usage_ADC_in0_Read  
 *******************************************************************************/
-uint8 A0_Read(void)
+uint8 ADC_in0_Read(void)
 {
-    return (A0_PS & A0_MASK) >> A0_SHIFT;
+    return (ADC_in0_PS & ADC_in0_MASK) >> ADC_in0_SHIFT;
 }
 
 
 /*******************************************************************************
-* Function Name: A0_ReadDataReg
+* Function Name: ADC_in0_ReadDataReg
 ****************************************************************************//**
 *
 * \brief Reads the associated physical port's data output register and masks 
@@ -126,8 +126,8 @@ uint8 A0_Read(void)
 *
 * The data output register controls the signal applied to the physical pin in 
 * conjunction with the drive mode parameter. This is not the same as the 
-* preferred A0_Read() API because the 
-* A0_ReadDataReg() reads the data register instead of the status 
+* preferred ADC_in0_Read() API because the 
+* ADC_in0_ReadDataReg() reads the data register instead of the status 
 * register. For output pins this is a useful function to determine the value 
 * just written to the pin.
 *
@@ -136,19 +136,19 @@ uint8 A0_Read(void)
 *  justified number for the component instance.
 *
 * \funcusage
-*  \snippet A0_SUT.c usage_A0_ReadDataReg 
+*  \snippet ADC_in0_SUT.c usage_ADC_in0_ReadDataReg 
 *******************************************************************************/
-uint8 A0_ReadDataReg(void)
+uint8 ADC_in0_ReadDataReg(void)
 {
-    return (A0_DR & A0_MASK) >> A0_SHIFT;
+    return (ADC_in0_DR & ADC_in0_MASK) >> ADC_in0_SHIFT;
 }
 
 
 /* If interrupt is connected for this Pins component */ 
-#if defined(A0_INTSTAT) 
+#if defined(ADC_in0_INTSTAT) 
 
     /*******************************************************************************
-    * Function Name: A0_SetInterruptMode
+    * Function Name: ADC_in0_SetInterruptMode
     ****************************************************************************//**
     *
     * \brief Configures the interrupt mode for each of the Pins component's
@@ -161,12 +161,12 @@ uint8 A0_ReadDataReg(void)
     * \param position
     *  The pin position as listed in the Pins component. You may OR these to be 
     *  able to configure the interrupt mode of multiple pins within a Pins 
-    *  component. Or you may use A0_INTR_ALL to configure the
+    *  component. Or you may use ADC_in0_INTR_ALL to configure the
     *  interrupt mode of all the pins in the Pins component.       
-    *  - A0_0_INTR       (First pin in the list)
-    *  - A0_1_INTR       (Second pin in the list)
+    *  - ADC_in0_0_INTR       (First pin in the list)
+    *  - ADC_in0_1_INTR       (Second pin in the list)
     *  - ...
-    *  - A0_INTR_ALL     (All pins in Pins component)
+    *  - ADC_in0_INTR_ALL     (All pins in Pins component)
     *
     * \param mode
     *  Interrupt mode for the selected pins. Valid options are documented in
@@ -182,19 +182,19 @@ uint8 A0_ReadDataReg(void)
     *  port.
     *
     * \funcusage
-    *  \snippet A0_SUT.c usage_A0_SetInterruptMode
+    *  \snippet ADC_in0_SUT.c usage_ADC_in0_SetInterruptMode
     *******************************************************************************/
-    void A0_SetInterruptMode(uint16 position, uint16 mode)
+    void ADC_in0_SetInterruptMode(uint16 position, uint16 mode)
     {
-		if((position & A0_0_INTR) != 0u) 
+		if((position & ADC_in0_0_INTR) != 0u) 
 		{ 
-			 A0_0_INTTYPE_REG = (uint8)mode; 
+			 ADC_in0_0_INTTYPE_REG = (uint8)mode; 
 		}
     }
     
     
     /*******************************************************************************
-    * Function Name: A0_ClearInterrupt
+    * Function Name: ADC_in0_ClearInterrupt
     ****************************************************************************//**
     *
     * \brief Clears any active interrupts attached with the component and returns 
@@ -211,11 +211,11 @@ uint8 A0_ReadDataReg(void)
     *  those associated with the Pins component.
     *
     * \funcusage
-    *  \snippet A0_SUT.c usage_A0_ClearInterrupt
+    *  \snippet ADC_in0_SUT.c usage_ADC_in0_ClearInterrupt
     *******************************************************************************/
-    uint8 A0_ClearInterrupt(void)
+    uint8 ADC_in0_ClearInterrupt(void)
     {
-        return (A0_INTSTAT & A0_MASK) >> A0_SHIFT;
+        return (ADC_in0_INTSTAT & ADC_in0_MASK) >> ADC_in0_SHIFT;
     }
 
 #endif /* If Interrupts Are Enabled for this Pins component */ 

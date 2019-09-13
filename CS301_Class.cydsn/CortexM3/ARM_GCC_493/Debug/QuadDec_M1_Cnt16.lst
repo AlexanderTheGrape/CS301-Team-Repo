@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
   23:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c **** 
   24:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c **** /*******************************************************************************
   25:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c **** * Function Name: QuadDec_M1_Cnt16_Init
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 2
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 2
 
 
   26:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c **** ********************************************************************************
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
   68:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c ****             /* Clear and Set SYNCTC and SYNCCMP bits of RT1 register */
   69:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c ****             QuadDec_M1_Cnt16_RT1 &= ((uint8)(~QuadDec_M1_Cnt16_RT1_MASK));
   70:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c ****             QuadDec_M1_Cnt16_RT1 |= QuadDec_M1_Cnt16_SYNC;     
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 3
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 3
 
 
   71:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c ****                     
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
   69 0032 FFF7FEFF 		bl	QuadDec_M1_Cnt16_WritePeriod
  101:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c ****         #if (!(QuadDec_M1_Cnt16_UsingFixedFunction && (CY_PSOC5A)))
  102:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c ****             QuadDec_M1_Cnt16_WriteCounter(QuadDec_M1_Cnt16_INIT_COUNTER_VALUE);
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 4
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 4
 
 
   70              		.loc 1 102 0
@@ -238,12 +238,12 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  103 0074 80BD     		pop	{r7, pc}
  104              	.L3:
  105 0076 00BF     		.align	2
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 5
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 5
 
 
  106              	.L2:
- 107 0078 77640040 		.word	1073767543
- 108 007c 97640040 		.word	1073767575
+ 107 0078 78650040 		.word	1073767800
+ 108 007c 93640040 		.word	1073767571
  109              		.cfi_endproc
  110              	.LFE0:
  111              		.size	QuadDec_M1_Cnt16_Init, .-QuadDec_M1_Cnt16_Init
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  154:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c ****     #if(!QuadDec_M1_Cnt16_ControlRegRemoved || QuadDec_M1_Cnt16_UsingFixedFunction)
  155:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c ****         QuadDec_M1_Cnt16_CONTROL |= QuadDec_M1_Cnt16_CTRL_ENABLE;                
  130              		.loc 1 155 0
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 6
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 6
 
 
  131 0004 054A     		ldr	r2, .L5
@@ -322,7 +322,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  146              	.L6:
  147              		.align	2
  148              	.L5:
- 149 001c 77640040 		.word	1073767543
+ 149 001c 78650040 		.word	1073767800
  150              		.cfi_endproc
  151              	.LFE1:
  152              		.size	QuadDec_M1_Cnt16_Enable, .-QuadDec_M1_Cnt16_Enable
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  161              		.loc 1 179 0
  162              		.cfi_startproc
  163              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 7
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 7
 
 
  164              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  196:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c **** * Halts the counter, but does not change any modes or disable interrupts.
  197:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c **** *
  198:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c **** * Parameters:  
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 8
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 8
 
 
  199:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c **** *  void  
@@ -472,13 +472,13 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  228              	.L13:
  229              		.align	2
  230              	.L12:
- 231 001c 77640040 		.word	1073767543
+ 231 001c 78650040 		.word	1073767800
  232              		.cfi_endproc
  233              	.LFE3:
  234              		.size	QuadDec_M1_Cnt16_Stop, .-QuadDec_M1_Cnt16_Stop
  235              		.section	.text.QuadDec_M1_Cnt16_SetInterruptMode,"ax",%progbits
  236              		.align	2
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 9
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 9
 
 
  237              		.global	QuadDec_M1_Cnt16_SetInterruptMode
@@ -538,10 +538,10 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  271              	.L16:
  272 001a 00BF     		.align	2
  273              	.L15:
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 10
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 10
 
 
- 274 001c 87640040 		.word	1073767559
+ 274 001c 83640040 		.word	1073767555
  275              		.cfi_endproc
  276              	.LFE4:
  277              		.size	QuadDec_M1_Cnt16_SetInterruptMode, .-QuadDec_M1_Cnt16_SetInterruptMode
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  304              		@ sp needed
  305 000e 5DF8047B 		ldr	r7, [sp], #4
  306              		.cfi_restore 7
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 11
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 11
 
 
  307              		.cfi_def_cfa_offset 0
@@ -606,7 +606,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  309              	.L20:
  310              		.align	2
  311              	.L19:
- 312 0014 67640040 		.word	1073767527
+ 312 0014 63640040 		.word	1073767523
  313              		.cfi_endproc
  314              	.LFE5:
  315              		.size	QuadDec_M1_Cnt16_ReadStatusRegister, .-QuadDec_M1_Cnt16_ReadStatusRegister
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  339 000a 1846     		mov	r0, r3
  340 000c BD46     		mov	sp, r7
  341              		.cfi_def_cfa_register 13
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 12
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 12
 
 
  342              		@ sp needed
@@ -669,7 +669,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  347              	.L24:
  348              		.align	2
  349              	.L23:
- 350 0014 77640040 		.word	1073767543
+ 350 0014 78650040 		.word	1073767800
  351              		.cfi_endproc
  352              	.LFE6:
  353              		.size	QuadDec_M1_Cnt16_ReadControlRegister, .-QuadDec_M1_Cnt16_ReadControlRegister
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  376              		.loc 1 306 0
  377 000a 044A     		ldr	r2, .L26
  378 000c FB79     		ldrb	r3, [r7, #7]
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 13
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 13
 
 
  379 000e 1370     		strb	r3, [r2]
@@ -736,7 +736,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  390              	.L27:
  391 001a 00BF     		.align	2
  392              	.L26:
- 393 001c 77640040 		.word	1073767543
+ 393 001c 78650040 		.word	1073767800
  394              		.cfi_endproc
  395              	.LFE7:
  396              		.size	QuadDec_M1_Cnt16_WriteControlRegister, .-QuadDec_M1_Cnt16_WriteControlRegister
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  411              		.cfi_def_cfa_offset 4
  412              		.cfi_offset 7, -4
  413 0002 83B0     		sub	sp, sp, #12
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 14
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 14
 
 
  414              		.cfi_def_cfa_offset 16
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  349:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c **** *
  350:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c **** * Parameters:  
  351:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c **** *  void:  
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 15
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 15
 
 
  352:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c **** *
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  479              		.cfi_endproc
  480              	.LFE9:
  481              		.size	QuadDec_M1_Cnt16_ReadCounter, .-QuadDec_M1_Cnt16_ReadCounter
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 16
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 16
 
 
  482              		.section	.text.QuadDec_M1_Cnt16_ReadCapture,"ax",%progbits
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  513              	.L38:
  514              		.align	2
  515              	.L37:
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 17
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 17
 
 
  516 0014 8C680040 		.word	1073768588
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  422:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c **** }
  546              		.loc 1 422 0
  547 0010 0C37     		adds	r7, r7, #12
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 18
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 18
 
 
  548              		.cfi_def_cfa_offset 4
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  581              		.loc 1 443 0
  582 0004 034B     		ldr	r3, .L44
  583 0006 1B88     		ldrh	r3, [r3]	@ movhi
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 19
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 19
 
 
  584 0008 9BB2     		uxth	r3, r3
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  614 0000 80B4     		push	{r7}
  615              		.cfi_def_cfa_offset 4
  616              		.cfi_offset 7, -4
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 20
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 20
 
 
  617 0002 83B0     		sub	sp, sp, #12
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  487:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c **** *
  488:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c **** *******************************************************************************/
  489:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c **** uint16 QuadDec_M1_Cnt16_ReadCompare(void) 
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 21
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 21
 
 
  490:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c **** {
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  506:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c **** *  void
  507:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c **** *
  508:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c **** *******************************************************************************/
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 22
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 22
 
 
  509:.\Generated_Source\PSoC5/QuadDec_M1_Cnt16.c **** void QuadDec_M1_Cnt16_SetCompareMode(uint8 compareMode) 
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  693              		@ frame_needed = 1, uses_anonymous_args = 0
  694 0000 80B5     		push	{r7, lr}
  695              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 23
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 23
 
 
  696              		.cfi_offset 7, -8
@@ -1362,8 +1362,8 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  726 000b 01       		.uleb128 0x1
  727 000c 13020000 		.4byte	.LASF40
  728 0010 01       		.byte	0x1
- 729 0011 D1010000 		.4byte	.LASF41
- 730 0015 58010000 		.4byte	.LASF42
+ 729 0011 DF010000 		.4byte	.LASF41
+ 730 0015 3A000000 		.4byte	.LASF42
  731 0019 00000000 		.4byte	.Ldebug_ranges0+0
  732 001d 00000000 		.4byte	0
  733 0021 00000000 		.4byte	.Ldebug_line0
@@ -1374,18 +1374,18 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  738 002c 02       		.uleb128 0x2
  739 002d 01       		.byte	0x1
  740 002e 08       		.byte	0x8
- 741 002f FD010000 		.4byte	.LASF1
+ 741 002f 86010000 		.4byte	.LASF1
  742 0033 02       		.uleb128 0x2
  743 0034 02       		.byte	0x2
  744 0035 05       		.byte	0x5
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 24
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 24
 
 
  745 0036 A1030000 		.4byte	.LASF2
  746 003a 02       		.uleb128 0x2
  747 003b 02       		.byte	0x2
  748 003c 07       		.byte	0x7
- 749 003d 77000000 		.4byte	.LASF3
+ 749 003d A5000000 		.4byte	.LASF3
  750 0041 02       		.uleb128 0x2
  751 0042 04       		.byte	0x4
  752 0043 05       		.byte	0x5
@@ -1393,7 +1393,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  754 0048 02       		.uleb128 0x2
  755 0049 04       		.byte	0x4
  756 004a 07       		.byte	0x7
- 757 004b A2010000 		.4byte	.LASF5
+ 757 004b B0010000 		.4byte	.LASF5
  758 004f 02       		.uleb128 0x2
  759 0050 08       		.byte	0x8
  760 0051 05       		.byte	0x5
@@ -1411,7 +1411,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  772 0066 07       		.byte	0x7
  773 0067 22030000 		.4byte	.LASF8
  774 006b 04       		.uleb128 0x4
- 775 006c B4010000 		.4byte	.LASF9
+ 775 006c C2010000 		.4byte	.LASF9
  776 0070 02       		.byte	0x2
  777 0071 9201     		.2byte	0x192
  778 0073 2C000000 		.4byte	0x2c
@@ -1423,7 +1423,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  784 0083 02       		.uleb128 0x2
  785 0084 04       		.byte	0x4
  786 0085 04       		.byte	0x4
- 787 0086 15010000 		.4byte	.LASF11
+ 787 0086 43010000 		.4byte	.LASF11
  788 008a 02       		.uleb128 0x2
  789 008b 08       		.byte	0x8
  790 008c 04       		.byte	0x4
@@ -1433,12 +1433,12 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  794 0093 08       		.byte	0x8
  795 0094 9C030000 		.4byte	.LASF13
  796 0098 04       		.uleb128 0x4
- 797 0099 9D010000 		.4byte	.LASF14
+ 797 0099 AB010000 		.4byte	.LASF14
  798 009d 02       		.byte	0x2
  799 009e 3C02     		.2byte	0x23c
  800 00a0 A4000000 		.4byte	0xa4
  801 00a4 05       		.uleb128 0x5
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 25
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 25
 
 
  802 00a5 6B000000 		.4byte	0x6b
@@ -1471,7 +1471,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  829 00e2 91       		.byte	0x91
  830 00e3 77       		.sleb128 -9
  831 00e4 07       		.uleb128 0x7
- 832 00e5 38010000 		.4byte	.LASF18
+ 832 00e5 66010000 		.4byte	.LASF18
  833 00e9 01       		.byte	0x1
  834 00ea 2D       		.byte	0x2d
  835 00eb 6B000000 		.4byte	0x6b
@@ -1488,7 +1488,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  846 0102 01       		.uleb128 0x1
  847 0103 9C       		.byte	0x9c
  848 0104 09       		.uleb128 0x9
- 849 0105 86010000 		.4byte	.LASF20
+ 849 0105 94010000 		.4byte	.LASF20
  850 0109 01       		.byte	0x1
  851 010a B2       		.byte	0xb2
  852 010b 00000000 		.4byte	.LFB2
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  856 0115 08       		.uleb128 0x8
  857 0116 B4030000 		.4byte	.LASF21
  858 011a 01       		.byte	0x1
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 26
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 26
 
 
  859 011b D0       		.byte	0xd0
@@ -1507,7 +1507,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  862 0124 01       		.uleb128 0x1
  863 0125 9C       		.byte	0x9c
  864 0126 0A       		.uleb128 0xa
- 865 0127 A8000000 		.4byte	.LASF23
+ 865 0127 D6000000 		.4byte	.LASF23
  866 012b 01       		.byte	0x1
  867 012c ED       		.byte	0xed
  868 012d 00000000 		.4byte	.LFB4
@@ -1516,7 +1516,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  871 0136 9C       		.byte	0x9c
  872 0137 4A010000 		.4byte	0x14a
  873 013b 0B       		.uleb128 0xb
- 874 013c C2010000 		.4byte	.LASF27
+ 874 013c D0010000 		.4byte	.LASF27
  875 0140 01       		.byte	0x1
  876 0141 ED       		.byte	0xed
  877 0142 6B000000 		.4byte	0x6b
@@ -1534,7 +1534,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  889 015e 01       		.uleb128 0x1
  890 015f 9C       		.byte	0x9c
  891 0160 0C       		.uleb128 0xc
- 892 0161 F0000000 		.4byte	.LASF25
+ 892 0161 1E010000 		.4byte	.LASF25
  893 0165 01       		.byte	0x1
  894 0166 1B01     		.2byte	0x11b
  895 0168 6B000000 		.4byte	0x6b
@@ -1543,7 +1543,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  898 0174 01       		.uleb128 0x1
  899 0175 9C       		.byte	0x9c
  900 0176 0D       		.uleb128 0xd
- 901 0177 CA000000 		.4byte	.LASF26
+ 901 0177 F8000000 		.4byte	.LASF26
  902 017b 01       		.byte	0x1
  903 017c 3001     		.2byte	0x130
  904 017e 00000000 		.4byte	.LFB7
@@ -1552,13 +1552,13 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  907 0187 9C       		.byte	0x9c
  908 0188 9C010000 		.4byte	0x19c
  909 018c 0E       		.uleb128 0xe
- 910 018d BA010000 		.4byte	.LASF28
+ 910 018d C8010000 		.4byte	.LASF28
  911 0191 01       		.byte	0x1
  912 0192 3001     		.2byte	0x130
  913 0194 6B000000 		.4byte	0x6b
  914 0198 02       		.uleb128 0x2
  915 0199 91       		.byte	0x91
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 27
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 27
 
 
  916 019a 77       		.sleb128 -9
@@ -1582,7 +1582,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  934 01c0 76       		.sleb128 -10
  935 01c1 00       		.byte	0
  936 01c2 0C       		.uleb128 0xc
- 937 01c3 1B010000 		.4byte	.LASF31
+ 937 01c3 49010000 		.4byte	.LASF31
  938 01c7 01       		.byte	0x1
  939 01c8 6501     		.2byte	0x165
  940 01ca 77000000 		.4byte	0x77
@@ -1591,7 +1591,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  943 01d6 01       		.uleb128 0x1
  944 01d7 9C       		.byte	0x9c
  945 01d8 0C       		.uleb128 0xc
- 946 01d9 53000000 		.4byte	.LASF32
+ 946 01d9 81000000 		.4byte	.LASF32
  947 01dd 01       		.byte	0x1
  948 01de 8601     		.2byte	0x186
  949 01e0 77000000 		.4byte	0x77
@@ -1609,7 +1609,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  961 01ff 9C       		.byte	0x9c
  962 0200 14020000 		.4byte	0x214
  963 0204 0E       		.uleb128 0xe
- 964 0205 70000000 		.4byte	.LASF34
+ 964 0205 9E000000 		.4byte	.LASF34
  965 0209 01       		.byte	0x1
  966 020a 9F01     		.2byte	0x19f
  967 020c 77000000 		.4byte	0x77
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  970 0212 76       		.sleb128 -10
  971 0213 00       		.byte	0
  972 0214 0C       		.uleb128 0xc
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 28
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 28
 
 
  973 0215 1E000000 		.4byte	.LASF35
@@ -1630,7 +1630,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  979 0228 01       		.uleb128 0x1
  980 0229 9C       		.byte	0x9c
  981 022a 0D       		.uleb128 0xd
- 982 022b 8A000000 		.4byte	.LASF36
+ 982 022b B8000000 		.4byte	.LASF36
  983 022f 01       		.byte	0x1
  984 0230 D101     		.2byte	0x1d1
  985 0232 00000000 		.4byte	.LFB13
@@ -1665,7 +1665,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  1014 0276 01       		.uleb128 0x1
  1015 0277 9C       		.byte	0x9c
  1016 0278 10       		.uleb128 0x10
- 1017 0279 3A000000 		.4byte	.LASF43
+ 1017 0279 68000000 		.4byte	.LASF43
  1018 027d 01       		.byte	0x1
  1019 027e 15       		.byte	0x15
  1020 027f 6B000000 		.4byte	0x6b
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  1027 0000 01       		.uleb128 0x1
  1028 0001 11       		.uleb128 0x11
  1029 0002 01       		.byte	0x1
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 29
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 29
 
 
  1030 0003 25       		.uleb128 0x25
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  1084 0039 49       		.uleb128 0x49
  1085 003a 13       		.uleb128 0x13
  1086 003b 00       		.byte	0
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 30
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 30
 
 
  1087 003c 00       		.byte	0
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  1141 0073 11       		.uleb128 0x11
  1142 0074 01       		.uleb128 0x1
  1143 0075 12       		.uleb128 0x12
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 31
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 31
 
 
  1144 0076 06       		.uleb128 0x6
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  1198 00af 00       		.byte	0
  1199 00b0 0B       		.uleb128 0xb
  1200 00b1 05       		.uleb128 0x5
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 32
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 32
 
 
  1201 00b2 00       		.byte	0
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  1255 00e9 06       		.uleb128 0x6
  1256 00ea 40       		.uleb128 0x40
  1257 00eb 18       		.uleb128 0x18
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 33
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 33
 
 
  1258 00ec 9742     		.uleb128 0x2117
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  1312 0124 13       		.uleb128 0x13
  1313 0125 3F       		.uleb128 0x3f
  1314 0126 19       		.uleb128 0x19
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 34
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 34
 
 
  1315 0127 02       		.uleb128 0x2
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  1369 0014 20000000 		.4byte	.LFE2
  1370 0018 00000000 		.4byte	.LFB3
  1371 001c 20000000 		.4byte	.LFE3
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 35
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 35
 
 
  1372 0020 00000000 		.4byte	.LFB4
@@ -2089,115 +2089,115 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  1406      4D315F43 
  1406      6E743136 
  1406      5F526561 
- 1407              	.LASF43:
- 1408 003a 51756164 		.ascii	"QuadDec_M1_Cnt16_initVar\000"
- 1408      4465635F 
- 1408      4D315F43 
- 1408      6E743136 
- 1408      5F696E69 
- 1409              	.LASF32:
- 1410 0053 51756164 		.ascii	"QuadDec_M1_Cnt16_ReadCapture\000"
+ 1407              	.LASF42:
+ 1408 003a 443A5C67 		.ascii	"D:\\gp1_repo\\CS301-Team-Repo\\CS301_Class.cydsn\000"
+ 1408      70315F72 
+ 1408      65706F5C 
+ 1408      43533330 
+ 1408      312D5465 
+ 1409              	.LASF43:
+ 1410 0068 51756164 		.ascii	"QuadDec_M1_Cnt16_initVar\000"
  1410      4465635F 
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 36
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 36
 
 
  1410      4D315F43 
  1410      6E743136 
- 1410      5F526561 
- 1411              	.LASF34:
- 1412 0070 70657269 		.ascii	"period\000"
- 1412      6F6400
- 1413              	.LASF3:
- 1414 0077 73686F72 		.ascii	"short unsigned int\000"
- 1414      7420756E 
- 1414      7369676E 
- 1414      65642069 
- 1414      6E7400
- 1415              	.LASF36:
- 1416 008a 51756164 		.ascii	"QuadDec_M1_Cnt16_WriteCompare\000"
- 1416      4465635F 
- 1416      4D315F43 
- 1416      6E743136 
- 1416      5F577269 
- 1417              	.LASF23:
- 1418 00a8 51756164 		.ascii	"QuadDec_M1_Cnt16_SetInterruptMode\000"
+ 1410      5F696E69 
+ 1411              	.LASF32:
+ 1412 0081 51756164 		.ascii	"QuadDec_M1_Cnt16_ReadCapture\000"
+ 1412      4465635F 
+ 1412      4D315F43 
+ 1412      6E743136 
+ 1412      5F526561 
+ 1413              	.LASF34:
+ 1414 009e 70657269 		.ascii	"period\000"
+ 1414      6F6400
+ 1415              	.LASF3:
+ 1416 00a5 73686F72 		.ascii	"short unsigned int\000"
+ 1416      7420756E 
+ 1416      7369676E 
+ 1416      65642069 
+ 1416      6E7400
+ 1417              	.LASF36:
+ 1418 00b8 51756164 		.ascii	"QuadDec_M1_Cnt16_WriteCompare\000"
  1418      4465635F 
  1418      4D315F43 
  1418      6E743136 
- 1418      5F536574 
- 1419              	.LASF26:
- 1420 00ca 51756164 		.ascii	"QuadDec_M1_Cnt16_WriteControlRegister\000"
+ 1418      5F577269 
+ 1419              	.LASF23:
+ 1420 00d6 51756164 		.ascii	"QuadDec_M1_Cnt16_SetInterruptMode\000"
  1420      4465635F 
  1420      4D315F43 
  1420      6E743136 
- 1420      5F577269 
- 1421              	.LASF25:
- 1422 00f0 51756164 		.ascii	"QuadDec_M1_Cnt16_ReadControlRegister\000"
+ 1420      5F536574 
+ 1421              	.LASF26:
+ 1422 00f8 51756164 		.ascii	"QuadDec_M1_Cnt16_WriteControlRegister\000"
  1422      4465635F 
  1422      4D315F43 
  1422      6E743136 
- 1422      5F526561 
- 1423              	.LASF11:
- 1424 0115 666C6F61 		.ascii	"float\000"
- 1424      7400
- 1425              	.LASF31:
- 1426 011b 51756164 		.ascii	"QuadDec_M1_Cnt16_ReadCounter\000"
- 1426      4465635F 
- 1426      4D315F43 
- 1426      6E743136 
- 1426      5F526561 
- 1427              	.LASF18:
- 1428 0138 51756164 		.ascii	"QuadDec_M1_Cnt16_interruptState\000"
+ 1422      5F577269 
+ 1423              	.LASF25:
+ 1424 011e 51756164 		.ascii	"QuadDec_M1_Cnt16_ReadControlRegister\000"
+ 1424      4465635F 
+ 1424      4D315F43 
+ 1424      6E743136 
+ 1424      5F526561 
+ 1425              	.LASF11:
+ 1426 0143 666C6F61 		.ascii	"float\000"
+ 1426      7400
+ 1427              	.LASF31:
+ 1428 0149 51756164 		.ascii	"QuadDec_M1_Cnt16_ReadCounter\000"
  1428      4465635F 
  1428      4D315F43 
  1428      6E743136 
- 1428      5F696E74 
- 1429              	.LASF42:
- 1430 0158 443A5C43 		.ascii	"D:\\CS301GP1\\CS301-Team-Repo\\CS301_Class.cydsn\000"
- 1430      53333031 
- 1430      4750315C 
- 1430      43533330 
- 1430      312D5465 
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 37
+ 1428      5F526561 
+ 1429              	.LASF18:
+ 1430 0166 51756164 		.ascii	"QuadDec_M1_Cnt16_interruptState\000"
+ 1430      4465635F 
+ 1430      4D315F43 
+ 1430      6E743136 
+ 1430      5F696E74 
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 37
 
 
- 1431              	.LASF20:
- 1432 0186 51756164 		.ascii	"QuadDec_M1_Cnt16_Start\000"
- 1432      4465635F 
- 1432      4D315F43 
- 1432      6E743136 
- 1432      5F537461 
- 1433              	.LASF14:
- 1434 019d 72656738 		.ascii	"reg8\000"
- 1434      00
- 1435              	.LASF5:
- 1436 01a2 6C6F6E67 		.ascii	"long unsigned int\000"
- 1436      20756E73 
- 1436      69676E65 
- 1436      6420696E 
- 1436      7400
- 1437              	.LASF9:
- 1438 01b4 75696E74 		.ascii	"uint8\000"
- 1438      3800
- 1439              	.LASF28:
- 1440 01ba 636F6E74 		.ascii	"control\000"
- 1440      726F6C00 
- 1441              	.LASF27:
- 1442 01c2 696E7465 		.ascii	"interruptsMask\000"
- 1442      72727570 
- 1442      74734D61 
- 1442      736B00
- 1443              	.LASF41:
- 1444 01d1 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\QuadDec_M1_Cnt16.c\000"
- 1444      6E657261 
- 1444      7465645F 
- 1444      536F7572 
- 1444      63655C50 
- 1445              	.LASF1:
- 1446 01fd 756E7369 		.ascii	"unsigned char\000"
- 1446      676E6564 
- 1446      20636861 
- 1446      7200
+ 1431              	.LASF1:
+ 1432 0186 756E7369 		.ascii	"unsigned char\000"
+ 1432      676E6564 
+ 1432      20636861 
+ 1432      7200
+ 1433              	.LASF20:
+ 1434 0194 51756164 		.ascii	"QuadDec_M1_Cnt16_Start\000"
+ 1434      4465635F 
+ 1434      4D315F43 
+ 1434      6E743136 
+ 1434      5F537461 
+ 1435              	.LASF14:
+ 1436 01ab 72656738 		.ascii	"reg8\000"
+ 1436      00
+ 1437              	.LASF5:
+ 1438 01b0 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1438      20756E73 
+ 1438      69676E65 
+ 1438      6420696E 
+ 1438      7400
+ 1439              	.LASF9:
+ 1440 01c2 75696E74 		.ascii	"uint8\000"
+ 1440      3800
+ 1441              	.LASF28:
+ 1442 01c8 636F6E74 		.ascii	"control\000"
+ 1442      726F6C00 
+ 1443              	.LASF27:
+ 1444 01d0 696E7465 		.ascii	"interruptsMask\000"
+ 1444      72727570 
+ 1444      74734D61 
+ 1444      736B00
+ 1445              	.LASF41:
+ 1446 01df 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\QuadDec_M1_Cnt16.c\000"
+ 1446      6E657261 
+ 1446      7465645F 
+ 1446      536F7572 
+ 1446      63655C50 
  1447              	.LASF30:
  1448 020b 636F756E 		.ascii	"counter\000"
  1448      74657200 
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  1452      2D736563 
  1452      74696F6E 
  1453              	.LASF12:
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 38
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 38
 
 
  1454 02a1 646F7562 		.ascii	"double\000"
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 1
  1474      00
  1475              	.LASF16:
  1476 0385 73697A65 		.ascii	"sizetype\000"
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\cclhLm1p.s 			page 39
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccdJ6RMu.s 			page 39
 
 
  1476      74797065 

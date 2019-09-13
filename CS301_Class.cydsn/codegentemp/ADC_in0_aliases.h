@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: A0.h  
+* File Name: ADC_in0.h  
 * Version 2.20
 *
 * Description:
@@ -15,8 +15,8 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if !defined(CY_PINS_A0_ALIASES_H) /* Pins A0_ALIASES_H */
-#define CY_PINS_A0_ALIASES_H
+#if !defined(CY_PINS_ADC_in0_ALIASES_H) /* Pins ADC_in0_ALIASES_H */
+#define CY_PINS_ADC_in0_ALIASES_H
 
 #include "cytypes.h"
 #include "cyfitter.h"
@@ -25,12 +25,12 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define A0_0			(A0__0__PC)
-#define A0_0_INTR	((uint16)((uint16)0x0001u << A0__0__SHIFT))
+#define ADC_in0_0			(ADC_in0__0__PC)
+#define ADC_in0_0_INTR	((uint16)((uint16)0x0001u << ADC_in0__0__SHIFT))
 
-#define A0_INTR_ALL	 ((uint16)(A0_0_INTR))
+#define ADC_in0_INTR_ALL	 ((uint16)(ADC_in0_0_INTR))
 
-#endif /* End Pins A0_ALIASES_H */
+#endif /* End Pins ADC_in0_ALIASES_H */
 
 
 /* [] END OF FILE */

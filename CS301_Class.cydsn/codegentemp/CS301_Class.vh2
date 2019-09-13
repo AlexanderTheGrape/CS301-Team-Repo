@@ -2,7 +2,7 @@
 --	Conversion of CS301_Class.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Wed Aug 28 15:19:07 2019
+--	Fri Sep 13 16:16:45 2019
 --
 
 USE cypress.cypress.all;
@@ -517,12 +517,12 @@ SIGNAL tmpOE__M2_QB_net_0 : bit;
 SIGNAL tmpIO_0__M2_QB_net_0 : bit;
 TERMINAL tmpSIOVREF__M2_QB_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__M2_QB_net_0 : bit;
-SIGNAL tmpOE__A0_net_0 : bit;
-SIGNAL tmpFB_0__A0_net_0 : bit;
+SIGNAL tmpOE__ADC_in0_net_0 : bit;
+SIGNAL tmpFB_0__ADC_in0_net_0 : bit;
 TERMINAL Net_4756 : bit;
-SIGNAL tmpIO_0__A0_net_0 : bit;
-TERMINAL tmpSIOVREF__A0_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__A0_net_0 : bit;
+SIGNAL tmpIO_0__ADC_in0_net_0 : bit;
+TERMINAL tmpSIOVREF__ADC_in0_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__ADC_in0_net_0 : bit;
 SIGNAL tmpOE__Light_Sensor_net_0 : bit;
 SIGNAL Net_6305 : bit;
 SIGNAL tmpIO_0__Light_Sensor_net_0 : bit;
@@ -2756,7 +2756,7 @@ M2_QB:cy_psoc3_pins_v1_10
 		out_clock_en=>tmpOE__M1_IN1_net_0,
 		out_reset=>Net_2183,
 		interrupt=>tmpINTERRUPT_0__M2_QB_net_0);
-A0:cy_psoc3_pins_v1_10
+ADC_in0:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"0bcf7c42-2f2e-4728-87df-b06d8e2a47ff",
 		drive_mode=>"000",
 		ibuf_enabled=>"0",
@@ -2814,10 +2814,10 @@ A0:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__M1_IN1_net_0),
 		y=>(Net_2183),
-		fb=>(tmpFB_0__A0_net_0),
+		fb=>(tmpFB_0__ADC_in0_net_0),
 		analog=>Net_4756,
-		io=>(tmpIO_0__A0_net_0),
-		siovref=>(tmpSIOVREF__A0_net_0),
+		io=>(tmpIO_0__ADC_in0_net_0),
+		siovref=>(tmpSIOVREF__ADC_in0_net_0),
 		annotation=>(open),
 		in_clock=>Net_2183,
 		in_clock_en=>tmpOE__M1_IN1_net_0,
@@ -2825,7 +2825,7 @@ A0:cy_psoc3_pins_v1_10
 		out_clock=>Net_2183,
 		out_clock_en=>tmpOE__M1_IN1_net_0,
 		out_reset=>Net_2183,
-		interrupt=>tmpINTERRUPT_0__A0_net_0);
+		interrupt=>tmpINTERRUPT_0__ADC_in0_net_0);
 Light_Sensor:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"77715107-f8d5-47e5-a629-0fb83101ac6b",
 		drive_mode=>"001",
@@ -2913,7 +2913,7 @@ Clock_1:cy_clock_v1_0
 		dig_domain_out=>open);
 button_pin:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"db74110c-032a-4e4b-b367-a78baf7e61df",
-		drive_mode=>"001",
+		drive_mode=>"011",
 		ibuf_enabled=>"1",
 		init_dr_st=>"0",
 		input_sync=>"0",

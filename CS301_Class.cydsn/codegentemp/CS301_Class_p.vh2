@@ -1,5 +1,5 @@
 -- Project:   CS301_Class
--- Generated: 08/28/2019 15:19:08
+-- Generated: 09/13/2019 16:16:46
 -- PSoC Creator  3.3 CP3
 
 ENTITY CS301_Class IS
@@ -34,7 +34,7 @@ ENTITY CS301_Class IS
 END CS301_Class;
 
 ARCHITECTURE __DEFAULT__ OF CS301_Class IS
-    SIGNAL A0(0)__PA : bit;
+    SIGNAL ADC_in0(0)__PA : bit;
     SIGNAL CLK24M : bit;
     ATTRIBUTE global_signal OF CLK24M : SIGNAL IS true;
     SIGNAL CLK24M_local : bit;
@@ -366,29 +366,29 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     SIGNAL \Timer_1:TimerUDB:sT16:timerdp:u1.cmsbo__sig\ : bit;
     ATTRIBUTE lib_model OF \QuadDec_M2:Net_1251_split\ : LABEL IS "macrocell1";
     ATTRIBUTE lib_model OF M1_IN1(0) : LABEL IS "iocell1";
-    ATTRIBUTE Location OF M1_IN1(0) : LABEL IS "P3[5]";
+    ATTRIBUTE Location OF M1_IN1(0) : LABEL IS "P15[4]";
     ATTRIBUTE lib_model OF M1_IN2(0) : LABEL IS "iocell2";
-    ATTRIBUTE Location OF M1_IN2(0) : LABEL IS "P3[4]";
+    ATTRIBUTE Location OF M1_IN2(0) : LABEL IS "P15[5]";
     ATTRIBUTE lib_model OF M2_IN1(0) : LABEL IS "iocell3";
-    ATTRIBUTE Location OF M2_IN1(0) : LABEL IS "P12[2]";
+    ATTRIBUTE Location OF M2_IN1(0) : LABEL IS "P1[2]";
     ATTRIBUTE lib_model OF M2_IN2(0) : LABEL IS "iocell4";
-    ATTRIBUTE Location OF M2_IN2(0) : LABEL IS "P12[3]";
+    ATTRIBUTE Location OF M2_IN2(0) : LABEL IS "P1[1]";
     ATTRIBUTE lib_model OF M2_D1(0) : LABEL IS "iocell5";
-    ATTRIBUTE Location OF M2_D1(0) : LABEL IS "P12[4]";
+    ATTRIBUTE Location OF M2_D1(0) : LABEL IS "P1[4]";
     ATTRIBUTE lib_model OF M1_QA(0) : LABEL IS "iocell6";
-    ATTRIBUTE Location OF M1_QA(0) : LABEL IS "P15[1]";
+    ATTRIBUTE Location OF M1_QA(0) : LABEL IS "P3[1]";
     ATTRIBUTE lib_model OF M1_QB(0) : LABEL IS "iocell7";
-    ATTRIBUTE Location OF M1_QB(0) : LABEL IS "P15[2]";
+    ATTRIBUTE Location OF M1_QB(0) : LABEL IS "P3[3]";
     ATTRIBUTE lib_model OF M2_QA(0) : LABEL IS "iocell8";
-    ATTRIBUTE Location OF M2_QA(0) : LABEL IS "P0[0]";
+    ATTRIBUTE Location OF M2_QA(0) : LABEL IS "P2[4]";
     ATTRIBUTE lib_model OF M2_QB(0) : LABEL IS "iocell9";
-    ATTRIBUTE Location OF M2_QB(0) : LABEL IS "P0[1]";
-    ATTRIBUTE lib_model OF A0(0) : LABEL IS "iocell10";
-    ATTRIBUTE Location OF A0(0) : LABEL IS "P0[5]";
+    ATTRIBUTE Location OF M2_QB(0) : LABEL IS "P2[5]";
+    ATTRIBUTE lib_model OF ADC_in0(0) : LABEL IS "iocell10";
+    ATTRIBUTE Location OF ADC_in0(0) : LABEL IS "P0[5]";
     ATTRIBUTE lib_model OF Light_Sensor(0) : LABEL IS "iocell11";
-    ATTRIBUTE Location OF Light_Sensor(0) : LABEL IS "P0[3]";
+    ATTRIBUTE Location OF Light_Sensor(0) : LABEL IS "P0[1]";
     ATTRIBUTE lib_model OF button_pin(0) : LABEL IS "iocell12";
-    ATTRIBUTE Location OF button_pin(0) : LABEL IS "P2[2]";
+    ATTRIBUTE Location OF button_pin(0) : LABEL IS "P3[7]";
     ATTRIBUTE lib_model OF \ADC:Bypass(0)\ : LABEL IS "iocell13";
     ATTRIBUTE Location OF \ADC:Bypass(0)\ : LABEL IS "P0[2]";
     ATTRIBUTE lib_model OF \USBUART:Dm(0)\ : LABEL IS "iocell14";
@@ -396,7 +396,7 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE lib_model OF \USBUART:Dp(0)\ : LABEL IS "iocell15";
     ATTRIBUTE Location OF \USBUART:Dp(0)\ : LABEL IS "P15[6]";
     ATTRIBUTE lib_model OF M1_D1(0) : LABEL IS "iocell16";
-    ATTRIBUTE Location OF M1_D1(0) : LABEL IS "P3[3]";
+    ATTRIBUTE Location OF M1_D1(0) : LABEL IS "P0[0]";
     ATTRIBUTE lib_model OF Rx_1(0) : LABEL IS "iocell17";
     ATTRIBUTE Location OF Rx_1(0) : LABEL IS "P1[6]";
     ATTRIBUTE lib_model OF Tx_1(0) : LABEL IS "iocell18";
@@ -406,11 +406,11 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE lib_model OF DB0(0) : LABEL IS "iocell20";
     ATTRIBUTE Location OF DB0(0) : LABEL IS "P3[0]";
     ATTRIBUTE lib_model OF DB1(0) : LABEL IS "iocell21";
-    ATTRIBUTE Location OF DB1(0) : LABEL IS "P3[1]";
+    ATTRIBUTE Location OF DB1(0) : LABEL IS "P12[1]";
     ATTRIBUTE lib_model OF DB2(0) : LABEL IS "iocell22";
     ATTRIBUTE Location OF DB2(0) : LABEL IS "P3[6]";
     ATTRIBUTE lib_model OF Rx_2(0) : LABEL IS "iocell23";
-    ATTRIBUTE Location OF Rx_2(0) : LABEL IS "P2[4]";
+    ATTRIBUTE Location OF Rx_2(0) : LABEL IS "P12[2]";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:reload\ : LABEL IS "macrocell2";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:status_0\ : LABEL IS "macrocell3";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:status_2\ : LABEL IS "macrocell4";
@@ -1796,7 +1796,7 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    A0:logicalport
+    ADC_in0:logicalport
         GENERIC MAP(
             drive_mode => "000",
             ibuf_enabled => "0",
@@ -1867,16 +1867,16 @@ BEGIN
             out_clock_en => open,
             out_reset => open);
 
-    A0(0):iocell
+    ADC_in0(0):iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "A0",
+            logicalport => "ADC_in0",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
         PORT MAP(
-            pa_out => A0(0)__PA,
+            pa_out => ADC_in0(0)__PA,
             oe => open,
             in_clock => open,
             in_clock_en => '1',
@@ -1978,7 +1978,7 @@ BEGIN
 
     button_pin:logicalport
         GENERIC MAP(
-            drive_mode => "001",
+            drive_mode => "011",
             ibuf_enabled => "1",
             id => "db74110c-032a-4e4b-b367-a78baf7e61df",
             init_dr_st => "0",
