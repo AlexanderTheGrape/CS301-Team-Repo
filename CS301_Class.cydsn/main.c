@@ -179,12 +179,12 @@ void driveForwards()
 
 void turnLeft()
 {
-    setSpeed(20,0);
+    setSpeed(0,20);
 }
 
 void turnRight()
 {
-    setSpeed(0,20);
+    setSpeed(20,0);
 }
 
 
@@ -226,16 +226,53 @@ CY_ISR (adc_isr)
 CY_ISR (isr_quad1)
 {
     //LED_Write(~LED_Read());
+    last_quad_count1 = quad_count1;
+    last_quad_count2 = quad_count2;
     quad_count1 = QuadDec_M1_GetCounter();
     quad_count2 = QuadDec_M2_GetCounter();
-    QuadDec_M1_SetCounter(0);
-    QuadDec_M2_SetCounter(0);
+    quad_diff1 = quad_count1 - last_quad_count1;
+    quad_diff2 = quad_count2 - last_quad_count2;
+    
+    if(quad_count1 > 3000 && movement_state != LTURN && movement_state != RTURN)
+    {
+        QuadDec_M1_SetCounter(0);
+        QuadDec_M2_SetCounter(0);
+        quad_count1 = 0;
+        quad_count2 = 0;
+    }
+
     flag_calc_wheelspeed = 1;
 }
 
+CY_ISR(isr_turn_timer)
+{
+    if(movement_state == LTURN)
+    {
+        if((QuadDec_M2_GetCounter() - start_turn_count) >= 208)
+        {
+            movement_state = STOPPED;
+            Timer_2_Stop();
+        }
+    }
+    else if (movement_state == RTURN)
+    {
+        if((QuadDec_M1_GetCounter() - start_turn_count) >= 208)
+        {
+            movement_state = STOPPED;
+            Timer_2_Stop();
+        }
+    }
+}
+
+
 CY_ISR (Stop_on_line)
 {
-    movement_state = STOPPED;
+    //movement_state = STOPPED;
+    if(movement_state != DRIVE) return;
+    brakeMotor();
+    movement_state = LTURN;
+    start_turn_count = QuadDec_M2_GetCounter();
+    Timer_2_Start();
 }
 
 CY_ISR (button)
@@ -256,14 +293,14 @@ void Quad_Dec_response()
     
     char wheel_1_str [64];
     char wheel_2_str [64];
-    sprintf(wheel_1_str, "quad count 1 is: %d\n\r", quad_count1);
+    sprintf(wheel_1_str, "quad count 1 is: %d\n\r", quad_diff1);
     //usbPutString(wheel_1_str);
-    sprintf(wheel_2_str, "quad count 2 is: %d\n\r", quad_count2);
+    sprintf(wheel_2_str, "quad count 2 is: %d\n\r", quad_diff2);
     
     //usbPutString(wheel_2_str);
     
-    int16 leftSpeed = quad_count1;
-    int16 rightSpeed = quad_count2;
+    int16 leftSpeed = quad_diff1;
+    int16 rightSpeed = quad_diff2;
 
     int interCalc = leftSpeedLimit - abs(leftSpeed);
     int nextSpeed = (abs(interCalc) / interCalc) * sqrt(abs(interCalc));
@@ -352,6 +389,7 @@ int main()
         QuadDec_M2_Start();
         
         isr_quad1_StartEx(isr_quad1);
+        isr_turn_count_StartEx(isr_turn_timer);
         
         Timer_1_Start();
     }

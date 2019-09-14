@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
   30:.\Generated_Source\PSoC5/cyfitter_cfg.c ****     #define CYPACKED_ATTR __attribute__ ((packed))
   31:.\Generated_Source\PSoC5/cyfitter_cfg.c ****     #define CYALIGNED __attribute__ ((aligned))
   32:.\Generated_Source\PSoC5/cyfitter_cfg.c ****     #define CY_CFG_UNUSED __attribute__ ((unused))
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 2
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 2
 
 
   33:.\Generated_Source\PSoC5/cyfitter_cfg.c ****     #ifndef CY_CFG_SECTION
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
   47              		.cfi_def_cfa_offset 8
   48 0016 BD46     		mov	sp, r7
   49              		.cfi_def_cfa_register 13
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 3
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 3
 
 
   50              		@ sp needed
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
   97              	CYCONFIGCPYCODE:
   98              	.LFB2:
   73:.\Generated_Source\PSoC5/cyfitter_cfg.c **** CY_CFG_UNUSED
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 4
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 4
 
 
   74:.\Generated_Source\PSoC5/cyfitter_cfg.c **** static void CYCONFIGCPYCODE(void *dest, const void *src, size_t n);
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
   91:.\Generated_Source\PSoC5/cyfitter_cfg.c **** * Function Name: CyClockStartupError
   92:.\Generated_Source\PSoC5/cyfitter_cfg.c **** ********************************************************************************
   93:.\Generated_Source\PSoC5/cyfitter_cfg.c **** * Summary:
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 5
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 5
 
 
   94:.\Generated_Source\PSoC5/cyfitter_cfg.c **** *  If an error is encountered during clock configuration (crystal startup error,
@@ -298,13 +298,13 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  160              		.type	cfg_write_bytes32, %function
  161              	cfg_write_bytes32:
  162              	.LFB4:
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 6
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 6
 
 
  124:.\Generated_Source\PSoC5/cyfitter_cfg.c **** }
  125:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #endif
  126:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
- 127:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define CY_CFG_BASE_ADDR_COUNT 39u
+ 127:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define CY_CFG_BASE_ADDR_COUNT 41u
  128:.\Generated_Source\PSoC5/cyfitter_cfg.c **** CYPACKED typedef struct
  129:.\Generated_Source\PSoC5/cyfitter_cfg.c **** {
  130:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	uint8 offset;
@@ -312,28 +312,28 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  132:.\Generated_Source\PSoC5/cyfitter_cfg.c **** } CYPACKED_ATTR cy_cfg_addrvalue_t;
  133:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  134:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define cy_cfg_addr_table ((const uint32 CYFAR *)0x48000000u)
- 135:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define cy_cfg_data_table ((const cy_cfg_addrvalue_t CYFAR *)0x4800009Cu)
+ 135:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define cy_cfg_data_table ((const cy_cfg_addrvalue_t CYFAR *)0x480000A4u)
  136:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  137:.\Generated_Source\PSoC5/cyfitter_cfg.c **** /* UCFG_BCTL0 Address: CYREG_BCTL0_MDCLK_EN Size (bytes): 16 */
- 138:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_UCFG_BCTL0_VAL ((const uint8 CYFAR *)0x48000D88u)
+ 138:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_UCFG_BCTL0_VAL ((const uint8 CYFAR *)0x48000DE0u)
  139:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  140:.\Generated_Source\PSoC5/cyfitter_cfg.c **** /* IOPINS0_0 Address: CYREG_PRT0_DM0 Size (bytes): 8 */
- 141:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_IOPINS0_0_VAL ((const uint8 CYFAR *)0x48000D98u)
+ 141:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_IOPINS0_0_VAL ((const uint8 CYFAR *)0x48000DF0u)
  142:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  143:.\Generated_Source\PSoC5/cyfitter_cfg.c **** /* IOPINS0_7 Address: CYREG_PRT12_DM0 Size (bytes): 8 */
- 144:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_IOPINS0_7_VAL ((const uint8 CYFAR *)0x48000DA0u)
+ 144:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_IOPINS0_7_VAL ((const uint8 CYFAR *)0x48000DF8u)
  145:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  146:.\Generated_Source\PSoC5/cyfitter_cfg.c **** /* IOPINS0_8 Address: CYREG_PRT15_DR Size (bytes): 10 */
- 147:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_IOPINS0_8_VAL ((const uint8 CYFAR *)0x48000DA8u)
+ 147:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_IOPINS0_8_VAL ((const uint8 CYFAR *)0x48000E00u)
  148:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  149:.\Generated_Source\PSoC5/cyfitter_cfg.c **** /* IOPINS0_1 Address: CYREG_PRT1_DM0 Size (bytes): 8 */
- 150:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_IOPINS0_1_VAL ((const uint8 CYFAR *)0x48000DB4u)
+ 150:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_IOPINS0_1_VAL ((const uint8 CYFAR *)0x48000E0Cu)
  151:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  152:.\Generated_Source\PSoC5/cyfitter_cfg.c **** /* IOPINS0_2 Address: CYREG_PRT2_DR Size (bytes): 10 */
- 153:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_IOPINS0_2_VAL ((const uint8 CYFAR *)0x48000DBCu)
+ 153:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_IOPINS0_2_VAL ((const uint8 CYFAR *)0x48000E14u)
  154:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  155:.\Generated_Source\PSoC5/cyfitter_cfg.c **** /* IOPINS0_3 Address: CYREG_PRT3_DM0 Size (bytes): 8 */
- 156:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_IOPINS0_3_VAL ((const uint8 CYFAR *)0x48000DC8u)
+ 156:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_IOPINS0_3_VAL ((const uint8 CYFAR *)0x48000E20u)
  157:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  158:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  159:.\Generated_Source\PSoC5/cyfitter_cfg.c **** /*******************************************************************************
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  165              		@ args = 0, pretend = 0, frame = 24
  166              		@ frame_needed = 1, uses_anonymous_args = 0
  167              		@ link register save eliminated.
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 7
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 7
 
 
  168 0000 80B4     		push	{r7}
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  212 003e 1946     		mov	r1, r3
  213 0040 3B69     		ldr	r3, [r7, #16]
  214 0042 5B00     		lsls	r3, r3, #1
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 8
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 8
 
 
  215 0044 3A68     		ldr	r2, [r7]
@@ -451,7 +451,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  178:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	{
  238              		.loc 1 178 0 is_stmt 0 discriminator 1
  239 0064 7B69     		ldr	r3, [r7, #20]
- 240 0066 262B     		cmp	r3, #38
+ 240 0066 282B     		cmp	r3, #40
  241 0068 D4D9     		bls	.L10
  188:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 		}
  189:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	}
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  261              	.LFB5:
  191:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  192:.\Generated_Source\PSoC5/cyfitter_cfg.c **** /*******************************************************************************
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 9
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 9
 
 
  193:.\Generated_Source\PSoC5/cyfitter_cfg.c **** * Function Name: ClockSetup
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  289 001c 1A70     		strb	r2, [r3]
  220:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_DCFG2_CFG0), 0x003Bu);
  290              		.loc 1 220 0
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 10
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 10
 
 
  291 001e 3D4B     		ldr	r3, .L16+16
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  331 005a 384B     		ldr	r3, .L16+56
  332 005c 384A     		ldr	r2, .L16+60
  333 005e 1278     		ldrb	r2, [r2]
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 11
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 11
 
 
  334 0060 D2B2     		uxtb	r2, r2
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  376 00ac 02D0     		beq	.L13
  241:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	for (timeout = 250u / 10u; (timeout > 0u) && (pllLock != 0x03u); timeout--)
  377              		.loc 1 241 0 discriminator 3
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 12
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 12
 
 
  378 00ae FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  415 00e6 1E4B     		ldr	r3, .L16+92
  416 00e8 0222     		movs	r2, #2
  417 00ea 1A70     		strb	r2, [r3]
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 13
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 13
 
 
  262:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  469              	AnalogSetDefault:
  470              	.LFB6:
  265:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 14
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 14
 
 
  266:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  499 0020 DBB2     		uxtb	r3, r3
  500 0022 1370     		strb	r3, [r2]
  292:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_BG_DFT1), ((bg_xover_inl_trim >> 4) & 0x0Fu));
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 15
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 15
 
 
  501              		.loc 1 292 0
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  545 006c FFF7FEFF 		bl	CyDelayUs
  303:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_RESET_CR5), (cr5));
  546              		.loc 1 303 0
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 16
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 16
 
 
  547 0070 074A     		ldr	r2, .L19+8
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  314:.\Generated_Source\PSoC5/cyfitter_cfg.c **** * Enables or disables the analog pumps feeding analog routing switches.
  315:.\Generated_Source\PSoC5/cyfitter_cfg.c **** * Intended to be called at startup, based on the Vdda system configuration;
  316:.\Generated_Source\PSoC5/cyfitter_cfg.c **** * may be called during operation when the user informs us that the Vdda voltage
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 17
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 17
 
 
  317:.\Generated_Source\PSoC5/cyfitter_cfg.c **** * crossed the pump threshold.
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  624              		.loc 1 337 0
  625 0028 034A     		ldr	r2, .L24
  626 002a FB7B     		ldrb	r3, [r7, #15]
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 18
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 18
 
 
  627 002c 1370     		strb	r3, [r2]
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  657 0000 80B5     		push	{r7, lr}
  658              		.cfi_def_cfa_offset 8
  659              		.cfi_offset 7, -8
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 19
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 19
 
 
  660              		.cfi_offset 14, -4
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  395:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 			{(void CYFAR *)(CYDEV_UCFG_DSI12_BASE), 512u},
  396:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 			{(void CYFAR *)(CYREG_BCTL1_MDCLK_EN), 16u},
  397:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 		};
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 20
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 20
 
 
  398:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  716 004c 0023     		movs	r3, #0
  717 004e FB75     		strb	r3, [r7, #23]
  718 0050 1CE0     		b	.L29
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 21
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 21
 
 
  719              	.L30:
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  762 0092 4FF09040 		mov	r0, #1207959552
  763 0096 2F49     		ldr	r1, .L31+12
  764 0098 FFF7FEFF 		bl	cfg_write_bytes32
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 22
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 22
 
 
  424:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  805 00e8 2249     		ldr	r1, .L31+44
  806 00ea 0822     		movs	r2, #8
  807 00ec FFF7FEFF 		bl	CYCONFIGCPY
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 23
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 23
 
 
  438:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	CYCONFIGCPY((void CYFAR *)(CYREG_PRT15_DR), (const void CYFAR *)(BS_IOPINS0_8_VAL), 10u);
@@ -1345,15 +1345,15 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  825 0110 2049     		ldr	r1, .L31+76
  826 0112 0822     		movs	r2, #8
  827 0114 FFF7FEFF 		bl	CYCONFIGCPY
- 442:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_B0_P1_U0_CFG27), 0x44u);
+ 442:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_B0_P0_U0_CFG27), 0x84u);
  828              		.loc 1 442 0
  829 0118 1F4B     		ldr	r3, .L31+80
- 830 011a 4422     		movs	r2, #68
+ 830 011a 8422     		movs	r2, #132
  831 011c 1A70     		strb	r2, [r3]
- 443:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_B0_P1_U1_CFG27), 0x44u);
+ 443:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_B1_P3_U1_CFG27), 0x84u);
  832              		.loc 1 443 0
  833 011e 1F4B     		ldr	r3, .L31+84
- 834 0120 4422     		movs	r2, #68
+ 834 0120 8422     		movs	r2, #132
  835 0122 1A70     		strb	r2, [r3]
  444:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	/* Switch Boost to the precision bandgap reference from its internal reference */
  445:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_REG8((void CYXDATA *)CYREG_BOOST_CR2, (CY_GET_REG8((void CYXDATA *)CYREG_BOOST_CR2) | 0x08u
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  848 013a 0949     		ldr	r1, .L31+24
  849 013c 0E22     		movs	r2, #14
  850 013e FFF7FEFF 		bl	CYCONFIGCPY
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 24
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 24
 
 
  452:.\Generated_Source\PSoC5/cyfitter_cfg.c **** }
@@ -1395,25 +1395,25 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  861 0148 00480040 		.word	1073760256
  862 014c 00000000 		.word	cfg_memset_list.4887
  863 0150 2C000000 		.word	cfg_memcpy_list.4888
- 864 0154 9C000048 		.word	1207959708
+ 864 0154 A4000048 		.word	1207959716
  865 0158 03500140 		.word	1073827843
  866 015c 13500140 		.word	1073827859
  867 0160 A0430040 		.word	1073759136
  868 0164 C2430040 		.word	1073759170
  869 0168 02510040 		.word	1073762562
- 870 016c 980D0048 		.word	1207963032
+ 870 016c F00D0048 		.word	1207963120
  871 0170 C2510040 		.word	1073762754
- 872 0174 A00D0048 		.word	1207963040
+ 872 0174 F80D0048 		.word	1207963128
  873 0178 F0510040 		.word	1073762800
- 874 017c A80D0048 		.word	1207963048
+ 874 017c 000E0048 		.word	1207963136
  875 0180 12510040 		.word	1073762578
- 876 0184 B40D0048 		.word	1207963060
+ 876 0184 0C0E0048 		.word	1207963148
  877 0188 20510040 		.word	1073762592
- 878 018c BC0D0048 		.word	1207963068
+ 878 018c 140E0048 		.word	1207963156
  879 0190 32510040 		.word	1073762610
- 880 0194 C80D0048 		.word	1207963080
- 881 0198 5B020140 		.word	1073807963
- 882 019c DB020140 		.word	1073808091
+ 880 0194 200E0048 		.word	1207963168
+ 881 0198 5B000140 		.word	1073807451
+ 882 019c DB160140 		.word	1073813211
  883 01a0 22430040 		.word	1073759010
  884 01a4 B0430040 		.word	1073759152
  885              		.cfi_endproc
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  904 0022 0002     		.short	512
  905 0024 10500140 		.word	1073827856
  906 0028 1000     		.short	16
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 25
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 25
 
 
  907 002a 0000     		.align	2
@@ -1446,7 +1446,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  909              		.size	cfg_memcpy_list.4888, 10
  910              	cfg_memcpy_list.4888:
  911 002c 00500140 		.word	1073827840
- 912 0030 880D0048 		.word	1207963016
+ 912 0030 E00D0048 		.word	1207963104
  913 0034 1000     		.short	16
  914 0036 0000     		.text
  915              	.Letext0:
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  961 005a 04       		.uleb128 0x4
  962 005b 04       		.byte	0x4
  963 005c 05       		.byte	0x5
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 26
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 26
 
 
  964 005d CB000000 		.4byte	.LASF5
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  1018 00ca D4000000 		.4byte	.LASF18
  1019 00ce 03       		.byte	0x3
  1020 00cf 3D02     		.2byte	0x23d
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 27
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 27
 
 
  1021 00d1 D5000000 		.4byte	0xd5
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  1075 0139 01       		.byte	0x1
  1076 013a 45       		.byte	0x45
  1077 013b 00000000 		.4byte	.LFB1
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 28
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 28
 
 
  1078 013f 1C000000 		.4byte	.LFE1-.LFB1
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  1132 01a3 72010000 		.4byte	0x172
  1133 01a7 02       		.uleb128 0x2
  1134 01a8 91       		.byte	0x91
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 29
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 29
 
 
  1135 01a9 70       		.sleb128 -16
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  1189 020d 6900     		.ascii	"i\000"
  1190 020f 01       		.byte	0x1
  1191 0210 B1       		.byte	0xb1
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 30
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 30
 
 
  1192 0211 9E000000 		.4byte	0x9e
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  1246 027b 01       		.byte	0x1
  1247 027c D3       		.byte	0xd3
  1248 027d 9E000000 		.4byte	0x9e
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 31
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 31
 
 
  1249 0281 02       		.uleb128 0x2
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  1303 02e9 0C030000 		.4byte	0x30c
  1304 02ed 18       		.uleb128 0x18
  1305 02ee DC020000 		.4byte	.LASF38
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 32
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 32
 
 
  1306 02f2 01       		.byte	0x1
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  1360 0360 1B       		.uleb128 0x1b
  1361 0361 68020000 		.4byte	.LASF24
  1362 0365 01       		.byte	0x1
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 33
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 33
 
 
  1363 0366 7F01     		.2byte	0x17f
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  1417 03de BB030000 		.4byte	0x3bb
  1418 03e2 16       		.uleb128 0x16
  1419 03e3 6900     		.ascii	"i\000"
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 34
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 34
 
 
  1420 03e5 01       		.byte	0x1
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  1474 0454 91       		.byte	0x91
  1475 0455 64       		.sleb128 -28
  1476 0456 15       		.uleb128 0x15
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 35
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 35
 
 
  1477 0457 10010000 		.4byte	.LASF48
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  1531 0029 00       		.byte	0
  1532 002a 00       		.byte	0
  1533 002b 04       		.uleb128 0x4
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 36
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 36
 
 
  1534 002c 24       		.uleb128 0x24
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  1588 0062 0E       		.uleb128 0xe
  1589 0063 3A       		.uleb128 0x3a
  1590 0064 0B       		.uleb128 0xb
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 37
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 37
 
 
  1591 0065 3B       		.uleb128 0x3b
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  1645 009c 0B       		.uleb128 0xb
  1646 009d 49       		.uleb128 0x49
  1647 009e 13       		.uleb128 0x13
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 38
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 38
 
 
  1648 009f 02       		.uleb128 0x2
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  1702 00d6 00       		.byte	0
  1703 00d7 00       		.byte	0
  1704 00d8 11       		.uleb128 0x11
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 39
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 39
 
 
  1705 00d9 0B       		.uleb128 0xb
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  1759 0110 34       		.uleb128 0x34
  1760 0111 00       		.byte	0
  1761 0112 03       		.uleb128 0x3
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 40
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 40
 
 
  1762 0113 0E       		.uleb128 0xe
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  1816 014a 03       		.uleb128 0x3
  1817 014b 0E       		.uleb128 0xe
  1818 014c 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 41
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 41
 
 
  1819 014d 0B       		.uleb128 0xb
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  1873 0184 49       		.uleb128 0x49
  1874 0185 13       		.uleb128 0x13
  1875 0186 38       		.uleb128 0x38
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 42
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 42
 
 
  1876 0187 0B       		.uleb128 0xb
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  1930 000c 0000     		.2byte	0
  1931 000e 0000     		.2byte	0
  1932 0010 00000000 		.4byte	.LFB0
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 43
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 43
 
 
  1933 0014 1A000000 		.4byte	.LFE0-.LFB0
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  1980      00
  1981              	.LASF11:
  1982 0010 73697A65 		.ascii	"size_t\000"
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 44
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 44
 
 
  1982      5F7400
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  2005              	.LASF5:
  2006 00cb 6C6F6E67 		.ascii	"long int\000"
  2006      20696E74 
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 45
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 45
 
 
  2006      00
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  2034      77726974 
  2034      655F6279 
  2034      74657333 
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 46
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 46
 
 
  2034      3200
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  2055              	.LASF15:
  2056 026d 666C6F61 		.ascii	"float\000"
  2056      7400
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 47
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 47
 
 
  2057              	.LASF46:
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 1
  2085              	.LASF53:
  2086 0308 63796669 		.ascii	"cyfitter_cfg\000"
  2086      74746572 
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\cczeHjBS.s 			page 48
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccd3GtrI.s 			page 48
 
 
  2086      5F636667 

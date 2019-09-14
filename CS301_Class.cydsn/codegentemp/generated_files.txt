@@ -149,6 +149,11 @@
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\Timer_1.c" value="ARM_C_FILE;Timer_1" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\Timer_1.h" value="NONE;Timer_1" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\Timer_1_PM.c" value="ARM_C_FILE;Timer_1" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\Timer_2.c" value="ARM_C_FILE;Timer_2" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\Timer_2.h" value="NONE;Timer_2" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\Timer_2_PM.c" value="ARM_C_FILE;Timer_2" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\isr_turn_count.c" value="ARM_C_FILE;isr_turn_count" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\isr_turn_count.h" value="NONE;isr_turn_count" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\QuadDec_M1_Cnt16.c" value="ARM_C_FILE;QuadDec_M1_Cnt16" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\QuadDec_M1_Cnt16.h" value="NONE;QuadDec_M1_Cnt16" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\QuadDec_M1_Cnt16_PM.c" value="ARM_C_FILE;QuadDec_M1_Cnt16" />

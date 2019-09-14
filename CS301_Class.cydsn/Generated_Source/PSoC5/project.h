@@ -82,6 +82,8 @@
 #include "RF_BT_SELECT.h"
 #include "isr_quad1.h"
 #include "Timer_1.h"
+#include "Timer_2.h"
+#include "isr_turn_count.h"
 #include "QuadDec_M1_Cnt16.h"
 #include "QuadDec_M2_Cnt16.h"
 #include "ADC_IRQ.h"

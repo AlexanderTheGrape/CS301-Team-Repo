@@ -44,6 +44,14 @@ uint8 direction = 0;
 uint8 flag_calc_wheelspeed = 0;
 int16 quad_count1 = 0;
 int16 quad_count2 = 0;
+int16 last_quad_count1 = 0;
+int16 last_quad_count2 = 0;
+int16 quad_diff1 = 0;
+int16 quad_diff2 = 0;
+
+//turning
+int16 start_turn_count = 0;
+//
 
 int16 left_duty_cycle = 0;
 int16 right_duty_cycle = 0;
