@@ -45,7 +45,7 @@
 #define BIN_ENABLED 1
 
 //ADC
-#define ENABLE_ADC 1
+#define ENABLE_ADC 0
 
 // Motor
 #define COAST_OFF CONTROL_Write(0);

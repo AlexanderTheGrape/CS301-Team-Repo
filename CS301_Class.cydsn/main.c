@@ -172,6 +172,22 @@ void brakeMotor(){
     left_duty_cycle = 0;
 }
 
+void driveForwards()
+{
+    setSpeed(20, 20);
+}
+
+void turnLeft()
+{
+    setSpeed(20,0);
+}
+
+void turnRight()
+{
+    setSpeed(0,20);
+}
+
+
 //Binary RF Data
 CY_ISR(rxInt){
     char rf_char = UART_GetChar();
@@ -219,15 +235,12 @@ CY_ISR (isr_quad1)
 
 CY_ISR (Stop_on_line)
 {
-    brakeMotor();
+    movement_state = STOPPED;
 }
 
 CY_ISR (button)
 {
-    direction = !direction;
-    M1_IN2_Write(direction);
-    M2_IN2_Write(direction);
-    setSpeed(20, 20);
+    movement_state = DRIVE;
 }
 
 CY_ISR(isr_adcTimer)
@@ -251,52 +264,13 @@ void Quad_Dec_response()
     
     int16 leftSpeed = quad_count1;
     int16 rightSpeed = quad_count2;
-//    
-//    int16 left_direction = 1;
-//    int16 right_direction = 1;
-//    
-//    if (leftSpeed > 0) {
-//        left_direction = -1;
-//    } else {
-//        left_direction = 1;
-//    }
-//    if (rightSpeed < 0) {
-//        right_direction = -1;
-//    } else {
-//        right_direction = 1;
-//    }
-//    
+
     int interCalc = leftSpeedLimit - abs(leftSpeed);
     int nextSpeed = (abs(interCalc) / interCalc) * sqrt(abs(interCalc));
     left_duty_cycle = left_duty_cycle + nextSpeed;
     interCalc = rightSpeedLimit - abs(rightSpeed);
     nextSpeed = (abs(interCalc) / interCalc) * sqrt(abs(interCalc));
     right_duty_cycle = right_duty_cycle + nextSpeed;
-//    
-//    if (abs(leftSpeed) > leftSpeedLimit){
-//        //sprintf(wheel_1_str,"Left wheel too fast! Slowing down \r\n");
-//        //usbPutString(wheel_1_str);
-//        
-//        left_duty_cycle = left_duty_cycle + (-1 * left_direction);
-//    } else if (abs(leftSpeed) < leftSpeedLimit) {
-//       // sprintf(wheel_1_str,"Left wheel too slow! Speeding up \r\n");
-//        //usbPutString(wheel_1_str);
-//        left_duty_cycle = left_duty_cycle + left_direction;
-//    }
-//    
-//    if (abs(rightSpeed) > rightSpeedLimit){
-//        sprintf(wheel_2_str,"Right wheel too fast! Slowing down \r\n");
-//       // usbPutString(wheel_2_str);
-//        right_duty_cycle = right_duty_cycle + (-1 * right_direction);
-//        sprintf(wheel_2_str,"Right wheel duty cycle is now:%d\r\n", right_duty_cycle);
-//        //usbPutString(wheel_2_str);
-//    } else if (abs(rightSpeed) < rightSpeedLimit) {
-//        sprintf(wheel_2_str,"Right wheel too slow, speeding up! \r\n");
-//        //usbPutString(wheel_2_str);
-//        sprintf(wheel_2_str,"Right wheel duty cycle is now:%d\r\n", right_duty_cycle);
-//        //usbPutString(wheel_2_str);
-//        right_duty_cycle = right_duty_cycle + right_direction;
-//    }
     
     if(right_duty_cycle < 0) right_duty_cycle = 0;
     if(left_duty_cycle < 0) left_duty_cycle = 0;
@@ -304,7 +278,6 @@ void Quad_Dec_response()
     if(left_duty_cycle > 100) left_duty_cycle = 100;
     PWM_1_WriteCompare(left_duty_cycle);
     PWM_2_WriteCompare(right_duty_cycle);
-        
 }
 
 void print_ADC()
@@ -350,45 +323,6 @@ void print_RF()
     }
 }
 
-
-//PWM:
-void cycle_PWM()
-{
-    uint16 fluct;
-    if (direction == 0){
-        for(fluct = 30; fluct < 70; fluct++)
-        {
-            PWM_1_WriteCompare(fluct);
-            PWM_2_WriteCompare(fluct);
-            CyDelay(30);
-        }
-        
-        for(fluct = 70; fluct > 30; fluct--)
-        {
-            PWM_1_WriteCompare(fluct);
-            PWM_2_WriteCompare(fluct);
-            CyDelay(30);
-        }
-    } else {
-        for(fluct = 70; fluct > 30; fluct--)
-        {
-            PWM_1_WriteCompare(fluct);
-            PWM_2_WriteCompare(fluct);
-            CyDelay(30);
-        }
-        
-        for(fluct = 30; fluct < 70; fluct++)
-        {
-            PWM_1_WriteCompare(fluct);
-            PWM_2_WriteCompare(fluct);
-            CyDelay(30);
-        }
-    }
-    direction = !direction;
-    M1_IN2_Write(direction);
-    M2_IN2_Write(direction);
-}
-
 int main()
 {  
 
@@ -420,8 +354,6 @@ int main()
         isr_quad1_StartEx(isr_quad1);
         
         Timer_1_Start();
-        
-        //isr_quad1_Start();
     }
     
     if(ENABLE_STOP){
@@ -448,17 +380,29 @@ int main()
     //usbPutString("Started");
     for(;;)
     {
-        /* Place your application code here. */
-        if(ENABLE_PWM && ENABLE_CYCLE) cycle_PWM();
         if(ENABLE_ADC) print_ADC();
         if(ENABLE_QUAD) Quad_Dec_response();
-        
         if(BIN_ENABLED == 1)
         {
             handle_rx_binary();
             print_RF();
         }
         
+        switch(movement_state)
+        {
+            case DRIVE:
+                driveForwards();
+            break;
+            case LTURN:
+                turnLeft();
+            break;
+            case RTURN:
+                turnRight();
+            break;
+            case STOPPED:
+                brakeMotor();
+            break;
+        }
         //handle_usb();        
     }   
 }
