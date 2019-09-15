@@ -340,7 +340,7 @@ CY_ISR(isr_turn_timer)
 
 CY_ISR (Stop_on_line)
 {
-    //movement_state = STOPPED;
+    movement_state = STOPPED;
     if(movement_state != DRIVE) return;
     //initTurnLeft();
 }
@@ -470,8 +470,9 @@ int main()
     
     if(ENABLE_STOP){
         isr_OnLine_StartEx(Stop_on_line);
+        isr_button_StartEx(button);
     }
-    isr_button_StartEx(button);
+    
 
     // ------USB SETUP ----------------    
     if (USE_USB){    
