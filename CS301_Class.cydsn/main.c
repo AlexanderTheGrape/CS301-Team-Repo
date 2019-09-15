@@ -163,13 +163,24 @@ void setSpeed(int right, int left){
     rightSpeedLimit = left;
 }
 
-void brakeMotor(){
-    setSpeed(0, 0);
+void brakeLeft()
+{
     PWM_1_WriteCompare(0);
-    PWM_2_WriteCompare(0);
-    right_duty_cycle = 0;
     left_duty_cycle = 0;
 }
+
+void brakeRight()
+{
+     PWM_2_WriteCompare(0);
+     right_duty_cycle = 0;
+}
+
+void brakeMotor(){
+    setSpeed(0, 0);
+    brakeLeft();
+    brakeRight();
+}
+
 
 void driveForwards()
 {
@@ -188,16 +199,16 @@ void turnRight()
 
 void initTurnLeft(){
     Timer_2_Stop();
-    brakeMotor();
     movement_state = LTURN;
+    brakeLeft();
     start_turn_count = QuadDec_M2_GetCounter();
     Timer_2_Start();
 }
 
 void initTurnRight(){
     Timer_2_Stop();
-    brakeMotor();
     movement_state = RTURN;
+    brakeRight();
     start_turn_count = QuadDec_M1_GetCounter();
     Timer_2_Start();
 }
@@ -308,7 +319,9 @@ CY_ISR(isr_turn_timer)
     {
         if(abs(QuadDec_M2_GetCounter() - start_turn_count) >= 208)
         {
-            movement_state = STOPPED;
+            //movement_state = STOPPED;
+            brakeMotor();
+            movement_state = DRIVE;
             Timer_2_Stop();
         }
     }
@@ -316,7 +329,9 @@ CY_ISR(isr_turn_timer)
     {
         if(abs(QuadDec_M1_GetCounter() - start_turn_count) >= 208)
         {
-            movement_state = STOPPED;
+            //movement_state = STOPPED;
+            brakeMotor();
+            movement_state = DRIVE;
             Timer_2_Stop();
         }
     }
@@ -455,8 +470,8 @@ int main()
     
     if(ENABLE_STOP){
         isr_OnLine_StartEx(Stop_on_line);
-        isr_button_StartEx(button);
     }
+    isr_button_StartEx(button);
 
     // ------USB SETUP ----------------    
     if (USE_USB){    
