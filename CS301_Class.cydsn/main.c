@@ -36,6 +36,7 @@ void usbPutChar(char c);
 //void handle_usb();
 //* ========================================
 
+#define QUAD_RATIO 0.99556
 
 void handle_rx_binary()
 {
@@ -158,9 +159,14 @@ void handle_rx_binary()
     }
 }
 
-void setSpeed(int right, int left){
-    leftSpeedLimit = right;
-    rightSpeedLimit = left;
+void setSpeed(double right, double left){
+    
+    uint8 countsLeft = left*QUAD_RATIO;
+    uint8 countsRight = right*QUAD_RATIO;
+    
+    
+    leftSpeedLimit = countsRight;
+    rightSpeedLimit = countsLeft;
 }
 
 void brakeLeft()
@@ -365,23 +371,32 @@ void Quad_Dec_response()
     if (!flag_calc_wheelspeed) return;
     flag_calc_wheelspeed = 0;
     
-    char wheel_1_str [64];
-    char wheel_2_str [64];
-    sprintf(wheel_1_str, "quad count 1 is: %d\n\r", quad_diff1);
+    //char wheel_1_str [64];
+    //char wheel_2_str [64];
+    //sprintf(wheel_1_str, "quad count 1 is: %d\n\r", quad_diff1);
     //usbPutString(wheel_1_str);
-    sprintf(wheel_2_str, "quad count 2 is: %d\n\r", quad_diff2);
+    //sprintf(wheel_2_str, "quad count 2 is: %d\n\r", quad_diff2);
     
     //usbPutString(wheel_2_str);
     
     int16 leftSpeed = quad_diff1;
     int16 rightSpeed = quad_diff2;
+    double scalingLeft = 1;
+    double scalingRight = 1;
+    
+    //there's an initial right tilt by default, so we want to decrease the initial left speed
+    if(leftSpeed == 0 && rightSpeed == 0){ 
+       //leftSpeed = 3;
+        scalingLeft = 3;
+        scalingRight = 3;
+    }
 
     int interCalc = leftSpeedLimit - abs(leftSpeed);
-    int nextSpeed = (abs(interCalc) / interCalc) * sqrt(abs(interCalc));
-    left_duty_cycle = left_duty_cycle + nextSpeed;
+    int nextSpeed = (abs(interCalc) / interCalc) * sqrt(abs((int)(interCalc)));
+    left_duty_cycle = left_duty_cycle + scalingLeft*nextSpeed;
     interCalc = rightSpeedLimit - abs(rightSpeed);
     nextSpeed = (abs(interCalc) / interCalc) * sqrt(abs(interCalc));
-    right_duty_cycle = right_duty_cycle + nextSpeed;
+    right_duty_cycle = right_duty_cycle + scalingRight*nextSpeed;
     
     if(right_duty_cycle < 0) right_duty_cycle = 0;
     if(left_duty_cycle < 0) left_duty_cycle = 0;
