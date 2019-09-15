@@ -342,7 +342,7 @@ CY_ISR (Stop_on_line)
 {
     //movement_state = STOPPED;
     if(movement_state != DRIVE) return;
-    initTurnLeft();
+    //initTurnLeft();
 }
 
 CY_ISR (button)
