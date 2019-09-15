@@ -186,6 +186,37 @@ void turnRight()
     setSpeed(20,0);
 }
 
+void initTurnLeft(){
+    Timer_2_Stop();
+    brakeMotor();
+    movement_state = LTURN;
+    start_turn_count = QuadDec_M2_GetCounter();
+    Timer_2_Start();
+}
+
+void initTurnRight(){
+    Timer_2_Stop();
+    brakeMotor();
+    movement_state = RTURN;
+    start_turn_count = QuadDec_M1_GetCounter();
+    Timer_2_Start();
+}
+
+void initForward(){
+    brakeMotor();
+    movement_state = DRIVE;
+}
+
+void initBrake(){
+    movement_state = STOPPED;
+}
+
+void reverseDirection()
+{
+    direction = !direction;
+    M1_IN2_Write(direction);
+    M2_IN2_Write(direction);
+}
 
 //Binary RF Data
 CY_ISR(rxInt){
@@ -212,6 +243,27 @@ CY_ISR(rxInt){
         }
 }
 
+CY_ISR(BT_rxInt)
+{
+    char rf_char = UART_GetChar();
+    switch(rf_char){
+    case 'a':
+        initTurnLeft();
+        break;
+    case 'w':
+        initForward();
+        break;
+    case 's': 
+        reverseDirection();
+        break;
+    case 'd':
+        initTurnRight();
+        break;
+    case 'f':
+        initBrake();
+        break;
+    }
+}
 
 //BT
 CY_ISR(BT_txInt)
@@ -254,7 +306,7 @@ CY_ISR(isr_turn_timer)
 {
     if(movement_state == LTURN)
     {
-        if((QuadDec_M2_GetCounter() - start_turn_count) >= 208)
+        if(abs(QuadDec_M2_GetCounter() - start_turn_count) >= 208)
         {
             movement_state = STOPPED;
             Timer_2_Stop();
@@ -262,7 +314,7 @@ CY_ISR(isr_turn_timer)
     }
     else if (movement_state == RTURN)
     {
-        if((QuadDec_M1_GetCounter() - start_turn_count) >= 208)
+        if(abs(QuadDec_M1_GetCounter() - start_turn_count) >= 208)
         {
             movement_state = STOPPED;
             Timer_2_Stop();
@@ -275,10 +327,7 @@ CY_ISR (Stop_on_line)
 {
     //movement_state = STOPPED;
     if(movement_state != DRIVE) return;
-    brakeMotor();
-    movement_state = LTURN;
-    start_turn_count = QuadDec_M2_GetCounter();
-    Timer_2_Start();
+    initTurnLeft();
 }
 
 CY_ISR (button)
@@ -427,6 +476,7 @@ int main()
     
     if(BT_ENABLED){
         UART_clk_SetDividerValue(781);
+        isrRF_RX_StartEx(BT_rxInt);
         UART_Start();
         RF_BT_SELECT_Write(1);
     }
