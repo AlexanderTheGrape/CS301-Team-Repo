@@ -155,7 +155,6 @@ void handle_rx_binary()
                 
             break;
         }
-        
     }
 }
 
@@ -211,6 +210,13 @@ CY_ISR(rxInt){
             }
             byteCount = (byteCount + 1);
         }
+}
+
+
+//BT
+CY_ISR(BT_txInt)
+{
+    
 }
 
 //ADC:
@@ -277,6 +283,10 @@ CY_ISR (Stop_on_line)
 
 CY_ISR (button)
 {
+    if(BT_ENABLED)
+    {
+        UART_PutString("Starting robot!\r\n");
+    }
     movement_state = DRIVE;
 }
 
@@ -409,12 +419,18 @@ int main()
     }
     
     if(BIN_ENABLED){
+        UART_clk_SetDividerValue(130);
         isrRF_RX_StartEx(rxInt);
         UART_Start();
+        RF_BT_SELECT_Write(0);
     }
     
-    RF_BT_SELECT_Write(0);
-
+    if(BT_ENABLED){
+        UART_clk_SetDividerValue(781);
+        UART_Start();
+        RF_BT_SELECT_Write(1);
+    }
+    
     //usbPutString("Started");
     for(;;)
     {

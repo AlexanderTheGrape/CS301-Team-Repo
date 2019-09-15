@@ -42,7 +42,10 @@
 //* ========================================
 
 //RF
-#define BIN_ENABLED 1
+#define BIN_ENABLED 0
+
+//BLE
+#define BT_ENABLED 1
 
 //ADC
 #define ENABLE_ADC 0

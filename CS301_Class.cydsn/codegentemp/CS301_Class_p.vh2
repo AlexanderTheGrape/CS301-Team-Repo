@@ -1,5 +1,5 @@
 -- Project:   CS301_Class
--- Generated: 09/14/2019 19:46:37
+-- Generated: 09/15/2019 16:04:10
 -- PSoC Creator  3.3 CP3
 
 ENTITY CS301_Class IS
@@ -87,6 +87,10 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE GROUND OF Net_2183 : SIGNAL IS true;
     SIGNAL Net_2460 : bit;
     SIGNAL Net_3236 : bit;
+    SIGNAL Net_3395 : bit;
+    ATTRIBUTE udbclken_assigned OF Net_3395 : SIGNAL IS "True";
+    ATTRIBUTE global_signal OF Net_3395 : SIGNAL IS true;
+    SIGNAL Net_3395_local : bit;
     SIGNAL Net_3405 : bit;
     SIGNAL Net_3405_SYNCOUT : bit;
     SIGNAL Net_3406 : bit;
@@ -305,10 +309,6 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     SIGNAL \UART:BUART:tx_status_0\ : bit;
     SIGNAL \UART:BUART:tx_status_2\ : bit;
     SIGNAL \UART:BUART:txn\ : bit;
-    SIGNAL \UART:Net_9\ : bit;
-    ATTRIBUTE udbclken_assigned OF \UART:Net_9\ : SIGNAL IS "True";
-    ATTRIBUTE global_signal OF \UART:Net_9\ : SIGNAL IS true;
-    SIGNAL \UART:Net_9_local\ : bit;
     SIGNAL \\\USBUART:Dm(0)\\__PA\ : bit;
     SIGNAL \\\USBUART:Dp(0)\\__PA\ : bit;
     SIGNAL \USBUART:Net_1010\ : bit;
@@ -340,7 +340,7 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     SIGNAL button_pin(0)__PA : bit;
     SIGNAL tmpOE__M1_IN1_net_0 : bit;
     ATTRIBUTE POWER OF tmpOE__M1_IN1_net_0 : SIGNAL IS true;
-    SIGNAL \ClockBlock.dclk_glb_ff_3__sig\ : bit;
+    SIGNAL \ClockBlock.dclk_glb_ff_4__sig\ : bit;
     SIGNAL \ClockBlock.dclk_glb_ff_5__sig\ : bit;
     SIGNAL \QuadDec_M1:Cnt16:CounterUDB:sC16:counterdp:u0.ce0__sig\ : bit;
     SIGNAL \QuadDec_M1:Cnt16:CounterUDB:sC16:counterdp:u0.cl0__sig\ : bit;
@@ -415,7 +415,7 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE lib_model OF Rx_1(0) : LABEL IS "iocell17";
     ATTRIBUTE Location OF Rx_1(0) : LABEL IS "P1[6]";
     ATTRIBUTE lib_model OF Tx_1(0) : LABEL IS "iocell18";
-    ATTRIBUTE Location OF Tx_1(0) : LABEL IS "P2[3]";
+    ATTRIBUTE Location OF Tx_1(0) : LABEL IS "P12[7]";
     ATTRIBUTE lib_model OF LED(0) : LABEL IS "iocell19";
     ATTRIBUTE Location OF LED(0) : LABEL IS "P2[1]";
     ATTRIBUTE lib_model OF DB0(0) : LABEL IS "iocell20";
@@ -425,7 +425,7 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE lib_model OF DB2(0) : LABEL IS "iocell22";
     ATTRIBUTE Location OF DB2(0) : LABEL IS "P3[6]";
     ATTRIBUTE lib_model OF Rx_2(0) : LABEL IS "iocell23";
-    ATTRIBUTE Location OF Rx_2(0) : LABEL IS "P12[2]";
+    ATTRIBUTE Location OF Rx_2(0) : LABEL IS "P12[6]";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:reload\ : LABEL IS "macrocell2";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:status_0\ : LABEL IS "macrocell3";
     ATTRIBUTE lib_model OF \QuadDec_M1:Cnt16:CounterUDB:status_2\ : LABEL IS "macrocell4";
@@ -975,17 +975,17 @@ BEGIN
             dsi_glb_div => open,
             dclk_glb_0 => Net_6320,
             dclk_0 => Net_6320_local,
-            dclk_glb_1 => Net_1850,
-            dclk_1 => Net_1850_local,
-            dclk_glb_2 => \ADC:Net_376\,
-            dclk_2 => \ADC:Net_376_local\,
-            dclk_glb_3 => CLK24M,
-            dclk_3 => CLK24M_local,
-            dclk_glb_4 => \UART:Net_9\,
-            dclk_4 => \UART:Net_9_local\,
+            dclk_glb_1 => Net_3395,
+            dclk_1 => Net_3395_local,
+            dclk_glb_2 => Net_1850,
+            dclk_2 => Net_1850_local,
+            dclk_glb_3 => \ADC:Net_376\,
+            dclk_3 => \ADC:Net_376_local\,
+            dclk_glb_4 => CLK24M,
+            dclk_4 => CLK24M_local,
             dclk_glb_5 => Net_10,
             dclk_5 => Net_10_local,
-            dclk_glb_ff_3 => \ClockBlock.dclk_glb_ff_3__sig\,
+            dclk_glb_ff_4 => \ClockBlock.dclk_glb_ff_4__sig\,
             dclk_glb_ff_5 => \ClockBlock.dclk_glb_ff_5__sig\);
 
     M1_IN1:logicalport
@@ -4011,7 +4011,7 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             reset => open,
-            clock => \UART:Net_9\,
+            clock => Net_3395,
             cs_addr_2 => \UART:BUART:tx_state_1\,
             cs_addr_1 => \UART:BUART:tx_state_0\,
             cs_addr_0 => \UART:BUART:tx_bitclk_enable_pre\,
@@ -4049,7 +4049,7 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             reset => open,
-            clock => \UART:Net_9\,
+            clock => Net_3395,
             cs_addr_0 => \UART:BUART:counter_load_not\,
             ce0_reg => \UART:BUART:tx_bitclk_enable_pre\,
             ce1_reg => \UART:BUART:tx_counter_dp\,
@@ -4064,7 +4064,7 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             reset => open,
-            clock => \UART:Net_9\,
+            clock => Net_3395,
             status_6 => open,
             status_5 => open,
             status_4 => open,
@@ -4103,7 +4103,7 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             reset => open,
-            clock => \UART:Net_9\,
+            clock => Net_3395,
             cs_addr_2 => \UART:BUART:tx_ctrl_mark_last\,
             cs_addr_1 => \UART:BUART:rx_state_0\,
             cs_addr_0 => \UART:BUART:rx_bitclk_enable\,
@@ -4123,7 +4123,7 @@ BEGIN
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            clock => \UART:Net_9\,
+            clock => Net_3395,
             reset => open,
             load => \UART:BUART:rx_counter_load\,
             enable => open,
@@ -4145,7 +4145,7 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             reset => open,
-            clock => \UART:Net_9\,
+            clock => Net_3395,
             status_6 => open,
             status_5 => \UART:BUART:rx_status_5\,
             status_4 => \UART:BUART:rx_status_4\,
@@ -4159,7 +4159,7 @@ BEGIN
         GENERIC MAP(
             cy_registers => "")
         PORT MAP(
-            clock => \ClockBlock.dclk_glb_ff_3__sig\,
+            clock => \ClockBlock.dclk_glb_ff_4__sig\,
             kill => open,
             enable => __ONE__,
             capture => open,
@@ -4172,7 +4172,7 @@ BEGIN
         GENERIC MAP(
             cy_registers => "")
         PORT MAP(
-            clock => \ClockBlock.dclk_glb_ff_3__sig\,
+            clock => \ClockBlock.dclk_glb_ff_4__sig\,
             kill => open,
             enable => __ONE__,
             capture => open,
@@ -4837,7 +4837,7 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             q => \UART:BUART:txn\,
-            clock_0 => \UART:Net_9\,
+            clock_0 => Net_3395,
             main_0 => \UART:BUART:txn\,
             main_1 => \UART:BUART:tx_state_1\,
             main_2 => \UART:BUART:tx_state_0\,
@@ -4853,7 +4853,7 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             q => \UART:BUART:tx_state_1\,
-            clock_0 => \UART:Net_9\,
+            clock_0 => Net_3395,
             main_0 => \UART:BUART:tx_state_1\,
             main_1 => \UART:BUART:tx_state_0\,
             main_2 => \UART:BUART:tx_bitclk_enable_pre\,
@@ -4868,7 +4868,7 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             q => \UART:BUART:tx_state_0\,
-            clock_0 => \UART:Net_9\,
+            clock_0 => Net_3395,
             main_0 => \UART:BUART:tx_state_1\,
             main_1 => \UART:BUART:tx_state_0\,
             main_2 => \UART:BUART:tx_bitclk_enable_pre\,
@@ -4883,7 +4883,7 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             q => \UART:BUART:tx_state_2\,
-            clock_0 => \UART:Net_9\,
+            clock_0 => Net_3395,
             main_0 => \UART:BUART:tx_state_1\,
             main_1 => \UART:BUART:tx_state_0\,
             main_2 => \UART:BUART:tx_bitclk_enable_pre\,
@@ -4898,7 +4898,7 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             q => \UART:BUART:tx_bitclk\,
-            clock_0 => \UART:Net_9\,
+            clock_0 => Net_3395,
             main_0 => \UART:BUART:tx_state_1\,
             main_1 => \UART:BUART:tx_state_0\,
             main_2 => \UART:BUART:tx_bitclk_enable_pre\,
@@ -4911,7 +4911,7 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             q => \UART:BUART:tx_ctrl_mark_last\,
-            clock_0 => \UART:Net_9\);
+            clock_0 => Net_3395);
 
     \UART:BUART:rx_state_0\:macrocell
         GENERIC MAP(
@@ -4920,7 +4920,7 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             q => \UART:BUART:rx_state_0\,
-            clock_0 => \UART:Net_9\,
+            clock_0 => Net_3395,
             main_0 => \UART:BUART:tx_ctrl_mark_last\,
             main_1 => \UART:BUART:rx_state_0\,
             main_2 => \UART:BUART:rx_bitclk_enable\,
@@ -4938,7 +4938,7 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             q => \UART:BUART:rx_load_fifo\,
-            clock_0 => \UART:Net_9\,
+            clock_0 => Net_3395,
             main_0 => \UART:BUART:tx_ctrl_mark_last\,
             main_1 => \UART:BUART:rx_state_0\,
             main_2 => \UART:BUART:rx_bitclk_enable\,
@@ -4955,7 +4955,7 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             q => \UART:BUART:rx_state_3\,
-            clock_0 => \UART:Net_9\,
+            clock_0 => Net_3395,
             main_0 => \UART:BUART:tx_ctrl_mark_last\,
             main_1 => \UART:BUART:rx_state_0\,
             main_2 => \UART:BUART:rx_bitclk_enable\,
@@ -4972,7 +4972,7 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             q => \UART:BUART:rx_state_2\,
-            clock_0 => \UART:Net_9\,
+            clock_0 => Net_3395,
             main_0 => \UART:BUART:tx_ctrl_mark_last\,
             main_1 => \UART:BUART:rx_state_0\,
             main_2 => \UART:BUART:rx_bitclk_enable\,
@@ -4993,7 +4993,7 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             q => \UART:BUART:rx_bitclk_enable\,
-            clock_0 => \UART:Net_9\,
+            clock_0 => Net_3395,
             main_0 => \UART:BUART:rx_count_2\,
             main_1 => \UART:BUART:rx_count_1\,
             main_2 => \UART:BUART:rx_count_0\);
@@ -5005,7 +5005,7 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             q => \UART:BUART:rx_state_stop1_reg\,
-            clock_0 => \UART:Net_9\,
+            clock_0 => Net_3395,
             main_0 => \UART:BUART:tx_ctrl_mark_last\,
             main_1 => \UART:BUART:rx_state_0\,
             main_2 => \UART:BUART:rx_state_3\,
@@ -5018,7 +5018,7 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             q => \UART:BUART:pollcount_1\,
-            clock_0 => \UART:Net_9\,
+            clock_0 => Net_3395,
             main_0 => \UART:BUART:rx_count_2\,
             main_1 => \UART:BUART:rx_count_1\,
             main_2 => \UART:BUART:pollcount_1\,
@@ -5034,7 +5034,7 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             q => \UART:BUART:pollcount_0\,
-            clock_0 => \UART:Net_9\,
+            clock_0 => Net_3395,
             main_0 => \UART:BUART:rx_count_2\,
             main_1 => \UART:BUART:rx_count_1\,
             main_2 => \UART:BUART:pollcount_0\,
@@ -5073,7 +5073,7 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             q => \UART:BUART:rx_status_3\,
-            clock_0 => \UART:Net_9\,
+            clock_0 => Net_3395,
             main_0 => \UART:BUART:tx_ctrl_mark_last\,
             main_1 => \UART:BUART:rx_state_0\,
             main_2 => \UART:BUART:rx_bitclk_enable\,
@@ -5108,7 +5108,7 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             q => \UART:BUART:rx_last\,
-            clock_0 => \UART:Net_9\,
+            clock_0 => Net_3395,
             main_0 => Net_3437,
             main_1 => Net_3438_SYNCOUT,
             main_2 => Net_3405_SYNCOUT);

@@ -154,6 +154,8 @@
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\Timer_2_PM.c" value="ARM_C_FILE;Timer_2" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\isr_turn_count.c" value="ARM_C_FILE;isr_turn_count" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\isr_turn_count.h" value="NONE;isr_turn_count" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\UART_clk.c" value="ARM_C_FILE;UART_clk" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\UART_clk.h" value="NONE;UART_clk" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\QuadDec_M1_Cnt16.c" value="ARM_C_FILE;QuadDec_M1_Cnt16" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\QuadDec_M1_Cnt16.h" value="NONE;QuadDec_M1_Cnt16" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\QuadDec_M1_Cnt16_PM.c" value="ARM_C_FILE;QuadDec_M1_Cnt16" />
@@ -173,8 +175,6 @@
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\USBUART_Dp_aliases.h" value="NONE;USBUART_Dp" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\USBUART_Dp.c" value="ARM_C_FILE;USBUART_Dp" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\USBUART_Dp.h" value="NONE;USBUART_Dp" />
-  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\UART_IntClock.c" value="ARM_C_FILE;UART_IntClock" />
-  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\UART_IntClock.h" value="NONE;UART_IntClock" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\cycodeshareimport.ld" value="NONE;" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\cycodeshareexport.ld" value="NONE;" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\cycodeshareimport.scat" value="NONE;" />

@@ -209,8 +209,6 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\UART_PM.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\UART_INT.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\UART_BOOT.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\UART_IntClock.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\UART_IntClock.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RF_BT_SELECT.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RF_BT_SELECT.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RF_BT_SELECT_PM.c</File>
@@ -244,6 +242,8 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Timer_2_PM.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\isr_turn_count.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\isr_turn_count.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\UART_clk.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\UART_clk.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\Export\ARM_GCC_Generic">
