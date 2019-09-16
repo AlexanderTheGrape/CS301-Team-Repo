@@ -69,7 +69,7 @@ int16 prevVoltage;
 int16 prevVoltage2;
 
 //concept of robot state
-enum state {DRIVE = 0, LTURN, RTURN, STOPPED}; 
+enum state {DRIVE = 0, LTURN, RTURN, STOPPED, TRACKING}; 
 
 //* ========================================
 char displaystring[BUF_SIZE] = "CS301 2016\n";

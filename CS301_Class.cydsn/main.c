@@ -159,11 +159,51 @@ void handle_rx_binary()
     }
 }
 
+
+
+void setLeftDir(uint8 dir)
+{
+    M2_IN2_Write(dir);
+}
+
+void setRightDir(uint8 dir)
+{
+    M1_IN2_Write(dir);
+}
+
+void reverseDirection()
+{
+    direction = !direction;
+    setLeftDir(direction);
+    setRightDir(direction);
+    char mes[16];
+     sprintf(mes, "dir: %d\r\n", direction);
+    UART_PutString(mes);
+}
+
 void setSpeed(double right, double left){
+    if(right < 0)
+    {
+        char mes[16];
+        sprintf(mes, "right dir: %d\r\n", !direction);
+        UART_PutString(mes);
+        setRightDir(!direction);
+        right = -right;
+    }
+    else setRightDir(direction);
+    
+    if(left < 0)
+    {
+        char mes[16];
+        sprintf(mes, "left dir: %d\r\n", !direction);
+        UART_PutString(mes);
+        setLeftDir(!direction);
+        left = -left;
+    }
+    else setLeftDir(direction);
     
     uint8 countsLeft = left*QUAD_RATIO;
     uint8 countsRight = right*QUAD_RATIO;
-    
     
     leftSpeedLimit = countsRight;
     rightSpeedLimit = countsLeft;
@@ -228,11 +268,9 @@ void initBrake(){
     movement_state = STOPPED;
 }
 
-void reverseDirection()
+void initTrack()
 {
-    direction = !direction;
-    M1_IN2_Write(direction);
-    M2_IN2_Write(direction);
+    movement_state = TRACKING;
 }
 
 //Binary RF Data
@@ -278,6 +316,9 @@ CY_ISR(BT_rxInt)
         break;
     case 'f':
         initBrake();
+        break;
+    case('t'):
+        initTrack();
         break;
     }
 }
@@ -406,6 +447,42 @@ void Quad_Dec_response()
     PWM_2_WriteCompare(right_duty_cycle);
 }
 
+void trackLine()
+{
+    //read the value of the three central-front sensors
+    
+    uint8 nl = NLSens_out_Read();
+    uint8 nr = NRSens_out_Read();
+    uint8 mid = MSens_out_Read();
+    //if only the left one, hard left
+    if(nl && !nr && !mid)
+    {
+        setSpeed(-10,15);
+    }
+    else if(nl && mid && !nr)   //if centre/middle, soft left
+    {
+        setSpeed(0,15);
+    }
+    else if (nr && mid && !nl)//if centre/right, soft right
+    {
+        setSpeed(15,0);
+    }
+   else if (nr && !mid && !nl)    //if only right, hard right
+    {
+        setSpeed(15,-10);
+    }
+    else if (mid && !nr && !nl)
+    {
+        setSpeed(10,10);
+    }
+    else if (!mid && !nr && !nl)
+    {
+        setSpeed(0,0);
+    }
+   
+
+}
+
 void print_ADC()
 {
    //usbPutString("HII\n");
@@ -485,8 +562,9 @@ int main()
     
     if(ENABLE_STOP){
         isr_OnLine_StartEx(Stop_on_line);
-        isr_button_StartEx(button);
+        
     }
+    isr_button_StartEx(button);
     
 
     // ------USB SETUP ----------------    
@@ -536,6 +614,9 @@ int main()
             break;
             case STOPPED:
                 brakeMotor();
+            break;
+            case TRACKING:
+                trackLine();
             break;
         }
         //handle_usb();        

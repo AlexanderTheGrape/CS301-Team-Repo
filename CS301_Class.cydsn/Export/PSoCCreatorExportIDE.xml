@@ -234,8 +234,6 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\button_pin.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Clock_1.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Clock_1.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Clock_2.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Clock_2.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\ADC_in0_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\ADC_in0.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\ADC_in0.h</File>
@@ -246,6 +244,30 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\isr_turn_count.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\UART_clk.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\UART_clk.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\FarLeftSensor_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\FarLeftSensor.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\FarLeftSensor.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\NearLeftSensor_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\NearLeftSensor.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\NearLeftSensor.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\NearRightSensor_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\NearRightSensor.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\NearRightSensor.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\FarRightSensor_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\FarRightSensor.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\FarRightSensor.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\FLSens_out.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\FLSens_out.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\MSens_out.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\MSens_out.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Clock_3.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Clock_3.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\NLSens_out.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\NLSens_out.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\NRSens_out.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\NRSens_out.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\FRSens_out.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\FRSens_out.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\Export\ARM_GCC_Generic">

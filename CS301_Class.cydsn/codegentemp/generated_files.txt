@@ -58,9 +58,6 @@
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\ADC_in0_aliases.h" value="NONE;ADC_in0" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\ADC_in0.c" value="ARM_C_FILE;ADC_in0" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\ADC_in0.h" value="NONE;ADC_in0" />
-  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\Light_Sensor_aliases.h" value="NONE;Light_Sensor" />
-  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\Light_Sensor.c" value="ARM_C_FILE;Light_Sensor" />
-  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\Light_Sensor.h" value="NONE;Light_Sensor" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\Clock_1.c" value="ARM_C_FILE;Clock_1" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\Clock_1.h" value="NONE;Clock_1" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\button_pin_aliases.h" value="NONE;button_pin" />
@@ -125,9 +122,8 @@
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\PWM_2_PM.c" value="ARM_C_FILE;PWM_2" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\Clock_QENC.c" value="ARM_C_FILE;Clock_QENC" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\Clock_QENC.h" value="NONE;Clock_QENC" />
-  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\LED_aliases.h" value="NONE;LED" />
-  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\LED.c" value="ARM_C_FILE;LED" />
-  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\LED.h" value="NONE;LED" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\NLSens_out.c" value="ARM_C_FILE;NLSens_out" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\NLSens_out.h" value="NONE;NLSens_out" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\DB0_aliases.h" value="NONE;DB0" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\DB0.c" value="ARM_C_FILE;DB0" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\DB0.h" value="NONE;DB0" />
@@ -156,8 +152,34 @@
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\isr_turn_count.h" value="NONE;isr_turn_count" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\UART_clk.c" value="ARM_C_FILE;UART_clk" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\UART_clk.h" value="NONE;UART_clk" />
-  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\Clock_2.c" value="ARM_C_FILE;Clock_2" />
-  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\Clock_2.h" value="NONE;Clock_2" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\Light_Sensor_aliases.h" value="NONE;Light_Sensor" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\Light_Sensor.c" value="ARM_C_FILE;Light_Sensor" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\Light_Sensor.h" value="NONE;Light_Sensor" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\LED_aliases.h" value="NONE;LED" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\LED.c" value="ARM_C_FILE;LED" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\LED.h" value="NONE;LED" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\FarLeftSensor_aliases.h" value="NONE;FarLeftSensor" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\FarLeftSensor.c" value="ARM_C_FILE;FarLeftSensor" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\FarLeftSensor.h" value="NONE;FarLeftSensor" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\NearLeftSensor_aliases.h" value="NONE;NearLeftSensor" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\NearLeftSensor.c" value="ARM_C_FILE;NearLeftSensor" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\NearLeftSensor.h" value="NONE;NearLeftSensor" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\NearRightSensor_aliases.h" value="NONE;NearRightSensor" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\NearRightSensor.c" value="ARM_C_FILE;NearRightSensor" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\NearRightSensor.h" value="NONE;NearRightSensor" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\FarRightSensor_aliases.h" value="NONE;FarRightSensor" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\FarRightSensor.c" value="ARM_C_FILE;FarRightSensor" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\FarRightSensor.h" value="NONE;FarRightSensor" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\FLSens_out.c" value="ARM_C_FILE;FLSens_out" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\FLSens_out.h" value="NONE;FLSens_out" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\MSens_out.c" value="ARM_C_FILE;MSens_out" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\MSens_out.h" value="NONE;MSens_out" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\Clock_3.c" value="ARM_C_FILE;Clock_3" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\Clock_3.h" value="NONE;Clock_3" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\NRSens_out.c" value="ARM_C_FILE;NRSens_out" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\NRSens_out.h" value="NONE;NRSens_out" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\FRSens_out.c" value="ARM_C_FILE;FRSens_out" />
+  <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\FRSens_out.h" value="NONE;FRSens_out" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\QuadDec_M1_Cnt16.c" value="ARM_C_FILE;QuadDec_M1_Cnt16" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\QuadDec_M1_Cnt16.h" value="NONE;QuadDec_M1_Cnt16" />
   <file name="D:\gp1\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\QuadDec_M1_Cnt16_PM.c" value="ARM_C_FILE;QuadDec_M1_Cnt16" />

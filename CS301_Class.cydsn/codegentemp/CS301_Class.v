@@ -1,6 +1,6 @@
 // ======================================================================
 // CS301_Class.v generated from TopDesign.cysch
-// 09/16/2019 at 15:57
+// 09/16/2019 at 20:08
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -1558,6 +1558,19 @@ module PWM_v3_30_9 (
 
 endmodule
 
+// Component: CyStatusReg_v1_90
+`ifdef CY_BLK_DIR
+`undef CY_BLK_DIR
+`endif
+
+`ifdef WARP
+`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyStatusReg_v1_90"
+`include "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyStatusReg_v1_90\CyStatusReg_v1_90.v"
+`else
+`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyStatusReg_v1_90"
+`include "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyStatusReg_v1_90\CyStatusReg_v1_90.v"
+`endif
+
 // Component: mux_v1_10
 `ifdef CY_BLK_DIR
 `undef CY_BLK_DIR
@@ -1734,11 +1747,72 @@ endmodule
 module top ;
 
           wire  CLK24M;
-          wire  Net_6904;
-          wire  Net_6883;
-          wire  Net_6882;
-          wire  Net_6881;
-          wire  Net_6879;
+          wire  Net_7310;
+          wire  Net_7309;
+          wire  Net_7308;
+          wire  Net_7307;
+          wire  Net_7048;
+          wire  Net_7047;
+          wire  Net_7046;
+          wire [7:0] Net_7304;
+          wire  Net_7303;
+          wire  Net_7302;
+          wire  Net_7301;
+          wire  Net_7300;
+          wire  Net_7299;
+          wire  Net_7276;
+          wire  Net_7298;
+          wire  Net_7297;
+          wire  Net_7296;
+          wire  Net_7028;
+          wire  Net_7027;
+          wire  Net_7026;
+          wire  Net_7024;
+          wire [7:0] Net_7182;
+          wire  Net_7181;
+          wire  Net_7180;
+          wire  Net_7179;
+          wire  Net_7178;
+          wire  Net_7177;
+          wire  Net_7176;
+          wire  Net_7175;
+          wire  Net_7174;
+          wire  Net_7044;
+          wire  Net_6998;
+          wire  Net_6997;
+          wire  Net_6996;
+          wire  Net_6994;
+          wire  Net_7306;
+          wire  Net_7162;
+          wire  Net_7305;
+          wire  Net_6964;
+          wire  Net_6963;
+          wire  Net_6962;
+          wire [7:0] Net_7217;
+          wire  Net_7216;
+          wire  Net_7215;
+          wire  Net_7214;
+          wire  Net_7213;
+          wire  Net_7212;
+          wire  Net_7196;
+          wire  Net_7211;
+          wire  Net_7210;
+          wire  Net_7209;
+          wire  Net_6960;
+          wire [7:0] Net_7256;
+          wire  Net_7255;
+          wire  Net_7254;
+          wire  Net_7253;
+          wire  Net_7252;
+          wire  Net_7251;
+          wire  Net_7234;
+          wire  Net_7250;
+          wire  Net_7249;
+          wire  Net_7248;
+          wire  Net_7043;
+          wire  Net_7023;
+          wire  Net_6993;
+          wire  Net_6929;
           wire  Net_6872;
           wire  Net_6813;
           wire  Net_6845;
@@ -1763,6 +1837,16 @@ module top ;
           wire  Net_3486;
           wire  Net_3485;
           wire  Net_3405;
+          wire [7:0] Net_7134;
+          wire  Net_7133;
+          wire  Net_7132;
+          wire  Net_7131;
+          wire  Net_7130;
+          wire  Net_7129;
+          wire  Net_7138;
+          wire  Net_7128;
+          wire  Net_7127;
+          wire  Net_7126;
           wire  Net_3228;
           wire  Net_6757;
           wire  Net_6756;
@@ -1818,12 +1902,15 @@ module top ;
           wire  Net_6287;
           wire  Net_6286;
     electrical  Net_6285;
-          wire  Net_6873;
           wire  Net_6416;
           wire  Net_6324;
           wire  Net_6323;
           wire  Net_6322;
           wire  Net_6321;
+          wire  Net_7147;
+          wire  Net_7146;
+          wire  Net_7145;
+          wire  Net_6907;
           wire  Net_3249;
           wire  Net_3248;
           wire  Net_3247;
@@ -1831,8 +1918,13 @@ module top ;
           wire  Net_6766;
           wire  Net_6779;
           wire  Net_1849;
-          wire  Net_6307;
+          wire  Net_7042;
+          wire  Net_6959;
+          wire  Net_7022;
+          wire  Net_6992;
+          wire  Net_6961;
           wire  Net_6305;
+          wire  Net_6307;
           wire  Net_6788;
           wire  Net_6790;
           wire  Net_6787;
@@ -2643,79 +2735,17 @@ module top ;
 
 	assign tmpOE__ADC_in0_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
-	wire [0:0] tmpOE__Light_Sensor_net;
-	wire [0:0] tmpIO_0__Light_Sensor_net;
-	wire [0:0] tmpINTERRUPT_0__Light_Sensor_net;
-	electrical [0:0] tmpSIOVREF__Light_Sensor_net;
-
-	cy_psoc3_pins_v1_10
-		#(.id("77715107-f8d5-47e5-a629-0fb83101ac6b"),
-		  .drive_mode(3'b001),
-		  .ibuf_enabled(1'b1),
-		  .init_dr_st(1'b0),
-		  .input_clk_en(0),
-		  .input_sync(1'b0),
-		  .input_sync_mode(1'b0),
-		  .intr_mode(2'b00),
-		  .invert_in_clock(0),
-		  .invert_in_clock_en(0),
-		  .invert_in_reset(0),
-		  .invert_out_clock(0),
-		  .invert_out_clock_en(0),
-		  .invert_out_reset(0),
-		  .io_voltage(""),
-		  .layout_mode("CONTIGUOUS"),
-		  .oe_conn(1'b0),
-		  .oe_reset(0),
-		  .oe_sync(1'b0),
-		  .output_clk_en(0),
-		  .output_clock_mode(1'b0),
-		  .output_conn(1'b0),
-		  .output_mode(1'b0),
-		  .output_reset(0),
-		  .output_sync(1'b0),
-		  .pa_in_clock(-1),
-		  .pa_in_clock_en(-1),
-		  .pa_in_reset(-1),
-		  .pa_out_clock(-1),
-		  .pa_out_clock_en(-1),
-		  .pa_out_reset(-1),
-		  .pin_aliases(""),
-		  .pin_mode("I"),
-		  .por_state(4),
-		  .sio_group_cnt(0),
-		  .sio_hyst(1'b1),
-		  .sio_ibuf(""),
-		  .sio_info(2'b00),
-		  .sio_obuf(""),
-		  .sio_refsel(""),
-		  .sio_vtrip(""),
-		  .sio_hifreq(""),
-		  .sio_vohsel(""),
-		  .slew_rate(1'b0),
-		  .spanning(0),
-		  .use_annotation(1'b0),
-		  .vtrip(2'b10),
-		  .width(1),
-		  .ovt_hyst_trim(1'b0),
-		  .ovt_needed(1'b0),
-		  .ovt_slew_control(2'b00),
-		  .input_buffer_sel(2'b00))
-		Light_Sensor
-		 (.oe(tmpOE__Light_Sensor_net),
-		  .y({1'b0}),
-		  .fb({Net_6305}),
-		  .io({tmpIO_0__Light_Sensor_net[0:0]}),
-		  .siovref(tmpSIOVREF__Light_Sensor_net),
-		  .interrupt({tmpINTERRUPT_0__Light_Sensor_net[0:0]}),
-		  .in_clock({1'b0}),
-		  .in_clock_en({1'b1}),
-		  .in_reset({1'b0}),
-		  .out_clock({1'b0}),
-		  .out_clock_en({1'b1}),
-		  .out_reset({1'b0}));
-
-	assign tmpOE__Light_Sensor_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+    Debouncer_v1_0 Debouncer_2 (
+        .d(Net_6907),
+        .clock(Net_6961),
+        .q(Net_6307),
+        .neg(Net_7145),
+        .either(Net_7146),
+        .pos(Net_7147));
+    defparam Debouncer_2.EitherEdgeDetect = 0;
+    defparam Debouncer_2.NegEdgeDetect = 0;
+    defparam Debouncer_2.PosEdgeDetect = 1;
+    defparam Debouncer_2.SignalWidth = 1;
 
     Debouncer_v1_0 Debouncer_1 (
         .d(Net_6319),
@@ -2823,14 +2853,14 @@ module top ;
 
 
 
+    assign Net_6907 = ~Net_6305;
+
+
 	cy_isr_v1_0
 		#(.int_type(2'b10))
 		isr_OnLine
 		 (.int_signal(Net_6307));
 
-
-
-    assign Net_6873 = ~Net_6305;
 
     ADC_SAR_v3_0_4 ADC (
         .vplus(Net_4756),
@@ -3213,80 +3243,30 @@ module top ;
 		 (.clock_out(Net_1850));
 
 
-	wire [0:0] tmpOE__LED_net;
-	wire [0:0] tmpFB_0__LED_net;
-	wire [0:0] tmpIO_0__LED_net;
-	wire [0:0] tmpINTERRUPT_0__LED_net;
-	electrical [0:0] tmpSIOVREF__LED_net;
-
-	cy_psoc3_pins_v1_10
-		#(.id("d50de08c-8a77-4334-bd87-4d4dcae266e2"),
-		  .drive_mode(3'b110),
-		  .ibuf_enabled(1'b1),
-		  .init_dr_st(1'b0),
-		  .input_clk_en(0),
-		  .input_sync(1'b1),
-		  .input_sync_mode(1'b0),
-		  .intr_mode(2'b00),
-		  .invert_in_clock(0),
-		  .invert_in_clock_en(0),
-		  .invert_in_reset(0),
-		  .invert_out_clock(0),
-		  .invert_out_clock_en(0),
-		  .invert_out_reset(0),
-		  .io_voltage(""),
-		  .layout_mode("CONTIGUOUS"),
-		  .oe_conn(1'b0),
-		  .oe_reset(0),
-		  .oe_sync(1'b0),
-		  .output_clk_en(0),
-		  .output_clock_mode(1'b0),
-		  .output_conn(1'b1),
-		  .output_mode(1'b0),
-		  .output_reset(0),
-		  .output_sync(1'b0),
-		  .pa_in_clock(-1),
-		  .pa_in_clock_en(-1),
-		  .pa_in_reset(-1),
-		  .pa_out_clock(-1),
-		  .pa_out_clock_en(-1),
-		  .pa_out_reset(-1),
-		  .pin_aliases(""),
-		  .pin_mode("O"),
-		  .por_state(4),
-		  .sio_group_cnt(0),
-		  .sio_hyst(1'b1),
-		  .sio_ibuf(""),
-		  .sio_info(2'b00),
-		  .sio_obuf(""),
-		  .sio_refsel(""),
-		  .sio_vtrip(""),
-		  .sio_hifreq(""),
-		  .sio_vohsel(""),
-		  .slew_rate(1'b0),
-		  .spanning(0),
-		  .use_annotation(1'b0),
-		  .vtrip(2'b10),
-		  .width(1),
-		  .ovt_hyst_trim(1'b0),
-		  .ovt_needed(1'b0),
-		  .ovt_slew_control(2'b00),
-		  .input_buffer_sel(2'b00))
-		LED
-		 (.oe(tmpOE__LED_net),
-		  .y({Net_6307}),
-		  .fb({tmpFB_0__LED_net[0:0]}),
-		  .io({tmpIO_0__LED_net[0:0]}),
-		  .siovref(tmpSIOVREF__LED_net),
-		  .interrupt({tmpINTERRUPT_0__LED_net[0:0]}),
-		  .in_clock({1'b0}),
-		  .in_clock_en({1'b1}),
-		  .in_reset({1'b0}),
-		  .out_clock({1'b0}),
-		  .out_clock_en({1'b1}),
-		  .out_reset({1'b0}));
-
-	assign tmpOE__LED_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+    CyStatusReg_v1_90 NLSens_out (
+        .status_0(Net_6992),
+        .status_1(1'b0),
+        .status_2(1'b0),
+        .status_3(1'b0),
+        .clock(Net_7138),
+        .status_4(1'b0),
+        .status_5(1'b0),
+        .status_6(1'b0),
+        .status_7(1'b0),
+        .intr(Net_7133),
+        .status_bus(8'b0));
+    defparam NLSens_out.Bit0Mode = 0;
+    defparam NLSens_out.Bit1Mode = 0;
+    defparam NLSens_out.Bit2Mode = 0;
+    defparam NLSens_out.Bit3Mode = 0;
+    defparam NLSens_out.Bit4Mode = 0;
+    defparam NLSens_out.Bit5Mode = 0;
+    defparam NLSens_out.Bit6Mode = 0;
+    defparam NLSens_out.Bit7Mode = 0;
+    defparam NLSens_out.BusDisplay = 0;
+    defparam NLSens_out.Interrupt = 0;
+    defparam NLSens_out.MaskValue = 0;
+    defparam NLSens_out.NumInputs = 1;
 
 	wire [0:0] tmpOE__DB0_net;
 	wire [0:0] tmpFB_0__DB0_net;
@@ -3766,28 +3746,681 @@ module top ;
 		 (.clock_out(Net_3395));
 
 
-    Debouncer_v1_0 Debouncer_2 (
-        .d(Net_6873),
-        .clock(Net_6879),
-        .q(Net_6307),
-        .neg(Net_6881),
-        .either(Net_6882),
-        .pos(Net_6883));
-    defparam Debouncer_2.EitherEdgeDetect = 0;
-    defparam Debouncer_2.NegEdgeDetect = 0;
-    defparam Debouncer_2.PosEdgeDetect = 1;
-    defparam Debouncer_2.SignalWidth = 1;
+	wire [0:0] tmpOE__Light_Sensor_net;
+	wire [0:0] tmpIO_0__Light_Sensor_net;
+	wire [0:0] tmpINTERRUPT_0__Light_Sensor_net;
+	electrical [0:0] tmpSIOVREF__Light_Sensor_net;
+
+	cy_psoc3_pins_v1_10
+		#(.id("77715107-f8d5-47e5-a629-0fb83101ac6b"),
+		  .drive_mode(3'b001),
+		  .ibuf_enabled(1'b1),
+		  .init_dr_st(1'b0),
+		  .input_clk_en(0),
+		  .input_sync(1'b0),
+		  .input_sync_mode(1'b0),
+		  .intr_mode(2'b00),
+		  .invert_in_clock(0),
+		  .invert_in_clock_en(0),
+		  .invert_in_reset(0),
+		  .invert_out_clock(0),
+		  .invert_out_clock_en(0),
+		  .invert_out_reset(0),
+		  .io_voltage(""),
+		  .layout_mode("CONTIGUOUS"),
+		  .oe_conn(1'b0),
+		  .oe_reset(0),
+		  .oe_sync(1'b0),
+		  .output_clk_en(0),
+		  .output_clock_mode(1'b0),
+		  .output_conn(1'b0),
+		  .output_mode(1'b0),
+		  .output_reset(0),
+		  .output_sync(1'b0),
+		  .pa_in_clock(-1),
+		  .pa_in_clock_en(-1),
+		  .pa_in_reset(-1),
+		  .pa_out_clock(-1),
+		  .pa_out_clock_en(-1),
+		  .pa_out_reset(-1),
+		  .pin_aliases(""),
+		  .pin_mode("I"),
+		  .por_state(4),
+		  .sio_group_cnt(0),
+		  .sio_hyst(1'b1),
+		  .sio_ibuf(""),
+		  .sio_info(2'b00),
+		  .sio_obuf(""),
+		  .sio_refsel(""),
+		  .sio_vtrip(""),
+		  .sio_hifreq(""),
+		  .sio_vohsel(""),
+		  .slew_rate(1'b0),
+		  .spanning(0),
+		  .use_annotation(1'b0),
+		  .vtrip(2'b10),
+		  .width(1),
+		  .ovt_hyst_trim(1'b0),
+		  .ovt_needed(1'b0),
+		  .ovt_slew_control(2'b00),
+		  .input_buffer_sel(2'b00))
+		Light_Sensor
+		 (.oe(tmpOE__Light_Sensor_net),
+		  .y({1'b0}),
+		  .fb({Net_6305}),
+		  .io({tmpIO_0__Light_Sensor_net[0:0]}),
+		  .siovref(tmpSIOVREF__Light_Sensor_net),
+		  .interrupt({tmpINTERRUPT_0__Light_Sensor_net[0:0]}),
+		  .in_clock({1'b0}),
+		  .in_clock_en({1'b1}),
+		  .in_reset({1'b0}),
+		  .out_clock({1'b0}),
+		  .out_clock_en({1'b1}),
+		  .out_reset({1'b0}));
+
+	assign tmpOE__Light_Sensor_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
+	wire [0:0] tmpOE__LED_net;
+	wire [0:0] tmpFB_0__LED_net;
+	wire [0:0] tmpIO_0__LED_net;
+	wire [0:0] tmpINTERRUPT_0__LED_net;
+	electrical [0:0] tmpSIOVREF__LED_net;
+
+	cy_psoc3_pins_v1_10
+		#(.id("d50de08c-8a77-4334-bd87-4d4dcae266e2"),
+		  .drive_mode(3'b110),
+		  .ibuf_enabled(1'b1),
+		  .init_dr_st(1'b0),
+		  .input_clk_en(0),
+		  .input_sync(1'b1),
+		  .input_sync_mode(1'b0),
+		  .intr_mode(2'b00),
+		  .invert_in_clock(0),
+		  .invert_in_clock_en(0),
+		  .invert_in_reset(0),
+		  .invert_out_clock(0),
+		  .invert_out_clock_en(0),
+		  .invert_out_reset(0),
+		  .io_voltage(""),
+		  .layout_mode("CONTIGUOUS"),
+		  .oe_conn(1'b0),
+		  .oe_reset(0),
+		  .oe_sync(1'b0),
+		  .output_clk_en(0),
+		  .output_clock_mode(1'b0),
+		  .output_conn(1'b1),
+		  .output_mode(1'b0),
+		  .output_reset(0),
+		  .output_sync(1'b0),
+		  .pa_in_clock(-1),
+		  .pa_in_clock_en(-1),
+		  .pa_in_reset(-1),
+		  .pa_out_clock(-1),
+		  .pa_out_clock_en(-1),
+		  .pa_out_reset(-1),
+		  .pin_aliases(""),
+		  .pin_mode("O"),
+		  .por_state(4),
+		  .sio_group_cnt(0),
+		  .sio_hyst(1'b1),
+		  .sio_ibuf(""),
+		  .sio_info(2'b00),
+		  .sio_obuf(""),
+		  .sio_refsel(""),
+		  .sio_vtrip(""),
+		  .sio_hifreq(""),
+		  .sio_vohsel(""),
+		  .slew_rate(1'b0),
+		  .spanning(0),
+		  .use_annotation(1'b0),
+		  .vtrip(2'b10),
+		  .width(1),
+		  .ovt_hyst_trim(1'b0),
+		  .ovt_needed(1'b0),
+		  .ovt_slew_control(2'b00),
+		  .input_buffer_sel(2'b00))
+		LED
+		 (.oe(tmpOE__LED_net),
+		  .y({Net_6307}),
+		  .fb({tmpFB_0__LED_net[0:0]}),
+		  .io({tmpIO_0__LED_net[0:0]}),
+		  .siovref(tmpSIOVREF__LED_net),
+		  .interrupt({tmpINTERRUPT_0__LED_net[0:0]}),
+		  .in_clock({1'b0}),
+		  .in_clock_en({1'b1}),
+		  .in_reset({1'b0}),
+		  .out_clock({1'b0}),
+		  .out_clock_en({1'b1}),
+		  .out_reset({1'b0}));
+
+	assign tmpOE__LED_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
+	wire [0:0] tmpOE__FarLeftSensor_net;
+	wire [0:0] tmpIO_0__FarLeftSensor_net;
+	wire [0:0] tmpINTERRUPT_0__FarLeftSensor_net;
+	electrical [0:0] tmpSIOVREF__FarLeftSensor_net;
+
+	cy_psoc3_pins_v1_10
+		#(.id("0ea68cff-2510-4e31-8454-bdbb4ede6057"),
+		  .drive_mode(3'b001),
+		  .ibuf_enabled(1'b1),
+		  .init_dr_st(1'b0),
+		  .input_clk_en(0),
+		  .input_sync(1'b0),
+		  .input_sync_mode(1'b0),
+		  .intr_mode(2'b00),
+		  .invert_in_clock(0),
+		  .invert_in_clock_en(0),
+		  .invert_in_reset(0),
+		  .invert_out_clock(0),
+		  .invert_out_clock_en(0),
+		  .invert_out_reset(0),
+		  .io_voltage(""),
+		  .layout_mode("CONTIGUOUS"),
+		  .oe_conn(1'b0),
+		  .oe_reset(0),
+		  .oe_sync(1'b0),
+		  .output_clk_en(0),
+		  .output_clock_mode(1'b0),
+		  .output_conn(1'b0),
+		  .output_mode(1'b0),
+		  .output_reset(0),
+		  .output_sync(1'b0),
+		  .pa_in_clock(-1),
+		  .pa_in_clock_en(-1),
+		  .pa_in_reset(-1),
+		  .pa_out_clock(-1),
+		  .pa_out_clock_en(-1),
+		  .pa_out_reset(-1),
+		  .pin_aliases(""),
+		  .pin_mode("I"),
+		  .por_state(4),
+		  .sio_group_cnt(0),
+		  .sio_hyst(1'b1),
+		  .sio_ibuf(""),
+		  .sio_info(2'b00),
+		  .sio_obuf(""),
+		  .sio_refsel(""),
+		  .sio_vtrip(""),
+		  .sio_hifreq(""),
+		  .sio_vohsel(""),
+		  .slew_rate(1'b0),
+		  .spanning(0),
+		  .use_annotation(1'b0),
+		  .vtrip(2'b00),
+		  .width(1),
+		  .ovt_hyst_trim(1'b0),
+		  .ovt_needed(1'b0),
+		  .ovt_slew_control(2'b00),
+		  .input_buffer_sel(2'b00))
+		FarLeftSensor
+		 (.oe(tmpOE__FarLeftSensor_net),
+		  .y({1'b0}),
+		  .fb({Net_6929}),
+		  .io({tmpIO_0__FarLeftSensor_net[0:0]}),
+		  .siovref(tmpSIOVREF__FarLeftSensor_net),
+		  .interrupt({tmpINTERRUPT_0__FarLeftSensor_net[0:0]}),
+		  .in_clock({1'b0}),
+		  .in_clock_en({1'b1}),
+		  .in_reset({1'b0}),
+		  .out_clock({1'b0}),
+		  .out_clock_en({1'b1}),
+		  .out_reset({1'b0}));
+
+	assign tmpOE__FarLeftSensor_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
+	wire [0:0] tmpOE__NearLeftSensor_net;
+	wire [0:0] tmpIO_0__NearLeftSensor_net;
+	wire [0:0] tmpINTERRUPT_0__NearLeftSensor_net;
+	electrical [0:0] tmpSIOVREF__NearLeftSensor_net;
+
+	cy_psoc3_pins_v1_10
+		#(.id("84c4a342-bf6b-4e97-bbe5-873cc2459ab6"),
+		  .drive_mode(3'b001),
+		  .ibuf_enabled(1'b1),
+		  .init_dr_st(1'b0),
+		  .input_clk_en(0),
+		  .input_sync(1'b0),
+		  .input_sync_mode(1'b0),
+		  .intr_mode(2'b00),
+		  .invert_in_clock(0),
+		  .invert_in_clock_en(0),
+		  .invert_in_reset(0),
+		  .invert_out_clock(0),
+		  .invert_out_clock_en(0),
+		  .invert_out_reset(0),
+		  .io_voltage(""),
+		  .layout_mode("CONTIGUOUS"),
+		  .oe_conn(1'b0),
+		  .oe_reset(0),
+		  .oe_sync(1'b0),
+		  .output_clk_en(0),
+		  .output_clock_mode(1'b0),
+		  .output_conn(1'b0),
+		  .output_mode(1'b0),
+		  .output_reset(0),
+		  .output_sync(1'b0),
+		  .pa_in_clock(-1),
+		  .pa_in_clock_en(-1),
+		  .pa_in_reset(-1),
+		  .pa_out_clock(-1),
+		  .pa_out_clock_en(-1),
+		  .pa_out_reset(-1),
+		  .pin_aliases(""),
+		  .pin_mode("I"),
+		  .por_state(4),
+		  .sio_group_cnt(0),
+		  .sio_hyst(1'b1),
+		  .sio_ibuf(""),
+		  .sio_info(2'b00),
+		  .sio_obuf(""),
+		  .sio_refsel(""),
+		  .sio_vtrip(""),
+		  .sio_hifreq(""),
+		  .sio_vohsel(""),
+		  .slew_rate(1'b0),
+		  .spanning(0),
+		  .use_annotation(1'b0),
+		  .vtrip(2'b00),
+		  .width(1),
+		  .ovt_hyst_trim(1'b0),
+		  .ovt_needed(1'b0),
+		  .ovt_slew_control(2'b00),
+		  .input_buffer_sel(2'b00))
+		NearLeftSensor
+		 (.oe(tmpOE__NearLeftSensor_net),
+		  .y({1'b0}),
+		  .fb({Net_6993}),
+		  .io({tmpIO_0__NearLeftSensor_net[0:0]}),
+		  .siovref(tmpSIOVREF__NearLeftSensor_net),
+		  .interrupt({tmpINTERRUPT_0__NearLeftSensor_net[0:0]}),
+		  .in_clock({1'b0}),
+		  .in_clock_en({1'b1}),
+		  .in_reset({1'b0}),
+		  .out_clock({1'b0}),
+		  .out_clock_en({1'b1}),
+		  .out_reset({1'b0}));
+
+	assign tmpOE__NearLeftSensor_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
+	wire [0:0] tmpOE__NearRightSensor_net;
+	wire [0:0] tmpIO_0__NearRightSensor_net;
+	wire [0:0] tmpINTERRUPT_0__NearRightSensor_net;
+	electrical [0:0] tmpSIOVREF__NearRightSensor_net;
+
+	cy_psoc3_pins_v1_10
+		#(.id("bacb18c8-bb29-4188-85ab-a34d9b35a386"),
+		  .drive_mode(3'b001),
+		  .ibuf_enabled(1'b1),
+		  .init_dr_st(1'b0),
+		  .input_clk_en(0),
+		  .input_sync(1'b0),
+		  .input_sync_mode(1'b0),
+		  .intr_mode(2'b00),
+		  .invert_in_clock(0),
+		  .invert_in_clock_en(0),
+		  .invert_in_reset(0),
+		  .invert_out_clock(0),
+		  .invert_out_clock_en(0),
+		  .invert_out_reset(0),
+		  .io_voltage(""),
+		  .layout_mode("CONTIGUOUS"),
+		  .oe_conn(1'b0),
+		  .oe_reset(0),
+		  .oe_sync(1'b0),
+		  .output_clk_en(0),
+		  .output_clock_mode(1'b0),
+		  .output_conn(1'b0),
+		  .output_mode(1'b0),
+		  .output_reset(0),
+		  .output_sync(1'b0),
+		  .pa_in_clock(-1),
+		  .pa_in_clock_en(-1),
+		  .pa_in_reset(-1),
+		  .pa_out_clock(-1),
+		  .pa_out_clock_en(-1),
+		  .pa_out_reset(-1),
+		  .pin_aliases(""),
+		  .pin_mode("I"),
+		  .por_state(4),
+		  .sio_group_cnt(0),
+		  .sio_hyst(1'b1),
+		  .sio_ibuf(""),
+		  .sio_info(2'b00),
+		  .sio_obuf(""),
+		  .sio_refsel(""),
+		  .sio_vtrip(""),
+		  .sio_hifreq(""),
+		  .sio_vohsel(""),
+		  .slew_rate(1'b0),
+		  .spanning(0),
+		  .use_annotation(1'b0),
+		  .vtrip(2'b00),
+		  .width(1),
+		  .ovt_hyst_trim(1'b0),
+		  .ovt_needed(1'b0),
+		  .ovt_slew_control(2'b00),
+		  .input_buffer_sel(2'b00))
+		NearRightSensor
+		 (.oe(tmpOE__NearRightSensor_net),
+		  .y({1'b0}),
+		  .fb({Net_7023}),
+		  .io({tmpIO_0__NearRightSensor_net[0:0]}),
+		  .siovref(tmpSIOVREF__NearRightSensor_net),
+		  .interrupt({tmpINTERRUPT_0__NearRightSensor_net[0:0]}),
+		  .in_clock({1'b0}),
+		  .in_clock_en({1'b1}),
+		  .in_reset({1'b0}),
+		  .out_clock({1'b0}),
+		  .out_clock_en({1'b1}),
+		  .out_reset({1'b0}));
+
+	assign tmpOE__NearRightSensor_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
+	wire [0:0] tmpOE__FarRightSensor_net;
+	wire [0:0] tmpIO_0__FarRightSensor_net;
+	wire [0:0] tmpINTERRUPT_0__FarRightSensor_net;
+	electrical [0:0] tmpSIOVREF__FarRightSensor_net;
+
+	cy_psoc3_pins_v1_10
+		#(.id("29d7339d-2cf5-472d-b45b-d37a7e2b5292"),
+		  .drive_mode(3'b001),
+		  .ibuf_enabled(1'b1),
+		  .init_dr_st(1'b0),
+		  .input_clk_en(0),
+		  .input_sync(1'b0),
+		  .input_sync_mode(1'b0),
+		  .intr_mode(2'b00),
+		  .invert_in_clock(0),
+		  .invert_in_clock_en(0),
+		  .invert_in_reset(0),
+		  .invert_out_clock(0),
+		  .invert_out_clock_en(0),
+		  .invert_out_reset(0),
+		  .io_voltage(""),
+		  .layout_mode("CONTIGUOUS"),
+		  .oe_conn(1'b0),
+		  .oe_reset(0),
+		  .oe_sync(1'b0),
+		  .output_clk_en(0),
+		  .output_clock_mode(1'b0),
+		  .output_conn(1'b0),
+		  .output_mode(1'b0),
+		  .output_reset(0),
+		  .output_sync(1'b0),
+		  .pa_in_clock(-1),
+		  .pa_in_clock_en(-1),
+		  .pa_in_reset(-1),
+		  .pa_out_clock(-1),
+		  .pa_out_clock_en(-1),
+		  .pa_out_reset(-1),
+		  .pin_aliases(""),
+		  .pin_mode("I"),
+		  .por_state(4),
+		  .sio_group_cnt(0),
+		  .sio_hyst(1'b1),
+		  .sio_ibuf(""),
+		  .sio_info(2'b00),
+		  .sio_obuf(""),
+		  .sio_refsel(""),
+		  .sio_vtrip(""),
+		  .sio_hifreq(""),
+		  .sio_vohsel(""),
+		  .slew_rate(1'b0),
+		  .spanning(0),
+		  .use_annotation(1'b0),
+		  .vtrip(2'b00),
+		  .width(1),
+		  .ovt_hyst_trim(1'b0),
+		  .ovt_needed(1'b0),
+		  .ovt_slew_control(2'b00),
+		  .input_buffer_sel(2'b00))
+		FarRightSensor
+		 (.oe(tmpOE__FarRightSensor_net),
+		  .y({1'b0}),
+		  .fb({Net_7043}),
+		  .io({tmpIO_0__FarRightSensor_net[0:0]}),
+		  .siovref(tmpSIOVREF__FarRightSensor_net),
+		  .interrupt({tmpINTERRUPT_0__FarRightSensor_net[0:0]}),
+		  .in_clock({1'b0}),
+		  .in_clock_en({1'b1}),
+		  .in_reset({1'b0}),
+		  .out_clock({1'b0}),
+		  .out_clock_en({1'b1}),
+		  .out_reset({1'b0}));
+
+	assign tmpOE__FarRightSensor_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
+    CyStatusReg_v1_90 FLSens_out (
+        .status_0(Net_6959),
+        .status_1(1'b0),
+        .status_2(1'b0),
+        .status_3(1'b0),
+        .clock(Net_7234),
+        .status_4(1'b0),
+        .status_5(1'b0),
+        .status_6(1'b0),
+        .status_7(1'b0),
+        .intr(Net_7255),
+        .status_bus(8'b0));
+    defparam FLSens_out.Bit0Mode = 0;
+    defparam FLSens_out.Bit1Mode = 0;
+    defparam FLSens_out.Bit2Mode = 0;
+    defparam FLSens_out.Bit3Mode = 0;
+    defparam FLSens_out.Bit4Mode = 0;
+    defparam FLSens_out.Bit5Mode = 0;
+    defparam FLSens_out.Bit6Mode = 0;
+    defparam FLSens_out.Bit7Mode = 0;
+    defparam FLSens_out.BusDisplay = 0;
+    defparam FLSens_out.Interrupt = 0;
+    defparam FLSens_out.MaskValue = 0;
+    defparam FLSens_out.NumInputs = 1;
+
+
+    assign Net_6960 = ~Net_6929;
+
+    CyStatusReg_v1_90 MSens_out (
+        .status_0(Net_6307),
+        .status_1(1'b0),
+        .status_2(1'b0),
+        .status_3(1'b0),
+        .clock(Net_7196),
+        .status_4(1'b0),
+        .status_5(1'b0),
+        .status_6(1'b0),
+        .status_7(1'b0),
+        .intr(Net_7216),
+        .status_bus(8'b0));
+    defparam MSens_out.Bit0Mode = 0;
+    defparam MSens_out.Bit1Mode = 0;
+    defparam MSens_out.Bit2Mode = 0;
+    defparam MSens_out.Bit3Mode = 0;
+    defparam MSens_out.Bit4Mode = 0;
+    defparam MSens_out.Bit5Mode = 0;
+    defparam MSens_out.Bit6Mode = 0;
+    defparam MSens_out.Bit7Mode = 0;
+    defparam MSens_out.BusDisplay = 0;
+    defparam MSens_out.Interrupt = 0;
+    defparam MSens_out.MaskValue = 0;
+    defparam MSens_out.NumInputs = 1;
+
+    Debouncer_v1_0 Debouncer_3 (
+        .d(Net_6960),
+        .clock(Net_6961),
+        .q(Net_6959),
+        .neg(Net_6962),
+        .either(Net_6963),
+        .pos(Net_6964));
+    defparam Debouncer_3.EitherEdgeDetect = 0;
+    defparam Debouncer_3.NegEdgeDetect = 0;
+    defparam Debouncer_3.PosEdgeDetect = 1;
+    defparam Debouncer_3.SignalWidth = 1;
 
 
 	cy_clock_v1_0
-		#(.id("e003324a-cf78-4cec-bb30-ebc1716e2704"),
+		#(.id("ca04a246-38ac-404c-8bdf-1f7a93e211dd"),
 		  .source_clock_id("315365C3-2E3E-4f04-84A2-BB564A173261"),
 		  .divisor(0),
 		  .period("10000000000000"),
 		  .is_direct(0),
 		  .is_digital(1))
+		Clock_3
+		 (.clock_out(Net_6961));
+
+
+
+	cy_clock_v1_0
+		#(.id("242d0a3f-a88a-41e2-b9e9-f1041c856f56"),
+		  .source_clock_id("75C2148C-3656-4d8a-846D-0CAE99AB6FF7"),
+		  .divisor(0),
+		  .period("0"),
+		  .is_direct(1),
+		  .is_digital(1))
+		Clock_4
+		 (.clock_out(Net_7162));
+
+
+
+    assign Net_6994 = ~Net_6993;
+
+    Debouncer_v1_0 Debouncer_4 (
+        .d(Net_6994),
+        .clock(Net_6961),
+        .q(Net_6992),
+        .neg(Net_6996),
+        .either(Net_6997),
+        .pos(Net_6998));
+    defparam Debouncer_4.EitherEdgeDetect = 0;
+    defparam Debouncer_4.NegEdgeDetect = 0;
+    defparam Debouncer_4.PosEdgeDetect = 1;
+    defparam Debouncer_4.SignalWidth = 1;
+
+
+    assign Net_7044 = ~Net_7043;
+
+    CyStatusReg_v1_90 NRSens_out (
+        .status_0(Net_7022),
+        .status_1(1'b0),
+        .status_2(1'b0),
+        .status_3(1'b0),
+        .clock(Net_7162),
+        .status_4(1'b0),
+        .status_5(1'b0),
+        .status_6(1'b0),
+        .status_7(1'b0),
+        .intr(Net_7181),
+        .status_bus(8'b0));
+    defparam NRSens_out.Bit0Mode = 0;
+    defparam NRSens_out.Bit1Mode = 0;
+    defparam NRSens_out.Bit2Mode = 0;
+    defparam NRSens_out.Bit3Mode = 0;
+    defparam NRSens_out.Bit4Mode = 0;
+    defparam NRSens_out.Bit5Mode = 0;
+    defparam NRSens_out.Bit6Mode = 0;
+    defparam NRSens_out.Bit7Mode = 0;
+    defparam NRSens_out.BusDisplay = 0;
+    defparam NRSens_out.Interrupt = 0;
+    defparam NRSens_out.MaskValue = 0;
+    defparam NRSens_out.NumInputs = 1;
+
+
+    assign Net_7024 = ~Net_7023;
+
+    Debouncer_v1_0 Debouncer_5 (
+        .d(Net_7024),
+        .clock(Net_6961),
+        .q(Net_7022),
+        .neg(Net_7026),
+        .either(Net_7027),
+        .pos(Net_7028));
+    defparam Debouncer_5.EitherEdgeDetect = 0;
+    defparam Debouncer_5.NegEdgeDetect = 0;
+    defparam Debouncer_5.PosEdgeDetect = 1;
+    defparam Debouncer_5.SignalWidth = 1;
+
+    CyStatusReg_v1_90 FRSens_out (
+        .status_0(Net_7042),
+        .status_1(1'b0),
+        .status_2(1'b0),
+        .status_3(1'b0),
+        .clock(Net_7276),
+        .status_4(1'b0),
+        .status_5(1'b0),
+        .status_6(1'b0),
+        .status_7(1'b0),
+        .intr(Net_7303),
+        .status_bus(8'b0));
+    defparam FRSens_out.Bit0Mode = 0;
+    defparam FRSens_out.Bit1Mode = 0;
+    defparam FRSens_out.Bit2Mode = 0;
+    defparam FRSens_out.Bit3Mode = 0;
+    defparam FRSens_out.Bit4Mode = 0;
+    defparam FRSens_out.Bit5Mode = 0;
+    defparam FRSens_out.Bit6Mode = 0;
+    defparam FRSens_out.Bit7Mode = 0;
+    defparam FRSens_out.BusDisplay = 0;
+    defparam FRSens_out.Interrupt = 0;
+    defparam FRSens_out.MaskValue = 0;
+    defparam FRSens_out.NumInputs = 1;
+
+    Debouncer_v1_0 Debouncer_6 (
+        .d(Net_7044),
+        .clock(Net_6961),
+        .q(Net_7042),
+        .neg(Net_7046),
+        .either(Net_7047),
+        .pos(Net_7048));
+    defparam Debouncer_6.EitherEdgeDetect = 0;
+    defparam Debouncer_6.NegEdgeDetect = 0;
+    defparam Debouncer_6.PosEdgeDetect = 1;
+    defparam Debouncer_6.SignalWidth = 1;
+
+
+	cy_clock_v1_0
+		#(.id("96f67bd3-11ab-4e5d-9e1e-1e20c357f336"),
+		  .source_clock_id("75C2148C-3656-4d8a-846D-0CAE99AB6FF7"),
+		  .divisor(0),
+		  .period("0"),
+		  .is_direct(1),
+		  .is_digital(1))
 		Clock_2
-		 (.clock_out(Net_6879));
+		 (.clock_out(Net_7138));
+
+
+
+	cy_clock_v1_0
+		#(.id("5fcee09f-3870-41fe-b6e9-929f4396830e"),
+		  .source_clock_id("75C2148C-3656-4d8a-846D-0CAE99AB6FF7"),
+		  .divisor(0),
+		  .period("0"),
+		  .is_direct(1),
+		  .is_digital(1))
+		Clock_5
+		 (.clock_out(Net_7196));
+
+
+
+	cy_clock_v1_0
+		#(.id("bd725621-159e-4334-9da7-77a33a034f83"),
+		  .source_clock_id("75C2148C-3656-4d8a-846D-0CAE99AB6FF7"),
+		  .divisor(0),
+		  .period("0"),
+		  .is_direct(1),
+		  .is_digital(1))
+		Clock_6
+		 (.clock_out(Net_7234));
+
+
+
+	cy_clock_v1_0
+		#(.id("ee65b03c-bb3b-4155-9d91-e5448b05fcbb"),
+		  .source_clock_id("75C2148C-3656-4d8a-846D-0CAE99AB6FF7"),
+		  .divisor(0),
+		  .period("0"),
+		  .is_direct(1),
+		  .is_digital(1))
+		Clock_7
+		 (.clock_out(Net_7276));
 
 
 
