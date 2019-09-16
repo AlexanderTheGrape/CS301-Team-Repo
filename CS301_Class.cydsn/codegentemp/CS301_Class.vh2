@@ -2,7 +2,7 @@
 --	Conversion of CS301_Class.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Sun Sep 15 16:04:09 2019
+--	Mon Sep 16 15:57:07 2019
 --
 
 USE cypress.cypress.all;
@@ -542,6 +542,7 @@ SIGNAL tmpIO_0__button_pin_net_0 : bit;
 TERMINAL tmpSIOVREF__button_pin_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__button_pin_net_0 : bit;
 SIGNAL Net_6307 : bit;
+SIGNAL Net_6873 : bit;
 TERMINAL \ADC:Net_248\ : bit;
 TERMINAL \ADC:Net_235\ : bit;
 SIGNAL Net_1497 : bit;
@@ -1404,6 +1405,13 @@ SIGNAL \Timer_2:TimerUDB:sT8:timerdp:f1_blk_stat_reg\ : bit;
 ATTRIBUTE port_state_att of \Timer_2:TimerUDB:sT8:timerdp:f1_blk_stat_reg\:SIGNAL IS 2;
 SIGNAL \Timer_2:Net_102\ : bit;
 SIGNAL \Timer_2:Net_266\ : bit;
+SIGNAL Net_6879 : bit;
+SIGNAL \Debouncer_2:op_clk\ : bit;
+SIGNAL \Debouncer_2:DEBOUNCER[0]:d_sync_0\ : bit;
+SIGNAL \Debouncer_2:DEBOUNCER[0]:d_sync_1\ : bit;
+SIGNAL Net_6883 : bit;
+SIGNAL Net_6881 : bit;
+SIGNAL Net_6882 : bit;
 SIGNAL \QuadDec_M1:Net_1251\\D\ : bit;
 SIGNAL \QuadDec_M1:Cnt16:CounterUDB:prevCapture\\D\ : bit;
 SIGNAL \QuadDec_M1:Cnt16:CounterUDB:overflow_reg_i\\D\ : bit;
@@ -1476,6 +1484,11 @@ SIGNAL \Timer_2:TimerUDB:capture_last\\D\ : bit;
 SIGNAL \Timer_2:TimerUDB:tc_reg_i\\D\ : bit;
 SIGNAL \Timer_2:TimerUDB:hwEnable_reg\\D\ : bit;
 SIGNAL \Timer_2:TimerUDB:capture_out_reg_i\\D\ : bit;
+SIGNAL \Debouncer_2:DEBOUNCER[0]:d_sync_0\\D\ : bit;
+SIGNAL \Debouncer_2:DEBOUNCER[0]:d_sync_1\\D\ : bit;
+SIGNAL Net_6883D : bit;
+SIGNAL Net_6881D : bit;
+SIGNAL Net_6882D : bit;
 BEGIN
 
 Net_2183 <=  ('0') ;
@@ -1628,7 +1641,7 @@ tmpOE__M1_IN1_net_0 <=  ('1') ;
 
 Net_6324D <= ((not \Debouncer_1:DEBOUNCER[0]:d_sync_1\ and Net_6321));
 
-Net_6307 <= (not Net_6305);
+Net_6873 <= (not Net_6305);
 
 Net_1880 <= (not \UART:BUART:txn\);
 
@@ -1757,6 +1770,8 @@ Net_6779 <= ((not Net_6774 and Net_6787)
 	OR (not Net_6787 and Net_6774));
 
 \Timer_2:TimerUDB:status_tc\ <= ((\Timer_2:TimerUDB:control_7\ and \Timer_2:TimerUDB:per_zero\));
+
+Net_6883D <= ((not \Debouncer_2:DEBOUNCER[0]:d_sync_1\ and Net_6307));
 
 Clock_PWM:cy_clock_v1_0
 	GENERIC MAP(cy_registers=>"",
@@ -4708,6 +4723,21 @@ UART_clk:cy_clock_v1_0
 		is_digital=>'1')
 	PORT MAP(clock_out=>Net_3395,
 		dig_domain_out=>open);
+\Debouncer_2:ClkSync\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_6879,
+		enable=>tmpOE__M1_IN1_net_0,
+		clock_out=>\Debouncer_2:op_clk\);
+Clock_2:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"e003324a-cf78-4cec-bb30-ebc1716e2704",
+		source_clock_id=>"315365C3-2E3E-4f04-84A2-BB564A173261",
+		divisor=>0,
+		period=>"10000000000000",
+		is_direct=>'0',
+		is_digital=>'1')
+	PORT MAP(clock_out=>Net_6879,
+		dig_domain_out=>open);
 \QuadDec_M1:Net_1251\:cy_dff
 	PORT MAP(d=>\QuadDec_M1:Net_1251\\D\,
 		clk=>\QuadDec_M1:bQuadDec:sync_clock\,
@@ -4996,5 +5026,25 @@ Net_3394:cy_dff
 	PORT MAP(d=>Net_2183,
 		clk=>\Timer_2:TimerUDB:ClockOutFromEnBlock\,
 		q=>\Timer_2:TimerUDB:capture_out_reg_i\);
+\Debouncer_2:DEBOUNCER[0]:d_sync_0\:cy_dff
+	PORT MAP(d=>Net_6873,
+		clk=>\Debouncer_2:op_clk\,
+		q=>Net_6307);
+\Debouncer_2:DEBOUNCER[0]:d_sync_1\:cy_dff
+	PORT MAP(d=>Net_6307,
+		clk=>\Debouncer_2:op_clk\,
+		q=>\Debouncer_2:DEBOUNCER[0]:d_sync_1\);
+Net_6883:cy_dff
+	PORT MAP(d=>Net_6883D,
+		clk=>\Debouncer_2:op_clk\,
+		q=>Net_6883);
+Net_6881:cy_dff
+	PORT MAP(d=>Net_2183,
+		clk=>\Debouncer_2:op_clk\,
+		q=>Net_6881);
+Net_6882:cy_dff
+	PORT MAP(d=>Net_2183,
+		clk=>\Debouncer_2:op_clk\,
+		q=>Net_6882);
 
 END R_T_L;

@@ -1,6 +1,6 @@
 // ======================================================================
 // CS301_Class.v generated from TopDesign.cysch
-// 09/15/2019 at 16:04
+// 09/16/2019 at 15:57
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -1734,6 +1734,11 @@ endmodule
 module top ;
 
           wire  CLK24M;
+          wire  Net_6904;
+          wire  Net_6883;
+          wire  Net_6882;
+          wire  Net_6881;
+          wire  Net_6879;
           wire  Net_6872;
           wire  Net_6813;
           wire  Net_6845;
@@ -1813,6 +1818,7 @@ module top ;
           wire  Net_6287;
           wire  Net_6286;
     electrical  Net_6285;
+          wire  Net_6873;
           wire  Net_6416;
           wire  Net_6324;
           wire  Net_6323;
@@ -1825,6 +1831,8 @@ module top ;
           wire  Net_6766;
           wire  Net_6779;
           wire  Net_1849;
+          wire  Net_6307;
+          wire  Net_6305;
           wire  Net_6788;
           wire  Net_6790;
           wire  Net_6787;
@@ -1833,10 +1841,8 @@ module top ;
           wire  Net_6767;
           wire  Net_6765;
           wire  Net_2460;
-          wire  Net_6307;
           wire  Net_6320;
           wire  Net_6319;
-          wire  Net_6305;
           wire  Net_6134;
           wire  Net_6058;
           wire  Net_6060;
@@ -2824,7 +2830,7 @@ module top ;
 
 
 
-    assign Net_6307 = ~Net_6305;
+    assign Net_6873 = ~Net_6305;
 
     ADC_SAR_v3_0_4 ADC (
         .vplus(Net_4756),
@@ -3758,6 +3764,30 @@ module top ;
 		  .is_digital(1))
 		UART_clk
 		 (.clock_out(Net_3395));
+
+
+    Debouncer_v1_0 Debouncer_2 (
+        .d(Net_6873),
+        .clock(Net_6879),
+        .q(Net_6307),
+        .neg(Net_6881),
+        .either(Net_6882),
+        .pos(Net_6883));
+    defparam Debouncer_2.EitherEdgeDetect = 0;
+    defparam Debouncer_2.NegEdgeDetect = 0;
+    defparam Debouncer_2.PosEdgeDetect = 1;
+    defparam Debouncer_2.SignalWidth = 1;
+
+
+	cy_clock_v1_0
+		#(.id("e003324a-cf78-4cec-bb30-ebc1716e2704"),
+		  .source_clock_id("315365C3-2E3E-4f04-84A2-BB564A173261"),
+		  .divisor(0),
+		  .period("10000000000000"),
+		  .is_direct(0),
+		  .is_digital(1))
+		Clock_2
+		 (.clock_out(Net_6879));
 
 
 

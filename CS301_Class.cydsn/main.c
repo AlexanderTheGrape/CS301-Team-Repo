@@ -387,8 +387,8 @@ void Quad_Dec_response()
     //there's an initial right tilt by default, so we want to decrease the initial left speed
     if(leftSpeed == 0 && rightSpeed == 0){ 
        //leftSpeed = 3;
-        scalingLeft = 3;
-        scalingRight = 3;
+        scalingLeft = 8;
+        scalingRight = 8;
     }
 
     int interCalc = leftSpeedLimit - abs(leftSpeed);

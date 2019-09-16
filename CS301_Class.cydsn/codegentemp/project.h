@@ -85,6 +85,7 @@
 #include "Timer_2.h"
 #include "isr_turn_count.h"
 #include "UART_clk.h"
+#include "Clock_2.h"
 #include "QuadDec_M1_Cnt16.h"
 #include "QuadDec_M2_Cnt16.h"
 #include "ADC_IRQ.h"
