@@ -69,8 +69,8 @@ int16 prevVoltage;
 int16 prevVoltage2;
 
 //concept of robot state
-enum state {DRIVE = 0, LTURN, RTURN, STOPPED, TRACKING}; 
-
+enum state {DRIVE = 0, LTURN, RTURN, STOPPED, TRACKING, TRACKING_U, TRACKING_SOFT}; 
+enum mode {NO_TRACK, CURVE_TRACK, U_TRACK, SQUARE_TRACK};
 //* ========================================
 char displaystring[BUF_SIZE] = "CS301 2016\n";
 char line[BUF_SIZE], entry[BUF_SIZE];
@@ -98,7 +98,9 @@ typedef struct data_main {
 struct data_main buffer_state;
 struct data_main system_state;
 
+enum state prev_movement_state = STOPPED;
 enum state movement_state = STOPPED;
+enum mode track_mode = NO_TRACK;
 
 uint8 byteCount = 0;
 char packet[2];

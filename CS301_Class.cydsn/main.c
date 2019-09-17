@@ -245,6 +245,7 @@ void turnRight()
 
 void initTurnLeft(){
     Timer_2_Stop();
+    prev_movement_state = movement_state;
     movement_state = LTURN;
     brakeLeft();
     start_turn_count = QuadDec_M2_GetCounter();
@@ -253,6 +254,7 @@ void initTurnLeft(){
 
 void initTurnRight(){
     Timer_2_Stop();
+    prev_movement_state = movement_state;
     movement_state = RTURN;
     brakeRight();
     start_turn_count = QuadDec_M1_GetCounter();
@@ -271,6 +273,10 @@ void initBrake(){
 void initTrack()
 {
     movement_state = TRACKING;
+}
+
+void initTrackU(){
+    movement_state = TRACKING_U;
 }
 
 //Binary RF Data
@@ -304,20 +310,34 @@ CY_ISR(BT_rxInt)
     switch(rf_char){
     case 'a':
         initTurnLeft();
+        track_mode = NO_TRACK;
         break;
     case 'w':
         initForward();
+        track_mode = NO_TRACK;
         break;
     case 's': 
         reverseDirection();
+        track_mode = NO_TRACK;
         break;
     case 'd':
         initTurnRight();
+        track_mode = NO_TRACK;
         break;
     case 'f':
         initBrake();
+        track_mode = NO_TRACK;
         break;
     case('t'):
+        track_mode = CURVE_TRACK;
+        initTrack();
+        break;
+    case('u'):
+        initTrackU();
+        track_mode = U_TRACK;
+        break;
+    case('z'):
+        track_mode = SQUARE_TRACK;
         initTrack();
         break;
     }
@@ -368,7 +388,7 @@ CY_ISR(isr_turn_timer)
         {
             //movement_state = STOPPED;
             brakeMotor();
-            movement_state = DRIVE;
+            movement_state = prev_movement_state;
             Timer_2_Stop();
         }
     }
@@ -378,7 +398,7 @@ CY_ISR(isr_turn_timer)
         {
             //movement_state = STOPPED;
             brakeMotor();
-            movement_state = DRIVE;
+            movement_state = prev_movement_state;
             Timer_2_Stop();
         }
     }
@@ -475,10 +495,59 @@ void trackLine()
     {
         setSpeed(10,10);
     }
-    else if (!mid && !nr && !nl)
+   // else if (!mid && !nr && !nl)
+    //{
+        //setSpeed(0,0);
+    //}
+   
+
+}
+
+void trackLineU()
+{
+    //read the value of the three central-front sensors
+    
+    uint8 nl = NLSens_out_Read();
+    uint8 fl = FLSens_out_Read();
+    uint8 nr = NRSens_out_Read();
+    uint8 fr = FRSens_out_Read();
+    uint8 mid = MSens_out_Read();
+    if (fl && mid && fr) // T intersection
     {
-        setSpeed(0,0);
+        // not implemented
     }
+    else if (fl && mid) // if far left + centre, we're at a left-turning intersection
+    {
+        setSpeed(15, 15);
+    }
+    else if (fr && mid) // if far right + centre, we're at a right-turning intersection
+    {
+        setSpeed(15, 15);
+    }
+    else if(nl && !nr && !mid) //if only the left one, hard left
+    {
+        setSpeed(-10,15);
+    }
+    else if(nl && mid && !nr)   //if centre/middle, soft left
+    {
+        setSpeed(0,15);
+    }
+    else if (nr && mid && !nl)//if centre/right, soft right
+    {
+        setSpeed(15,0);
+    }
+   else if (nr && !mid && !nl)    //if only right, hard right
+    {
+        setSpeed(15,-10);
+    }
+    else if (mid && !nr && !nl)
+    {
+        setSpeed(10,10);
+    }
+   // else if (!mid && !nr && !nl)
+    //{
+        //setSpeed(0,0);
+    //}
    
 
 }
@@ -524,6 +593,15 @@ void print_RF()
         sprintf(printString, "%d\r\n", system_state.robot_orientation);
         usbPutString(printString);
     }
+}
+
+void readFrontSensors(uint8 sensorVals[5])
+{
+    sensorVals[0] = FLSens_out_Read();
+    sensorVals[1] = NLSens_out_Read();
+    sensorVals[2] = MSens_out_Read();
+    sensorVals[3] = NRSens_out_Read();
+    sensorVals[4] = FRSens_out_Read();
 }
 
 int main()
@@ -600,6 +678,30 @@ int main()
             handle_rx_binary();
             print_RF();
         }
+        // NO_TRACK, CURVE_TRACK, U_TRACK, SQUARE_TRACK
+        
+        uint8 frontSensors[5];
+        readFrontSensors(frontSensors);
+        
+        switch(track_mode)
+        {
+            case SQUARE_TRACK:
+                if(frontSensors[0] == 1 && frontSensors[2] == 1){ //left turn
+                    initTurnLeft();
+                }
+                else if (frontSensors[4] == 1 && frontSensors[2] == 1) //right turn
+                {
+                    initTurnRight();
+                }
+                else initTrack();
+            break;
+            case NO_TRACK:
+            break;
+            case CURVE_TRACK:
+            break;
+            case U_TRACK:
+            break;
+        }
         
         switch(movement_state)
         {
@@ -617,6 +719,9 @@ int main()
             break;
             case TRACKING:
                 trackLine();
+            break;
+            case TRACKING_U:
+                trackLineU();
             break;
         }
         //handle_usb();        
