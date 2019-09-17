@@ -279,6 +279,10 @@ void initTrackU(){
     movement_state = TRACKING_U;
 }
 
+void initTrackLineSoft(){
+    movement_state = TRACKING_SOFT;
+}
+
 //Binary RF Data
 CY_ISR(rxInt){
     char rf_char = UART_GetChar();
@@ -499,8 +503,40 @@ void trackLine()
     //{
         //setSpeed(0,0);
     //}
-   
+}
 
+void trackLineSoft()
+{
+    //read the value of the three central-front sensors
+    
+    uint8 nl = NLSens_out_Read();
+    uint8 nr = NRSens_out_Read();
+    uint8 mid = MSens_out_Read();
+    //if only the left one, hard left
+    if(nl && !nr && !mid)
+    {
+        setSpeed(-15,15);
+    }
+    else if(nl && mid && !nr)   //if centre/middle, soft left
+    {
+        setSpeed(0,15);
+    }
+    else if (nr && mid && !nl)//if centre/right, soft right
+    {
+        setSpeed(15,0);
+    }
+   else if (nr && !mid && !nl)    //if only right, hard right
+    {
+        setSpeed(15,-15);
+    }
+    else if (mid && !nr && !nl)
+    {
+        setSpeed(10,10);
+    }
+   // else if (!mid && !nr && !nl)
+    //{
+        //setSpeed(0,0);
+    //}
 }
 
 void trackLineU()
@@ -693,7 +729,7 @@ int main()
                 {
                     initTurnRight();
                 }
-                else initTrack();
+                else initTrackLineSoft();
             break;
             case NO_TRACK:
             break;
@@ -723,6 +759,8 @@ int main()
             case TRACKING_U:
                 trackLineU();
             break;
+            case TRACKING_SOFT:
+                trackLineSoft();
         }
         //handle_usb();        
     }   
