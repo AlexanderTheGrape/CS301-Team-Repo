@@ -106,6 +106,7 @@ uint8 byteCount = 0;
 char packet[2];
 //* ========================================
 
+double speed = 16; // the speed of the robot in cm/s
 
 //* ========================================
 /* [] END OF FILE */

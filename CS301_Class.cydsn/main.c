@@ -181,29 +181,29 @@ void reverseDirection()
     UART_PutString(mes);
 }
 
-void setSpeed(double right, double left){
-    if(right < 0)
+void setSpeed(double left, double right){
+    if(right < 0.0)
     {
-        char mes[16];
-        sprintf(mes, "right dir: %d\r\n", !direction);
-        UART_PutString(mes);
+        //char mes[16];
+       // sprintf(mes, "right dir: %d\r\n", !direction);
+       // UART_PutString(mes);
         setRightDir(!direction);
         right = -right;
     }
     else setRightDir(direction);
     
-    if(left < 0)
+    if(left < 0.0)
     {
-        char mes[16];
-        sprintf(mes, "left dir: %d\r\n", !direction);
-        UART_PutString(mes);
+       // char mes[16];
+        //sprintf(mes, "left dir: %d\r\n", !direction);
+        //UART_PutString(mes);
         setLeftDir(!direction);
         left = -left;
     }
     else setLeftDir(direction);
     
-    uint8 countsLeft = left*QUAD_RATIO;
-    uint8 countsRight = right*QUAD_RATIO;
+    int16 countsLeft = left*QUAD_RATIO;
+    int16 countsRight = right*QUAD_RATIO;
     
     leftSpeedLimit = countsRight;
     rightSpeedLimit = countsLeft;
@@ -230,17 +230,17 @@ void brakeMotor(){
 
 void driveForwards()
 {
-    setSpeed(20, 20);
-}
-
-void turnLeft()
-{
-    setSpeed(0,20);
+    setSpeed(speed, speed);
 }
 
 void turnRight()
 {
-    setSpeed(20,0);
+    setSpeed(0,speed*2.0);
+}
+
+void turnLeft()
+{
+    setSpeed(speed*2.0,0);
 }
 
 void initTurnLeft(){
@@ -279,7 +279,7 @@ void initTrackU(){
     movement_state = TRACKING_U;
 }
 
-void initTrackLineSoft(){
+void inittrackLineZ(){
     movement_state = TRACKING_SOFT;
 }
 
@@ -479,25 +479,25 @@ void trackLine()
     uint8 nr = NRSens_out_Read();
     uint8 mid = MSens_out_Read();
     //if only the left one, hard left
-    if(nl && !nr && !mid)
+    if(nl && !nr && !mid) //if only the left one, hard left
     {
-        setSpeed(-10,15);
+        setSpeed(speed / 1.5, -speed / 1.5);
     }
     else if(nl && mid && !nr)   //if centre/middle, soft left
     {
-        setSpeed(0,15);
+        setSpeed(speed, 0);
     }
     else if (nr && mid && !nl)//if centre/right, soft right
     {
-        setSpeed(15,0);
+        setSpeed(0, speed);
     }
    else if (nr && !mid && !nl)    //if only right, hard right
     {
-        setSpeed(15,-10);
+        setSpeed(-speed / 1.5,speed / 1.5);
     }
     else if (mid && !nr && !nl)
     {
-        setSpeed(10,10);
+        setSpeed(speed,speed);
     }
    // else if (!mid && !nr && !nl)
     //{
@@ -505,7 +505,7 @@ void trackLine()
     //}
 }
 
-void trackLineSoft()
+void trackLineZ()
 {
     //read the value of the three central-front sensors
     
@@ -515,23 +515,23 @@ void trackLineSoft()
     //if only the left one, hard left
     if(nl && !nr && !mid)
     {
-        setSpeed(-15,15);
+        setSpeed(speed / 1.5,-speed / 1.5);
     }
     else if(nl && mid && !nr)   //if centre/middle, soft left
     {
-        setSpeed(0,15);
+        setSpeed(speed, 0.0);
     }
     else if (nr && mid && !nl)//if centre/right, soft right
     {
-        setSpeed(15,0);
+        setSpeed(0.0,speed);
     }
    else if (nr && !mid && !nl)    //if only right, hard right
     {
-        setSpeed(15,-15);
+        setSpeed(-speed / 1.5,speed / 1.5);
     }
     else if (mid && !nr && !nl)
     {
-        setSpeed(10,10);
+        setSpeed(speed,speed);
     }
    // else if (!mid && !nr && !nl)
     //{
@@ -554,31 +554,31 @@ void trackLineU()
     }
     else if (fl && mid) // if far left + centre, we're at a left-turning intersection
     {
-        setSpeed(15, 15);
+        setSpeed(speed, speed);
     }
     else if (fr && mid) // if far right + centre, we're at a right-turning intersection
     {
-        setSpeed(15, 15);
+        setSpeed(speed, speed);
     }
     else if(nl && !nr && !mid) //if only the left one, hard left
     {
-        setSpeed(-10,15);
+         setSpeed(speed / 1.5,-speed / 1.5);
     }
     else if(nl && mid && !nr)   //if centre/middle, soft left
     {
-        setSpeed(0,15);
+        setSpeed(speed, 0);
     }
     else if (nr && mid && !nl)//if centre/right, soft right
     {
-        setSpeed(15,0);
+        setSpeed(0, speed);
     }
    else if (nr && !mid && !nl)    //if only right, hard right
     {
-        setSpeed(15,-10);
+         setSpeed(-speed / 1.5,speed / 1.5);
     }
     else if (mid && !nr && !nl)
     {
-        setSpeed(10,10);
+        setSpeed(speed,speed);
     }
    // else if (!mid && !nr && !nl)
     //{
@@ -729,7 +729,7 @@ int main()
                 {
                     initTurnRight();
                 }
-                else initTrackLineSoft();
+                else inittrackLineZ();
             break;
             case NO_TRACK:
             break;
@@ -760,7 +760,7 @@ int main()
                 trackLineU();
             break;
             case TRACKING_SOFT:
-                trackLineSoft();
+                trackLineZ();
         }
         //handle_usb();        
     }   
