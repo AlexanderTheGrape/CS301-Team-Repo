@@ -60,6 +60,17 @@ int16 right_duty_cycle = 0;
 int16 leftSpeedLimit = 0;
 int16 rightSpeedLimit = 0;
 
+
+int16 target_distance_cm = 153;
+//quadrature decoder distance stopping
+int16 accum_dist = 0;
+int16 target_distance_quad = 0;
+float quad_per_cm = 11.166;
+
+//RF distance stopping
+int16 initial_x_pos = 0;
+int16 initial_y_pos = 0;
+
 // Flags =======================
 uint8 brakeFlag;
 uint8 portOpen = 1;
@@ -70,7 +81,7 @@ int16 prevVoltage2;
 
 //concept of robot state
 enum state {DRIVE = 0, LTURN, RTURN, STOPPED, TRACKING, TRACKING_U, TRACKING_SOFT}; 
-enum mode {NO_TRACK, CURVE_TRACK, U_TRACK, SQUARE_TRACK};
+enum mode {NO_TRACK, CURVE_TRACK, U_TRACK, SQUARE_TRACK, QUAD_STOP, RF_STOP};
 //* ========================================
 char displaystring[BUF_SIZE] = "CS301 2016\n";
 char line[BUF_SIZE], entry[BUF_SIZE];

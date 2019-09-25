@@ -344,6 +344,22 @@ CY_ISR(BT_rxInt)
         track_mode = SQUARE_TRACK;
         initTrack();
         break;
+    case('q'):
+        track_mode = QUAD_STOP;
+        accum_dist = 0;
+        target_distance_quad = target_distance_cm * quad_per_cm;
+        char mes[16];
+        sprintf(mes, "target quad: %d\r\n", target_distance_quad);
+        UART_PutString(mes);
+        initForward();
+        break;
+    case ('r'):
+        track_mode = RF_STOP;
+        // Make initial position
+        initial_x_pos = system_state.robot_xpos;
+        initial_y_pos = system_state.robot_ypos;
+        initForward();
+        break;
     }
 }
 
@@ -373,7 +389,7 @@ CY_ISR (isr_quad1)
     quad_diff1 = quad_count1 - last_quad_count1;
     quad_diff2 = quad_count2 - last_quad_count2;
     
-    if(quad_count1 > 3000 && movement_state != LTURN && movement_state != RTURN)
+    if(abs(quad_count1) > 3000 && movement_state != LTURN && movement_state != RTURN && movement_state != QUAD_STOP)
     {
         QuadDec_M1_SetCounter(0);
         QuadDec_M2_SetCounter(0);
@@ -382,6 +398,29 @@ CY_ISR (isr_quad1)
     }
 
     flag_calc_wheelspeed = 1;
+    
+    if (track_mode == QUAD_STOP)
+    {
+        accum_dist += quad_diff1;
+        char mes[16];
+        sprintf(mes, "dist: %d\r\n", accum_dist);
+        UART_PutString(mes);
+        if(abs(accum_dist) >= target_distance_quad)
+        {
+            initBrake();
+            track_mode = NO_TRACK;
+        }
+    } else if (track_mode == RF_STOP)
+    { 
+        // Do pythag
+        double dist = hypot((system_state.robot_xpos - initial_x_pos) / px_per_x_cm , (system_state.robot_ypos - initial_y_pos) / px_per_y_cm);
+        if (dist >= target_distance_cm)
+        {
+            initBrake();
+            track_mode = NO_TRACK;
+        }
+    }
+    
 }
 
 CY_ISR(isr_turn_timer)
@@ -736,6 +775,10 @@ int main()
             case CURVE_TRACK:
             break;
             case U_TRACK:
+            break;
+            case QUAD_STOP:
+            break;
+            case RF_STOP:
             break;
         }
         
