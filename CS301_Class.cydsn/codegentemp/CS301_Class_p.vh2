@@ -1,5 +1,5 @@
 -- Project:   CS301_Class
--- Generated: 09/25/2019 18:36:54
+-- Generated: 09/26/2019 12:39:11
 -- PSoC Creator  3.3 CP3
 
 ENTITY CS301_Class IS
@@ -431,7 +431,7 @@ ARCHITECTURE __DEFAULT__ OF CS301_Class IS
     ATTRIBUTE lib_model OF M1_D1(0) : LABEL IS "iocell15";
     ATTRIBUTE Location OF M1_D1(0) : LABEL IS "P0[0]";
     ATTRIBUTE lib_model OF Rx_1(0) : LABEL IS "iocell16";
-    ATTRIBUTE Location OF Rx_1(0) : LABEL IS "P1[6]";
+    ATTRIBUTE Location OF Rx_1(0) : LABEL IS "P12[0]";
     ATTRIBUTE lib_model OF Tx_1(0) : LABEL IS "iocell17";
     ATTRIBUTE Location OF Tx_1(0) : LABEL IS "P12[7]";
     ATTRIBUTE lib_model OF DB0(0) : LABEL IS "iocell18";
@@ -3074,7 +3074,7 @@ BEGIN
             oe_sync => "0",
             output_clk_en => 0,
             output_clock_mode => "0",
-            output_conn => "1",
+            output_conn => "0",
             output_mode => "0",
             output_reset => 0,
             output_sync => "0",
@@ -3128,12 +3128,10 @@ BEGIN
             oe_sync_mode => 0,
             logicalport => "LED",
             logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
         PORT MAP(
             pa_out => LED(0)__PA,
             oe => open,
-            pin_input => Net_6307,
-            pad_out => LED(0)_PAD,
             pad_in => LED(0)_PAD,
             in_clock => open,
             in_clock_en => '1',

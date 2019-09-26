@@ -2,7 +2,7 @@
 --	Conversion of CS301_Class.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Wed Sep 25 18:36:53 2019
+--	Thu Sep 26 12:39:10 2019
 --
 
 USE cypress.cypress.all;
@@ -4815,7 +4815,7 @@ LED:cy_psoc3_pins_v1_10
 		invert_out_reset=>'0',
 		io_voltage=>"",
 		layout_mode=>"CONTIGUOUS",
-		output_conn=>"1",
+		output_conn=>"0",
 		output_sync=>"0",
 		output_clk_en=>'0',
 		output_mode=>"0",
@@ -4855,7 +4855,7 @@ LED:cy_psoc3_pins_v1_10
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__M1_IN1_net_0),
-		y=>Net_6307,
+		y=>(Net_2183),
 		fb=>(tmpFB_0__LED_net_0),
 		analog=>(open),
 		io=>(tmpIO_0__LED_net_0),

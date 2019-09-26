@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
   30:.\Generated_Source\PSoC5/cyfitter_cfg.c ****     #define CYPACKED_ATTR __attribute__ ((packed))
   31:.\Generated_Source\PSoC5/cyfitter_cfg.c ****     #define CYALIGNED __attribute__ ((aligned))
   32:.\Generated_Source\PSoC5/cyfitter_cfg.c ****     #define CY_CFG_UNUSED __attribute__ ((unused))
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 2
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 2
 
 
   33:.\Generated_Source\PSoC5/cyfitter_cfg.c ****     #ifndef CY_CFG_SECTION
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
   47              		.cfi_def_cfa_offset 8
   48 0016 BD46     		mov	sp, r7
   49              		.cfi_def_cfa_register 13
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 3
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 3
 
 
   50              		@ sp needed
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
   97              	CYCONFIGCPYCODE:
   98              	.LFB2:
   73:.\Generated_Source\PSoC5/cyfitter_cfg.c **** CY_CFG_UNUSED
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 4
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 4
 
 
   74:.\Generated_Source\PSoC5/cyfitter_cfg.c **** static void CYCONFIGCPYCODE(void *dest, const void *src, size_t n);
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
   91:.\Generated_Source\PSoC5/cyfitter_cfg.c **** * Function Name: CyClockStartupError
   92:.\Generated_Source\PSoC5/cyfitter_cfg.c **** ********************************************************************************
   93:.\Generated_Source\PSoC5/cyfitter_cfg.c **** * Summary:
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 5
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 5
 
 
   94:.\Generated_Source\PSoC5/cyfitter_cfg.c **** *  If an error is encountered during clock configuration (crystal startup error,
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  160              		.type	cfg_write_bytes32, %function
  161              	cfg_write_bytes32:
  162              	.LFB4:
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 6
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 6
 
 
  124:.\Generated_Source\PSoC5/cyfitter_cfg.c **** }
@@ -315,25 +315,25 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  135:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define cy_cfg_data_table ((const cy_cfg_addrvalue_t CYFAR *)0x480000A8u)
  136:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  137:.\Generated_Source\PSoC5/cyfitter_cfg.c **** /* UCFG_BCTL0 Address: CYREG_BCTL0_MDCLK_EN Size (bytes): 16 */
- 138:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_UCFG_BCTL0_VAL ((const uint8 CYFAR *)0x48000EDCu)
+ 138:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_UCFG_BCTL0_VAL ((const uint8 CYFAR *)0x48000E6Cu)
  139:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  140:.\Generated_Source\PSoC5/cyfitter_cfg.c **** /* IOPINS0_0 Address: CYREG_PRT0_DM0 Size (bytes): 8 */
- 141:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_IOPINS0_0_VAL ((const uint8 CYFAR *)0x48000EECu)
+ 141:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_IOPINS0_0_VAL ((const uint8 CYFAR *)0x48000E7Cu)
  142:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  143:.\Generated_Source\PSoC5/cyfitter_cfg.c **** /* IOPINS0_7 Address: CYREG_PRT12_DR Size (bytes): 10 */
- 144:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_IOPINS0_7_VAL ((const uint8 CYFAR *)0x48000EF4u)
+ 144:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_IOPINS0_7_VAL ((const uint8 CYFAR *)0x48000E84u)
  145:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  146:.\Generated_Source\PSoC5/cyfitter_cfg.c **** /* IOPINS0_8 Address: CYREG_PRT15_DR Size (bytes): 10 */
- 147:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_IOPINS0_8_VAL ((const uint8 CYFAR *)0x48000F00u)
+ 147:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_IOPINS0_8_VAL ((const uint8 CYFAR *)0x48000E90u)
  148:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  149:.\Generated_Source\PSoC5/cyfitter_cfg.c **** /* IOPINS0_1 Address: CYREG_PRT1_DM0 Size (bytes): 8 */
- 150:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_IOPINS0_1_VAL ((const uint8 CYFAR *)0x48000F0Cu)
+ 150:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_IOPINS0_1_VAL ((const uint8 CYFAR *)0x48000E9Cu)
  151:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  152:.\Generated_Source\PSoC5/cyfitter_cfg.c **** /* IOPINS0_2 Address: CYREG_PRT2_DM0 Size (bytes): 8 */
- 153:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_IOPINS0_2_VAL ((const uint8 CYFAR *)0x48000F14u)
+ 153:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_IOPINS0_2_VAL ((const uint8 CYFAR *)0x48000EA4u)
  154:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  155:.\Generated_Source\PSoC5/cyfitter_cfg.c **** /* IOPINS0_3 Address: CYREG_PRT3_DM0 Size (bytes): 8 */
- 156:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_IOPINS0_3_VAL ((const uint8 CYFAR *)0x48000F1Cu)
+ 156:.\Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_IOPINS0_3_VAL ((const uint8 CYFAR *)0x48000EACu)
  157:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  158:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  159:.\Generated_Source\PSoC5/cyfitter_cfg.c **** /*******************************************************************************
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  165              		@ args = 0, pretend = 0, frame = 24
  166              		@ frame_needed = 1, uses_anonymous_args = 0
  167              		@ link register save eliminated.
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 7
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 7
 
 
  168 0000 80B4     		push	{r7}
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  212 003e 1946     		mov	r1, r3
  213 0040 3B69     		ldr	r3, [r7, #16]
  214 0042 5B00     		lsls	r3, r3, #1
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 8
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 8
 
 
  215 0044 3A68     		ldr	r2, [r7]
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  261              	.LFB5:
  191:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  192:.\Generated_Source\PSoC5/cyfitter_cfg.c **** /*******************************************************************************
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 9
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 9
 
 
  193:.\Generated_Source\PSoC5/cyfitter_cfg.c **** * Function Name: ClockSetup
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  289 001c 1A70     		strb	r2, [r3]
  220:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_DCFG2_CFG0), 0x0004u);
  290              		.loc 1 220 0
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 10
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 10
 
 
  291 001e 404B     		ldr	r3, .L16+16
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  333 0060 1A70     		strb	r2, [r3]
  233:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  234:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	/* Configure IMO based on settings from Clock DWR */
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 11
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 11
 
 
  235:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_FASTCLK_IMO_CR), 0x52u);
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  243:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	for (timeout = 250u / 10u; (timeout > 0u) && (pllLock != 0x03u); timeout--)
  376              		.loc 1 243 0 discriminator 4
  377 00b0 7B68     		ldr	r3, [r7, #4]
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 12
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 12
 
 
  378 00b2 013B     		subs	r3, r3, #1
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  417 00ec 1A70     		strb	r2, [r3]
  260:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  261:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	/* Configure USB Clock based on settings from Clock DWR */
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 13
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 13
 
 
  262:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_CLKDIST_UCFG), 0x00u);
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  467 016c 08400040 		.word	1073758216
  468 0170 09400040 		.word	1073758217
  469 0174 01400040 		.word	1073758209
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 14
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 14
 
 
  470 0178 A2430040 		.word	1073759138
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  499 000e 1B78     		ldrb	r3, [r3]
  500 0010 BB71     		strb	r3, [r7, #6]
  292:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	uint8 cr5 = CY_GET_XTND_REG8((void CYFAR *)(CYREG_RESET_CR5));
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 15
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 15
 
 
  501              		.loc 1 292 0
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  545              		.loc 1 302 0
  546 005e 134B     		ldr	r3, .L19+36
  547 0060 2022     		movs	r2, #32
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 16
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 16
 
 
  548 0062 1A70     		strb	r2, [r3]
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  596              		.thumb
  597              		.thumb_func
  598              		.type	SetAnalogRoutingPumps, %function
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 17
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 17
 
 
  599              	SetAnalogRoutingPumps:
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  628              	.L22:
  334:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	}
  335:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	else
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 18
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 18
 
 
  336:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	{
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  356:.\Generated_Source\PSoC5/cyfitter_cfg.c **** *
  357:.\Generated_Source\PSoC5/cyfitter_cfg.c **** * Return:
  358:.\Generated_Source\PSoC5/cyfitter_cfg.c **** *   void
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 19
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 19
 
 
  359:.\Generated_Source\PSoC5/cyfitter_cfg.c **** *
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  385:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 			void CYFAR *dest;
  386:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 			const void CYFAR *src;
  387:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 			uint16 size;
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 20
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 20
 
 
  388:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 		} CYPACKED_ATTR cfg_memcpy_t;
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  719 0044 FB75     		strb	r3, [r7, #23]
  720              	.L27:
  409:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 		{
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 21
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 21
 
 
  721              		.loc 1 409 0 is_stmt 0 discriminator 1
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  764 0088 0133     		adds	r3, r3, #1
  765 008a FB75     		strb	r3, [r7, #23]
  766              	.L29:
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 22
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 22
 
 
  416:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 		{
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  435:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  436:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
  437:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	/* Perform second pass device configuration. These items must be configured in specific order afte
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 23
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 23
 
 
  438:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	CYCONFIGCPY((void CYFAR *)(CYREG_PRT0_DM0), (const void CYFAR *)(BS_IOPINS0_0_VAL), 8u);
@@ -1357,15 +1357,15 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  835 0110 2049     		ldr	r1, .L31+76
  836 0112 0822     		movs	r2, #8
  837 0114 FFF7FEFF 		bl	CYCONFIGCPY
- 444:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_B0_P2_U1_CFG27), 0xC4u);
+ 444:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_B0_P6_U0_CFG27), 0x44u);
  838              		.loc 1 444 0
  839 0118 1F4B     		ldr	r3, .L31+80
- 840 011a C422     		movs	r2, #196
+ 840 011a 4422     		movs	r2, #68
  841 011c 1A70     		strb	r2, [r3]
- 445:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_B0_P5_U1_CFG27), 0x44u);
+ 445:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_B1_P2_U1_CFG27), 0xC4u);
  842              		.loc 1 445 0
  843 011e 1F4B     		ldr	r3, .L31+84
- 844 0120 4422     		movs	r2, #68
+ 844 0120 C422     		movs	r2, #196
  845 0122 1A70     		strb	r2, [r3]
  446:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	/* Switch Boost to the precision bandgap reference from its internal reference */
  447:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_REG8((void CYXDATA *)CYREG_BOOST_CR2, (CY_GET_REG8((void CYXDATA *)CYREG_BOOST_CR2) | 0x08u
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  852 0130 DBB2     		uxtb	r3, r3
  853 0132 1370     		strb	r3, [r2]
  448:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 24
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 24
 
 
  449:.\Generated_Source\PSoC5/cyfitter_cfg.c **** 	/* Perform basic analog initialization to defaults */
@@ -1413,19 +1413,19 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  877 0160 A0430040 		.word	1073759136
  878 0164 C2430040 		.word	1073759170
  879 0168 02510040 		.word	1073762562
- 880 016c EC0E0048 		.word	1207963372
+ 880 016c 7C0E0048 		.word	1207963260
  881 0170 C0510040 		.word	1073762752
- 882 0174 F40E0048 		.word	1207963380
+ 882 0174 840E0048 		.word	1207963268
  883 0178 F0510040 		.word	1073762800
- 884 017c 000F0048 		.word	1207963392
+ 884 017c 900E0048 		.word	1207963280
  885 0180 12510040 		.word	1073762578
- 886 0184 0C0F0048 		.word	1207963404
+ 886 0184 9C0E0048 		.word	1207963292
  887 0188 22510040 		.word	1073762594
- 888 018c 140F0048 		.word	1207963412
+ 888 018c A40E0048 		.word	1207963300
  889 0190 32510040 		.word	1073762610
- 890 0194 1C0F0048 		.word	1207963420
- 891 0198 DB040140 		.word	1073808603
- 892 019c DB0A0140 		.word	1073810139
+ 890 0194 AC0E0048 		.word	1207963308
+ 891 0198 5B0C0140 		.word	1073810523
+ 892 019c DB140140 		.word	1073812699
  893 01a0 22430040 		.word	1073759010
  894 01a4 B0430040 		.word	1073759152
  895              		.cfi_endproc
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  902              	cfg_memset_list.4887:
  903 0000 004F0040 		.word	1073762048
  904 0004 2400     		.short	36
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 25
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 25
 
 
  905 0006 40510040 		.4byte	1073762624
@@ -1458,7 +1458,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  919              		.size	cfg_memcpy_list.4888, 10
  920              	cfg_memcpy_list.4888:
  921 002c 00500140 		.word	1073827840
- 922 0030 DC0E0048 		.word	1207963356
+ 922 0030 6C0E0048 		.word	1207963244
  923 0034 1000     		.short	16
  924 0036 0000     		.text
  925              	.Letext0:
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  959 0045 04       		.uleb128 0x4
  960 0046 01       		.byte	0x1
  961 0047 08       		.byte	0x8
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 26
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 26
 
 
  962 0048 7C020000 		.4byte	.LASF2
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  1016 00b1 04       		.uleb128 0x4
  1017 00b2 08       		.byte	0x8
  1018 00b3 04       		.byte	0x4
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 27
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 27
 
 
  1019 00b4 DC000000 		.4byte	.LASF16
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  1073 0126 74       		.sleb128 -12
  1074 0127 0B       		.uleb128 0xb
  1075 0128 6E00     		.ascii	"n\000"
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 28
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 28
 
 
  1076 012a 01       		.byte	0x1
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  1130 018e 0C       		.uleb128 0xc
  1131 018f 64020000 		.4byte	.LASF24
  1132 0193 01       		.byte	0x1
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 29
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 29
 
 
  1133 0194 4C       		.byte	0x4c
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  1187 01fb 02       		.uleb128 0x2
  1188 01fc 91       		.byte	0x91
  1189 01fd 64       		.sleb128 -28
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 30
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 30
 
 
  1190 01fe 0C       		.uleb128 0xc
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  1244 025d FB000000 		.4byte	0xfb
  1245 0261 0A       		.uleb128 0xa
  1246 0262 B2000000 		.4byte	.LASF33
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 31
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 31
 
 
  1247 0266 01       		.byte	0x1
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  1301 02d3 02       		.uleb128 0x2
  1302 02d4 91       		.byte	0x91
  1303 02d5 75       		.sleb128 -11
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 32
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 32
 
 
  1304 02d6 00       		.byte	0
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  1358 0349 04       		.byte	0x4
  1359 034a 00       		.byte	0
  1360 034b 06       		.uleb128 0x6
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 33
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 33
 
 
  1361 034c B9010000 		.4byte	.LASF42
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  1415 03c5 76000000 		.4byte	0x76
  1416 03c9 00       		.byte	0
  1417 03ca 00       		.byte	0
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 34
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 34
 
 
  1418 03cb 15       		.uleb128 0x15
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  1472 043d 01       		.byte	0x1
  1473 043e A301     		.2byte	0x1a3
  1474 0440 7D000000 		.4byte	0x7d
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 35
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 35
 
 
  1475 0444 02       		.uleb128 0x2
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  1529 001d 00       		.byte	0
  1530 001e 03       		.uleb128 0x3
  1531 001f 16       		.uleb128 0x16
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 36
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 36
 
 
  1532 0020 00       		.byte	0
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  1586 0056 3A       		.uleb128 0x3a
  1587 0057 0B       		.uleb128 0xb
  1588 0058 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 37
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 37
 
 
  1589 0059 0B       		.uleb128 0xb
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  1643 0090 02       		.uleb128 0x2
  1644 0091 18       		.uleb128 0x18
  1645 0092 00       		.byte	0
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 38
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 38
 
 
  1646 0093 00       		.byte	0
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  1700 00ca 34       		.uleb128 0x34
  1701 00cb 00       		.byte	0
  1702 00cc 03       		.uleb128 0x3
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 39
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 39
 
 
  1703 00cd 08       		.uleb128 0x8
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  1757 0103 01       		.uleb128 0x1
  1758 0104 12       		.uleb128 0x12
  1759 0105 06       		.uleb128 0x6
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 40
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 40
 
 
  1760 0106 40       		.uleb128 0x40
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  1814 013d 06       		.uleb128 0x6
  1815 013e 40       		.uleb128 0x40
  1816 013f 18       		.uleb128 0x18
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 41
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 41
 
 
  1817 0140 9742     		.uleb128 0x2117
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  1871 0178 13       		.uleb128 0x13
  1872 0179 00       		.byte	0
  1873 017a 00       		.byte	0
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 42
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 42
 
 
  1874 017b 1B       		.uleb128 0x1b
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  1928 01b1 06       		.uleb128 0x6
  1929 01b2 01       		.uleb128 0x1
  1930 01b3 13       		.uleb128 0x13
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 43
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 43
 
 
  1931 01b4 00       		.byte	0
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  1985              	.Ldebug_line0:
  1986 0000 33020000 		.section	.debug_str,"MS",%progbits,1
  1986      0200CD00 
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 44
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 44
 
 
  1986      00000201 
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  2009              	.LASF22:
  2010 00a8 43594D45 		.ascii	"CYMEMZERO\000"
  2010      4D5A4552 
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 45
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 45
 
 
  2010      4F00
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  2038      6420696E 
  2038      7400
  2039              	.LASF34:
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 46
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 46
 
 
  2040 014f 74696D65 		.ascii	"timeout\000"
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  2060      66756E63 
  2060      74696F6E 
  2060      2D736563 
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 47
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 47
 
 
  2060      74696F6E 
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 1
  2089              	.LASF23:
  2090 02e0 4359434F 		.ascii	"CYCONFIGCPY\000"
  2090      4E464947 
-ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccssQ1GM.s 			page 48
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccrst6y9.s 			page 48
 
 
  2090      43505900 

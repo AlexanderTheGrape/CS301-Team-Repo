@@ -39,6 +39,12 @@ int16 adc_result;
 
 uint8 direction = 0;
 
+//BT/RF control
+uint8 BIN_ENABLED = 0;
+//BLE
+uint8 BT_ENABLED = 1;
+
+
 //==========================================
 // Quad decoder
 uint8 flag_calc_wheelspeed = 0;
@@ -68,6 +74,7 @@ int16 target_distance_quad = 0;
 float quad_per_cm = 11.166;
 
 //RF distance stopping
+uint8 initial_pos_valid = 0;
 int16 initial_x_pos = 0;
 int16 initial_y_pos = 0;
 

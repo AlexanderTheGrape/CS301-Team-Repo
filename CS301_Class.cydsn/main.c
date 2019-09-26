@@ -38,6 +38,9 @@ void usbPutChar(char c);
 
 #define QUAD_RATIO 0.99556
 
+void changeToRF();
+void changeToBT();
+
 void handle_rx_binary()
 {
     if(flag_rx == 1)
@@ -227,7 +230,6 @@ void brakeMotor(){
     brakeRight();
 }
 
-
 void driveForwards()
 {
     setSpeed(speed, speed);
@@ -283,6 +285,8 @@ void inittrackLineZ(){
     movement_state = TRACKING_SOFT;
 }
 
+
+
 //Binary RF Data
 CY_ISR(rxInt){
     char rf_char = UART_GetChar();
@@ -291,6 +295,11 @@ CY_ISR(rxInt){
             if(byteCount == 34)
             {
                 system_state = buffer_state;
+                if(initial_pos_valid == 0)
+                {
+                    LED_Write(~LED_Read());
+                    initial_pos_valid = 1;
+                }
             }
             byteCount = 2; //2 for legacy purposes - fix this
             flag_rx = 0;
@@ -355,10 +364,10 @@ CY_ISR(BT_rxInt)
         break;
     case ('r'):
         track_mode = RF_STOP;
+        changeToRF();
         // Make initial position
-        initial_x_pos = system_state.robot_xpos;
-        initial_y_pos = system_state.robot_ypos;
-        initForward();
+        initial_pos_valid = 0;
+        initBrake();
         break;
     }
 }
@@ -468,6 +477,38 @@ CY_ISR(isr_adcTimer)
 {
     ADC_StartConvert();
 }
+
+
+void changeToRF()
+{
+        //disable BT
+        BT_ENABLED = 0;
+        isrRF_RX_Stop();
+        UART_Stop();
+        
+        //enable RF
+        BIN_ENABLED = 1;
+        UART_clk_SetDividerValue(130);
+        isrRF_RX_StartEx(rxInt);
+        UART_Start();
+        RF_BT_SELECT_Write(0);
+}
+
+void changeToBT()
+{
+        //disable RF
+        BIN_ENABLED = 0;
+        isrRF_RX_Stop();
+        UART_Stop();
+        
+        //enable BT
+        BT_ENABLED = 1;
+        UART_clk_SetDividerValue(781);
+        isrRF_RX_StartEx(BT_rxInt);
+        UART_Start();
+        RF_BT_SELECT_Write(1);
+}
+
 
 void Quad_Dec_response()
 {
@@ -730,17 +771,11 @@ int main()
     }
     
     if(BIN_ENABLED){
-        UART_clk_SetDividerValue(130);
-        isrRF_RX_StartEx(rxInt);
-        UART_Start();
-        RF_BT_SELECT_Write(0);
+        changeToRF();
     }
     
     if(BT_ENABLED){
-        UART_clk_SetDividerValue(781);
-        isrRF_RX_StartEx(BT_rxInt);
-        UART_Start();
-        RF_BT_SELECT_Write(1);
+        changeToBT();
     }
     
     //usbPutString("Started");
@@ -779,6 +814,14 @@ int main()
             case QUAD_STOP:
             break;
             case RF_STOP:
+                if(initial_pos_valid == 1)
+                {
+                    changeToBT();
+                    UART_PutString("Valid RF detected!");
+                    changeToRF();
+                    initial_pos_valid = 2;
+                    initForward();
+                }
             break;
         }
         
