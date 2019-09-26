@@ -398,7 +398,7 @@ CY_ISR (isr_quad1)
     quad_diff1 = quad_count1 - last_quad_count1;
     quad_diff2 = quad_count2 - last_quad_count2;
     
-    if(abs(quad_count1) > 3000 && movement_state != LTURN && movement_state != RTURN && movement_state != QUAD_STOP)
+    if(abs(quad_count1) > 3000 && movement_state != LTURN && movement_state != RTURN && track_mode != QUAD_STOP)
     {
         QuadDec_M1_SetCounter(0);
         QuadDec_M2_SetCounter(0);
@@ -816,9 +816,11 @@ int main()
             case RF_STOP:
                 if(initial_pos_valid == 1)
                 {
-                    changeToBT();
-                    UART_PutString("Valid RF detected!");
-                    changeToRF();
+                    //changeToBT();
+                   // UART_PutString("Valid RF detected!");
+                    //changeToRF();
+                    initial_x_pos = system_state.robot_xpos;
+                    initial_y_pos = system_state.robot_ypos;
                     initial_pos_valid = 2;
                     initForward();
                 }

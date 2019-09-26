@@ -42,8 +42,8 @@
 //* ========================================
 
 //RF
-#define px_per_x_cm 4.48455
-#define px_per_y_cm 5.77374
+#define px_per_x_cm 4.00
+#define px_per_y_cm 4.00
 
 //ADC
 #define ENABLE_ADC 0

@@ -67,7 +67,7 @@ int16 leftSpeedLimit = 0;
 int16 rightSpeedLimit = 0;
 
 
-int16 target_distance_cm = 153;
+int16 target_distance_cm = 100;
 //quadrature decoder distance stopping
 int16 accum_dist = 0;
 int16 target_distance_quad = 0;
@@ -124,7 +124,8 @@ uint8 byteCount = 0;
 char packet[2];
 //* ========================================
 
-double speed = 16; // the speed of the robot in cm/s
+//double speed = 16; // the speed of the robot in cm/s
+double speed = 16;
 
 //* ========================================
 /* [] END OF FILE */
