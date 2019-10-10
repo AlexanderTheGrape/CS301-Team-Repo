@@ -1,0 +1,3245 @@
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"pathfinder.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.djikstras,"ax",%progbits
+  19              		.align	2
+  20              		.global	djikstras
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	djikstras, %function
+  24              	djikstras:
+  25              	.LFB63:
+  26              		.file 1 ".\\pathfinder.c"
+   1:.\pathfinder.c **** #include "pathfinder.h"
+   2:.\pathfinder.c **** //define the variables
+   3:.\pathfinder.c **** #define VALUE_OF_FOOD 0 //penalty for going over food pellets.
+   4:.\pathfinder.c **** #define DEFAULT_NODE_COST 10 //the cost of moving to a normal node.
+   5:.\pathfinder.c **** #define CORNER_PENALTY 0 //penalty for changing direction.
+   6:.\pathfinder.c **** #define PATH 0 //idicates weather the path is the 1s or the 0s.
+   7:.\pathfinder.c **** 
+   8:.\pathfinder.c **** 
+   9:.\pathfinder.c **** 
+  10:.\pathfinder.c **** #define STRAIGHT 'S'
+  11:.\pathfinder.c **** #define LEFT 'L'
+  12:.\pathfinder.c **** #define RIGHT 'R'
+  13:.\pathfinder.c **** 
+  14:.\pathfinder.c **** #define INF_16 65535
+  15:.\pathfinder.c **** 
+  16:.\pathfinder.c **** #define VISITED 1
+  17:.\pathfinder.c **** #define UNVISITED 0
+  18:.\pathfinder.c **** 
+  19:.\pathfinder.c **** #define X 1
+  20:.\pathfinder.c **** #define Y 0
+  21:.\pathfinder.c **** #define DIR 2
+  22:.\pathfinder.c **** 
+  23:.\pathfinder.c **** //struct for nodes
+  24:.\pathfinder.c **** typedef struct node{
+  25:.\pathfinder.c ****    uint8 path;// 1
+  26:.\pathfinder.c ****    uint8 visited;// 2
+  27:.\pathfinder.c ****    uint16 cost;// 6
+  28:.\pathfinder.c ****    uint8 x;
+  29:.\pathfinder.c ****    uint8 y;
+  30:.\pathfinder.c ****    struct node* prevNode;
+  31:.\pathfinder.c ****    //uint8 previous_y;// 4
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 2
+
+
+  32:.\pathfinder.c ****    //uint8 previous_x; // 5
+  33:.\pathfinder.c ****    uint16 tentative_cost; // 3
+  34:.\pathfinder.c ****    uint8 direction;
+  35:.\pathfinder.c **** } node;
+  36:.\pathfinder.c **** 
+  37:.\pathfinder.c **** 
+  38:.\pathfinder.c **** /**pathfinding algorithm
+  39:.\pathfinder.c **** * returns the length of the path array 0 if no path is found
+  40:.\pathfinder.c **** * map - map to be searched through (needs size)
+  41:.\pathfinder.c **** * food_list - list of food (needs size)
+  42:.\pathfinder.c **** * path - will be filled with the path found by the algorithm
+  43:.\pathfinder.c **** * start - is the start node duh
+  44:.\pathfinder.c **** * destination - end node
+  45:.\pathfinder.c **** * direction - the initial direction of the robot
+  46:.\pathfinder.c **** */
+  47:.\pathfinder.c **** uint8 djikstras(uint8 map[Y_SIZE][X_SIZE], uint8 food_list[6][2], uint8 path[DEFAULT_ARRAY_SIZE][3]
+  27              		.loc 1 47 0
+  28              		.cfi_startproc
+  29              		@ args = 8, pretend = 0, frame = 5416
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31 0000 B0B5     		push	{r4, r5, r7, lr}
+  32              		.cfi_def_cfa_offset 16
+  33              		.cfi_offset 4, -16
+  34              		.cfi_offset 5, -12
+  35              		.cfi_offset 7, -8
+  36              		.cfi_offset 14, -4
+  37 0002 ADF5A95D 		sub	sp, sp, #5408
+  38              		.cfi_def_cfa_offset 5424
+  39 0006 82B0     		sub	sp, sp, #8
+  40              		.cfi_def_cfa_offset 5432
+  41 0008 00AF     		add	r7, sp, #0
+  42              		.cfi_def_cfa_register 7
+  43 000a 07F12804 		add	r4, r7, #40
+  44 000e 1C3C     		subs	r4, r4, #28
+  45 0010 2060     		str	r0, [r4]
+  46 0012 07F10800 		add	r0, r7, #8
+  47 0016 0160     		str	r1, [r0]
+  48 0018 07F10801 		add	r1, r7, #8
+  49 001c 0439     		subs	r1, r1, #4
+  50 001e 0A60     		str	r2, [r1]
+  51 0020 07F10802 		add	r2, r7, #8
+  52 0024 083A     		subs	r2, r2, #8
+  53 0026 1360     		str	r3, [r2]
+  48:.\pathfinder.c ****    node Nodes[Y_SIZE][X_SIZE];
+  49:.\pathfinder.c ****    //fill up the default information for each node
+  50:.\pathfinder.c ****     uint8 i;
+  51:.\pathfinder.c ****    for(i = 0; i < Y_SIZE; i++){
+  54              		.loc 1 51 0
+  55 0028 0023     		movs	r3, #0
+  56 002a 07F5A952 		add	r2, r7, #5408
+  57 002e 02F10702 		add	r2, r2, #7
+  58 0032 1370     		strb	r3, [r2]
+  59 0034 FDE0     		b	.L2
+  60              	.L5:
+  61              	.LBB2:
+  52:.\pathfinder.c ****       uint8 j;
+  53:.\pathfinder.c ****       for(j = 0; j < X_SIZE; j++){
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 3
+
+
+  62              		.loc 1 53 0
+  63 0036 0023     		movs	r3, #0
+  64 0038 07F5A952 		add	r2, r7, #5408
+  65 003c 02F10602 		add	r2, r2, #6
+  66 0040 1370     		strb	r3, [r2]
+  67 0042 E3E0     		b	.L3
+  68              	.L4:
+  54:.\pathfinder.c ****             Nodes[i][j].path = map[i][j];//map information
+  69              		.loc 1 54 0 discriminator 3
+  70 0044 07F5A953 		add	r3, r7, #5408
+  71 0048 03F10703 		add	r3, r3, #7
+  72 004c 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+  73 004e 07F5A953 		add	r3, r7, #5408
+  74 0052 03F10603 		add	r3, r3, #6
+  75 0056 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+  76 0058 07F5A953 		add	r3, r7, #5408
+  77 005c 03F10703 		add	r3, r3, #7
+  78 0060 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+  79 0062 1346     		mov	r3, r2
+  80 0064 DB00     		lsls	r3, r3, #3
+  81 0066 1344     		add	r3, r3, r2
+  82 0068 5B00     		lsls	r3, r3, #1
+  83 006a 1A44     		add	r2, r2, r3
+  84 006c 07F12803 		add	r3, r7, #40
+  85 0070 1C3B     		subs	r3, r3, #28
+  86 0072 1B68     		ldr	r3, [r3]
+  87 0074 1A44     		add	r2, r2, r3
+  88 0076 07F5A953 		add	r3, r7, #5408
+  89 007a 03F10603 		add	r3, r3, #6
+  90 007e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  91 0080 D45C     		ldrb	r4, [r2, r3]	@ zero_extendqisi2
+  92 0082 07F55272 		add	r2, r7, #840
+  93 0086 083A     		subs	r2, r2, #8
+  94 0088 0B46     		mov	r3, r1
+  95 008a DB00     		lsls	r3, r3, #3
+  96 008c 0B44     		add	r3, r3, r1
+  97 008e 5B00     		lsls	r3, r3, #1
+  98 0090 0B44     		add	r3, r3, r1
+  99 0092 0344     		add	r3, r3, r0
+ 100 0094 1B01     		lsls	r3, r3, #4
+ 101 0096 1344     		add	r3, r3, r2
+ 102 0098 2246     		mov	r2, r4
+ 103 009a 1A70     		strb	r2, [r3]
+  55:.\pathfinder.c ****             //printf("%d\n", map[i][j]);
+  56:.\pathfinder.c ****             Nodes[i][j].visited = UNVISITED; //set all unvisited
+ 104              		.loc 1 56 0 discriminator 3
+ 105 009c 07F5A953 		add	r3, r7, #5408
+ 106 00a0 03F10703 		add	r3, r3, #7
+ 107 00a4 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 108 00a6 07F5A953 		add	r3, r7, #5408
+ 109 00aa 03F10603 		add	r3, r3, #6
+ 110 00ae 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 111 00b0 07F55272 		add	r2, r7, #840
+ 112 00b4 083A     		subs	r2, r2, #8
+ 113 00b6 0B46     		mov	r3, r1
+ 114 00b8 DB00     		lsls	r3, r3, #3
+ 115 00ba 0B44     		add	r3, r3, r1
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 4
+
+
+ 116 00bc 5B00     		lsls	r3, r3, #1
+ 117 00be 0B44     		add	r3, r3, r1
+ 118 00c0 0344     		add	r3, r3, r0
+ 119 00c2 1B01     		lsls	r3, r3, #4
+ 120 00c4 1344     		add	r3, r3, r2
+ 121 00c6 0022     		movs	r2, #0
+ 122 00c8 5A70     		strb	r2, [r3, #1]
+  57:.\pathfinder.c ****             Nodes[i][j].cost = DEFAULT_NODE_COST; // seet the cost of going to this node to the def
+ 123              		.loc 1 57 0 discriminator 3
+ 124 00ca 07F5A953 		add	r3, r7, #5408
+ 125 00ce 03F10703 		add	r3, r3, #7
+ 126 00d2 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 127 00d4 07F5A953 		add	r3, r7, #5408
+ 128 00d8 03F10603 		add	r3, r3, #6
+ 129 00dc 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 130 00de 07F55272 		add	r2, r7, #840
+ 131 00e2 083A     		subs	r2, r2, #8
+ 132 00e4 0B46     		mov	r3, r1
+ 133 00e6 DB00     		lsls	r3, r3, #3
+ 134 00e8 0B44     		add	r3, r3, r1
+ 135 00ea 5B00     		lsls	r3, r3, #1
+ 136 00ec 0B44     		add	r3, r3, r1
+ 137 00ee 0344     		add	r3, r3, r0
+ 138 00f0 1B01     		lsls	r3, r3, #4
+ 139 00f2 1344     		add	r3, r3, r2
+ 140 00f4 0A22     		movs	r2, #10
+ 141 00f6 5A80     		strh	r2, [r3, #2]	@ movhi
+  58:.\pathfinder.c ****             Nodes[i][j].y = i;
+ 142              		.loc 1 58 0 discriminator 3
+ 143 00f8 07F5A953 		add	r3, r7, #5408
+ 144 00fc 03F10703 		add	r3, r3, #7
+ 145 0100 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 146 0102 07F5A953 		add	r3, r7, #5408
+ 147 0106 03F10603 		add	r3, r3, #6
+ 148 010a 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 149 010c 07F55272 		add	r2, r7, #840
+ 150 0110 083A     		subs	r2, r2, #8
+ 151 0112 0B46     		mov	r3, r1
+ 152 0114 DB00     		lsls	r3, r3, #3
+ 153 0116 0B44     		add	r3, r3, r1
+ 154 0118 5B00     		lsls	r3, r3, #1
+ 155 011a 0B44     		add	r3, r3, r1
+ 156 011c 0344     		add	r3, r3, r0
+ 157 011e 1B01     		lsls	r3, r3, #4
+ 158 0120 1344     		add	r3, r3, r2
+ 159 0122 07F5A952 		add	r2, r7, #5408
+ 160 0126 02F10702 		add	r2, r2, #7
+ 161 012a 1278     		ldrb	r2, [r2]
+ 162 012c 5A71     		strb	r2, [r3, #5]
+  59:.\pathfinder.c ****             Nodes[i][j].x = j;
+ 163              		.loc 1 59 0 discriminator 3
+ 164 012e 07F5A953 		add	r3, r7, #5408
+ 165 0132 03F10703 		add	r3, r3, #7
+ 166 0136 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 167 0138 07F5A953 		add	r3, r7, #5408
+ 168 013c 03F10603 		add	r3, r3, #6
+ 169 0140 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 5
+
+
+ 170 0142 07F55272 		add	r2, r7, #840
+ 171 0146 083A     		subs	r2, r2, #8
+ 172 0148 0B46     		mov	r3, r1
+ 173 014a DB00     		lsls	r3, r3, #3
+ 174 014c 0B44     		add	r3, r3, r1
+ 175 014e 5B00     		lsls	r3, r3, #1
+ 176 0150 0B44     		add	r3, r3, r1
+ 177 0152 0344     		add	r3, r3, r0
+ 178 0154 1B01     		lsls	r3, r3, #4
+ 179 0156 1344     		add	r3, r3, r2
+ 180 0158 07F5A952 		add	r2, r7, #5408
+ 181 015c 02F10602 		add	r2, r2, #6
+ 182 0160 1278     		ldrb	r2, [r2]
+ 183 0162 1A71     		strb	r2, [r3, #4]
+  60:.\pathfinder.c ****             Nodes[i][j].prevNode = 0;
+ 184              		.loc 1 60 0 discriminator 3
+ 185 0164 07F5A953 		add	r3, r7, #5408
+ 186 0168 03F10703 		add	r3, r3, #7
+ 187 016c 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 188 016e 07F5A953 		add	r3, r7, #5408
+ 189 0172 03F10603 		add	r3, r3, #6
+ 190 0176 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 191 0178 07F55272 		add	r2, r7, #840
+ 192 017c 083A     		subs	r2, r2, #8
+ 193 017e 0B46     		mov	r3, r1
+ 194 0180 DB00     		lsls	r3, r3, #3
+ 195 0182 0B44     		add	r3, r3, r1
+ 196 0184 5B00     		lsls	r3, r3, #1
+ 197 0186 0B44     		add	r3, r3, r1
+ 198 0188 0344     		add	r3, r3, r0
+ 199 018a 1B01     		lsls	r3, r3, #4
+ 200 018c 1344     		add	r3, r3, r2
+ 201 018e 0833     		adds	r3, r3, #8
+ 202 0190 0022     		movs	r2, #0
+ 203 0192 1A60     		str	r2, [r3]
+  61:.\pathfinder.c ****             Nodes[i][j].tentative_cost = INF_16;// set the current cost to infinity
+ 204              		.loc 1 61 0 discriminator 3
+ 205 0194 07F5A953 		add	r3, r7, #5408
+ 206 0198 03F10703 		add	r3, r3, #7
+ 207 019c 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 208 019e 07F5A953 		add	r3, r7, #5408
+ 209 01a2 03F10603 		add	r3, r3, #6
+ 210 01a6 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 211 01a8 07F55272 		add	r2, r7, #840
+ 212 01ac 083A     		subs	r2, r2, #8
+ 213 01ae 0B46     		mov	r3, r1
+ 214 01b0 DB00     		lsls	r3, r3, #3
+ 215 01b2 0B44     		add	r3, r3, r1
+ 216 01b4 5B00     		lsls	r3, r3, #1
+ 217 01b6 0B44     		add	r3, r3, r1
+ 218 01b8 0344     		add	r3, r3, r0
+ 219 01ba 1B01     		lsls	r3, r3, #4
+ 220 01bc 1344     		add	r3, r3, r2
+ 221 01be 0833     		adds	r3, r3, #8
+ 222 01c0 4FF6FF72 		movw	r2, #65535
+ 223 01c4 9A80     		strh	r2, [r3, #4]	@ movhi
+  62:.\pathfinder.c ****             Nodes[i][j].direction = 0;
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 6
+
+
+ 224              		.loc 1 62 0 discriminator 3
+ 225 01c6 07F5A953 		add	r3, r7, #5408
+ 226 01ca 03F10703 		add	r3, r3, #7
+ 227 01ce 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 228 01d0 07F5A953 		add	r3, r7, #5408
+ 229 01d4 03F10603 		add	r3, r3, #6
+ 230 01d8 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 231 01da 07F55272 		add	r2, r7, #840
+ 232 01de 083A     		subs	r2, r2, #8
+ 233 01e0 0B46     		mov	r3, r1
+ 234 01e2 DB00     		lsls	r3, r3, #3
+ 235 01e4 0B44     		add	r3, r3, r1
+ 236 01e6 5B00     		lsls	r3, r3, #1
+ 237 01e8 0B44     		add	r3, r3, r1
+ 238 01ea 0344     		add	r3, r3, r0
+ 239 01ec 1B01     		lsls	r3, r3, #4
+ 240 01ee 1344     		add	r3, r3, r2
+ 241 01f0 0833     		adds	r3, r3, #8
+ 242 01f2 0022     		movs	r2, #0
+ 243 01f4 9A71     		strb	r2, [r3, #6]
+  53:.\pathfinder.c ****             Nodes[i][j].path = map[i][j];//map information
+ 244              		.loc 1 53 0 discriminator 3
+ 245 01f6 07F5A953 		add	r3, r7, #5408
+ 246 01fa 03F10603 		add	r3, r3, #6
+ 247 01fe 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 248 0200 0133     		adds	r3, r3, #1
+ 249 0202 07F5A952 		add	r2, r7, #5408
+ 250 0206 02F10602 		add	r2, r2, #6
+ 251 020a 1370     		strb	r3, [r2]
+ 252              	.L3:
+  53:.\pathfinder.c ****             Nodes[i][j].path = map[i][j];//map information
+ 253              		.loc 1 53 0 is_stmt 0 discriminator 1
+ 254 020c 07F5A953 		add	r3, r7, #5408
+ 255 0210 03F10603 		add	r3, r3, #6
+ 256 0214 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 257 0216 122B     		cmp	r3, #18
+ 258 0218 7FF614AF 		bls	.L4
+ 259              	.LBE2:
+  51:.\pathfinder.c ****       uint8 j;
+ 260              		.loc 1 51 0 is_stmt 1 discriminator 2
+ 261 021c 07F5A953 		add	r3, r7, #5408
+ 262 0220 03F10703 		add	r3, r3, #7
+ 263 0224 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 264 0226 0133     		adds	r3, r3, #1
+ 265 0228 07F5A952 		add	r2, r7, #5408
+ 266 022c 02F10702 		add	r2, r2, #7
+ 267 0230 1370     		strb	r3, [r2]
+ 268              	.L2:
+  51:.\pathfinder.c ****       uint8 j;
+ 269              		.loc 1 51 0 is_stmt 0 discriminator 1
+ 270 0232 07F5A953 		add	r3, r7, #5408
+ 271 0236 03F10703 		add	r3, r3, #7
+ 272 023a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 273 023c 0E2B     		cmp	r3, #14
+ 274 023e 7FF6FAAE 		bls	.L5
+  63:.\pathfinder.c ****       }
+  64:.\pathfinder.c ****    }
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 7
+
+
+  65:.\pathfinder.c **** 
+  66:.\pathfinder.c **** 
+  67:.\pathfinder.c ****    uint8 current[2];
+  68:.\pathfinder.c ****    //memcpy(current, start, sizeof(current));//because nothing works in c the way you want it to
+  69:.\pathfinder.c ****    current[Y] = start[Y];
+ 275              		.loc 1 69 0 is_stmt 1
+ 276 0242 07F10803 		add	r3, r7, #8
+ 277 0246 083B     		subs	r3, r3, #8
+ 278 0248 1B68     		ldr	r3, [r3]
+ 279 024a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 280 024c 07F55273 		add	r3, r7, #840
+ 281 0250 0C3B     		subs	r3, r3, #12
+ 282 0252 1A70     		strb	r2, [r3]
+  70:.\pathfinder.c ****    current[X] = start[X];
+ 283              		.loc 1 70 0
+ 284 0254 07F10803 		add	r3, r7, #8
+ 285 0258 083B     		subs	r3, r3, #8
+ 286 025a 1B68     		ldr	r3, [r3]
+ 287 025c 5A78     		ldrb	r2, [r3, #1]	@ zero_extendqisi2
+ 288 025e 07F55273 		add	r3, r7, #840
+ 289 0262 0C3B     		subs	r3, r3, #12
+ 290 0264 5A70     		strb	r2, [r3, #1]
+  71:.\pathfinder.c ****    uint8 totalIterationCounter = 0;
+ 291              		.loc 1 71 0
+ 292 0266 0023     		movs	r3, #0
+ 293 0268 07F5A952 		add	r2, r7, #5408
+ 294 026c 02F10502 		add	r2, r2, #5
+ 295 0270 1370     		strb	r3, [r2]
+  72:.\pathfinder.c ****    uint8 nextNodes[DEFAULT_ARRAY_SIZE][2] = {0};
+ 296              		.loc 1 72 0
+ 297 0272 07F12803 		add	r3, r7, #40
+ 298 0276 0C3B     		subs	r3, r3, #12
+ 299 0278 1A46     		mov	r2, r3
+ 300 027a 4FF44873 		mov	r3, #800
+ 301 027e 1046     		mov	r0, r2
+ 302 0280 0021     		movs	r1, #0
+ 303 0282 1A46     		mov	r2, r3
+ 304 0284 FFF7FEFF 		bl	memset
+  73:.\pathfinder.c ****    //uint8 nextNodesDirection[DEFAULT_ARRAY_SIZE] = {0};
+  74:.\pathfinder.c ****    uint8 tentativeNode[2] = {0};//x and y coordinate of the next node
+ 305              		.loc 1 74 0
+ 306 0288 07F12803 		add	r3, r7, #40
+ 307 028c 103B     		subs	r3, r3, #16
+ 308 028e 0022     		movs	r2, #0
+ 309 0290 1A80     		strh	r2, [r3]	@ movhi
+  75:.\pathfinder.c ****    uint8 unreachable = 0;
+ 310              		.loc 1 75 0
+ 311 0292 0023     		movs	r3, #0
+ 312 0294 07F5A852 		add	r2, r7, #5376
+ 313 0298 02F11302 		add	r2, r2, #19
+ 314 029c 1370     		strb	r3, [r2]
+  76:.\pathfinder.c ****    uint8 corner_penalty = 0;
+ 315              		.loc 1 76 0
+ 316 029e 0023     		movs	r3, #0
+ 317 02a0 07F5A952 		add	r2, r7, #5408
+ 318 02a4 02F10402 		add	r2, r2, #4
+ 319 02a8 1370     		strb	r3, [r2]
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 8
+
+
+  77:.\pathfinder.c ****    uint8 counter = 0;
+ 320              		.loc 1 77 0
+ 321 02aa 0023     		movs	r3, #0
+ 322 02ac 07F5A952 		add	r2, r7, #5408
+ 323 02b0 02F10302 		add	r2, r2, #3
+ 324 02b4 1370     		strb	r3, [r2]
+  78:.\pathfinder.c ****    uint16 tmpCost = 0;
+ 325              		.loc 1 78 0
+ 326 02b6 0023     		movs	r3, #0
+ 327 02b8 07F5A852 		add	r2, r7, #5376
+ 328 02bc 02F11002 		add	r2, r2, #16
+ 329 02c0 1380     		strh	r3, [r2]	@ movhi
+  79:.\pathfinder.c ****    uint8 nextNode[2] = {0, 0};
+ 330              		.loc 1 79 0
+ 331 02c2 07F12803 		add	r3, r7, #40
+ 332 02c6 143B     		subs	r3, r3, #20
+ 333 02c8 0022     		movs	r2, #0
+ 334 02ca 1A70     		strb	r2, [r3]
+ 335 02cc 07F12803 		add	r3, r7, #40
+ 336 02d0 143B     		subs	r3, r3, #20
+ 337 02d2 0022     		movs	r2, #0
+ 338 02d4 5A70     		strb	r2, [r3, #1]
+  80:.\pathfinder.c ****    uint8 nextNodeIndex = 0;
+ 339              		.loc 1 80 0
+ 340 02d6 0023     		movs	r3, #0
+ 341 02d8 07F5A952 		add	r2, r7, #5408
+ 342 02dc 02F10202 		add	r2, r2, #2
+ 343 02e0 1370     		strb	r3, [r2]
+  81:.\pathfinder.c ****    uint8 tmpNextNode[2] = {0};
+ 344              		.loc 1 81 0
+ 345 02e2 07F12803 		add	r3, r7, #40
+ 346 02e6 183B     		subs	r3, r3, #24
+ 347 02e8 0022     		movs	r2, #0
+ 348 02ea 1A80     		strh	r2, [r3]	@ movhi
+  82:.\pathfinder.c ****    uint16 nextNodeCost = 0;
+ 349              		.loc 1 82 0
+ 350 02ec 0023     		movs	r3, #0
+ 351 02ee 07F5A952 		add	r2, r7, #5408
+ 352 02f2 1380     		strh	r3, [r2]	@ movhi
+  83:.\pathfinder.c ****    uint8 hasNext = 1;
+ 353              		.loc 1 83 0
+ 354 02f4 0123     		movs	r3, #1
+ 355 02f6 07F5A852 		add	r2, r7, #5376
+ 356 02fa 02F11F02 		add	r2, r2, #31
+ 357 02fe 1370     		strb	r3, [r2]
+  84:.\pathfinder.c **** 
+  85:.\pathfinder.c ****    Nodes[current[Y]][current[X]].tentative_cost = 0;
+ 358              		.loc 1 85 0
+ 359 0300 07F55273 		add	r3, r7, #840
+ 360 0304 0C3B     		subs	r3, r3, #12
+ 361 0306 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 362 0308 1946     		mov	r1, r3
+ 363 030a 07F55273 		add	r3, r7, #840
+ 364 030e 0C3B     		subs	r3, r3, #12
+ 365 0310 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 366 0312 1846     		mov	r0, r3
+ 367 0314 07F55272 		add	r2, r7, #840
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 9
+
+
+ 368 0318 083A     		subs	r2, r2, #8
+ 369 031a 0B46     		mov	r3, r1
+ 370 031c DB00     		lsls	r3, r3, #3
+ 371 031e 0B44     		add	r3, r3, r1
+ 372 0320 5B00     		lsls	r3, r3, #1
+ 373 0322 0B44     		add	r3, r3, r1
+ 374 0324 0344     		add	r3, r3, r0
+ 375 0326 1B01     		lsls	r3, r3, #4
+ 376 0328 1344     		add	r3, r3, r2
+ 377 032a 0833     		adds	r3, r3, #8
+ 378 032c 0022     		movs	r2, #0
+ 379 032e 9A80     		strh	r2, [r3, #4]	@ movhi
+  86:.\pathfinder.c ****    Nodes[current[Y]][current[X]].prevNode = &Nodes[current[Y]][current[X]];
+ 380              		.loc 1 86 0
+ 381 0330 07F55273 		add	r3, r7, #840
+ 382 0334 0C3B     		subs	r3, r3, #12
+ 383 0336 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 384 0338 1946     		mov	r1, r3
+ 385 033a 07F55273 		add	r3, r7, #840
+ 386 033e 0C3B     		subs	r3, r3, #12
+ 387 0340 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 388 0342 1C46     		mov	r4, r3
+ 389 0344 07F55273 		add	r3, r7, #840
+ 390 0348 0C3B     		subs	r3, r3, #12
+ 391 034a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 392 034c 1846     		mov	r0, r3
+ 393 034e 07F55273 		add	r3, r7, #840
+ 394 0352 0C3B     		subs	r3, r3, #12
+ 395 0354 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 396 0356 1D46     		mov	r5, r3
+ 397 0358 07F55272 		add	r2, r7, #840
+ 398 035c 083A     		subs	r2, r2, #8
+ 399 035e 0346     		mov	r3, r0
+ 400 0360 DB00     		lsls	r3, r3, #3
+ 401 0362 0344     		add	r3, r3, r0
+ 402 0364 5B00     		lsls	r3, r3, #1
+ 403 0366 0344     		add	r3, r3, r0
+ 404 0368 2B44     		add	r3, r3, r5
+ 405 036a 1B01     		lsls	r3, r3, #4
+ 406 036c D018     		adds	r0, r2, r3
+ 407 036e 07F55272 		add	r2, r7, #840
+ 408 0372 083A     		subs	r2, r2, #8
+ 409 0374 0B46     		mov	r3, r1
+ 410 0376 DB00     		lsls	r3, r3, #3
+ 411 0378 0B44     		add	r3, r3, r1
+ 412 037a 5B00     		lsls	r3, r3, #1
+ 413 037c 0B44     		add	r3, r3, r1
+ 414 037e 2344     		add	r3, r3, r4
+ 415 0380 1B01     		lsls	r3, r3, #4
+ 416 0382 1344     		add	r3, r3, r2
+ 417 0384 0833     		adds	r3, r3, #8
+ 418 0386 1860     		str	r0, [r3]
+  87:.\pathfinder.c **** 
+  88:.\pathfinder.c ****    //early exit, run until x and y are equal
+  89:.\pathfinder.c ****    while(!((current[Y] == destination[Y]) && (current[X] == destination[X])) && hasNext == 1){
+ 419              		.loc 1 89 0
+ 420 0388 C2E2     		b	.L6
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 10
+
+
+ 421              	.L20:
+ 422              	.LBB3:
+  90:.\pathfinder.c ****       counter = 1;
+ 423              		.loc 1 90 0
+ 424 038a 0123     		movs	r3, #1
+ 425 038c 07F5A952 		add	r2, r7, #5408
+ 426 0390 02F10302 		add	r2, r2, #3
+ 427 0394 1370     		strb	r3, [r2]
+  91:.\pathfinder.c ****       Nodes[current[Y]][current[1]].visited = VISITED; // set visitetd to true
+ 428              		.loc 1 91 0
+ 429 0396 07F55273 		add	r3, r7, #840
+ 430 039a 0C3B     		subs	r3, r3, #12
+ 431 039c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 432 039e 1946     		mov	r1, r3
+ 433 03a0 07F55273 		add	r3, r7, #840
+ 434 03a4 0C3B     		subs	r3, r3, #12
+ 435 03a6 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 436 03a8 1846     		mov	r0, r3
+ 437 03aa 07F55272 		add	r2, r7, #840
+ 438 03ae 083A     		subs	r2, r2, #8
+ 439 03b0 0B46     		mov	r3, r1
+ 440 03b2 DB00     		lsls	r3, r3, #3
+ 441 03b4 0B44     		add	r3, r3, r1
+ 442 03b6 5B00     		lsls	r3, r3, #1
+ 443 03b8 0B44     		add	r3, r3, r1
+ 444 03ba 0344     		add	r3, r3, r0
+ 445 03bc 1B01     		lsls	r3, r3, #4
+ 446 03be 1344     		add	r3, r3, r2
+ 447 03c0 0122     		movs	r2, #1
+ 448 03c2 5A70     		strb	r2, [r3, #1]
+  92:.\pathfinder.c ****       //printf("main loop %d | X: %d | Y: %d\n", Nodes[current[0]][current[1]].visited, Nodes[curre
+  93:.\pathfinder.c ****       while(counter <= 4){
+ 449              		.loc 1 93 0
+ 450 03c4 97E1     		b	.L7
+ 451              	.L14:
+  94:.\pathfinder.c ****          corner_penalty = 0;
+ 452              		.loc 1 94 0
+ 453 03c6 0023     		movs	r3, #0
+ 454 03c8 07F5A952 		add	r2, r7, #5408
+ 455 03cc 02F10402 		add	r2, r2, #4
+ 456 03d0 1370     		strb	r3, [r2]
+  95:.\pathfinder.c ****          if(counter == 1){
+ 457              		.loc 1 95 0
+ 458 03d2 07F5A953 		add	r3, r7, #5408
+ 459 03d6 03F10303 		add	r3, r3, #3
+ 460 03da 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 461 03dc 012B     		cmp	r3, #1
+ 462 03de 12D1     		bne	.L8
+  96:.\pathfinder.c ****             tentativeNode[Y] = current[Y] - 1;
+ 463              		.loc 1 96 0
+ 464 03e0 07F55273 		add	r3, r7, #840
+ 465 03e4 0C3B     		subs	r3, r3, #12
+ 466 03e6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 467 03e8 013B     		subs	r3, r3, #1
+ 468 03ea DAB2     		uxtb	r2, r3
+ 469 03ec 07F12803 		add	r3, r7, #40
+ 470 03f0 103B     		subs	r3, r3, #16
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 11
+
+
+ 471 03f2 1A70     		strb	r2, [r3]
+  97:.\pathfinder.c ****             tentativeNode[X] = current[X];
+ 472              		.loc 1 97 0
+ 473 03f4 07F55273 		add	r3, r7, #840
+ 474 03f8 0C3B     		subs	r3, r3, #12
+ 475 03fa 5A78     		ldrb	r2, [r3, #1]	@ zero_extendqisi2
+ 476 03fc 07F12803 		add	r3, r7, #40
+ 477 0400 103B     		subs	r3, r3, #16
+ 478 0402 5A70     		strb	r2, [r3, #1]
+ 479 0404 4CE0     		b	.L9
+ 480              	.L8:
+  98:.\pathfinder.c ****          }else if(counter == 2){
+ 481              		.loc 1 98 0
+ 482 0406 07F5A953 		add	r3, r7, #5408
+ 483 040a 03F10303 		add	r3, r3, #3
+ 484 040e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 485 0410 022B     		cmp	r3, #2
+ 486 0412 12D1     		bne	.L10
+  99:.\pathfinder.c ****             tentativeNode[Y] = current[Y];
+ 487              		.loc 1 99 0
+ 488 0414 07F55273 		add	r3, r7, #840
+ 489 0418 0C3B     		subs	r3, r3, #12
+ 490 041a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 491 041c 07F12803 		add	r3, r7, #40
+ 492 0420 103B     		subs	r3, r3, #16
+ 493 0422 1A70     		strb	r2, [r3]
+ 100:.\pathfinder.c ****             tentativeNode[X] = current[X] + 1;
+ 494              		.loc 1 100 0
+ 495 0424 07F55273 		add	r3, r7, #840
+ 496 0428 0C3B     		subs	r3, r3, #12
+ 497 042a 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 498 042c 0133     		adds	r3, r3, #1
+ 499 042e DAB2     		uxtb	r2, r3
+ 500 0430 07F12803 		add	r3, r7, #40
+ 501 0434 103B     		subs	r3, r3, #16
+ 502 0436 5A70     		strb	r2, [r3, #1]
+ 503 0438 32E0     		b	.L9
+ 504              	.L10:
+ 101:.\pathfinder.c ****          }else if(counter == 3){
+ 505              		.loc 1 101 0
+ 506 043a 07F5A953 		add	r3, r7, #5408
+ 507 043e 03F10303 		add	r3, r3, #3
+ 508 0442 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 509 0444 032B     		cmp	r3, #3
+ 510 0446 12D1     		bne	.L11
+ 102:.\pathfinder.c ****             tentativeNode[Y] = current[Y] + 1;
+ 511              		.loc 1 102 0
+ 512 0448 07F55273 		add	r3, r7, #840
+ 513 044c 0C3B     		subs	r3, r3, #12
+ 514 044e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 515 0450 0133     		adds	r3, r3, #1
+ 516 0452 DAB2     		uxtb	r2, r3
+ 517 0454 07F12803 		add	r3, r7, #40
+ 518 0458 103B     		subs	r3, r3, #16
+ 519 045a 1A70     		strb	r2, [r3]
+ 103:.\pathfinder.c ****             tentativeNode[X] = current[X];
+ 520              		.loc 1 103 0
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 12
+
+
+ 521 045c 07F55273 		add	r3, r7, #840
+ 522 0460 0C3B     		subs	r3, r3, #12
+ 523 0462 5A78     		ldrb	r2, [r3, #1]	@ zero_extendqisi2
+ 524 0464 07F12803 		add	r3, r7, #40
+ 525 0468 103B     		subs	r3, r3, #16
+ 526 046a 5A70     		strb	r2, [r3, #1]
+ 527 046c 18E0     		b	.L9
+ 528              	.L11:
+ 104:.\pathfinder.c ****          }else if(counter == 4){
+ 529              		.loc 1 104 0
+ 530 046e 07F5A953 		add	r3, r7, #5408
+ 531 0472 03F10303 		add	r3, r3, #3
+ 532 0476 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 533 0478 042B     		cmp	r3, #4
+ 534 047a 11D1     		bne	.L9
+ 105:.\pathfinder.c ****             tentativeNode[Y] = current[Y];
+ 535              		.loc 1 105 0
+ 536 047c 07F55273 		add	r3, r7, #840
+ 537 0480 0C3B     		subs	r3, r3, #12
+ 538 0482 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 539 0484 07F12803 		add	r3, r7, #40
+ 540 0488 103B     		subs	r3, r3, #16
+ 541 048a 1A70     		strb	r2, [r3]
+ 106:.\pathfinder.c ****             tentativeNode[X] = current[X] - 1;
+ 542              		.loc 1 106 0
+ 543 048c 07F55273 		add	r3, r7, #840
+ 544 0490 0C3B     		subs	r3, r3, #12
+ 545 0492 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 546 0494 013B     		subs	r3, r3, #1
+ 547 0496 DAB2     		uxtb	r2, r3
+ 548 0498 07F12803 		add	r3, r7, #40
+ 549 049c 103B     		subs	r3, r3, #16
+ 550 049e 5A70     		strb	r2, [r3, #1]
+ 551              	.L9:
+ 107:.\pathfinder.c ****          }
+ 108:.\pathfinder.c ****          if(counter != direction){
+ 552              		.loc 1 108 0
+ 553 04a0 07F5A953 		add	r3, r7, #5408
+ 554 04a4 03F10303 		add	r3, r3, #3
+ 555 04a8 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 556 04aa 07F5A953 		add	r3, r7, #5408
+ 557 04ae 03F11C03 		add	r3, r3, #28
+ 558 04b2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 559 04b4 9A42     		cmp	r2, r3
+ 560 04b6 05D0     		beq	.L12
+ 109:.\pathfinder.c ****             corner_penalty = CORNER_PENALTY;
+ 561              		.loc 1 109 0
+ 562 04b8 0023     		movs	r3, #0
+ 563 04ba 07F5A952 		add	r2, r7, #5408
+ 564 04be 02F10402 		add	r2, r2, #4
+ 565 04c2 1370     		strb	r3, [r2]
+ 566              	.L12:
+ 110:.\pathfinder.c ****          }
+ 111:.\pathfinder.c **** 
+ 112:.\pathfinder.c ****          if(tentativeNode[Y] >= 0 && tentativeNode[X] >= 0 && tentativeNode[Y] <= Y_SIZE && tentati
+ 567              		.loc 1 112 0
+ 568 04c4 07F12803 		add	r3, r7, #40
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 13
+
+
+ 569 04c8 103B     		subs	r3, r3, #16
+ 570 04ca 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 571 04cc 0F2B     		cmp	r3, #15
+ 572 04ce 00F20781 		bhi	.L13
+ 573              		.loc 1 112 0 is_stmt 0 discriminator 1
+ 574 04d2 07F12803 		add	r3, r7, #40
+ 575 04d6 103B     		subs	r3, r3, #16
+ 576 04d8 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 577 04da 132B     		cmp	r3, #19
+ 578 04dc 00F20081 		bhi	.L13
+ 113:.\pathfinder.c ****             if(Nodes[tentativeNode[Y]][tentativeNode[X]].path == PATH){//check the node is a path
+ 579              		.loc 1 113 0 is_stmt 1
+ 580 04e0 07F12803 		add	r3, r7, #40
+ 581 04e4 103B     		subs	r3, r3, #16
+ 582 04e6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 583 04e8 1946     		mov	r1, r3
+ 584 04ea 07F12803 		add	r3, r7, #40
+ 585 04ee 103B     		subs	r3, r3, #16
+ 586 04f0 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 587 04f2 1846     		mov	r0, r3
+ 588 04f4 07F55272 		add	r2, r7, #840
+ 589 04f8 083A     		subs	r2, r2, #8
+ 590 04fa 0B46     		mov	r3, r1
+ 591 04fc DB00     		lsls	r3, r3, #3
+ 592 04fe 0B44     		add	r3, r3, r1
+ 593 0500 5B00     		lsls	r3, r3, #1
+ 594 0502 0B44     		add	r3, r3, r1
+ 595 0504 0344     		add	r3, r3, r0
+ 596 0506 1B01     		lsls	r3, r3, #4
+ 597 0508 1344     		add	r3, r3, r2
+ 598 050a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 599 050c 002B     		cmp	r3, #0
+ 600 050e 40F0E780 		bne	.L13
+ 114:.\pathfinder.c ****                //printf("3\n", hasNext);
+ 115:.\pathfinder.c ****                tmpCost = Nodes[current[Y]][current[X]].tentative_cost + Nodes[tentativeNode[Y]][ten
+ 601              		.loc 1 115 0
+ 602 0512 07F55273 		add	r3, r7, #840
+ 603 0516 0C3B     		subs	r3, r3, #12
+ 604 0518 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 605 051a 1946     		mov	r1, r3
+ 606 051c 07F55273 		add	r3, r7, #840
+ 607 0520 0C3B     		subs	r3, r3, #12
+ 608 0522 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 609 0524 1846     		mov	r0, r3
+ 610 0526 07F55272 		add	r2, r7, #840
+ 611 052a 083A     		subs	r2, r2, #8
+ 612 052c 0B46     		mov	r3, r1
+ 613 052e DB00     		lsls	r3, r3, #3
+ 614 0530 0B44     		add	r3, r3, r1
+ 615 0532 5B00     		lsls	r3, r3, #1
+ 616 0534 0B44     		add	r3, r3, r1
+ 617 0536 0344     		add	r3, r3, r0
+ 618 0538 1B01     		lsls	r3, r3, #4
+ 619 053a 1344     		add	r3, r3, r2
+ 620 053c 0833     		adds	r3, r3, #8
+ 621 053e 9888     		ldrh	r0, [r3, #4]
+ 622 0540 07F12803 		add	r3, r7, #40
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 14
+
+
+ 623 0544 103B     		subs	r3, r3, #16
+ 624 0546 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 625 0548 1946     		mov	r1, r3
+ 626 054a 07F12803 		add	r3, r7, #40
+ 627 054e 103B     		subs	r3, r3, #16
+ 628 0550 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 629 0552 1C46     		mov	r4, r3
+ 630 0554 07F55272 		add	r2, r7, #840
+ 631 0558 083A     		subs	r2, r2, #8
+ 632 055a 0B46     		mov	r3, r1
+ 633 055c DB00     		lsls	r3, r3, #3
+ 634 055e 0B44     		add	r3, r3, r1
+ 635 0560 5B00     		lsls	r3, r3, #1
+ 636 0562 0B44     		add	r3, r3, r1
+ 637 0564 2344     		add	r3, r3, r4
+ 638 0566 1B01     		lsls	r3, r3, #4
+ 639 0568 1344     		add	r3, r3, r2
+ 640 056a 5B88     		ldrh	r3, [r3, #2]
+ 641 056c 0344     		add	r3, r3, r0
+ 642 056e 9AB2     		uxth	r2, r3
+ 643 0570 07F5A953 		add	r3, r7, #5408
+ 644 0574 03F10403 		add	r3, r3, #4
+ 645 0578 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 646 057a 9BB2     		uxth	r3, r3
+ 647 057c 1344     		add	r3, r3, r2
+ 648 057e 07F5A852 		add	r2, r7, #5376
+ 649 0582 02F11002 		add	r2, r2, #16
+ 650 0586 1380     		strh	r3, [r2]	@ movhi
+ 116:.\pathfinder.c ****                if(tmpCost < Nodes[tentativeNode[Y]][tentativeNode[X]].tentative_cost){
+ 651              		.loc 1 116 0
+ 652 0588 07F12803 		add	r3, r7, #40
+ 653 058c 103B     		subs	r3, r3, #16
+ 654 058e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 655 0590 1946     		mov	r1, r3
+ 656 0592 07F12803 		add	r3, r7, #40
+ 657 0596 103B     		subs	r3, r3, #16
+ 658 0598 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 659 059a 1846     		mov	r0, r3
+ 660 059c 07F55272 		add	r2, r7, #840
+ 661 05a0 083A     		subs	r2, r2, #8
+ 662 05a2 0B46     		mov	r3, r1
+ 663 05a4 DB00     		lsls	r3, r3, #3
+ 664 05a6 0B44     		add	r3, r3, r1
+ 665 05a8 5B00     		lsls	r3, r3, #1
+ 666 05aa 0B44     		add	r3, r3, r1
+ 667 05ac 0344     		add	r3, r3, r0
+ 668 05ae 1B01     		lsls	r3, r3, #4
+ 669 05b0 1344     		add	r3, r3, r2
+ 670 05b2 0833     		adds	r3, r3, #8
+ 671 05b4 9B88     		ldrh	r3, [r3, #4]
+ 672 05b6 07F5A852 		add	r2, r7, #5376
+ 673 05ba 02F11002 		add	r2, r2, #16
+ 674 05be 1288     		ldrh	r2, [r2]
+ 675 05c0 9A42     		cmp	r2, r3
+ 676 05c2 80F08D80 		bcs	.L13
+ 117:.\pathfinder.c ****                   //printf("5 %d\n", tmpCost);
+ 118:.\pathfinder.c ****                   Nodes[tentativeNode[Y]][tentativeNode[X]].tentative_cost = tmpCost;
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 15
+
+
+ 677              		.loc 1 118 0
+ 678 05c6 07F12803 		add	r3, r7, #40
+ 679 05ca 103B     		subs	r3, r3, #16
+ 680 05cc 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 681 05ce 1946     		mov	r1, r3
+ 682 05d0 07F12803 		add	r3, r7, #40
+ 683 05d4 103B     		subs	r3, r3, #16
+ 684 05d6 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 685 05d8 1846     		mov	r0, r3
+ 686 05da 07F55272 		add	r2, r7, #840
+ 687 05de 083A     		subs	r2, r2, #8
+ 688 05e0 0B46     		mov	r3, r1
+ 689 05e2 DB00     		lsls	r3, r3, #3
+ 690 05e4 0B44     		add	r3, r3, r1
+ 691 05e6 5B00     		lsls	r3, r3, #1
+ 692 05e8 0B44     		add	r3, r3, r1
+ 693 05ea 0344     		add	r3, r3, r0
+ 694 05ec 1B01     		lsls	r3, r3, #4
+ 695 05ee 1344     		add	r3, r3, r2
+ 696 05f0 0833     		adds	r3, r3, #8
+ 697 05f2 07F5A852 		add	r2, r7, #5376
+ 698 05f6 02F11002 		add	r2, r2, #16
+ 699 05fa 1288     		ldrh	r2, [r2]	@ movhi
+ 700 05fc 9A80     		strh	r2, [r3, #4]	@ movhi
+ 119:.\pathfinder.c ****                   //printf("6 currentX : %d, currentY : %d\n", current[0], current[1]);
+ 120:.\pathfinder.c **** 
+ 121:.\pathfinder.c ****                   //printf("Discovered node at X : %d, Y : %d\n", tentativeNode[0], tentativeNode[1
+ 122:.\pathfinder.c ****                   Nodes[tentativeNode[Y]][tentativeNode[X]].prevNode = &Nodes[current[Y]][current[1
+ 701              		.loc 1 122 0
+ 702 05fe 07F12803 		add	r3, r7, #40
+ 703 0602 103B     		subs	r3, r3, #16
+ 704 0604 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 705 0606 1946     		mov	r1, r3
+ 706 0608 07F12803 		add	r3, r7, #40
+ 707 060c 103B     		subs	r3, r3, #16
+ 708 060e 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 709 0610 1C46     		mov	r4, r3
+ 710 0612 07F55273 		add	r3, r7, #840
+ 711 0616 0C3B     		subs	r3, r3, #12
+ 712 0618 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 713 061a 1846     		mov	r0, r3
+ 714 061c 07F55273 		add	r3, r7, #840
+ 715 0620 0C3B     		subs	r3, r3, #12
+ 716 0622 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 717 0624 1D46     		mov	r5, r3
+ 718 0626 07F55272 		add	r2, r7, #840
+ 719 062a 083A     		subs	r2, r2, #8
+ 720 062c 0346     		mov	r3, r0
+ 721 062e DB00     		lsls	r3, r3, #3
+ 722 0630 0344     		add	r3, r3, r0
+ 723 0632 5B00     		lsls	r3, r3, #1
+ 724 0634 0344     		add	r3, r3, r0
+ 725 0636 2B44     		add	r3, r3, r5
+ 726 0638 1B01     		lsls	r3, r3, #4
+ 727 063a D018     		adds	r0, r2, r3
+ 728 063c 07F55272 		add	r2, r7, #840
+ 729 0640 083A     		subs	r2, r2, #8
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 16
+
+
+ 730 0642 0B46     		mov	r3, r1
+ 731 0644 DB00     		lsls	r3, r3, #3
+ 732 0646 0B44     		add	r3, r3, r1
+ 733 0648 5B00     		lsls	r3, r3, #1
+ 734 064a 0B44     		add	r3, r3, r1
+ 735 064c 2344     		add	r3, r3, r4
+ 736 064e 1B01     		lsls	r3, r3, #4
+ 737 0650 1344     		add	r3, r3, r2
+ 738 0652 0833     		adds	r3, r3, #8
+ 739 0654 1860     		str	r0, [r3]
+ 123:.\pathfinder.c ****                   nextNodes[totalIterationCounter][Y] = tentativeNode[Y];
+ 740              		.loc 1 123 0
+ 741 0656 07F5A953 		add	r3, r7, #5408
+ 742 065a 03F10503 		add	r3, r3, #5
+ 743 065e 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 744 0660 07F12803 		add	r3, r7, #40
+ 745 0664 103B     		subs	r3, r3, #16
+ 746 0666 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 747 0668 07F12803 		add	r3, r7, #40
+ 748 066c 0C3B     		subs	r3, r3, #12
+ 749 066e 03F81210 		strb	r1, [r3, r2, lsl #1]
+ 124:.\pathfinder.c ****                   nextNodes[totalIterationCounter][X] = tentativeNode[X];
+ 750              		.loc 1 124 0
+ 751 0672 07F5A953 		add	r3, r7, #5408
+ 752 0676 03F10503 		add	r3, r3, #5
+ 753 067a 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 754 067c 07F12803 		add	r3, r7, #40
+ 755 0680 103B     		subs	r3, r3, #16
+ 756 0682 5878     		ldrb	r0, [r3, #1]	@ zero_extendqisi2
+ 757 0684 07F12802 		add	r2, r7, #40
+ 758 0688 0C3A     		subs	r2, r2, #12
+ 759 068a 4B00     		lsls	r3, r1, #1
+ 760 068c 1344     		add	r3, r3, r2
+ 761 068e 0246     		mov	r2, r0
+ 762 0690 5A70     		strb	r2, [r3, #1]
+ 125:.\pathfinder.c ****                   Nodes[tentativeNode[Y]][tentativeNode[X]].direction = counter;
+ 763              		.loc 1 125 0
+ 764 0692 07F12803 		add	r3, r7, #40
+ 765 0696 103B     		subs	r3, r3, #16
+ 766 0698 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 767 069a 1946     		mov	r1, r3
+ 768 069c 07F12803 		add	r3, r7, #40
+ 769 06a0 103B     		subs	r3, r3, #16
+ 770 06a2 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 771 06a4 1846     		mov	r0, r3
+ 772 06a6 07F55272 		add	r2, r7, #840
+ 773 06aa 083A     		subs	r2, r2, #8
+ 774 06ac 0B46     		mov	r3, r1
+ 775 06ae DB00     		lsls	r3, r3, #3
+ 776 06b0 0B44     		add	r3, r3, r1
+ 777 06b2 5B00     		lsls	r3, r3, #1
+ 778 06b4 0B44     		add	r3, r3, r1
+ 779 06b6 0344     		add	r3, r3, r0
+ 780 06b8 1B01     		lsls	r3, r3, #4
+ 781 06ba 1344     		add	r3, r3, r2
+ 782 06bc 0833     		adds	r3, r3, #8
+ 783 06be 07F5A952 		add	r2, r7, #5408
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 17
+
+
+ 784 06c2 02F10302 		add	r2, r2, #3
+ 785 06c6 1278     		ldrb	r2, [r2]
+ 786 06c8 9A71     		strb	r2, [r3, #6]
+ 126:.\pathfinder.c ****                   //nextNodesDirection[totalIterationCounter] = counter;
+ 127:.\pathfinder.c ****                   totalIterationCounter = 1 + totalIterationCounter;
+ 787              		.loc 1 127 0
+ 788 06ca 07F5A953 		add	r3, r7, #5408
+ 789 06ce 03F10503 		add	r3, r3, #5
+ 790 06d2 1B78     		ldrb	r3, [r3]
+ 791 06d4 0133     		adds	r3, r3, #1
+ 792 06d6 07F5A952 		add	r2, r7, #5408
+ 793 06da 02F10502 		add	r2, r2, #5
+ 794 06de 1370     		strb	r3, [r2]
+ 795              	.L13:
+ 128:.\pathfinder.c ****                }
+ 129:.\pathfinder.c ****             }
+ 130:.\pathfinder.c ****          }
+ 131:.\pathfinder.c ****          counter++;
+ 796              		.loc 1 131 0
+ 797 06e0 07F5A953 		add	r3, r7, #5408
+ 798 06e4 03F10303 		add	r3, r3, #3
+ 799 06e8 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 800 06ea 0133     		adds	r3, r3, #1
+ 801 06ec 07F5A952 		add	r2, r7, #5408
+ 802 06f0 02F10302 		add	r2, r2, #3
+ 803 06f4 1370     		strb	r3, [r2]
+ 804              	.L7:
+  93:.\pathfinder.c ****          corner_penalty = 0;
+ 805              		.loc 1 93 0
+ 806 06f6 07F5A953 		add	r3, r7, #5408
+ 807 06fa 03F10303 		add	r3, r3, #3
+ 808 06fe 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 809 0700 042B     		cmp	r3, #4
+ 810 0702 7FF660AE 		bls	.L14
+ 132:.\pathfinder.c ****       }
+ 133:.\pathfinder.c ****       //set the default cost value so that the for loop will find the lowest unvisited node
+ 134:.\pathfinder.c ****       nextNodeCost = INF_16;
+ 811              		.loc 1 134 0
+ 812 0706 4FF6FF73 		movw	r3, #65535
+ 813 070a 07F5A952 		add	r2, r7, #5408
+ 814 070e 1380     		strh	r3, [r2]	@ movhi
+ 135:.\pathfinder.c ****       //find the lowest unvisited node
+ 136:.\pathfinder.c ****       hasNext = 0;
+ 815              		.loc 1 136 0
+ 816 0710 0023     		movs	r3, #0
+ 817 0712 07F5A852 		add	r2, r7, #5376
+ 818 0716 02F11F02 		add	r2, r2, #31
+ 819 071a 1370     		strb	r3, [r2]
+ 137:.\pathfinder.c **** 
+ 138:.\pathfinder.c ****       //find the next node to visit
+ 139:.\pathfinder.c ****       //printf("totalIterationCounter : %d\n", totalIterationCounter);
+ 140:.\pathfinder.c ****         int i;
+ 141:.\pathfinder.c ****       for(i = 0; i < totalIterationCounter; i++){
+ 820              		.loc 1 141 0
+ 821 071c 0023     		movs	r3, #0
+ 822 071e 07F5A852 		add	r2, r7, #5376
+ 823 0722 02F11802 		add	r2, r2, #24
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 18
+
+
+ 824 0726 1360     		str	r3, [r2]
+ 825 0728 ACE0     		b	.L15
+ 826              	.L17:
+ 142:.\pathfinder.c ****          //printf("i : %d\n", i);
+ 143:.\pathfinder.c ****          tmpNextNode[Y] = nextNodes[i][Y];
+ 827              		.loc 1 143 0
+ 828 072a 07F12803 		add	r3, r7, #40
+ 829 072e 0C3B     		subs	r3, r3, #12
+ 830 0730 07F5A852 		add	r2, r7, #5376
+ 831 0734 02F11802 		add	r2, r2, #24
+ 832 0738 1268     		ldr	r2, [r2]
+ 833 073a 13F81220 		ldrb	r2, [r3, r2, lsl #1]	@ zero_extendqisi2
+ 834 073e 07F12803 		add	r3, r7, #40
+ 835 0742 183B     		subs	r3, r3, #24
+ 836 0744 1A70     		strb	r2, [r3]
+ 144:.\pathfinder.c ****          tmpNextNode[X] = nextNodes[i][X];
+ 837              		.loc 1 144 0
+ 838 0746 07F12802 		add	r2, r7, #40
+ 839 074a 0C3A     		subs	r2, r2, #12
+ 840 074c 07F5A853 		add	r3, r7, #5376
+ 841 0750 03F11803 		add	r3, r3, #24
+ 842 0754 1B68     		ldr	r3, [r3]
+ 843 0756 5B00     		lsls	r3, r3, #1
+ 844 0758 1344     		add	r3, r3, r2
+ 845 075a 5A78     		ldrb	r2, [r3, #1]	@ zero_extendqisi2
+ 846 075c 07F12803 		add	r3, r7, #40
+ 847 0760 183B     		subs	r3, r3, #24
+ 848 0762 5A70     		strb	r2, [r3, #1]
+ 145:.\pathfinder.c ****          //printf("tentative_cost : %d\n", Nodes[nextNodes[i][0]][nextNodes[i][1]].tentative_cost);
+ 146:.\pathfinder.c ****          if(Nodes[nextNodes[i][Y]][nextNodes[i][X]].tentative_cost < nextNodeCost){
+ 849              		.loc 1 146 0
+ 850 0764 07F12803 		add	r3, r7, #40
+ 851 0768 0C3B     		subs	r3, r3, #12
+ 852 076a 07F5A852 		add	r2, r7, #5376
+ 853 076e 02F11802 		add	r2, r2, #24
+ 854 0772 1268     		ldr	r2, [r2]
+ 855 0774 13F81230 		ldrb	r3, [r3, r2, lsl #1]	@ zero_extendqisi2
+ 856 0778 1946     		mov	r1, r3
+ 857 077a 07F12802 		add	r2, r7, #40
+ 858 077e 0C3A     		subs	r2, r2, #12
+ 859 0780 07F5A853 		add	r3, r7, #5376
+ 860 0784 03F11803 		add	r3, r3, #24
+ 861 0788 1B68     		ldr	r3, [r3]
+ 862 078a 5B00     		lsls	r3, r3, #1
+ 863 078c 1344     		add	r3, r3, r2
+ 864 078e 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 865 0790 1846     		mov	r0, r3
+ 866 0792 07F55272 		add	r2, r7, #840
+ 867 0796 083A     		subs	r2, r2, #8
+ 868 0798 0B46     		mov	r3, r1
+ 869 079a DB00     		lsls	r3, r3, #3
+ 870 079c 0B44     		add	r3, r3, r1
+ 871 079e 5B00     		lsls	r3, r3, #1
+ 872 07a0 0B44     		add	r3, r3, r1
+ 873 07a2 0344     		add	r3, r3, r0
+ 874 07a4 1B01     		lsls	r3, r3, #4
+ 875 07a6 1344     		add	r3, r3, r2
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 19
+
+
+ 876 07a8 0833     		adds	r3, r3, #8
+ 877 07aa 9B88     		ldrh	r3, [r3, #4]
+ 878 07ac 07F5A952 		add	r2, r7, #5408
+ 879 07b0 1288     		ldrh	r2, [r2]
+ 880 07b2 9A42     		cmp	r2, r3
+ 881 07b4 5BD9     		bls	.L16
+ 147:.\pathfinder.c ****             //printf("1 : %d\n", Nodes[nextNodes[i][0]][nextNodes[i][1]].tentative_cost);
+ 148:.\pathfinder.c ****             if(Nodes[nextNodes[i][Y]][nextNodes[i][X]].visited == UNVISITED){
+ 882              		.loc 1 148 0
+ 883 07b6 07F12803 		add	r3, r7, #40
+ 884 07ba 0C3B     		subs	r3, r3, #12
+ 885 07bc 07F5A852 		add	r2, r7, #5376
+ 886 07c0 02F11802 		add	r2, r2, #24
+ 887 07c4 1268     		ldr	r2, [r2]
+ 888 07c6 13F81230 		ldrb	r3, [r3, r2, lsl #1]	@ zero_extendqisi2
+ 889 07ca 1946     		mov	r1, r3
+ 890 07cc 07F12802 		add	r2, r7, #40
+ 891 07d0 0C3A     		subs	r2, r2, #12
+ 892 07d2 07F5A853 		add	r3, r7, #5376
+ 893 07d6 03F11803 		add	r3, r3, #24
+ 894 07da 1B68     		ldr	r3, [r3]
+ 895 07dc 5B00     		lsls	r3, r3, #1
+ 896 07de 1344     		add	r3, r3, r2
+ 897 07e0 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 898 07e2 1846     		mov	r0, r3
+ 899 07e4 07F55272 		add	r2, r7, #840
+ 900 07e8 083A     		subs	r2, r2, #8
+ 901 07ea 0B46     		mov	r3, r1
+ 902 07ec DB00     		lsls	r3, r3, #3
+ 903 07ee 0B44     		add	r3, r3, r1
+ 904 07f0 5B00     		lsls	r3, r3, #1
+ 905 07f2 0B44     		add	r3, r3, r1
+ 906 07f4 0344     		add	r3, r3, r0
+ 907 07f6 1B01     		lsls	r3, r3, #4
+ 908 07f8 1344     		add	r3, r3, r2
+ 909 07fa 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 910 07fc 002B     		cmp	r3, #0
+ 911 07fe 36D1     		bne	.L16
+ 149:.\pathfinder.c **** 
+ 150:.\pathfinder.c ****                //printf("2 : %d\n", Nodes[nextNodes[i][0]][nextNodes[i][1]].visited);
+ 151:.\pathfinder.c ****                nextNodeCost = Nodes[nextNodes[i][Y]][nextNodes[i][X]].tentative_cost;
+ 912              		.loc 1 151 0
+ 913 0800 07F12803 		add	r3, r7, #40
+ 914 0804 0C3B     		subs	r3, r3, #12
+ 915 0806 07F5A852 		add	r2, r7, #5376
+ 916 080a 02F11802 		add	r2, r2, #24
+ 917 080e 1268     		ldr	r2, [r2]
+ 918 0810 13F81230 		ldrb	r3, [r3, r2, lsl #1]	@ zero_extendqisi2
+ 919 0814 1946     		mov	r1, r3
+ 920 0816 07F12802 		add	r2, r7, #40
+ 921 081a 0C3A     		subs	r2, r2, #12
+ 922 081c 07F5A853 		add	r3, r7, #5376
+ 923 0820 03F11803 		add	r3, r3, #24
+ 924 0824 1B68     		ldr	r3, [r3]
+ 925 0826 5B00     		lsls	r3, r3, #1
+ 926 0828 1344     		add	r3, r3, r2
+ 927 082a 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 20
+
+
+ 928 082c 1846     		mov	r0, r3
+ 929 082e 07F55272 		add	r2, r7, #840
+ 930 0832 083A     		subs	r2, r2, #8
+ 931 0834 0B46     		mov	r3, r1
+ 932 0836 DB00     		lsls	r3, r3, #3
+ 933 0838 0B44     		add	r3, r3, r1
+ 934 083a 5B00     		lsls	r3, r3, #1
+ 935 083c 0B44     		add	r3, r3, r1
+ 936 083e 0344     		add	r3, r3, r0
+ 937 0840 1B01     		lsls	r3, r3, #4
+ 938 0842 1344     		add	r3, r3, r2
+ 939 0844 0833     		adds	r3, r3, #8
+ 940 0846 9B88     		ldrh	r3, [r3, #4]	@ movhi
+ 941 0848 07F5A952 		add	r2, r7, #5408
+ 942 084c 1380     		strh	r3, [r2]	@ movhi
+ 152:.\pathfinder.c **** 
+ 153:.\pathfinder.c ****                nextNodeIndex = i;
+ 943              		.loc 1 153 0
+ 944 084e 07F5A853 		add	r3, r7, #5376
+ 945 0852 03F11803 		add	r3, r3, #24
+ 946 0856 1B68     		ldr	r3, [r3]
+ 947 0858 07F5A952 		add	r2, r7, #5408
+ 948 085c 02F10202 		add	r2, r2, #2
+ 949 0860 1370     		strb	r3, [r2]
+ 154:.\pathfinder.c ****                hasNext = 1;
+ 950              		.loc 1 154 0
+ 951 0862 0123     		movs	r3, #1
+ 952 0864 07F5A852 		add	r2, r7, #5376
+ 953 0868 02F11F02 		add	r2, r2, #31
+ 954 086c 1370     		strb	r3, [r2]
+ 955              	.L16:
+ 141:.\pathfinder.c ****          //printf("i : %d\n", i);
+ 956              		.loc 1 141 0 discriminator 2
+ 957 086e 07F5A853 		add	r3, r7, #5376
+ 958 0872 03F11803 		add	r3, r3, #24
+ 959 0876 1B68     		ldr	r3, [r3]
+ 960 0878 0133     		adds	r3, r3, #1
+ 961 087a 07F5A852 		add	r2, r7, #5376
+ 962 087e 02F11802 		add	r2, r2, #24
+ 963 0882 1360     		str	r3, [r2]
+ 964              	.L15:
+ 141:.\pathfinder.c ****          //printf("i : %d\n", i);
+ 965              		.loc 1 141 0 is_stmt 0 discriminator 1
+ 966 0884 07F5A953 		add	r3, r7, #5408
+ 967 0888 03F10503 		add	r3, r3, #5
+ 968 088c 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 969 088e 07F5A853 		add	r3, r7, #5376
+ 970 0892 03F11803 		add	r3, r3, #24
+ 971 0896 1B68     		ldr	r3, [r3]
+ 972 0898 9A42     		cmp	r2, r3
+ 973 089a 3FF746AF 		bgt	.L17
+ 155:.\pathfinder.c ****             }
+ 156:.\pathfinder.c ****          }
+ 157:.\pathfinder.c ****       }
+ 158:.\pathfinder.c ****       //printf("has next %d\n", hasNext);
+ 159:.\pathfinder.c ****       current[Y] = nextNodes[nextNodeIndex][Y];
+ 974              		.loc 1 159 0 is_stmt 1
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 21
+
+
+ 975 089e 07F5A953 		add	r3, r7, #5408
+ 976 08a2 03F10203 		add	r3, r3, #2
+ 977 08a6 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 978 08a8 07F12803 		add	r3, r7, #40
+ 979 08ac 0C3B     		subs	r3, r3, #12
+ 980 08ae 13F81220 		ldrb	r2, [r3, r2, lsl #1]	@ zero_extendqisi2
+ 981 08b2 07F55273 		add	r3, r7, #840
+ 982 08b6 0C3B     		subs	r3, r3, #12
+ 983 08b8 1A70     		strb	r2, [r3]
+ 160:.\pathfinder.c ****       current[X] = nextNodes[nextNodeIndex][X];
+ 984              		.loc 1 160 0
+ 985 08ba 07F5A953 		add	r3, r7, #5408
+ 986 08be 03F10203 		add	r3, r3, #2
+ 987 08c2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 988 08c4 07F12802 		add	r2, r7, #40
+ 989 08c8 0C3A     		subs	r2, r2, #12
+ 990 08ca 5B00     		lsls	r3, r3, #1
+ 991 08cc 1344     		add	r3, r3, r2
+ 992 08ce 5A78     		ldrb	r2, [r3, #1]	@ zero_extendqisi2
+ 993 08d0 07F55273 		add	r3, r7, #840
+ 994 08d4 0C3B     		subs	r3, r3, #12
+ 995 08d6 5A70     		strb	r2, [r3, #1]
+ 161:.\pathfinder.c ****       direction = Nodes[current[Y]][current[X]].direction;
+ 996              		.loc 1 161 0
+ 997 08d8 07F55273 		add	r3, r7, #840
+ 998 08dc 0C3B     		subs	r3, r3, #12
+ 999 08de 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1000 08e0 1946     		mov	r1, r3
+ 1001 08e2 07F55273 		add	r3, r7, #840
+ 1002 08e6 0C3B     		subs	r3, r3, #12
+ 1003 08e8 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 1004 08ea 1846     		mov	r0, r3
+ 1005 08ec 07F55272 		add	r2, r7, #840
+ 1006 08f0 083A     		subs	r2, r2, #8
+ 1007 08f2 0B46     		mov	r3, r1
+ 1008 08f4 DB00     		lsls	r3, r3, #3
+ 1009 08f6 0B44     		add	r3, r3, r1
+ 1010 08f8 5B00     		lsls	r3, r3, #1
+ 1011 08fa 0B44     		add	r3, r3, r1
+ 1012 08fc 0344     		add	r3, r3, r0
+ 1013 08fe 1B01     		lsls	r3, r3, #4
+ 1014 0900 1344     		add	r3, r3, r2
+ 1015 0902 0833     		adds	r3, r3, #8
+ 1016 0904 9B79     		ldrb	r3, [r3, #6]
+ 1017 0906 07F5A952 		add	r2, r7, #5408
+ 1018 090a 02F11C02 		add	r2, r2, #28
+ 1019 090e 1370     		strb	r3, [r2]
+ 1020              	.L6:
+ 1021              	.LBE3:
+  89:.\pathfinder.c ****       counter = 1;
+ 1022              		.loc 1 89 0
+ 1023 0910 07F55273 		add	r3, r7, #840
+ 1024 0914 0C3B     		subs	r3, r3, #12
+ 1025 0916 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 1026 0918 07F5A953 		add	r3, r7, #5408
+ 1027 091c 03F11803 		add	r3, r3, #24
+ 1028 0920 1B68     		ldr	r3, [r3]
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 22
+
+
+ 1029 0922 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1030 0924 9A42     		cmp	r2, r3
+ 1031 0926 0CD1     		bne	.L18
+  89:.\pathfinder.c ****       counter = 1;
+ 1032              		.loc 1 89 0 is_stmt 0 discriminator 2
+ 1033 0928 07F55273 		add	r3, r7, #840
+ 1034 092c 0C3B     		subs	r3, r3, #12
+ 1035 092e 5A78     		ldrb	r2, [r3, #1]	@ zero_extendqisi2
+ 1036 0930 07F5A953 		add	r3, r7, #5408
+ 1037 0934 03F11803 		add	r3, r3, #24
+ 1038 0938 1B68     		ldr	r3, [r3]
+ 1039 093a 0133     		adds	r3, r3, #1
+ 1040 093c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1041 093e 9A42     		cmp	r2, r3
+ 1042 0940 07D0     		beq	.L19
+ 1043              	.L18:
+  89:.\pathfinder.c ****       counter = 1;
+ 1044              		.loc 1 89 0 discriminator 3
+ 1045 0942 07F5A853 		add	r3, r7, #5376
+ 1046 0946 03F11F03 		add	r3, r3, #31
+ 1047 094a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1048 094c 012B     		cmp	r3, #1
+ 1049 094e 3FF41CAD 		beq	.L20
+ 1050              	.L19:
+ 162:.\pathfinder.c **** 
+ 163:.\pathfinder.c ****    }
+ 164:.\pathfinder.c **** 
+ 165:.\pathfinder.c ****    counter = 0;
+ 1051              		.loc 1 165 0 is_stmt 1
+ 1052 0952 0023     		movs	r3, #0
+ 1053 0954 07F5A952 		add	r2, r7, #5408
+ 1054 0958 02F10302 		add	r2, r2, #3
+ 1055 095c 1370     		strb	r3, [r2]
+ 166:.\pathfinder.c ****    //printf("Node %d | X: %d | Y: %d\n", counter, current[0], current[1]);
+ 167:.\pathfinder.c ****    if((current[Y] == destination[Y]) && (current[X] == destination[X])){
+ 1056              		.loc 1 167 0
+ 1057 095e 07F55273 		add	r3, r7, #840
+ 1058 0962 0C3B     		subs	r3, r3, #12
+ 1059 0964 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 1060 0966 07F5A953 		add	r3, r7, #5408
+ 1061 096a 03F11803 		add	r3, r3, #24
+ 1062 096e 1B68     		ldr	r3, [r3]
+ 1063 0970 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1064 0972 9A42     		cmp	r2, r3
+ 1065 0974 40F00381 		bne	.L21
+ 1066              		.loc 1 167 0 is_stmt 0 discriminator 1
+ 1067 0978 07F55273 		add	r3, r7, #840
+ 1068 097c 0C3B     		subs	r3, r3, #12
+ 1069 097e 5A78     		ldrb	r2, [r3, #1]	@ zero_extendqisi2
+ 1070 0980 07F5A953 		add	r3, r7, #5408
+ 1071 0984 03F11803 		add	r3, r3, #24
+ 1072 0988 1B68     		ldr	r3, [r3]
+ 1073 098a 0133     		adds	r3, r3, #1
+ 1074 098c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1075 098e 9A42     		cmp	r2, r3
+ 1076 0990 40F0F580 		bne	.L21
+ 1077              	.LBB4:
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 23
+
+
+ 168:.\pathfinder.c ****       //printf("1 : startX: %d, startY: %d\n", start[0], start[1]);
+ 169:.\pathfinder.c ****       node* currentNode = &(Nodes[current[Y]][current[X]]);
+ 1078              		.loc 1 169 0 is_stmt 1
+ 1079 0994 07F55273 		add	r3, r7, #840
+ 1080 0998 0C3B     		subs	r3, r3, #12
+ 1081 099a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1082 099c 1946     		mov	r1, r3
+ 1083 099e 07F55273 		add	r3, r7, #840
+ 1084 09a2 0C3B     		subs	r3, r3, #12
+ 1085 09a4 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 1086 09a6 1846     		mov	r0, r3
+ 1087 09a8 07F55272 		add	r2, r7, #840
+ 1088 09ac 083A     		subs	r2, r2, #8
+ 1089 09ae 0B46     		mov	r3, r1
+ 1090 09b0 DB00     		lsls	r3, r3, #3
+ 1091 09b2 0B44     		add	r3, r3, r1
+ 1092 09b4 5B00     		lsls	r3, r3, #1
+ 1093 09b6 0B44     		add	r3, r3, r1
+ 1094 09b8 0344     		add	r3, r3, r0
+ 1095 09ba 1B01     		lsls	r3, r3, #4
+ 1096 09bc 1344     		add	r3, r3, r2
+ 1097 09be 07F5A852 		add	r2, r7, #5376
+ 1098 09c2 02F11402 		add	r2, r2, #20
+ 1099 09c6 1360     		str	r3, [r2]
+ 170:.\pathfinder.c ****       while(!((currentNode->y == start[Y]) && (currentNode->x == start[X]))){
+ 1100              		.loc 1 170 0
+ 1101 09c8 66E0     		b	.L22
+ 1102              	.L23:
+ 171:.\pathfinder.c ****          //printf("1 : %d\n", Nodes[nextNodes[i][0]][nextNodes[i][1]].tentative_cost);
+ 172:.\pathfinder.c ****          path[counter][Y] = currentNode->y;
+ 1103              		.loc 1 172 0
+ 1104 09ca 07F5A953 		add	r3, r7, #5408
+ 1105 09ce 03F10303 		add	r3, r3, #3
+ 1106 09d2 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 1107 09d4 1346     		mov	r3, r2
+ 1108 09d6 5B00     		lsls	r3, r3, #1
+ 1109 09d8 1A44     		add	r2, r2, r3
+ 1110 09da 07F10803 		add	r3, r7, #8
+ 1111 09de 043B     		subs	r3, r3, #4
+ 1112 09e0 1B68     		ldr	r3, [r3]
+ 1113 09e2 1344     		add	r3, r3, r2
+ 1114 09e4 07F5A852 		add	r2, r7, #5376
+ 1115 09e8 02F11402 		add	r2, r2, #20
+ 1116 09ec 1268     		ldr	r2, [r2]
+ 1117 09ee 5279     		ldrb	r2, [r2, #5]	@ zero_extendqisi2
+ 1118 09f0 1A70     		strb	r2, [r3]
+ 173:.\pathfinder.c ****          path[counter][X] = currentNode->x;
+ 1119              		.loc 1 173 0
+ 1120 09f2 07F5A953 		add	r3, r7, #5408
+ 1121 09f6 03F10303 		add	r3, r3, #3
+ 1122 09fa 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 1123 09fc 1346     		mov	r3, r2
+ 1124 09fe 5B00     		lsls	r3, r3, #1
+ 1125 0a00 1A44     		add	r2, r2, r3
+ 1126 0a02 07F10803 		add	r3, r7, #8
+ 1127 0a06 043B     		subs	r3, r3, #4
+ 1128 0a08 1B68     		ldr	r3, [r3]
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 24
+
+
+ 1129 0a0a 1344     		add	r3, r3, r2
+ 1130 0a0c 07F5A852 		add	r2, r7, #5376
+ 1131 0a10 02F11402 		add	r2, r2, #20
+ 1132 0a14 1268     		ldr	r2, [r2]
+ 1133 0a16 1279     		ldrb	r2, [r2, #4]	@ zero_extendqisi2
+ 1134 0a18 5A70     		strb	r2, [r3, #1]
+ 174:.\pathfinder.c ****          path[counter][DIR] = Nodes[currentNode->y][currentNode->x].direction;
+ 1135              		.loc 1 174 0
+ 1136 0a1a 07F5A953 		add	r3, r7, #5408
+ 1137 0a1e 03F10303 		add	r3, r3, #3
+ 1138 0a22 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 1139 0a24 1346     		mov	r3, r2
+ 1140 0a26 5B00     		lsls	r3, r3, #1
+ 1141 0a28 1A44     		add	r2, r2, r3
+ 1142 0a2a 07F10803 		add	r3, r7, #8
+ 1143 0a2e 043B     		subs	r3, r3, #4
+ 1144 0a30 1B68     		ldr	r3, [r3]
+ 1145 0a32 9818     		adds	r0, r3, r2
+ 1146 0a34 07F5A853 		add	r3, r7, #5376
+ 1147 0a38 03F11403 		add	r3, r3, #20
+ 1148 0a3c 1B68     		ldr	r3, [r3]
+ 1149 0a3e 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 1150 0a40 1946     		mov	r1, r3
+ 1151 0a42 07F5A853 		add	r3, r7, #5376
+ 1152 0a46 03F11403 		add	r3, r3, #20
+ 1153 0a4a 1B68     		ldr	r3, [r3]
+ 1154 0a4c 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 1155 0a4e 1C46     		mov	r4, r3
+ 1156 0a50 07F55272 		add	r2, r7, #840
+ 1157 0a54 083A     		subs	r2, r2, #8
+ 1158 0a56 0B46     		mov	r3, r1
+ 1159 0a58 DB00     		lsls	r3, r3, #3
+ 1160 0a5a 0B44     		add	r3, r3, r1
+ 1161 0a5c 5B00     		lsls	r3, r3, #1
+ 1162 0a5e 0B44     		add	r3, r3, r1
+ 1163 0a60 2344     		add	r3, r3, r4
+ 1164 0a62 1B01     		lsls	r3, r3, #4
+ 1165 0a64 1344     		add	r3, r3, r2
+ 1166 0a66 0833     		adds	r3, r3, #8
+ 1167 0a68 9B79     		ldrb	r3, [r3, #6]	@ zero_extendqisi2
+ 1168 0a6a 8370     		strb	r3, [r0, #2]
+ 175:.\pathfinder.c ****          //printf("direction2 %d\n", path[0][DIR]);
+ 176:.\pathfinder.c ****          currentNode = currentNode->prevNode;
+ 1169              		.loc 1 176 0
+ 1170 0a6c 07F5A853 		add	r3, r7, #5376
+ 1171 0a70 03F11403 		add	r3, r3, #20
+ 1172 0a74 1B68     		ldr	r3, [r3]
+ 1173 0a76 9B68     		ldr	r3, [r3, #8]
+ 1174 0a78 07F5A852 		add	r2, r7, #5376
+ 1175 0a7c 02F11402 		add	r2, r2, #20
+ 1176 0a80 1360     		str	r3, [r2]
+ 177:.\pathfinder.c **** 
+ 178:.\pathfinder.c ****          counter++;
+ 1177              		.loc 1 178 0
+ 1178 0a82 07F5A953 		add	r3, r7, #5408
+ 1179 0a86 03F10303 		add	r3, r3, #3
+ 1180 0a8a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 25
+
+
+ 1181 0a8c 0133     		adds	r3, r3, #1
+ 1182 0a8e 07F5A952 		add	r2, r7, #5408
+ 1183 0a92 02F10302 		add	r2, r2, #3
+ 1184 0a96 1370     		strb	r3, [r2]
+ 1185              	.L22:
+ 170:.\pathfinder.c ****          //printf("1 : %d\n", Nodes[nextNodes[i][0]][nextNodes[i][1]].tentative_cost);
+ 1186              		.loc 1 170 0
+ 1187 0a98 07F5A853 		add	r3, r7, #5376
+ 1188 0a9c 03F11403 		add	r3, r3, #20
+ 1189 0aa0 1B68     		ldr	r3, [r3]
+ 1190 0aa2 5A79     		ldrb	r2, [r3, #5]	@ zero_extendqisi2
+ 1191 0aa4 07F10803 		add	r3, r7, #8
+ 1192 0aa8 083B     		subs	r3, r3, #8
+ 1193 0aaa 1B68     		ldr	r3, [r3]
+ 1194 0aac 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1195 0aae 9A42     		cmp	r2, r3
+ 1196 0ab0 8BD1     		bne	.L23
+ 170:.\pathfinder.c ****          //printf("1 : %d\n", Nodes[nextNodes[i][0]][nextNodes[i][1]].tentative_cost);
+ 1197              		.loc 1 170 0 is_stmt 0 discriminator 1
+ 1198 0ab2 07F5A853 		add	r3, r7, #5376
+ 1199 0ab6 03F11403 		add	r3, r3, #20
+ 1200 0aba 1B68     		ldr	r3, [r3]
+ 1201 0abc 1A79     		ldrb	r2, [r3, #4]	@ zero_extendqisi2
+ 1202 0abe 07F10803 		add	r3, r7, #8
+ 1203 0ac2 083B     		subs	r3, r3, #8
+ 1204 0ac4 1B68     		ldr	r3, [r3]
+ 1205 0ac6 0133     		adds	r3, r3, #1
+ 1206 0ac8 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1207 0aca 9A42     		cmp	r2, r3
+ 1208 0acc 7FF47DAF 		bne	.L23
+ 179:.\pathfinder.c ****       }
+ 180:.\pathfinder.c ****       path[counter][Y] = currentNode->y;
+ 1209              		.loc 1 180 0 is_stmt 1
+ 1210 0ad0 07F5A953 		add	r3, r7, #5408
+ 1211 0ad4 03F10303 		add	r3, r3, #3
+ 1212 0ad8 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 1213 0ada 1346     		mov	r3, r2
+ 1214 0adc 5B00     		lsls	r3, r3, #1
+ 1215 0ade 1A44     		add	r2, r2, r3
+ 1216 0ae0 07F10803 		add	r3, r7, #8
+ 1217 0ae4 043B     		subs	r3, r3, #4
+ 1218 0ae6 1B68     		ldr	r3, [r3]
+ 1219 0ae8 1344     		add	r3, r3, r2
+ 1220 0aea 07F5A852 		add	r2, r7, #5376
+ 1221 0aee 02F11402 		add	r2, r2, #20
+ 1222 0af2 1268     		ldr	r2, [r2]
+ 1223 0af4 5279     		ldrb	r2, [r2, #5]	@ zero_extendqisi2
+ 1224 0af6 1A70     		strb	r2, [r3]
+ 181:.\pathfinder.c ****       path[counter][X] = currentNode->x;
+ 1225              		.loc 1 181 0
+ 1226 0af8 07F5A953 		add	r3, r7, #5408
+ 1227 0afc 03F10303 		add	r3, r3, #3
+ 1228 0b00 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 1229 0b02 1346     		mov	r3, r2
+ 1230 0b04 5B00     		lsls	r3, r3, #1
+ 1231 0b06 1A44     		add	r2, r2, r3
+ 1232 0b08 07F10803 		add	r3, r7, #8
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 26
+
+
+ 1233 0b0c 043B     		subs	r3, r3, #4
+ 1234 0b0e 1B68     		ldr	r3, [r3]
+ 1235 0b10 1344     		add	r3, r3, r2
+ 1236 0b12 07F5A852 		add	r2, r7, #5376
+ 1237 0b16 02F11402 		add	r2, r2, #20
+ 1238 0b1a 1268     		ldr	r2, [r2]
+ 1239 0b1c 1279     		ldrb	r2, [r2, #4]	@ zero_extendqisi2
+ 1240 0b1e 5A70     		strb	r2, [r3, #1]
+ 182:.\pathfinder.c ****       path[counter][DIR] = Nodes[currentNode->y][currentNode->x].direction;
+ 1241              		.loc 1 182 0
+ 1242 0b20 07F5A953 		add	r3, r7, #5408
+ 1243 0b24 03F10303 		add	r3, r3, #3
+ 1244 0b28 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 1245 0b2a 1346     		mov	r3, r2
+ 1246 0b2c 5B00     		lsls	r3, r3, #1
+ 1247 0b2e 1A44     		add	r2, r2, r3
+ 1248 0b30 07F10803 		add	r3, r7, #8
+ 1249 0b34 043B     		subs	r3, r3, #4
+ 1250 0b36 1B68     		ldr	r3, [r3]
+ 1251 0b38 9818     		adds	r0, r3, r2
+ 1252 0b3a 07F5A853 		add	r3, r7, #5376
+ 1253 0b3e 03F11403 		add	r3, r3, #20
+ 1254 0b42 1B68     		ldr	r3, [r3]
+ 1255 0b44 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 1256 0b46 1946     		mov	r1, r3
+ 1257 0b48 07F5A853 		add	r3, r7, #5376
+ 1258 0b4c 03F11403 		add	r3, r3, #20
+ 1259 0b50 1B68     		ldr	r3, [r3]
+ 1260 0b52 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 1261 0b54 1C46     		mov	r4, r3
+ 1262 0b56 07F55272 		add	r2, r7, #840
+ 1263 0b5a 083A     		subs	r2, r2, #8
+ 1264 0b5c 0B46     		mov	r3, r1
+ 1265 0b5e DB00     		lsls	r3, r3, #3
+ 1266 0b60 0B44     		add	r3, r3, r1
+ 1267 0b62 5B00     		lsls	r3, r3, #1
+ 1268 0b64 0B44     		add	r3, r3, r1
+ 1269 0b66 2344     		add	r3, r3, r4
+ 1270 0b68 1B01     		lsls	r3, r3, #4
+ 1271 0b6a 1344     		add	r3, r3, r2
+ 1272 0b6c 0833     		adds	r3, r3, #8
+ 1273 0b6e 9B79     		ldrb	r3, [r3, #6]	@ zero_extendqisi2
+ 1274 0b70 8370     		strb	r3, [r0, #2]
+ 183:.\pathfinder.c ****       return counter;
+ 1275              		.loc 1 183 0
+ 1276 0b72 07F5A953 		add	r3, r7, #5408
+ 1277 0b76 03F10303 		add	r3, r3, #3
+ 1278 0b7a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1279 0b7c 00E0     		b	.L25
+ 1280              	.L21:
+ 1281              	.LBE4:
+ 184:.\pathfinder.c ****    }else{
+ 185:.\pathfinder.c ****       return 0;
+ 1282              		.loc 1 185 0
+ 1283 0b7e 0023     		movs	r3, #0
+ 1284              	.L25:
+ 186:.\pathfinder.c ****    }
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 27
+
+
+ 187:.\pathfinder.c **** 
+ 188:.\pathfinder.c ****    //return 0;
+ 189:.\pathfinder.c **** }
+ 1285              		.loc 1 189 0 discriminator 1
+ 1286 0b80 1846     		mov	r0, r3
+ 1287 0b82 07F5A957 		add	r7, r7, #5408
+ 1288 0b86 0837     		adds	r7, r7, #8
+ 1289              		.cfi_def_cfa_offset 16
+ 1290 0b88 BD46     		mov	sp, r7
+ 1291              		.cfi_def_cfa_register 13
+ 1292              		@ sp needed
+ 1293 0b8a B0BD     		pop	{r4, r5, r7, pc}
+ 1294              		.cfi_endproc
+ 1295              	.LFE63:
+ 1296              		.size	djikstras, .-djikstras
+ 1297              		.section	.text.generateDirections,"ax",%progbits
+ 1298              		.align	2
+ 1299              		.global	generateDirections
+ 1300              		.thumb
+ 1301              		.thumb_func
+ 1302              		.type	generateDirections, %function
+ 1303              	generateDirections:
+ 1304              	.LFB64:
+ 190:.\pathfinder.c **** 
+ 191:.\pathfinder.c **** int generateDirections(){
+ 1305              		.loc 1 191 0
+ 1306              		.cfi_startproc
+ 1307              		@ args = 0, pretend = 0, frame = 16
+ 1308              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1309 0000 80B5     		push	{r7, lr}
+ 1310              		.cfi_def_cfa_offset 8
+ 1311              		.cfi_offset 7, -8
+ 1312              		.cfi_offset 14, -4
+ 1313 0002 86B0     		sub	sp, sp, #24
+ 1314              		.cfi_def_cfa_offset 32
+ 1315 0004 02AF     		add	r7, sp, #8
+ 1316              		.cfi_def_cfa 7, 24
+ 192:.\pathfinder.c **** 
+ 193:.\pathfinder.c ****    int end = djikstras(map, food_list, path, start, destination, 1);
+ 1317              		.loc 1 193 0
+ 1318 0006 A24B     		ldr	r3, .L44
+ 1319 0008 0093     		str	r3, [sp]
+ 1320 000a 0123     		movs	r3, #1
+ 1321 000c 0193     		str	r3, [sp, #4]
+ 1322 000e A148     		ldr	r0, .L44+4
+ 1323 0010 A149     		ldr	r1, .L44+8
+ 1324 0012 A24A     		ldr	r2, .L44+12
+ 1325 0014 A24B     		ldr	r3, .L44+16
+ 1326 0016 FFF7FEFF 		bl	djikstras
+ 1327 001a 0346     		mov	r3, r0
+ 1328 001c 7B60     		str	r3, [r7, #4]
+ 194:.\pathfinder.c **** 
+ 195:.\pathfinder.c ****    uint8 counter = 0;
+ 1329              		.loc 1 195 0
+ 1330 001e 0023     		movs	r3, #0
+ 1331 0020 FB73     		strb	r3, [r7, #15]
+ 196:.\pathfinder.c **** 
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 28
+
+
+ 197:.\pathfinder.c ****    int i;
+ 198:.\pathfinder.c ****    for(i = end - 1 ; i >= 1; i--){
+ 1332              		.loc 1 198 0
+ 1333 0022 7B68     		ldr	r3, [r7, #4]
+ 1334 0024 013B     		subs	r3, r3, #1
+ 1335 0026 BB60     		str	r3, [r7, #8]
+ 1336 0028 25E1     		b	.L27
+ 1337              	.L42:
+ 199:.\pathfinder.c ****       if(path[i][DIR] == 1 || path[i][DIR] == 3){
+ 1338              		.loc 1 199 0
+ 1339 002a 9C49     		ldr	r1, .L44+12
+ 1340 002c BA68     		ldr	r2, [r7, #8]
+ 1341 002e 1346     		mov	r3, r2
+ 1342 0030 5B00     		lsls	r3, r3, #1
+ 1343 0032 1344     		add	r3, r3, r2
+ 1344 0034 0B44     		add	r3, r3, r1
+ 1345 0036 0233     		adds	r3, r3, #2
+ 1346 0038 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1347 003a 012B     		cmp	r3, #1
+ 1348 003c 0AD0     		beq	.L28
+ 1349              		.loc 1 199 0 is_stmt 0 discriminator 1
+ 1350 003e 9749     		ldr	r1, .L44+12
+ 1351 0040 BA68     		ldr	r2, [r7, #8]
+ 1352 0042 1346     		mov	r3, r2
+ 1353 0044 5B00     		lsls	r3, r3, #1
+ 1354 0046 1344     		add	r3, r3, r2
+ 1355 0048 0B44     		add	r3, r3, r1
+ 1356 004a 0233     		adds	r3, r3, #2
+ 1357 004c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1358 004e 032B     		cmp	r3, #3
+ 1359 0050 40F08880 		bne	.L29
+ 1360              	.L28:
+ 200:.\pathfinder.c ****          //There should be a check that it is within the map
+ 201:.\pathfinder.c ****          if(map[path[i][Y]][path[i][X] - 1] == PATH || map[path[i][Y]][path[i][X] + 1] == PATH){
+ 1361              		.loc 1 201 0 is_stmt 1
+ 1362 0054 9149     		ldr	r1, .L44+12
+ 1363 0056 BA68     		ldr	r2, [r7, #8]
+ 1364 0058 1346     		mov	r3, r2
+ 1365 005a 5B00     		lsls	r3, r3, #1
+ 1366 005c 1344     		add	r3, r3, r2
+ 1367 005e 0B44     		add	r3, r3, r1
+ 1368 0060 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1369 0062 1A46     		mov	r2, r3
+ 1370 0064 8D48     		ldr	r0, .L44+12
+ 1371 0066 B968     		ldr	r1, [r7, #8]
+ 1372 0068 0B46     		mov	r3, r1
+ 1373 006a 5B00     		lsls	r3, r3, #1
+ 1374 006c 0B44     		add	r3, r3, r1
+ 1375 006e 0344     		add	r3, r3, r0
+ 1376 0070 0133     		adds	r3, r3, #1
+ 1377 0072 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1378 0074 591E     		subs	r1, r3, #1
+ 1379 0076 8748     		ldr	r0, .L44+4
+ 1380 0078 1346     		mov	r3, r2
+ 1381 007a DB00     		lsls	r3, r3, #3
+ 1382 007c 1344     		add	r3, r3, r2
+ 1383 007e 5B00     		lsls	r3, r3, #1
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 29
+
+
+ 1384 0080 1344     		add	r3, r3, r2
+ 1385 0082 0B44     		add	r3, r3, r1
+ 1386 0084 0344     		add	r3, r3, r0
+ 1387 0086 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1388 0088 002B     		cmp	r3, #0
+ 1389 008a 1BD0     		beq	.L30
+ 1390              		.loc 1 201 0 is_stmt 0 discriminator 1
+ 1391 008c 8349     		ldr	r1, .L44+12
+ 1392 008e BA68     		ldr	r2, [r7, #8]
+ 1393 0090 1346     		mov	r3, r2
+ 1394 0092 5B00     		lsls	r3, r3, #1
+ 1395 0094 1344     		add	r3, r3, r2
+ 1396 0096 0B44     		add	r3, r3, r1
+ 1397 0098 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1398 009a 1A46     		mov	r2, r3
+ 1399 009c 7F48     		ldr	r0, .L44+12
+ 1400 009e B968     		ldr	r1, [r7, #8]
+ 1401 00a0 0B46     		mov	r3, r1
+ 1402 00a2 5B00     		lsls	r3, r3, #1
+ 1403 00a4 0B44     		add	r3, r3, r1
+ 1404 00a6 0344     		add	r3, r3, r0
+ 1405 00a8 0133     		adds	r3, r3, #1
+ 1406 00aa 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1407 00ac 591C     		adds	r1, r3, #1
+ 1408 00ae 7948     		ldr	r0, .L44+4
+ 1409 00b0 1346     		mov	r3, r2
+ 1410 00b2 DB00     		lsls	r3, r3, #3
+ 1411 00b4 1344     		add	r3, r3, r2
+ 1412 00b6 5B00     		lsls	r3, r3, #1
+ 1413 00b8 1344     		add	r3, r3, r2
+ 1414 00ba 0B44     		add	r3, r3, r1
+ 1415 00bc 0344     		add	r3, r3, r0
+ 1416 00be 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1417 00c0 002B     		cmp	r3, #0
+ 1418 00c2 4ED1     		bne	.L31
+ 1419              	.L30:
+ 202:.\pathfinder.c ****             if(path[i][DIR] != path[i - 1][DIR]){
+ 1420              		.loc 1 202 0 is_stmt 1
+ 1421 00c4 7549     		ldr	r1, .L44+12
+ 1422 00c6 BA68     		ldr	r2, [r7, #8]
+ 1423 00c8 1346     		mov	r3, r2
+ 1424 00ca 5B00     		lsls	r3, r3, #1
+ 1425 00cc 1344     		add	r3, r3, r2
+ 1426 00ce 0B44     		add	r3, r3, r1
+ 1427 00d0 0233     		adds	r3, r3, #2
+ 1428 00d2 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 1429 00d4 BB68     		ldr	r3, [r7, #8]
+ 1430 00d6 5A1E     		subs	r2, r3, #1
+ 1431 00d8 7048     		ldr	r0, .L44+12
+ 1432 00da 1346     		mov	r3, r2
+ 1433 00dc 5B00     		lsls	r3, r3, #1
+ 1434 00de 1344     		add	r3, r3, r2
+ 1435 00e0 0344     		add	r3, r3, r0
+ 1436 00e2 0233     		adds	r3, r3, #2
+ 1437 00e4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1438 00e6 9942     		cmp	r1, r3
+ 1439 00e8 33D0     		beq	.L32
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 30
+
+
+ 203:.\pathfinder.c ****                if(path[i][DIR] - path[i - 1][DIR] > 0){
+ 1440              		.loc 1 203 0
+ 1441 00ea 6C49     		ldr	r1, .L44+12
+ 1442 00ec BA68     		ldr	r2, [r7, #8]
+ 1443 00ee 1346     		mov	r3, r2
+ 1444 00f0 5B00     		lsls	r3, r3, #1
+ 1445 00f2 1344     		add	r3, r3, r2
+ 1446 00f4 0B44     		add	r3, r3, r1
+ 1447 00f6 0233     		adds	r3, r3, #2
+ 1448 00f8 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1449 00fa 1846     		mov	r0, r3
+ 1450 00fc BB68     		ldr	r3, [r7, #8]
+ 1451 00fe 5A1E     		subs	r2, r3, #1
+ 1452 0100 6649     		ldr	r1, .L44+12
+ 1453 0102 1346     		mov	r3, r2
+ 1454 0104 5B00     		lsls	r3, r3, #1
+ 1455 0106 1344     		add	r3, r3, r2
+ 1456 0108 0B44     		add	r3, r3, r1
+ 1457 010a 0233     		adds	r3, r3, #2
+ 1458 010c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1459 010e C31A     		subs	r3, r0, r3
+ 1460 0110 002B     		cmp	r3, #0
+ 1461 0112 04DD     		ble	.L33
+ 204:.\pathfinder.c ****                   instructions[counter] = LEFT;
+ 1462              		.loc 1 204 0
+ 1463 0114 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 1464 0116 634A     		ldr	r2, .L44+20
+ 1465 0118 4C21     		movs	r1, #76
+ 1466 011a D154     		strb	r1, [r2, r3]
+ 1467 011c 1DE0     		b	.L35
+ 1468              	.L33:
+ 205:.\pathfinder.c ****                }else if(path[i][DIR] - path[i - 1][DIR] < 0){
+ 1469              		.loc 1 205 0
+ 1470 011e 5F49     		ldr	r1, .L44+12
+ 1471 0120 BA68     		ldr	r2, [r7, #8]
+ 1472 0122 1346     		mov	r3, r2
+ 1473 0124 5B00     		lsls	r3, r3, #1
+ 1474 0126 1344     		add	r3, r3, r2
+ 1475 0128 0B44     		add	r3, r3, r1
+ 1476 012a 0233     		adds	r3, r3, #2
+ 1477 012c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1478 012e 1846     		mov	r0, r3
+ 1479 0130 BB68     		ldr	r3, [r7, #8]
+ 1480 0132 5A1E     		subs	r2, r3, #1
+ 1481 0134 5949     		ldr	r1, .L44+12
+ 1482 0136 1346     		mov	r3, r2
+ 1483 0138 5B00     		lsls	r3, r3, #1
+ 1484 013a 1344     		add	r3, r3, r2
+ 1485 013c 0B44     		add	r3, r3, r1
+ 1486 013e 0233     		adds	r3, r3, #2
+ 1487 0140 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1488 0142 C31A     		subs	r3, r0, r3
+ 1489 0144 002B     		cmp	r3, #0
+ 1490 0146 08DA     		bge	.L35
+ 206:.\pathfinder.c ****                   instructions[counter] = RIGHT;
+ 1491              		.loc 1 206 0
+ 1492 0148 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 31
+
+
+ 1493 014a 564A     		ldr	r2, .L44+20
+ 1494 014c 5221     		movs	r1, #82
+ 1495 014e D154     		strb	r1, [r2, r3]
+ 1496 0150 03E0     		b	.L35
+ 1497              	.L32:
+ 207:.\pathfinder.c ****                }
+ 208:.\pathfinder.c ****             }else{
+ 209:.\pathfinder.c ****                instructions[counter] = STRAIGHT;
+ 1498              		.loc 1 209 0
+ 1499 0152 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 1500 0154 534A     		ldr	r2, .L44+20
+ 1501 0156 5321     		movs	r1, #83
+ 1502 0158 D154     		strb	r1, [r2, r3]
+ 1503              	.L35:
+ 210:.\pathfinder.c ****             }
+ 211:.\pathfinder.c ****             counter++;
+ 1504              		.loc 1 211 0
+ 1505 015a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 1506 015c 0133     		adds	r3, r3, #1
+ 1507 015e FB73     		strb	r3, [r7, #15]
+ 201:.\pathfinder.c ****             if(path[i][DIR] != path[i - 1][DIR]){
+ 1508              		.loc 1 201 0
+ 1509 0160 86E0     		b	.L36
+ 1510              	.L31:
+ 1511 0162 85E0     		b	.L36
+ 1512              	.L29:
+ 212:.\pathfinder.c ****          }
+ 213:.\pathfinder.c ****       }else{
+ 214:.\pathfinder.c ****          if(map[path[i][Y] - 1][path[i][X]] == PATH || map[path[i][Y] + 1][path[i][X]] == PATH){
+ 1513              		.loc 1 214 0
+ 1514 0164 4D49     		ldr	r1, .L44+12
+ 1515 0166 BA68     		ldr	r2, [r7, #8]
+ 1516 0168 1346     		mov	r3, r2
+ 1517 016a 5B00     		lsls	r3, r3, #1
+ 1518 016c 1344     		add	r3, r3, r2
+ 1519 016e 0B44     		add	r3, r3, r1
+ 1520 0170 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1521 0172 5A1E     		subs	r2, r3, #1
+ 1522 0174 4948     		ldr	r0, .L44+12
+ 1523 0176 B968     		ldr	r1, [r7, #8]
+ 1524 0178 0B46     		mov	r3, r1
+ 1525 017a 5B00     		lsls	r3, r3, #1
+ 1526 017c 0B44     		add	r3, r3, r1
+ 1527 017e 0344     		add	r3, r3, r0
+ 1528 0180 0133     		adds	r3, r3, #1
+ 1529 0182 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1530 0184 1846     		mov	r0, r3
+ 1531 0186 4349     		ldr	r1, .L44+4
+ 1532 0188 1346     		mov	r3, r2
+ 1533 018a DB00     		lsls	r3, r3, #3
+ 1534 018c 1344     		add	r3, r3, r2
+ 1535 018e 5B00     		lsls	r3, r3, #1
+ 1536 0190 1344     		add	r3, r3, r2
+ 1537 0192 0344     		add	r3, r3, r0
+ 1538 0194 0B44     		add	r3, r3, r1
+ 1539 0196 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1540 0198 002B     		cmp	r3, #0
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 32
+
+
+ 1541 019a 1BD0     		beq	.L37
+ 1542              		.loc 1 214 0 is_stmt 0 discriminator 1
+ 1543 019c 3F49     		ldr	r1, .L44+12
+ 1544 019e BA68     		ldr	r2, [r7, #8]
+ 1545 01a0 1346     		mov	r3, r2
+ 1546 01a2 5B00     		lsls	r3, r3, #1
+ 1547 01a4 1344     		add	r3, r3, r2
+ 1548 01a6 0B44     		add	r3, r3, r1
+ 1549 01a8 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1550 01aa 5A1C     		adds	r2, r3, #1
+ 1551 01ac 3B48     		ldr	r0, .L44+12
+ 1552 01ae B968     		ldr	r1, [r7, #8]
+ 1553 01b0 0B46     		mov	r3, r1
+ 1554 01b2 5B00     		lsls	r3, r3, #1
+ 1555 01b4 0B44     		add	r3, r3, r1
+ 1556 01b6 0344     		add	r3, r3, r0
+ 1557 01b8 0133     		adds	r3, r3, #1
+ 1558 01ba 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1559 01bc 1846     		mov	r0, r3
+ 1560 01be 3549     		ldr	r1, .L44+4
+ 1561 01c0 1346     		mov	r3, r2
+ 1562 01c2 DB00     		lsls	r3, r3, #3
+ 1563 01c4 1344     		add	r3, r3, r2
+ 1564 01c6 5B00     		lsls	r3, r3, #1
+ 1565 01c8 1344     		add	r3, r3, r2
+ 1566 01ca 0344     		add	r3, r3, r0
+ 1567 01cc 0B44     		add	r3, r3, r1
+ 1568 01ce 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1569 01d0 002B     		cmp	r3, #0
+ 1570 01d2 4DD1     		bne	.L36
+ 1571              	.L37:
+ 215:.\pathfinder.c ****             if(path[i][DIR] != path[i - 1][DIR]){
+ 1572              		.loc 1 215 0 is_stmt 1
+ 1573 01d4 3149     		ldr	r1, .L44+12
+ 1574 01d6 BA68     		ldr	r2, [r7, #8]
+ 1575 01d8 1346     		mov	r3, r2
+ 1576 01da 5B00     		lsls	r3, r3, #1
+ 1577 01dc 1344     		add	r3, r3, r2
+ 1578 01de 0B44     		add	r3, r3, r1
+ 1579 01e0 0233     		adds	r3, r3, #2
+ 1580 01e2 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 1581 01e4 BB68     		ldr	r3, [r7, #8]
+ 1582 01e6 5A1E     		subs	r2, r3, #1
+ 1583 01e8 2C48     		ldr	r0, .L44+12
+ 1584 01ea 1346     		mov	r3, r2
+ 1585 01ec 5B00     		lsls	r3, r3, #1
+ 1586 01ee 1344     		add	r3, r3, r2
+ 1587 01f0 0344     		add	r3, r3, r0
+ 1588 01f2 0233     		adds	r3, r3, #2
+ 1589 01f4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1590 01f6 9942     		cmp	r1, r3
+ 1591 01f8 33D0     		beq	.L38
+ 216:.\pathfinder.c ****                if(path[i][DIR] - path[i - 1][DIR] > 0){
+ 1592              		.loc 1 216 0
+ 1593 01fa 2849     		ldr	r1, .L44+12
+ 1594 01fc BA68     		ldr	r2, [r7, #8]
+ 1595 01fe 1346     		mov	r3, r2
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 33
+
+
+ 1596 0200 5B00     		lsls	r3, r3, #1
+ 1597 0202 1344     		add	r3, r3, r2
+ 1598 0204 0B44     		add	r3, r3, r1
+ 1599 0206 0233     		adds	r3, r3, #2
+ 1600 0208 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1601 020a 1846     		mov	r0, r3
+ 1602 020c BB68     		ldr	r3, [r7, #8]
+ 1603 020e 5A1E     		subs	r2, r3, #1
+ 1604 0210 2249     		ldr	r1, .L44+12
+ 1605 0212 1346     		mov	r3, r2
+ 1606 0214 5B00     		lsls	r3, r3, #1
+ 1607 0216 1344     		add	r3, r3, r2
+ 1608 0218 0B44     		add	r3, r3, r1
+ 1609 021a 0233     		adds	r3, r3, #2
+ 1610 021c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1611 021e C31A     		subs	r3, r0, r3
+ 1612 0220 002B     		cmp	r3, #0
+ 1613 0222 04DD     		ble	.L39
+ 217:.\pathfinder.c ****                   instructions[counter] = LEFT;
+ 1614              		.loc 1 217 0
+ 1615 0224 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 1616 0226 1F4A     		ldr	r2, .L44+20
+ 1617 0228 4C21     		movs	r1, #76
+ 1618 022a D154     		strb	r1, [r2, r3]
+ 1619 022c 1DE0     		b	.L41
+ 1620              	.L39:
+ 218:.\pathfinder.c ****                }else if(path[i][DIR] - path[i - 1][DIR] < 0){
+ 1621              		.loc 1 218 0
+ 1622 022e 1B49     		ldr	r1, .L44+12
+ 1623 0230 BA68     		ldr	r2, [r7, #8]
+ 1624 0232 1346     		mov	r3, r2
+ 1625 0234 5B00     		lsls	r3, r3, #1
+ 1626 0236 1344     		add	r3, r3, r2
+ 1627 0238 0B44     		add	r3, r3, r1
+ 1628 023a 0233     		adds	r3, r3, #2
+ 1629 023c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1630 023e 1846     		mov	r0, r3
+ 1631 0240 BB68     		ldr	r3, [r7, #8]
+ 1632 0242 5A1E     		subs	r2, r3, #1
+ 1633 0244 1549     		ldr	r1, .L44+12
+ 1634 0246 1346     		mov	r3, r2
+ 1635 0248 5B00     		lsls	r3, r3, #1
+ 1636 024a 1344     		add	r3, r3, r2
+ 1637 024c 0B44     		add	r3, r3, r1
+ 1638 024e 0233     		adds	r3, r3, #2
+ 1639 0250 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1640 0252 C31A     		subs	r3, r0, r3
+ 1641 0254 002B     		cmp	r3, #0
+ 1642 0256 08DA     		bge	.L41
+ 219:.\pathfinder.c ****                   instructions[counter] = RIGHT;
+ 1643              		.loc 1 219 0
+ 1644 0258 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 1645 025a 124A     		ldr	r2, .L44+20
+ 1646 025c 5221     		movs	r1, #82
+ 1647 025e D154     		strb	r1, [r2, r3]
+ 1648 0260 03E0     		b	.L41
+ 1649              	.L38:
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 34
+
+
+ 220:.\pathfinder.c ****                }
+ 221:.\pathfinder.c ****             }else{
+ 222:.\pathfinder.c ****                instructions[counter] = STRAIGHT;
+ 1650              		.loc 1 222 0
+ 1651 0262 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 1652 0264 0F4A     		ldr	r2, .L44+20
+ 1653 0266 5321     		movs	r1, #83
+ 1654 0268 D154     		strb	r1, [r2, r3]
+ 1655              	.L41:
+ 223:.\pathfinder.c ****             }
+ 224:.\pathfinder.c ****             counter++;
+ 1656              		.loc 1 224 0
+ 1657 026a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 1658 026c 0133     		adds	r3, r3, #1
+ 1659 026e FB73     		strb	r3, [r7, #15]
+ 1660              	.L36:
+ 198:.\pathfinder.c ****       if(path[i][DIR] == 1 || path[i][DIR] == 3){
+ 1661              		.loc 1 198 0 discriminator 2
+ 1662 0270 BB68     		ldr	r3, [r7, #8]
+ 1663 0272 013B     		subs	r3, r3, #1
+ 1664 0274 BB60     		str	r3, [r7, #8]
+ 1665              	.L27:
+ 198:.\pathfinder.c ****       if(path[i][DIR] == 1 || path[i][DIR] == 3){
+ 1666              		.loc 1 198 0 is_stmt 0 discriminator 1
+ 1667 0276 BB68     		ldr	r3, [r7, #8]
+ 1668 0278 002B     		cmp	r3, #0
+ 1669 027a 3FF7D6AE 		bgt	.L42
+ 225:.\pathfinder.c ****          }else{
+ 226:.\pathfinder.c ****             //printf("(%d)[direction = %d]\n", end - i + 1, path[i][DIR]);
+ 227:.\pathfinder.c ****          }
+ 228:.\pathfinder.c ****       }
+ 229:.\pathfinder.c ****    }
+ 230:.\pathfinder.c ****    instructions[counter] = '\0';
+ 1670              		.loc 1 230 0 is_stmt 1
+ 1671 027e FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 1672 0280 084A     		ldr	r2, .L44+20
+ 1673 0282 0021     		movs	r1, #0
+ 1674 0284 D154     		strb	r1, [r2, r3]
+ 231:.\pathfinder.c ****    return 0;
+ 1675              		.loc 1 231 0
+ 1676 0286 0023     		movs	r3, #0
+ 232:.\pathfinder.c **** }
+ 1677              		.loc 1 232 0
+ 1678 0288 1846     		mov	r0, r3
+ 1679 028a 1037     		adds	r7, r7, #16
+ 1680              		.cfi_def_cfa_offset 8
+ 1681 028c BD46     		mov	sp, r7
+ 1682              		.cfi_def_cfa_register 13
+ 1683              		@ sp needed
+ 1684 028e 80BD     		pop	{r7, pc}
+ 1685              	.L45:
+ 1686              		.align	2
+ 1687              	.L44:
+ 1688 0290 00000000 		.word	destination
+ 1689 0294 00000000 		.word	map
+ 1690 0298 00000000 		.word	food_list
+ 1691 029c 00000000 		.word	path
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 35
+
+
+ 1692 02a0 00000000 		.word	start
+ 1693 02a4 00000000 		.word	instructions
+ 1694              		.cfi_endproc
+ 1695              	.LFE64:
+ 1696              		.size	generateDirections, .-generateDirections
+ 1697              		.text
+ 1698              	.Letext0:
+ 1699              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 1700              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 1701              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 1702              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 1703              		.file 6 ".\\pathfinder.h"
+ 1704              		.section	.debug_info,"",%progbits
+ 1705              	.Ldebug_info0:
+ 1706 0000 2B040000 		.4byte	0x42b
+ 1707 0004 0400     		.2byte	0x4
+ 1708 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 1709 000a 04       		.byte	0x4
+ 1710 000b 01       		.uleb128 0x1
+ 1711 000c 39000000 		.4byte	.LASF45
+ 1712 0010 01       		.byte	0x1
+ 1713 0011 9D020000 		.4byte	.LASF46
+ 1714 0015 6A010000 		.4byte	.LASF47
+ 1715 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 1716 001d 00000000 		.4byte	0
+ 1717 0021 00000000 		.4byte	.Ldebug_line0
+ 1718 0025 02       		.uleb128 0x2
+ 1719 0026 01       		.byte	0x1
+ 1720 0027 06       		.byte	0x6
+ 1721 0028 83020000 		.4byte	.LASF0
+ 1722 002c 02       		.uleb128 0x2
+ 1723 002d 01       		.byte	0x1
+ 1724 002e 08       		.byte	0x8
+ 1725 002f F8000000 		.4byte	.LASF1
+ 1726 0033 02       		.uleb128 0x2
+ 1727 0034 02       		.byte	0x2
+ 1728 0035 05       		.byte	0x5
+ 1729 0036 39020000 		.4byte	.LASF2
+ 1730 003a 02       		.uleb128 0x2
+ 1731 003b 02       		.byte	0x2
+ 1732 003c 07       		.byte	0x7
+ 1733 003d 4B010000 		.4byte	.LASF3
+ 1734 0041 03       		.uleb128 0x3
+ 1735 0042 20000000 		.4byte	.LASF14
+ 1736 0046 02       		.byte	0x2
+ 1737 0047 3F       		.byte	0x3f
+ 1738 0048 4C000000 		.4byte	0x4c
+ 1739 004c 02       		.uleb128 0x2
+ 1740 004d 04       		.byte	0x4
+ 1741 004e 05       		.byte	0x5
+ 1742 004f 69020000 		.4byte	.LASF4
+ 1743 0053 02       		.uleb128 0x2
+ 1744 0054 04       		.byte	0x4
+ 1745 0055 07       		.byte	0x7
+ 1746 0056 31010000 		.4byte	.LASF5
+ 1747 005a 02       		.uleb128 0x2
+ 1748 005b 08       		.byte	0x8
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 36
+
+
+ 1749 005c 05       		.byte	0x5
+ 1750 005d 00000000 		.4byte	.LASF6
+ 1751 0061 02       		.uleb128 0x2
+ 1752 0062 08       		.byte	0x8
+ 1753 0063 07       		.byte	0x7
+ 1754 0064 9C010000 		.4byte	.LASF7
+ 1755 0068 04       		.uleb128 0x4
+ 1756 0069 04       		.byte	0x4
+ 1757 006a 05       		.byte	0x5
+ 1758 006b 696E7400 		.ascii	"int\000"
+ 1759 006f 02       		.uleb128 0x2
+ 1760 0070 04       		.byte	0x4
+ 1761 0071 07       		.byte	0x7
+ 1762 0072 8F010000 		.4byte	.LASF8
+ 1763 0076 02       		.uleb128 0x2
+ 1764 0077 04       		.byte	0x4
+ 1765 0078 07       		.byte	0x7
+ 1766 0079 02020000 		.4byte	.LASF9
+ 1767 007d 02       		.uleb128 0x2
+ 1768 007e 01       		.byte	0x1
+ 1769 007f 08       		.byte	0x8
+ 1770 0080 17020000 		.4byte	.LASF10
+ 1771 0084 02       		.uleb128 0x2
+ 1772 0085 08       		.byte	0x8
+ 1773 0086 04       		.byte	0x4
+ 1774 0087 C7000000 		.4byte	.LASF11
+ 1775 008b 02       		.uleb128 0x2
+ 1776 008c 04       		.byte	0x4
+ 1777 008d 04       		.byte	0x4
+ 1778 008e EA000000 		.4byte	.LASF12
+ 1779 0092 02       		.uleb128 0x2
+ 1780 0093 08       		.byte	0x8
+ 1781 0094 04       		.byte	0x4
+ 1782 0095 77020000 		.4byte	.LASF13
+ 1783 0099 03       		.uleb128 0x3
+ 1784 009a EE010000 		.4byte	.LASF15
+ 1785 009e 03       		.byte	0x3
+ 1786 009f 2C       		.byte	0x2c
+ 1787 00a0 41000000 		.4byte	0x41
+ 1788 00a4 05       		.uleb128 0x5
+ 1789 00a5 CE000000 		.4byte	.LASF16
+ 1790 00a9 04       		.byte	0x4
+ 1791 00aa 9201     		.2byte	0x192
+ 1792 00ac 2C000000 		.4byte	0x2c
+ 1793 00b0 05       		.uleb128 0x5
+ 1794 00b1 5E010000 		.4byte	.LASF17
+ 1795 00b5 04       		.byte	0x4
+ 1796 00b6 9301     		.2byte	0x193
+ 1797 00b8 3A000000 		.4byte	0x3a
+ 1798 00bc 06       		.uleb128 0x6
+ 1799 00bd 0E000000 		.4byte	.LASF24
+ 1800 00c1 10       		.byte	0x10
+ 1801 00c2 01       		.byte	0x1
+ 1802 00c3 18       		.byte	0x18
+ 1803 00c4 25010000 		.4byte	0x125
+ 1804 00c8 07       		.uleb128 0x7
+ 1805 00c9 72020000 		.4byte	.LASF18
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 37
+
+
+ 1806 00cd 01       		.byte	0x1
+ 1807 00ce 19       		.byte	0x19
+ 1808 00cf A4000000 		.4byte	0xa4
+ 1809 00d3 00       		.byte	0
+ 1810 00d4 07       		.uleb128 0x7
+ 1811 00d5 1B010000 		.4byte	.LASF19
+ 1812 00d9 01       		.byte	0x1
+ 1813 00da 1A       		.byte	0x1a
+ 1814 00db A4000000 		.4byte	0xa4
+ 1815 00df 01       		.byte	0x1
+ 1816 00e0 07       		.uleb128 0x7
+ 1817 00e1 65010000 		.4byte	.LASF20
+ 1818 00e5 01       		.byte	0x1
+ 1819 00e6 1B       		.byte	0x1b
+ 1820 00e7 B0000000 		.4byte	0xb0
+ 1821 00eb 02       		.byte	0x2
+ 1822 00ec 08       		.uleb128 0x8
+ 1823 00ed 7800     		.ascii	"x\000"
+ 1824 00ef 01       		.byte	0x1
+ 1825 00f0 1C       		.byte	0x1c
+ 1826 00f1 A4000000 		.4byte	0xa4
+ 1827 00f5 04       		.byte	0x4
+ 1828 00f6 08       		.uleb128 0x8
+ 1829 00f7 7900     		.ascii	"y\000"
+ 1830 00f9 01       		.byte	0x1
+ 1831 00fa 1D       		.byte	0x1d
+ 1832 00fb A4000000 		.4byte	0xa4
+ 1833 00ff 05       		.byte	0x5
+ 1834 0100 07       		.uleb128 0x7
+ 1835 0101 D8010000 		.4byte	.LASF21
+ 1836 0105 01       		.byte	0x1
+ 1837 0106 1E       		.byte	0x1e
+ 1838 0107 25010000 		.4byte	0x125
+ 1839 010b 08       		.byte	0x8
+ 1840 010c 07       		.uleb128 0x7
+ 1841 010d B3010000 		.4byte	.LASF22
+ 1842 0111 01       		.byte	0x1
+ 1843 0112 21       		.byte	0x21
+ 1844 0113 B0000000 		.4byte	0xb0
+ 1845 0117 0C       		.byte	0xc
+ 1846 0118 07       		.uleb128 0x7
+ 1847 0119 D4000000 		.4byte	.LASF23
+ 1848 011d 01       		.byte	0x1
+ 1849 011e 22       		.byte	0x22
+ 1850 011f A4000000 		.4byte	0xa4
+ 1851 0123 0E       		.byte	0xe
+ 1852 0124 00       		.byte	0
+ 1853 0125 09       		.uleb128 0x9
+ 1854 0126 04       		.byte	0x4
+ 1855 0127 BC000000 		.4byte	0xbc
+ 1856 012b 03       		.uleb128 0x3
+ 1857 012c 0E000000 		.4byte	.LASF24
+ 1858 0130 01       		.byte	0x1
+ 1859 0131 23       		.byte	0x23
+ 1860 0132 BC000000 		.4byte	0xbc
+ 1861 0136 0A       		.uleb128 0xa
+ 1862 0137 5F020000 		.4byte	.LASF48
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 38
+
+
+ 1863 013b 01       		.byte	0x1
+ 1864 013c 2F       		.byte	0x2f
+ 1865 013d A4000000 		.4byte	0xa4
+ 1866 0141 00000000 		.4byte	.LFB63
+ 1867 0145 8C0B0000 		.4byte	.LFE63-.LFB63
+ 1868 0149 01       		.uleb128 0x1
+ 1869 014a 9C       		.byte	0x9c
+ 1870 014b CA020000 		.4byte	0x2ca
+ 1871 014f 0B       		.uleb128 0xb
+ 1872 0150 6D617000 		.ascii	"map\000"
+ 1873 0154 01       		.byte	0x1
+ 1874 0155 2F       		.byte	0x2f
+ 1875 0156 DA020000 		.4byte	0x2da
+ 1876 015a 03       		.uleb128 0x3
+ 1877 015b 91       		.byte	0x91
+ 1878 015c D455     		.sleb128 -5420
+ 1879 015e 0C       		.uleb128 0xc
+ 1880 015f 2F020000 		.4byte	.LASF25
+ 1881 0163 01       		.byte	0x1
+ 1882 0164 2F       		.byte	0x2f
+ 1883 0165 F0020000 		.4byte	0x2f0
+ 1884 0169 03       		.uleb128 0x3
+ 1885 016a 91       		.byte	0x91
+ 1886 016b D055     		.sleb128 -5424
+ 1887 016d 0C       		.uleb128 0xc
+ 1888 016e 72020000 		.4byte	.LASF18
+ 1889 0172 01       		.byte	0x1
+ 1890 0173 2F       		.byte	0x2f
+ 1891 0174 06030000 		.4byte	0x306
+ 1892 0178 03       		.uleb128 0x3
+ 1893 0179 91       		.byte	0x91
+ 1894 017a CC55     		.sleb128 -5428
+ 1895 017c 0C       		.uleb128 0xc
+ 1896 017d 0C010000 		.4byte	.LASF26
+ 1897 0181 01       		.byte	0x1
+ 1898 0182 2F       		.byte	0x2f
+ 1899 0183 0C030000 		.4byte	0x30c
+ 1900 0187 03       		.uleb128 0x3
+ 1901 0188 91       		.byte	0x91
+ 1902 0189 C855     		.sleb128 -5432
+ 1903 018b 0C       		.uleb128 0xc
+ 1904 018c DE000000 		.4byte	.LASF27
+ 1905 0190 01       		.byte	0x1
+ 1906 0191 2F       		.byte	0x2f
+ 1907 0192 0C030000 		.4byte	0x30c
+ 1908 0196 02       		.uleb128 0x2
+ 1909 0197 91       		.byte	0x91
+ 1910 0198 00       		.sleb128 0
+ 1911 0199 0C       		.uleb128 0xc
+ 1912 019a D4000000 		.4byte	.LASF23
+ 1913 019e 01       		.byte	0x1
+ 1914 019f 2F       		.byte	0x2f
+ 1915 01a0 A4000000 		.4byte	0xa4
+ 1916 01a4 02       		.uleb128 0x2
+ 1917 01a5 91       		.byte	0x91
+ 1918 01a6 04       		.sleb128 4
+ 1919 01a7 0D       		.uleb128 0xd
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 39
+
+
+ 1920 01a8 06010000 		.4byte	.LASF28
+ 1921 01ac 01       		.byte	0x1
+ 1922 01ad 30       		.byte	0x30
+ 1923 01ae 12030000 		.4byte	0x312
+ 1924 01b2 03       		.uleb128 0x3
+ 1925 01b3 91       		.byte	0x91
+ 1926 01b4 885C     		.sleb128 -4600
+ 1927 01b6 0E       		.uleb128 0xe
+ 1928 01b7 6900     		.ascii	"i\000"
+ 1929 01b9 01       		.byte	0x1
+ 1930 01ba 32       		.byte	0x32
+ 1931 01bb A4000000 		.4byte	0xa4
+ 1932 01bf 02       		.uleb128 0x2
+ 1933 01c0 91       		.byte	0x91
+ 1934 01c1 6F       		.sleb128 -17
+ 1935 01c2 0D       		.uleb128 0xd
+ 1936 01c3 4F020000 		.4byte	.LASF29
+ 1937 01c7 01       		.byte	0x1
+ 1938 01c8 43       		.byte	0x43
+ 1939 01c9 E0020000 		.4byte	0x2e0
+ 1940 01cd 03       		.uleb128 0x3
+ 1941 01ce 91       		.byte	0x91
+ 1942 01cf 845C     		.sleb128 -4604
+ 1943 01d1 0D       		.uleb128 0xd
+ 1944 01d2 C2010000 		.4byte	.LASF30
+ 1945 01d6 01       		.byte	0x1
+ 1946 01d7 47       		.byte	0x47
+ 1947 01d8 A4000000 		.4byte	0xa4
+ 1948 01dc 02       		.uleb128 0x2
+ 1949 01dd 91       		.byte	0x91
+ 1950 01de 6D       		.sleb128 -19
+ 1951 01df 0D       		.uleb128 0xd
+ 1952 01e0 B9020000 		.4byte	.LASF31
+ 1953 01e4 01       		.byte	0x1
+ 1954 01e5 48       		.byte	0x48
+ 1955 01e6 28030000 		.4byte	0x328
+ 1956 01ea 03       		.uleb128 0x3
+ 1957 01eb 91       		.byte	0x91
+ 1958 01ec E455     		.sleb128 -5404
+ 1959 01ee 0D       		.uleb128 0xd
+ 1960 01ef 23010000 		.4byte	.LASF32
+ 1961 01f3 01       		.byte	0x1
+ 1962 01f4 4A       		.byte	0x4a
+ 1963 01f5 E0020000 		.4byte	0x2e0
+ 1964 01f9 03       		.uleb128 0x3
+ 1965 01fa 91       		.byte	0x91
+ 1966 01fb E055     		.sleb128 -5408
+ 1967 01fd 0D       		.uleb128 0xd
+ 1968 01fe 43020000 		.4byte	.LASF33
+ 1969 0202 01       		.byte	0x1
+ 1970 0203 4B       		.byte	0x4b
+ 1971 0204 A4000000 		.4byte	0xa4
+ 1972 0208 02       		.uleb128 0x2
+ 1973 0209 91       		.byte	0x91
+ 1974 020a 5B       		.sleb128 -37
+ 1975 020b 0D       		.uleb128 0xd
+ 1976 020c 2A000000 		.4byte	.LASF34
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 40
+
+
+ 1977 0210 01       		.byte	0x1
+ 1978 0211 4C       		.byte	0x4c
+ 1979 0212 A4000000 		.4byte	0xa4
+ 1980 0216 02       		.uleb128 0x2
+ 1981 0217 91       		.byte	0x91
+ 1982 0218 6C       		.sleb128 -20
+ 1983 0219 0D       		.uleb128 0xd
+ 1984 021a F0000000 		.4byte	.LASF35
+ 1985 021e 01       		.byte	0x1
+ 1986 021f 4D       		.byte	0x4d
+ 1987 0220 A4000000 		.4byte	0xa4
+ 1988 0224 02       		.uleb128 0x2
+ 1989 0225 91       		.byte	0x91
+ 1990 0226 6B       		.sleb128 -21
+ 1991 0227 0D       		.uleb128 0xd
+ 1992 0228 43010000 		.4byte	.LASF36
+ 1993 022c 01       		.byte	0x1
+ 1994 022d 4E       		.byte	0x4e
+ 1995 022e B0000000 		.4byte	0xb0
+ 1996 0232 02       		.uleb128 0x2
+ 1997 0233 91       		.byte	0x91
+ 1998 0234 58       		.sleb128 -40
+ 1999 0235 0D       		.uleb128 0xd
+ 2000 0236 12010000 		.4byte	.LASF37
+ 2001 023a 01       		.byte	0x1
+ 2002 023b 4F       		.byte	0x4f
+ 2003 023c E0020000 		.4byte	0x2e0
+ 2004 0240 03       		.uleb128 0x3
+ 2005 0241 91       		.byte	0x91
+ 2006 0242 DC55     		.sleb128 -5412
+ 2007 0244 0D       		.uleb128 0xd
+ 2008 0245 8F020000 		.4byte	.LASF38
+ 2009 0249 01       		.byte	0x1
+ 2010 024a 50       		.byte	0x50
+ 2011 024b A4000000 		.4byte	0xa4
+ 2012 024f 02       		.uleb128 0x2
+ 2013 0250 91       		.byte	0x91
+ 2014 0251 6A       		.sleb128 -22
+ 2015 0252 0D       		.uleb128 0xd
+ 2016 0253 0B020000 		.4byte	.LASF39
+ 2017 0257 01       		.byte	0x1
+ 2018 0258 51       		.byte	0x51
+ 2019 0259 E0020000 		.4byte	0x2e0
+ 2020 025d 03       		.uleb128 0x3
+ 2021 025e 91       		.byte	0x91
+ 2022 025f D855     		.sleb128 -5416
+ 2023 0261 0D       		.uleb128 0xd
+ 2024 0262 AC020000 		.4byte	.LASF40
+ 2025 0266 01       		.byte	0x1
+ 2026 0267 52       		.byte	0x52
+ 2027 0268 B0000000 		.4byte	0xb0
+ 2028 026c 02       		.uleb128 0x2
+ 2029 026d 91       		.byte	0x91
+ 2030 026e 68       		.sleb128 -24
+ 2031 026f 0D       		.uleb128 0xd
+ 2032 0270 57020000 		.4byte	.LASF41
+ 2033 0274 01       		.byte	0x1
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 41
+
+
+ 2034 0275 53       		.byte	0x53
+ 2035 0276 A4000000 		.4byte	0xa4
+ 2036 027a 02       		.uleb128 0x2
+ 2037 027b 91       		.byte	0x91
+ 2038 027c 67       		.sleb128 -25
+ 2039 027d 0F       		.uleb128 0xf
+ 2040 027e 36000000 		.4byte	.LBB2
+ 2041 0282 E6010000 		.4byte	.LBE2-.LBB2
+ 2042 0286 97020000 		.4byte	0x297
+ 2043 028a 0E       		.uleb128 0xe
+ 2044 028b 6A00     		.ascii	"j\000"
+ 2045 028d 01       		.byte	0x1
+ 2046 028e 34       		.byte	0x34
+ 2047 028f A4000000 		.4byte	0xa4
+ 2048 0293 02       		.uleb128 0x2
+ 2049 0294 91       		.byte	0x91
+ 2050 0295 6E       		.sleb128 -18
+ 2051 0296 00       		.byte	0
+ 2052 0297 0F       		.uleb128 0xf
+ 2053 0298 8A030000 		.4byte	.LBB3
+ 2054 029c 86050000 		.4byte	.LBE3-.LBB3
+ 2055 02a0 B1020000 		.4byte	0x2b1
+ 2056 02a4 0E       		.uleb128 0xe
+ 2057 02a5 6900     		.ascii	"i\000"
+ 2058 02a7 01       		.byte	0x1
+ 2059 02a8 8C       		.byte	0x8c
+ 2060 02a9 68000000 		.4byte	0x68
+ 2061 02ad 02       		.uleb128 0x2
+ 2062 02ae 91       		.byte	0x91
+ 2063 02af 60       		.sleb128 -32
+ 2064 02b0 00       		.byte	0
+ 2065 02b1 10       		.uleb128 0x10
+ 2066 02b2 94090000 		.4byte	.LBB4
+ 2067 02b6 EA010000 		.4byte	.LBE4-.LBB4
+ 2068 02ba 0D       		.uleb128 0xd
+ 2069 02bb F6010000 		.4byte	.LASF42
+ 2070 02bf 01       		.byte	0x1
+ 2071 02c0 A9       		.byte	0xa9
+ 2072 02c1 3F030000 		.4byte	0x33f
+ 2073 02c5 02       		.uleb128 0x2
+ 2074 02c6 91       		.byte	0x91
+ 2075 02c7 5C       		.sleb128 -36
+ 2076 02c8 00       		.byte	0
+ 2077 02c9 00       		.byte	0
+ 2078 02ca 11       		.uleb128 0x11
+ 2079 02cb A4000000 		.4byte	0xa4
+ 2080 02cf DA020000 		.4byte	0x2da
+ 2081 02d3 12       		.uleb128 0x12
+ 2082 02d4 76000000 		.4byte	0x76
+ 2083 02d8 12       		.byte	0x12
+ 2084 02d9 00       		.byte	0
+ 2085 02da 09       		.uleb128 0x9
+ 2086 02db 04       		.byte	0x4
+ 2087 02dc CA020000 		.4byte	0x2ca
+ 2088 02e0 11       		.uleb128 0x11
+ 2089 02e1 A4000000 		.4byte	0xa4
+ 2090 02e5 F0020000 		.4byte	0x2f0
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 42
+
+
+ 2091 02e9 12       		.uleb128 0x12
+ 2092 02ea 76000000 		.4byte	0x76
+ 2093 02ee 01       		.byte	0x1
+ 2094 02ef 00       		.byte	0
+ 2095 02f0 09       		.uleb128 0x9
+ 2096 02f1 04       		.byte	0x4
+ 2097 02f2 E0020000 		.4byte	0x2e0
+ 2098 02f6 11       		.uleb128 0x11
+ 2099 02f7 A4000000 		.4byte	0xa4
+ 2100 02fb 06030000 		.4byte	0x306
+ 2101 02ff 12       		.uleb128 0x12
+ 2102 0300 76000000 		.4byte	0x76
+ 2103 0304 02       		.byte	0x2
+ 2104 0305 00       		.byte	0
+ 2105 0306 09       		.uleb128 0x9
+ 2106 0307 04       		.byte	0x4
+ 2107 0308 F6020000 		.4byte	0x2f6
+ 2108 030c 09       		.uleb128 0x9
+ 2109 030d 04       		.byte	0x4
+ 2110 030e A4000000 		.4byte	0xa4
+ 2111 0312 11       		.uleb128 0x11
+ 2112 0313 2B010000 		.4byte	0x12b
+ 2113 0317 28030000 		.4byte	0x328
+ 2114 031b 12       		.uleb128 0x12
+ 2115 031c 76000000 		.4byte	0x76
+ 2116 0320 0E       		.byte	0xe
+ 2117 0321 12       		.uleb128 0x12
+ 2118 0322 76000000 		.4byte	0x76
+ 2119 0326 12       		.byte	0x12
+ 2120 0327 00       		.byte	0
+ 2121 0328 11       		.uleb128 0x11
+ 2122 0329 A4000000 		.4byte	0xa4
+ 2123 032d 3F030000 		.4byte	0x33f
+ 2124 0331 13       		.uleb128 0x13
+ 2125 0332 76000000 		.4byte	0x76
+ 2126 0336 8F01     		.2byte	0x18f
+ 2127 0338 12       		.uleb128 0x12
+ 2128 0339 76000000 		.4byte	0x76
+ 2129 033d 01       		.byte	0x1
+ 2130 033e 00       		.byte	0
+ 2131 033f 09       		.uleb128 0x9
+ 2132 0340 04       		.byte	0x4
+ 2133 0341 2B010000 		.4byte	0x12b
+ 2134 0345 14       		.uleb128 0x14
+ 2135 0346 1C020000 		.4byte	.LASF49
+ 2136 034a 01       		.byte	0x1
+ 2137 034b BF       		.byte	0xbf
+ 2138 034c 68000000 		.4byte	0x68
+ 2139 0350 00000000 		.4byte	.LFB64
+ 2140 0354 A8020000 		.4byte	.LFE64-.LFB64
+ 2141 0358 01       		.uleb128 0x1
+ 2142 0359 9C       		.byte	0x9c
+ 2143 035a 87030000 		.4byte	0x387
+ 2144 035e 0E       		.uleb128 0xe
+ 2145 035f 656E6400 		.ascii	"end\000"
+ 2146 0363 01       		.byte	0x1
+ 2147 0364 C1       		.byte	0xc1
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 43
+
+
+ 2148 0365 68000000 		.4byte	0x68
+ 2149 0369 02       		.uleb128 0x2
+ 2150 036a 91       		.byte	0x91
+ 2151 036b 6C       		.sleb128 -20
+ 2152 036c 0D       		.uleb128 0xd
+ 2153 036d F0000000 		.4byte	.LASF35
+ 2154 0371 01       		.byte	0x1
+ 2155 0372 C3       		.byte	0xc3
+ 2156 0373 A4000000 		.4byte	0xa4
+ 2157 0377 02       		.uleb128 0x2
+ 2158 0378 91       		.byte	0x91
+ 2159 0379 77       		.sleb128 -9
+ 2160 037a 0E       		.uleb128 0xe
+ 2161 037b 6900     		.ascii	"i\000"
+ 2162 037d 01       		.byte	0x1
+ 2163 037e C5       		.byte	0xc5
+ 2164 037f 68000000 		.4byte	0x68
+ 2165 0383 02       		.uleb128 0x2
+ 2166 0384 91       		.byte	0x91
+ 2167 0385 70       		.sleb128 -16
+ 2168 0386 00       		.byte	0
+ 2169 0387 15       		.uleb128 0x15
+ 2170 0388 E1010000 		.4byte	.LASF43
+ 2171 038c 05       		.byte	0x5
+ 2172 038d 9606     		.2byte	0x696
+ 2173 038f 93030000 		.4byte	0x393
+ 2174 0393 16       		.uleb128 0x16
+ 2175 0394 99000000 		.4byte	0x99
+ 2176 0398 11       		.uleb128 0x11
+ 2177 0399 A4000000 		.4byte	0xa4
+ 2178 039d AE030000 		.4byte	0x3ae
+ 2179 03a1 12       		.uleb128 0x12
+ 2180 03a2 76000000 		.4byte	0x76
+ 2181 03a6 0E       		.byte	0xe
+ 2182 03a7 12       		.uleb128 0x12
+ 2183 03a8 76000000 		.4byte	0x76
+ 2184 03ac 12       		.byte	0x12
+ 2185 03ad 00       		.byte	0
+ 2186 03ae 17       		.uleb128 0x17
+ 2187 03af 6D617000 		.ascii	"map\000"
+ 2188 03b3 06       		.byte	0x6
+ 2189 03b4 1B       		.byte	0x1b
+ 2190 03b5 98030000 		.4byte	0x398
+ 2191 03b9 11       		.uleb128 0x11
+ 2192 03ba A4000000 		.4byte	0xa4
+ 2193 03be CF030000 		.4byte	0x3cf
+ 2194 03c2 12       		.uleb128 0x12
+ 2195 03c3 76000000 		.4byte	0x76
+ 2196 03c7 05       		.byte	0x5
+ 2197 03c8 12       		.uleb128 0x12
+ 2198 03c9 76000000 		.4byte	0x76
+ 2199 03cd 01       		.byte	0x1
+ 2200 03ce 00       		.byte	0
+ 2201 03cf 18       		.uleb128 0x18
+ 2202 03d0 2F020000 		.4byte	.LASF25
+ 2203 03d4 06       		.byte	0x6
+ 2204 03d5 1D       		.byte	0x1d
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 44
+
+
+ 2205 03d6 B9030000 		.4byte	0x3b9
+ 2206 03da 11       		.uleb128 0x11
+ 2207 03db A4000000 		.4byte	0xa4
+ 2208 03df F1030000 		.4byte	0x3f1
+ 2209 03e3 13       		.uleb128 0x13
+ 2210 03e4 76000000 		.4byte	0x76
+ 2211 03e8 8F01     		.2byte	0x18f
+ 2212 03ea 12       		.uleb128 0x12
+ 2213 03eb 76000000 		.4byte	0x76
+ 2214 03ef 02       		.byte	0x2
+ 2215 03f0 00       		.byte	0
+ 2216 03f1 18       		.uleb128 0x18
+ 2217 03f2 72020000 		.4byte	.LASF18
+ 2218 03f6 06       		.byte	0x6
+ 2219 03f7 1E       		.byte	0x1e
+ 2220 03f8 DA030000 		.4byte	0x3da
+ 2221 03fc 18       		.uleb128 0x18
+ 2222 03fd 0C010000 		.4byte	.LASF26
+ 2223 0401 06       		.byte	0x6
+ 2224 0402 1F       		.byte	0x1f
+ 2225 0403 E0020000 		.4byte	0x2e0
+ 2226 0407 18       		.uleb128 0x18
+ 2227 0408 DE000000 		.4byte	.LASF27
+ 2228 040c 06       		.byte	0x6
+ 2229 040d 20       		.byte	0x20
+ 2230 040e E0020000 		.4byte	0x2e0
+ 2231 0412 11       		.uleb128 0x11
+ 2232 0413 7D000000 		.4byte	0x7d
+ 2233 0417 23040000 		.4byte	0x423
+ 2234 041b 13       		.uleb128 0x13
+ 2235 041c 76000000 		.4byte	0x76
+ 2236 0420 8F01     		.2byte	0x18f
+ 2237 0422 00       		.byte	0
+ 2238 0423 18       		.uleb128 0x18
+ 2239 0424 13000000 		.4byte	.LASF44
+ 2240 0428 06       		.byte	0x6
+ 2241 0429 21       		.byte	0x21
+ 2242 042a 12040000 		.4byte	0x412
+ 2243 042e 00       		.byte	0
+ 2244              		.section	.debug_abbrev,"",%progbits
+ 2245              	.Ldebug_abbrev0:
+ 2246 0000 01       		.uleb128 0x1
+ 2247 0001 11       		.uleb128 0x11
+ 2248 0002 01       		.byte	0x1
+ 2249 0003 25       		.uleb128 0x25
+ 2250 0004 0E       		.uleb128 0xe
+ 2251 0005 13       		.uleb128 0x13
+ 2252 0006 0B       		.uleb128 0xb
+ 2253 0007 03       		.uleb128 0x3
+ 2254 0008 0E       		.uleb128 0xe
+ 2255 0009 1B       		.uleb128 0x1b
+ 2256 000a 0E       		.uleb128 0xe
+ 2257 000b 55       		.uleb128 0x55
+ 2258 000c 17       		.uleb128 0x17
+ 2259 000d 11       		.uleb128 0x11
+ 2260 000e 01       		.uleb128 0x1
+ 2261 000f 10       		.uleb128 0x10
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 45
+
+
+ 2262 0010 17       		.uleb128 0x17
+ 2263 0011 00       		.byte	0
+ 2264 0012 00       		.byte	0
+ 2265 0013 02       		.uleb128 0x2
+ 2266 0014 24       		.uleb128 0x24
+ 2267 0015 00       		.byte	0
+ 2268 0016 0B       		.uleb128 0xb
+ 2269 0017 0B       		.uleb128 0xb
+ 2270 0018 3E       		.uleb128 0x3e
+ 2271 0019 0B       		.uleb128 0xb
+ 2272 001a 03       		.uleb128 0x3
+ 2273 001b 0E       		.uleb128 0xe
+ 2274 001c 00       		.byte	0
+ 2275 001d 00       		.byte	0
+ 2276 001e 03       		.uleb128 0x3
+ 2277 001f 16       		.uleb128 0x16
+ 2278 0020 00       		.byte	0
+ 2279 0021 03       		.uleb128 0x3
+ 2280 0022 0E       		.uleb128 0xe
+ 2281 0023 3A       		.uleb128 0x3a
+ 2282 0024 0B       		.uleb128 0xb
+ 2283 0025 3B       		.uleb128 0x3b
+ 2284 0026 0B       		.uleb128 0xb
+ 2285 0027 49       		.uleb128 0x49
+ 2286 0028 13       		.uleb128 0x13
+ 2287 0029 00       		.byte	0
+ 2288 002a 00       		.byte	0
+ 2289 002b 04       		.uleb128 0x4
+ 2290 002c 24       		.uleb128 0x24
+ 2291 002d 00       		.byte	0
+ 2292 002e 0B       		.uleb128 0xb
+ 2293 002f 0B       		.uleb128 0xb
+ 2294 0030 3E       		.uleb128 0x3e
+ 2295 0031 0B       		.uleb128 0xb
+ 2296 0032 03       		.uleb128 0x3
+ 2297 0033 08       		.uleb128 0x8
+ 2298 0034 00       		.byte	0
+ 2299 0035 00       		.byte	0
+ 2300 0036 05       		.uleb128 0x5
+ 2301 0037 16       		.uleb128 0x16
+ 2302 0038 00       		.byte	0
+ 2303 0039 03       		.uleb128 0x3
+ 2304 003a 0E       		.uleb128 0xe
+ 2305 003b 3A       		.uleb128 0x3a
+ 2306 003c 0B       		.uleb128 0xb
+ 2307 003d 3B       		.uleb128 0x3b
+ 2308 003e 05       		.uleb128 0x5
+ 2309 003f 49       		.uleb128 0x49
+ 2310 0040 13       		.uleb128 0x13
+ 2311 0041 00       		.byte	0
+ 2312 0042 00       		.byte	0
+ 2313 0043 06       		.uleb128 0x6
+ 2314 0044 13       		.uleb128 0x13
+ 2315 0045 01       		.byte	0x1
+ 2316 0046 03       		.uleb128 0x3
+ 2317 0047 0E       		.uleb128 0xe
+ 2318 0048 0B       		.uleb128 0xb
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 46
+
+
+ 2319 0049 0B       		.uleb128 0xb
+ 2320 004a 3A       		.uleb128 0x3a
+ 2321 004b 0B       		.uleb128 0xb
+ 2322 004c 3B       		.uleb128 0x3b
+ 2323 004d 0B       		.uleb128 0xb
+ 2324 004e 01       		.uleb128 0x1
+ 2325 004f 13       		.uleb128 0x13
+ 2326 0050 00       		.byte	0
+ 2327 0051 00       		.byte	0
+ 2328 0052 07       		.uleb128 0x7
+ 2329 0053 0D       		.uleb128 0xd
+ 2330 0054 00       		.byte	0
+ 2331 0055 03       		.uleb128 0x3
+ 2332 0056 0E       		.uleb128 0xe
+ 2333 0057 3A       		.uleb128 0x3a
+ 2334 0058 0B       		.uleb128 0xb
+ 2335 0059 3B       		.uleb128 0x3b
+ 2336 005a 0B       		.uleb128 0xb
+ 2337 005b 49       		.uleb128 0x49
+ 2338 005c 13       		.uleb128 0x13
+ 2339 005d 38       		.uleb128 0x38
+ 2340 005e 0B       		.uleb128 0xb
+ 2341 005f 00       		.byte	0
+ 2342 0060 00       		.byte	0
+ 2343 0061 08       		.uleb128 0x8
+ 2344 0062 0D       		.uleb128 0xd
+ 2345 0063 00       		.byte	0
+ 2346 0064 03       		.uleb128 0x3
+ 2347 0065 08       		.uleb128 0x8
+ 2348 0066 3A       		.uleb128 0x3a
+ 2349 0067 0B       		.uleb128 0xb
+ 2350 0068 3B       		.uleb128 0x3b
+ 2351 0069 0B       		.uleb128 0xb
+ 2352 006a 49       		.uleb128 0x49
+ 2353 006b 13       		.uleb128 0x13
+ 2354 006c 38       		.uleb128 0x38
+ 2355 006d 0B       		.uleb128 0xb
+ 2356 006e 00       		.byte	0
+ 2357 006f 00       		.byte	0
+ 2358 0070 09       		.uleb128 0x9
+ 2359 0071 0F       		.uleb128 0xf
+ 2360 0072 00       		.byte	0
+ 2361 0073 0B       		.uleb128 0xb
+ 2362 0074 0B       		.uleb128 0xb
+ 2363 0075 49       		.uleb128 0x49
+ 2364 0076 13       		.uleb128 0x13
+ 2365 0077 00       		.byte	0
+ 2366 0078 00       		.byte	0
+ 2367 0079 0A       		.uleb128 0xa
+ 2368 007a 2E       		.uleb128 0x2e
+ 2369 007b 01       		.byte	0x1
+ 2370 007c 3F       		.uleb128 0x3f
+ 2371 007d 19       		.uleb128 0x19
+ 2372 007e 03       		.uleb128 0x3
+ 2373 007f 0E       		.uleb128 0xe
+ 2374 0080 3A       		.uleb128 0x3a
+ 2375 0081 0B       		.uleb128 0xb
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 47
+
+
+ 2376 0082 3B       		.uleb128 0x3b
+ 2377 0083 0B       		.uleb128 0xb
+ 2378 0084 27       		.uleb128 0x27
+ 2379 0085 19       		.uleb128 0x19
+ 2380 0086 49       		.uleb128 0x49
+ 2381 0087 13       		.uleb128 0x13
+ 2382 0088 11       		.uleb128 0x11
+ 2383 0089 01       		.uleb128 0x1
+ 2384 008a 12       		.uleb128 0x12
+ 2385 008b 06       		.uleb128 0x6
+ 2386 008c 40       		.uleb128 0x40
+ 2387 008d 18       		.uleb128 0x18
+ 2388 008e 9642     		.uleb128 0x2116
+ 2389 0090 19       		.uleb128 0x19
+ 2390 0091 01       		.uleb128 0x1
+ 2391 0092 13       		.uleb128 0x13
+ 2392 0093 00       		.byte	0
+ 2393 0094 00       		.byte	0
+ 2394 0095 0B       		.uleb128 0xb
+ 2395 0096 05       		.uleb128 0x5
+ 2396 0097 00       		.byte	0
+ 2397 0098 03       		.uleb128 0x3
+ 2398 0099 08       		.uleb128 0x8
+ 2399 009a 3A       		.uleb128 0x3a
+ 2400 009b 0B       		.uleb128 0xb
+ 2401 009c 3B       		.uleb128 0x3b
+ 2402 009d 0B       		.uleb128 0xb
+ 2403 009e 49       		.uleb128 0x49
+ 2404 009f 13       		.uleb128 0x13
+ 2405 00a0 02       		.uleb128 0x2
+ 2406 00a1 18       		.uleb128 0x18
+ 2407 00a2 00       		.byte	0
+ 2408 00a3 00       		.byte	0
+ 2409 00a4 0C       		.uleb128 0xc
+ 2410 00a5 05       		.uleb128 0x5
+ 2411 00a6 00       		.byte	0
+ 2412 00a7 03       		.uleb128 0x3
+ 2413 00a8 0E       		.uleb128 0xe
+ 2414 00a9 3A       		.uleb128 0x3a
+ 2415 00aa 0B       		.uleb128 0xb
+ 2416 00ab 3B       		.uleb128 0x3b
+ 2417 00ac 0B       		.uleb128 0xb
+ 2418 00ad 49       		.uleb128 0x49
+ 2419 00ae 13       		.uleb128 0x13
+ 2420 00af 02       		.uleb128 0x2
+ 2421 00b0 18       		.uleb128 0x18
+ 2422 00b1 00       		.byte	0
+ 2423 00b2 00       		.byte	0
+ 2424 00b3 0D       		.uleb128 0xd
+ 2425 00b4 34       		.uleb128 0x34
+ 2426 00b5 00       		.byte	0
+ 2427 00b6 03       		.uleb128 0x3
+ 2428 00b7 0E       		.uleb128 0xe
+ 2429 00b8 3A       		.uleb128 0x3a
+ 2430 00b9 0B       		.uleb128 0xb
+ 2431 00ba 3B       		.uleb128 0x3b
+ 2432 00bb 0B       		.uleb128 0xb
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 48
+
+
+ 2433 00bc 49       		.uleb128 0x49
+ 2434 00bd 13       		.uleb128 0x13
+ 2435 00be 02       		.uleb128 0x2
+ 2436 00bf 18       		.uleb128 0x18
+ 2437 00c0 00       		.byte	0
+ 2438 00c1 00       		.byte	0
+ 2439 00c2 0E       		.uleb128 0xe
+ 2440 00c3 34       		.uleb128 0x34
+ 2441 00c4 00       		.byte	0
+ 2442 00c5 03       		.uleb128 0x3
+ 2443 00c6 08       		.uleb128 0x8
+ 2444 00c7 3A       		.uleb128 0x3a
+ 2445 00c8 0B       		.uleb128 0xb
+ 2446 00c9 3B       		.uleb128 0x3b
+ 2447 00ca 0B       		.uleb128 0xb
+ 2448 00cb 49       		.uleb128 0x49
+ 2449 00cc 13       		.uleb128 0x13
+ 2450 00cd 02       		.uleb128 0x2
+ 2451 00ce 18       		.uleb128 0x18
+ 2452 00cf 00       		.byte	0
+ 2453 00d0 00       		.byte	0
+ 2454 00d1 0F       		.uleb128 0xf
+ 2455 00d2 0B       		.uleb128 0xb
+ 2456 00d3 01       		.byte	0x1
+ 2457 00d4 11       		.uleb128 0x11
+ 2458 00d5 01       		.uleb128 0x1
+ 2459 00d6 12       		.uleb128 0x12
+ 2460 00d7 06       		.uleb128 0x6
+ 2461 00d8 01       		.uleb128 0x1
+ 2462 00d9 13       		.uleb128 0x13
+ 2463 00da 00       		.byte	0
+ 2464 00db 00       		.byte	0
+ 2465 00dc 10       		.uleb128 0x10
+ 2466 00dd 0B       		.uleb128 0xb
+ 2467 00de 01       		.byte	0x1
+ 2468 00df 11       		.uleb128 0x11
+ 2469 00e0 01       		.uleb128 0x1
+ 2470 00e1 12       		.uleb128 0x12
+ 2471 00e2 06       		.uleb128 0x6
+ 2472 00e3 00       		.byte	0
+ 2473 00e4 00       		.byte	0
+ 2474 00e5 11       		.uleb128 0x11
+ 2475 00e6 01       		.uleb128 0x1
+ 2476 00e7 01       		.byte	0x1
+ 2477 00e8 49       		.uleb128 0x49
+ 2478 00e9 13       		.uleb128 0x13
+ 2479 00ea 01       		.uleb128 0x1
+ 2480 00eb 13       		.uleb128 0x13
+ 2481 00ec 00       		.byte	0
+ 2482 00ed 00       		.byte	0
+ 2483 00ee 12       		.uleb128 0x12
+ 2484 00ef 21       		.uleb128 0x21
+ 2485 00f0 00       		.byte	0
+ 2486 00f1 49       		.uleb128 0x49
+ 2487 00f2 13       		.uleb128 0x13
+ 2488 00f3 2F       		.uleb128 0x2f
+ 2489 00f4 0B       		.uleb128 0xb
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 49
+
+
+ 2490 00f5 00       		.byte	0
+ 2491 00f6 00       		.byte	0
+ 2492 00f7 13       		.uleb128 0x13
+ 2493 00f8 21       		.uleb128 0x21
+ 2494 00f9 00       		.byte	0
+ 2495 00fa 49       		.uleb128 0x49
+ 2496 00fb 13       		.uleb128 0x13
+ 2497 00fc 2F       		.uleb128 0x2f
+ 2498 00fd 05       		.uleb128 0x5
+ 2499 00fe 00       		.byte	0
+ 2500 00ff 00       		.byte	0
+ 2501 0100 14       		.uleb128 0x14
+ 2502 0101 2E       		.uleb128 0x2e
+ 2503 0102 01       		.byte	0x1
+ 2504 0103 3F       		.uleb128 0x3f
+ 2505 0104 19       		.uleb128 0x19
+ 2506 0105 03       		.uleb128 0x3
+ 2507 0106 0E       		.uleb128 0xe
+ 2508 0107 3A       		.uleb128 0x3a
+ 2509 0108 0B       		.uleb128 0xb
+ 2510 0109 3B       		.uleb128 0x3b
+ 2511 010a 0B       		.uleb128 0xb
+ 2512 010b 49       		.uleb128 0x49
+ 2513 010c 13       		.uleb128 0x13
+ 2514 010d 11       		.uleb128 0x11
+ 2515 010e 01       		.uleb128 0x1
+ 2516 010f 12       		.uleb128 0x12
+ 2517 0110 06       		.uleb128 0x6
+ 2518 0111 40       		.uleb128 0x40
+ 2519 0112 18       		.uleb128 0x18
+ 2520 0113 9642     		.uleb128 0x2116
+ 2521 0115 19       		.uleb128 0x19
+ 2522 0116 01       		.uleb128 0x1
+ 2523 0117 13       		.uleb128 0x13
+ 2524 0118 00       		.byte	0
+ 2525 0119 00       		.byte	0
+ 2526 011a 15       		.uleb128 0x15
+ 2527 011b 34       		.uleb128 0x34
+ 2528 011c 00       		.byte	0
+ 2529 011d 03       		.uleb128 0x3
+ 2530 011e 0E       		.uleb128 0xe
+ 2531 011f 3A       		.uleb128 0x3a
+ 2532 0120 0B       		.uleb128 0xb
+ 2533 0121 3B       		.uleb128 0x3b
+ 2534 0122 05       		.uleb128 0x5
+ 2535 0123 49       		.uleb128 0x49
+ 2536 0124 13       		.uleb128 0x13
+ 2537 0125 3F       		.uleb128 0x3f
+ 2538 0126 19       		.uleb128 0x19
+ 2539 0127 3C       		.uleb128 0x3c
+ 2540 0128 19       		.uleb128 0x19
+ 2541 0129 00       		.byte	0
+ 2542 012a 00       		.byte	0
+ 2543 012b 16       		.uleb128 0x16
+ 2544 012c 35       		.uleb128 0x35
+ 2545 012d 00       		.byte	0
+ 2546 012e 49       		.uleb128 0x49
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 50
+
+
+ 2547 012f 13       		.uleb128 0x13
+ 2548 0130 00       		.byte	0
+ 2549 0131 00       		.byte	0
+ 2550 0132 17       		.uleb128 0x17
+ 2551 0133 34       		.uleb128 0x34
+ 2552 0134 00       		.byte	0
+ 2553 0135 03       		.uleb128 0x3
+ 2554 0136 08       		.uleb128 0x8
+ 2555 0137 3A       		.uleb128 0x3a
+ 2556 0138 0B       		.uleb128 0xb
+ 2557 0139 3B       		.uleb128 0x3b
+ 2558 013a 0B       		.uleb128 0xb
+ 2559 013b 49       		.uleb128 0x49
+ 2560 013c 13       		.uleb128 0x13
+ 2561 013d 3F       		.uleb128 0x3f
+ 2562 013e 19       		.uleb128 0x19
+ 2563 013f 3C       		.uleb128 0x3c
+ 2564 0140 19       		.uleb128 0x19
+ 2565 0141 00       		.byte	0
+ 2566 0142 00       		.byte	0
+ 2567 0143 18       		.uleb128 0x18
+ 2568 0144 34       		.uleb128 0x34
+ 2569 0145 00       		.byte	0
+ 2570 0146 03       		.uleb128 0x3
+ 2571 0147 0E       		.uleb128 0xe
+ 2572 0148 3A       		.uleb128 0x3a
+ 2573 0149 0B       		.uleb128 0xb
+ 2574 014a 3B       		.uleb128 0x3b
+ 2575 014b 0B       		.uleb128 0xb
+ 2576 014c 49       		.uleb128 0x49
+ 2577 014d 13       		.uleb128 0x13
+ 2578 014e 3F       		.uleb128 0x3f
+ 2579 014f 19       		.uleb128 0x19
+ 2580 0150 3C       		.uleb128 0x3c
+ 2581 0151 19       		.uleb128 0x19
+ 2582 0152 00       		.byte	0
+ 2583 0153 00       		.byte	0
+ 2584 0154 00       		.byte	0
+ 2585              		.section	.debug_aranges,"",%progbits
+ 2586 0000 24000000 		.4byte	0x24
+ 2587 0004 0200     		.2byte	0x2
+ 2588 0006 00000000 		.4byte	.Ldebug_info0
+ 2589 000a 04       		.byte	0x4
+ 2590 000b 00       		.byte	0
+ 2591 000c 0000     		.2byte	0
+ 2592 000e 0000     		.2byte	0
+ 2593 0010 00000000 		.4byte	.LFB63
+ 2594 0014 8C0B0000 		.4byte	.LFE63-.LFB63
+ 2595 0018 00000000 		.4byte	.LFB64
+ 2596 001c A8020000 		.4byte	.LFE64-.LFB64
+ 2597 0020 00000000 		.4byte	0
+ 2598 0024 00000000 		.4byte	0
+ 2599              		.section	.debug_ranges,"",%progbits
+ 2600              	.Ldebug_ranges0:
+ 2601 0000 00000000 		.4byte	.LFB63
+ 2602 0004 8C0B0000 		.4byte	.LFE63
+ 2603 0008 00000000 		.4byte	.LFB64
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 51
+
+
+ 2604 000c A8020000 		.4byte	.LFE64
+ 2605 0010 00000000 		.4byte	0
+ 2606 0014 00000000 		.4byte	0
+ 2607              		.section	.debug_line,"",%progbits
+ 2608              	.Ldebug_line0:
+ 2609 0000 CD020000 		.section	.debug_str,"MS",%progbits,1
+ 2609      02006101 
+ 2609      00000201 
+ 2609      FB0E0D00 
+ 2609      01010101 
+ 2610              	.LASF6:
+ 2611 0000 6C6F6E67 		.ascii	"long long int\000"
+ 2611      206C6F6E 
+ 2611      6720696E 
+ 2611      7400
+ 2612              	.LASF24:
+ 2613 000e 6E6F6465 		.ascii	"node\000"
+ 2613      00
+ 2614              	.LASF44:
+ 2615 0013 696E7374 		.ascii	"instructions\000"
+ 2615      72756374 
+ 2615      696F6E73 
+ 2615      00
+ 2616              	.LASF14:
+ 2617 0020 5F5F696E 		.ascii	"__int32_t\000"
+ 2617      7433325F 
+ 2617      7400
+ 2618              	.LASF34:
+ 2619 002a 636F726E 		.ascii	"corner_penalty\000"
+ 2619      65725F70 
+ 2619      656E616C 
+ 2619      747900
+ 2620              	.LASF45:
+ 2621 0039 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 2621      4320342E 
+ 2621      392E3320 
+ 2621      32303135 
+ 2621      30333033 
+ 2622 006c 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 2622      20726576 
+ 2622      6973696F 
+ 2622      6E203232 
+ 2622      31323230 
+ 2623 009f 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 2623      66756E63 
+ 2623      74696F6E 
+ 2623      2D736563 
+ 2623      74696F6E 
+ 2624              	.LASF11:
+ 2625 00c7 646F7562 		.ascii	"double\000"
+ 2625      6C6500
+ 2626              	.LASF16:
+ 2627 00ce 75696E74 		.ascii	"uint8\000"
+ 2627      3800
+ 2628              	.LASF23:
+ 2629 00d4 64697265 		.ascii	"direction\000"
+ 2629      6374696F 
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 52
+
+
+ 2629      6E00
+ 2630              	.LASF27:
+ 2631 00de 64657374 		.ascii	"destination\000"
+ 2631      696E6174 
+ 2631      696F6E00 
+ 2632              	.LASF12:
+ 2633 00ea 666C6F61 		.ascii	"float\000"
+ 2633      7400
+ 2634              	.LASF35:
+ 2635 00f0 636F756E 		.ascii	"counter\000"
+ 2635      74657200 
+ 2636              	.LASF1:
+ 2637 00f8 756E7369 		.ascii	"unsigned char\000"
+ 2637      676E6564 
+ 2637      20636861 
+ 2637      7200
+ 2638              	.LASF28:
+ 2639 0106 4E6F6465 		.ascii	"Nodes\000"
+ 2639      7300
+ 2640              	.LASF26:
+ 2641 010c 73746172 		.ascii	"start\000"
+ 2641      7400
+ 2642              	.LASF37:
+ 2643 0112 6E657874 		.ascii	"nextNode\000"
+ 2643      4E6F6465 
+ 2643      00
+ 2644              	.LASF19:
+ 2645 011b 76697369 		.ascii	"visited\000"
+ 2645      74656400 
+ 2646              	.LASF32:
+ 2647 0123 74656E74 		.ascii	"tentativeNode\000"
+ 2647      61746976 
+ 2647      654E6F64 
+ 2647      6500
+ 2648              	.LASF5:
+ 2649 0131 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2649      20756E73 
+ 2649      69676E65 
+ 2649      6420696E 
+ 2649      7400
+ 2650              	.LASF36:
+ 2651 0143 746D7043 		.ascii	"tmpCost\000"
+ 2651      6F737400 
+ 2652              	.LASF3:
+ 2653 014b 73686F72 		.ascii	"short unsigned int\000"
+ 2653      7420756E 
+ 2653      7369676E 
+ 2653      65642069 
+ 2653      6E7400
+ 2654              	.LASF17:
+ 2655 015e 75696E74 		.ascii	"uint16\000"
+ 2655      313600
+ 2656              	.LASF20:
+ 2657 0165 636F7374 		.ascii	"cost\000"
+ 2657      00
+ 2658              	.LASF47:
+ 2659 016a 443A5C43 		.ascii	"D:\\CS301-Team-Repo\\CS301_Class.cydsn\000"
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 53
+
+
+ 2659      53333031 
+ 2659      2D546561 
+ 2659      6D2D5265 
+ 2659      706F5C43 
+ 2660              	.LASF8:
+ 2661 018f 756E7369 		.ascii	"unsigned int\000"
+ 2661      676E6564 
+ 2661      20696E74 
+ 2661      00
+ 2662              	.LASF7:
+ 2663 019c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2663      206C6F6E 
+ 2663      6720756E 
+ 2663      7369676E 
+ 2663      65642069 
+ 2664              	.LASF22:
+ 2665 01b3 74656E74 		.ascii	"tentative_cost\000"
+ 2665      61746976 
+ 2665      655F636F 
+ 2665      737400
+ 2666              	.LASF30:
+ 2667 01c2 746F7461 		.ascii	"totalIterationCounter\000"
+ 2667      6C497465 
+ 2667      72617469 
+ 2667      6F6E436F 
+ 2667      756E7465 
+ 2668              	.LASF21:
+ 2669 01d8 70726576 		.ascii	"prevNode\000"
+ 2669      4E6F6465 
+ 2669      00
+ 2670              	.LASF43:
+ 2671 01e1 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 2671      52784275 
+ 2671      66666572 
+ 2671      00
+ 2672              	.LASF15:
+ 2673 01ee 696E7433 		.ascii	"int32_t\000"
+ 2673      325F7400 
+ 2674              	.LASF42:
+ 2675 01f6 63757272 		.ascii	"currentNode\000"
+ 2675      656E744E 
+ 2675      6F646500 
+ 2676              	.LASF9:
+ 2677 0202 73697A65 		.ascii	"sizetype\000"
+ 2677      74797065 
+ 2677      00
+ 2678              	.LASF39:
+ 2679 020b 746D704E 		.ascii	"tmpNextNode\000"
+ 2679      6578744E 
+ 2679      6F646500 
+ 2680              	.LASF10:
+ 2681 0217 63686172 		.ascii	"char\000"
+ 2681      00
+ 2682              	.LASF49:
+ 2683 021c 67656E65 		.ascii	"generateDirections\000"
+ 2683      72617465 
+ 2683      44697265 
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 54
+
+
+ 2683      6374696F 
+ 2683      6E7300
+ 2684              	.LASF25:
+ 2685 022f 666F6F64 		.ascii	"food_list\000"
+ 2685      5F6C6973 
+ 2685      7400
+ 2686              	.LASF2:
+ 2687 0239 73686F72 		.ascii	"short int\000"
+ 2687      7420696E 
+ 2687      7400
+ 2688              	.LASF33:
+ 2689 0243 756E7265 		.ascii	"unreachable\000"
+ 2689      61636861 
+ 2689      626C6500 
+ 2690              	.LASF29:
+ 2691 024f 63757272 		.ascii	"current\000"
+ 2691      656E7400 
+ 2692              	.LASF41:
+ 2693 0257 6861734E 		.ascii	"hasNext\000"
+ 2693      65787400 
+ 2694              	.LASF48:
+ 2695 025f 646A696B 		.ascii	"djikstras\000"
+ 2695      73747261 
+ 2695      7300
+ 2696              	.LASF4:
+ 2697 0269 6C6F6E67 		.ascii	"long int\000"
+ 2697      20696E74 
+ 2697      00
+ 2698              	.LASF18:
+ 2699 0272 70617468 		.ascii	"path\000"
+ 2699      00
+ 2700              	.LASF13:
+ 2701 0277 6C6F6E67 		.ascii	"long double\000"
+ 2701      20646F75 
+ 2701      626C6500 
+ 2702              	.LASF0:
+ 2703 0283 7369676E 		.ascii	"signed char\000"
+ 2703      65642063 
+ 2703      68617200 
+ 2704              	.LASF38:
+ 2705 028f 6E657874 		.ascii	"nextNodeIndex\000"
+ 2705      4E6F6465 
+ 2705      496E6465 
+ 2705      7800
+ 2706              	.LASF46:
+ 2707 029d 2E5C7061 		.ascii	".\\pathfinder.c\000"
+ 2707      74686669 
+ 2707      6E646572 
+ 2707      2E6300
+ 2708              	.LASF40:
+ 2709 02ac 6E657874 		.ascii	"nextNodeCost\000"
+ 2709      4E6F6465 
+ 2709      436F7374 
+ 2709      00
+ 2710              	.LASF31:
+ 2711 02b9 6E657874 		.ascii	"nextNodes\000"
+ 2711      4E6F6465 
+ARM GAS  C:\Users\lken274\AppData\Local\Temp\ccVKVSFE.s 			page 55
+
+
+ 2711      7300
+ 2712              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
