@@ -48,121 +48,63 @@ void handle_rx_binary()
         flag_rx = 0;
         
         uint16 packet_bytes = (packet[1] << 8) | (packet[0]);
-        //uint16 packet_bytes = packet[0] & packet[1];
         char byte_packet[12];
         char string_packet[12];
-        //sprintf(string_packet, "%d", packet_bytes);
-        //sprintf(byte_packet, "%d", (int8)packet[0]);
-       // sprintf(string_packet, "%d", packet_bytes);
-        //usbPutString(string_packet);
-       // usbPutString(string_packet);
-       // usbPutChar(' ');
         
         switch(byteCount)
         {
             case 4:
-                //usbPutString("RSSI:");
-                //usbPutString(byte_packet);
-                //usbPutString("\r\n");
                 buffer_state.rssi = packet[0];
                 buffer_state.index = packet[1];
             break;
             case 6:
-                //usbPutString("robot_x:");
-                //usbPutString(string_packet);
-                //usbPutString("\r\n");
                 buffer_state.robot_xpos = packet_bytes;
             break;
             case 8:
-                //usbPutString("robot_y:");
-                //usbPutString(string_packet);
-                //usbPutString("\r\n");
                 buffer_state.robot_ypos = packet_bytes;
             break;
             case 10:
-                //usbPutString("robot_dir:");
-                //usbPutString(string_packet);
-                //usbPutString("\r\n");
                 buffer_state.robot_orientation = packet_bytes;
             break;
             case 12:
-                //usbPutString("g0_x:");
-                //usbPutString(string_packet);
-                //usbPutString("\r\n");
                 buffer_state.g0_xpos = packet_bytes;
             break;
             case 14:
-                //usbPutString("g0_y:");
-                //usbPutString(string_packet);
-                //usbPutString("\r\n");
                 buffer_state.g0_ypos = packet_bytes;
             break;
             case 16:
-                //usbPutString("g0_speed:");
-                //usbPutString(string_packet);
-                //usbPutString("\r\n");
                 buffer_state.g0_speed = packet_bytes;
             break;
             case 18:
-                //usbPutString("g1_dir:");
-                //usbPutString(string_packet);
-                //usbPutString("\r\n");
                 buffer_state.g0_direction = packet_bytes;
             break;
             case 20:
-                //usbPutString("g1_x:");
-                //usbPutString(string_packet);
-                //usbPutString("\r\n");
                 buffer_state.g1_xpos = packet_bytes;
             break;
             case 22:
-                //usbPutString("g1_y:");
-                //usbPutString(string_packet);
-                //usbPutString("\r\n");
                 buffer_state.g1_ypos = packet_bytes;
             break;
             case 24:
-                //usbPutString("g1_speed:");
-                //usbPutString(string_packet);
-                //usbPutString("\r\n");
                 buffer_state.g1_speed = packet_bytes;
             break;
             case 26:
-                //usbPutString("g1_dir:");
-                //usbPutString(string_packet);
-                //usbPutString("\r\n");
                 buffer_state.g1_direction = packet_bytes;
             break;
             case 28:
-                //usbPutString("g2_x:");
-                //usbPutString(string_packet);
-                //usbPutString("\r\n");
                 buffer_state.g2_xpos = packet_bytes;
             break;
             case 30:
-                //usbPutString("g2_y:");
-                //usbPutString(string_packet);
-                //usbPutString("\r\n");
                 buffer_state.g2_ypos = packet_bytes;
             break;
             case 32:
-                //usbPutString("g1_speed:");
-                //usbPutString(string_packet);
-                //usbPutString("\r\n");
                 buffer_state.g2_speed = packet_bytes;
             break;
             case 34:
                 buffer_state.g2_direction = packet_bytes;
-                //usbPutString("g2_dir:");
-                //usbPutString(string_packet);
-                //usbPutString("\r\n");
-                
             break;
         }
     }
 }
-
-
 
 void setLeftDir(uint8 dir)
 {
@@ -351,7 +293,7 @@ CY_ISR(BT_rxInt)
         break;
     case('z'):
         track_mode = SQUARE_TRACK;
-        initTrack();
+        inittrackLineZ();
         break;
     case('q'):
         track_mode = QUAD_STOP;
@@ -368,6 +310,10 @@ CY_ISR(BT_rxInt)
         // Make initial position
         initial_pos_valid = 0;
         initBrake();
+        break;
+    case ('x'):
+        track_mode = DEST_TEST;
+        inittrackLineZ();
         break;
     }
 }
@@ -796,14 +742,17 @@ int main()
         switch(track_mode)
         {
             case SQUARE_TRACK:
-                if(frontSensors[0] == 1 && frontSensors[2] == 1){ //left turn
-                    initTurnLeft();
-                }
-                else if (frontSensors[4] == 1 && frontSensors[2] == 1) //right turn
+                if(movement_state != LTURN && movement_state != RTURN)
                 {
-                    initTurnRight();
+                    if(frontSensors[0] == 1 && frontSensors[2] == 1){ //left turn
+                        initTurnLeft();
+                    }
+                    else if (frontSensors[4] == 1 && frontSensors[2] == 1) //right turn
+                    {
+                        initTurnRight();
+                    }
+                    else inittrackLineZ();
                 }
-                else inittrackLineZ();
             break;
             case NO_TRACK:
             break;
@@ -825,6 +774,41 @@ int main()
                     initForward();
                 }
             break;
+            case DEST_TEST:
+                if(movement_state != LTURN && movement_state != RTURN){
+                    //when we hit an intersection, verify the next step then evaluate
+                    char nextStep = instructions[instructionCount];
+                    if(((frontSensors[0] == 1 && frontSensors[2] == 1) || (frontSensors[4] == 1 && frontSensors[2] == 1))){ //intersection
+                        if(sensorsDisabled == 0)
+                        {
+                            sensorsDisabled = 1;
+                            switch(nextStep)
+                            {
+                                case 'S':
+                                    inittrackLineZ();
+                                    //do nothing
+                                break;
+                                case 'L':
+                                    initTurnLeft();
+                                break;
+                                case 'R':
+                                    initTurnRight();
+                                break;
+                                    
+                                default:
+                                    //do nothing
+                                    break;
+                            }
+                            instructionCount++;
+                        }
+                    }
+                    else
+                    {
+                        inittrackLineZ();
+                        sensorsDisabled = 0;
+                    }
+                }
+                break;
         }
         
         switch(movement_state)

@@ -86,9 +86,14 @@ uint8 portOpen = 1;
 int16 prevVoltage;
 int16 prevVoltage2;
 
+//pathfinding
+char instructions[] = {'R','L','S','S','R','L','R','L','R',0};
+uint16 instructionCount = 0;
+uint8 sensorsDisabled = 0;
+
 //concept of robot state
 enum state {DRIVE = 0, LTURN, RTURN, STOPPED, TRACKING, TRACKING_U, TRACKING_SOFT}; 
-enum mode {NO_TRACK, CURVE_TRACK, U_TRACK, SQUARE_TRACK, QUAD_STOP, RF_STOP};
+enum mode {NO_TRACK, CURVE_TRACK, U_TRACK, SQUARE_TRACK, QUAD_STOP, RF_STOP, DEST_TEST};
 //* ========================================
 char displaystring[BUF_SIZE] = "CS301 2016\n";
 char line[BUF_SIZE], entry[BUF_SIZE];
