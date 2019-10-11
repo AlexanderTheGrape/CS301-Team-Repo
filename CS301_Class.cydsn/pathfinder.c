@@ -34,7 +34,6 @@ typedef struct node{
    uint8 direction;
 } node;
 
-
 /**pathfinding algorithm
 * returns the length of the path array 0 if no path is found
 * map - map to be searched through (needs size)
@@ -44,7 +43,7 @@ typedef struct node{
 * destination - end node
 * direction - the initial direction of the robot
 */
-uint8 djikstras(uint8 map[Y_SIZE][X_SIZE], uint8 food_list[6][2], uint8 path[DEFAULT_ARRAY_SIZE][3], uint8 start[], uint8 destination[], uint8 direction){
+uint8 djikstras(uint8 map[Y_SIZE][X_SIZE], uint8 food_list[6][2], uint8 path[DEFAULT_ARRAY_SIZE][3], uint8 start[], uint8 destination[]){
    node Nodes[Y_SIZE][X_SIZE];
    //fill up the default information for each node
     uint8 i;
@@ -105,7 +104,7 @@ uint8 djikstras(uint8 map[Y_SIZE][X_SIZE], uint8 food_list[6][2], uint8 path[DEF
             tentativeNode[Y] = current[Y];
             tentativeNode[X] = current[X] - 1;
          }
-         if(counter != direction){
+         if(counter != robot_direction){
             corner_penalty = CORNER_PENALTY;
          }
 
@@ -158,7 +157,7 @@ uint8 djikstras(uint8 map[Y_SIZE][X_SIZE], uint8 food_list[6][2], uint8 path[DEF
       //printf("has next %d\n", hasNext);
       current[Y] = nextNodes[nextNodeIndex][Y];
       current[X] = nextNodes[nextNodeIndex][X];
-      direction = Nodes[current[Y]][current[X]].direction;
+      robot_direction = Nodes[current[Y]][current[X]].direction;
 
    }
 
@@ -189,10 +188,39 @@ uint8 djikstras(uint8 map[Y_SIZE][X_SIZE], uint8 food_list[6][2], uint8 path[DEF
 }
 
 int generateDirections(){
-
-   int end = djikstras(map, food_list, path, start, destination, 1);
-
    uint8 counter = 0;
+   int food_count;
+    
+   for(food_count = 0; food_count < food_length; food_count++)
+{   
+    if(counter != 0)
+    {
+        start[0] = destination[0];
+        start[1] = destination[1];
+        
+        if(robot_direction != tracked_direction)
+        {
+            if((tracked_direction == (robot_direction - 1)) || ((tracked_direction == 3) && (robot_direction == 0))) //do a right turn
+            {
+                instructions[counter] = RIGHT;
+                counter++;
+            }
+            else if((tracked_direction == (robot_direction + 1)) || ((tracked_direction == 0) && (robot_direction == 3))) //do a left turn
+            {
+                instructions[counter] = LEFT;
+                counter++;
+            }
+        }
+    }
+    
+    destination[0] = food_list[food_count][0];
+    destination[1] = food_list[food_count][1];
+    
+    char message[128];
+    sprintf(message, "pathing from %d,%d to %d,%d from dir %d\r\n", start[0], start[1], destination[0], destination[1], robot_direction);
+    UART_PutString(message);
+    
+   int end = djikstras(map, food_list, path, start, destination);
 
    int i;
    for(i = end - 1 ; i >= 1; i--){
@@ -227,6 +255,7 @@ int generateDirections(){
          }
       }
    }
-   instructions[counter] = '\0';
+   //instructions[counter] = '\0';
+}
    return 0;
 }

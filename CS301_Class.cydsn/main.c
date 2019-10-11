@@ -43,9 +43,12 @@ char instructions[DEFAULT_ARRAY_SIZE] = {0};
 uint16 instructionCount = 0;
 uint8 sensorsDisabled = 0;
 
+uint8 robot_direction = 1;
+
 uint8 path[DEFAULT_ARRAY_SIZE][3] = {0};
 uint8 start[2] = {1, 1};//(y, x) array starts at 0
 uint8 destination[2] = {13, 17};//(y, x)
+
 
 uint8 map[15][19] = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
                     {1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,1},
@@ -62,8 +65,12 @@ uint8 map[15][19] = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
                     {1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1},
                     {1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,1},
                     {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
+//first number is the y coord, second is x
+//first number is row, second column
 
-uint8 food_list[6][2]= {{4,5},{7,1},{11,5},{10,11},{5,8},{17,2}};
+//uint8 food_list[6][2]= {{4,5},{7,1},{11,5},{10,11},{5,8},{17,2}};
+uint8 food_list[6][2]= {{5,11}, {13, 1}};
+uint8 food_length = 2;
 
 void changeToRF();
 void changeToBT();
@@ -340,8 +347,12 @@ CY_ISR(BT_rxInt)
         break;
     case ('x'):
         track_mode = DEST_TEST;
+        tracked_direction = robot_direction;
         generateDirections();
-        inittrackLineZ();
+        char message[128];
+        sprintf(message, "p:%s\r\n", instructions);
+        UART_PutString(message);
+        initTrackU();
         break;
     }
 }
@@ -812,14 +823,17 @@ int main()
                             switch(nextStep)
                             {
                                 case 'S':
-                                    inittrackLineZ();
+                                    initTrackU();
                                     //do nothing
                                 break;
                                 case 'L':
+                                    if(tracked_direction == 0) tracked_direction = 3; else tracked_direction--;
                                     initTurnLeft();
                                 break;
                                 case 'R':
+                                    if(tracked_direction == 3) tracked_direction = 0; else tracked_direction++;
                                     initTurnRight();
+                                    
                                 break;
                                     
                                 default:
