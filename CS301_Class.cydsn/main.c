@@ -69,8 +69,8 @@ uint8 map[15][19] = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 //first number is row, second column
 
 //uint8 food_list[6][2]= {{4,5},{7,1},{11,5},{10,11},{5,8},{17,2}};
-uint8 food_list[6][2]= {{5,11}, {13, 1}};
-uint8 food_length = 2;
+uint8 food_list[6][2]= {{5,11}, {1, 17}, {13, 1}};
+uint8 food_length = 3;
 
 void changeToRF();
 void changeToBT();
@@ -221,6 +221,11 @@ void turnLeft()
     setSpeed(speed*2.0,0);
 }
 
+void turnU()
+{
+    setSpeed(-speed*2.0,speed*2.0);
+}
+
 void initTurnLeft(){
     Timer_2_Stop();
     prev_movement_state = movement_state;
@@ -235,6 +240,15 @@ void initTurnRight(){
     prev_movement_state = movement_state;
     movement_state = RTURN;
     brakeRight();
+    start_turn_count = QuadDec_M1_GetCounter();
+    Timer_2_Start();
+}
+
+void initTurnU(){
+    Timer_2_Stop();
+    prev_movement_state = movement_state;
+    movement_state = UTURN;
+    brakeMotor();
     start_turn_count = QuadDec_M1_GetCounter();
     Timer_2_Start();
 }
@@ -383,7 +397,7 @@ CY_ISR (isr_quad1)
     quad_diff1 = quad_count1 - last_quad_count1;
     quad_diff2 = quad_count2 - last_quad_count2;
     
-    if(abs(quad_count1) > 3000 && movement_state != LTURN && movement_state != RTURN && track_mode != QUAD_STOP)
+    if(abs(quad_count1) > 3000 && movement_state != LTURN && movement_state != RTURN && track_mode != QUAD_STOP && movement_state != UTURN)
     {
         QuadDec_M1_SetCounter(0);
         QuadDec_M2_SetCounter(0);
@@ -430,6 +444,16 @@ CY_ISR(isr_turn_timer)
         }
     }
     else if (movement_state == RTURN)
+    {
+        if(abs(QuadDec_M1_GetCounter() - start_turn_count) >= 208)
+        {
+            //movement_state = STOPPED;
+            brakeMotor();
+            movement_state = prev_movement_state;
+            Timer_2_Stop();
+        }
+    }
+    else if (movement_state == UTURN)
     {
         if(abs(QuadDec_M1_GetCounter() - start_turn_count) >= 208)
         {
@@ -818,7 +842,7 @@ int main()
                 }
             break;
             case DEST_TEST:
-                if(movement_state != LTURN && movement_state != RTURN){
+                if(movement_state != LTURN && movement_state != RTURN && movement_state != UTURN){
                     //when we hit an intersection, verify the next step then evaluate
                     char nextStep = instructions[instructionCount];
                     if(((frontSensors[0] == 1 && frontSensors[2] == 1) || (frontSensors[4] == 1 && frontSensors[2] == 1))){ //intersection
@@ -832,19 +856,31 @@ int main()
                                     //do nothing
                                 break;
                                 case 'L':
-                                    if(tracked_direction == 1) tracked_direction = 4; else tracked_direction--;
+                                    //if(tracked_direction == 1) tracked_direction = 4; else tracked_direction--;
                                     initTurnLeft();
                                 break;
                                 case 'R':
-                                    if(tracked_direction == 4) tracked_direction = 1; else tracked_direction++;
+                                    //if(tracked_direction == 4) tracked_direction = 1; else tracked_direction++;
                                     initTurnRight();
                                     
                                 break;
-                                    
+                                case 'U':
+                                    // Direction not tracked any more
+                                    initTurnU();
+                                break;
                                 default:
                                     //do nothing
                                     break;
                             }
+                            instructionCount++;
+                        }
+                    }
+                    else if (frontSensors[0] == 0 && frontSensors[1] == 0 && frontSensors[2] == 0 && frontSensors[3] == 0 && frontSensors[4] == 0 && nextStep == 'U')
+                    {
+                        if(sensorsDisabled == 0)
+                        {
+                            sensorsDisabled = 1;
+                            initTurnU();
                             instructionCount++;
                         }
                     }
@@ -867,6 +903,9 @@ int main()
             break;
             case RTURN:
                 turnRight();
+            break;
+            case UTURN:
+                turnU();
             break;
             case STOPPED:
                 brakeMotor();
