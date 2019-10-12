@@ -10,6 +10,7 @@
 #define STRAIGHT 'S'
 #define LEFT 'L'
 #define RIGHT 'R'
+#define UTURN 'U'
 
 #define INF_16 65535
 
@@ -83,6 +84,7 @@ uint8 djikstras(uint8 map[Y_SIZE][X_SIZE], uint8 food_list[6][2], uint8 path[DEF
 
    Nodes[current[Y]][current[X]].tentative_cost = 0;
    Nodes[current[Y]][current[X]].prevNode = &Nodes[current[Y]][current[X]];
+   Nodes[current[Y]][current[X]].direction = robot_direction;
 
    //early exit, run until x and y are equal
    while(!((current[Y] == destination[Y]) && (current[X] == destination[X])) && hasNext == 1){
@@ -198,19 +200,19 @@ int generateDirections(){
         start[0] = destination[0];
         start[1] = destination[1];
         
-        if(robot_direction != tracked_direction)
-        {
-            if((tracked_direction == (robot_direction - 1)) || ((tracked_direction == 3) && (robot_direction == 0))) //do a right turn
-            {
-                instructions[counter] = RIGHT;
-                counter++;
-            }
-            else if((tracked_direction == (robot_direction + 1)) || ((tracked_direction == 0) && (robot_direction == 3))) //do a left turn
-            {
-                instructions[counter] = LEFT;
-                counter++;
-            }
-        }
+//        if(robot_direction != tracked_direction)
+//        {
+//            if((tracked_direction == (robot_direction - 1)) || ((tracked_direction == 3) && (robot_direction == 0))) //do a right turn
+//            {
+//                instructions[counter] = RIGHT;
+//                counter++;
+//            }
+//            else if((tracked_direction == (robot_direction + 1)) || ((tracked_direction == 0) && (robot_direction == 3))) //do a left turn
+//            {
+//                instructions[counter] = LEFT;
+//                counter++;
+//            }
+//        }
     }
     
     destination[0] = food_list[food_count][0];
@@ -223,35 +225,56 @@ int generateDirections(){
    int end = djikstras(map, food_list, path, start, destination);
 
    int i;
-   for(i = end - 1 ; i >= 1; i--){
+   for(i = end; i >= 1; i--){
       if(path[i][DIR] == 1 || path[i][DIR] == 3){
          //There should be a check that it is within the map
          if(map[path[i][Y]][path[i][X] - 1] == PATH || map[path[i][Y]][path[i][X] + 1] == PATH){
             if(path[i][DIR] != path[i - 1][DIR]){
-               if(path[i][DIR] - path[i - 1][DIR] > 0){
+               if(path[i][DIR] - path[i - 1][DIR] == 1){
                   instructions[counter] = LEFT;
-               }else if(path[i][DIR] - path[i - 1][DIR] < 0){
+               }else if(path[i][DIR] - path[i - 1][DIR] == -1){
                   instructions[counter] = RIGHT;
+               }else if(abs(path[i][DIR] - path[i - 1][DIR]) > 1){
+                  instructions[counter] = UTURN;
                }
             }else{
                instructions[counter] = STRAIGHT;
             }
             counter++;
-         }
+        }else{
+            if(path[i][DIR] != path[i - 1][DIR]){
+               if(abs(path[i][DIR] - path[i - 1][DIR]) > 1){
+                  instructions[counter] = UTURN;
+                counter++;
+               }
+            }else{
+               instructions[counter] = STRAIGHT;
+            }
+        } 
+        
       }else{
          if(map[path[i][Y] - 1][path[i][X]] == PATH || map[path[i][Y] + 1][path[i][X]] == PATH){
             if(path[i][DIR] != path[i - 1][DIR]){
-               if(path[i][DIR] - path[i - 1][DIR] > 0){
+               if(path[i][DIR] - path[i - 1][DIR] == 1){
                   instructions[counter] = LEFT;
-               }else if(path[i][DIR] - path[i - 1][DIR] < 0){
+               }else if(path[i][DIR] - path[i - 1][DIR] == -1){
                   instructions[counter] = RIGHT;
+               }else if(abs(path[i][DIR] - path[i - 1][DIR]) > 1){
+                  instructions[counter] = UTURN;
                }
             }else{
                instructions[counter] = STRAIGHT;
             }
             counter++;
          }else{
-            //printf("(%d)[direction = %d]\n", end - i + 1, path[i][DIR]);
+            if(path[i][DIR] != path[i - 1][DIR]){
+               if(abs(path[i][DIR] - path[i - 1][DIR]) > 1){
+                  instructions[counter] = UTURN;
+                counter++;
+               }
+            }else{
+               instructions[counter] = STRAIGHT;
+            }
          }
       }
    }

@@ -43,7 +43,7 @@ char instructions[DEFAULT_ARRAY_SIZE] = {0};
 uint16 instructionCount = 0;
 uint8 sensorsDisabled = 0;
 
-uint8 robot_direction = 1;
+uint8 robot_direction = 4;
 
 uint8 path[DEFAULT_ARRAY_SIZE][3] = {0};
 uint8 start[2] = {1, 1};//(y, x) array starts at 0
@@ -352,7 +352,7 @@ CY_ISR(BT_rxInt)
         char message[128];
         sprintf(message, "p:%s\r\n", instructions);
         UART_PutString(message);
-        initTrackU();
+        inittrackLineZ();
         break;
     }
 }
@@ -577,27 +577,32 @@ void trackLineZ()
     uint8 nl = NLSens_out_Read();
     uint8 nr = NRSens_out_Read();
     uint8 mid = MSens_out_Read();
+    
     //if only the left one, hard left
-    if(nl && !nr && !mid)
+    if(nl && !nr && !mid)// && trackTurnCount > 0)
     {
-        setSpeed(speed / 1.5,-speed / 1.5);
+        setSpeed(speed, -speed);
     }
     else if(nl && mid && !nr)   //if centre/middle, soft left
     {
-        setSpeed(speed, 0.0);
+        //setSpeed(speed,speed / 1.5);
+        //setSpeed(speed, -speed);
     }
     else if (nr && mid && !nl)//if centre/right, soft right
     {
-        setSpeed(0.0,speed);
+       // setSpeed(speed / 1.5,speed);
+        //setSpeed(-speed,speed);
     }
    else if (nr && !mid && !nl)    //if only right, hard right
     {
-        setSpeed(-speed / 1.5,speed / 1.5);
+        setSpeed(-speed,speed);
     }
     else if (mid && !nr && !nl)
     {
         setSpeed(speed,speed);
     }
+    //else setSpeed(speed, speed);
+  
    // else if (!mid && !nr && !nl)
     //{
         //setSpeed(0,0);
@@ -827,11 +832,11 @@ int main()
                                     //do nothing
                                 break;
                                 case 'L':
-                                    if(tracked_direction == 0) tracked_direction = 3; else tracked_direction--;
+                                    if(tracked_direction == 1) tracked_direction = 4; else tracked_direction--;
                                     initTurnLeft();
                                 break;
                                 case 'R':
-                                    if(tracked_direction == 3) tracked_direction = 0; else tracked_direction++;
+                                    if(tracked_direction == 4) tracked_direction = 1; else tracked_direction++;
                                     initTurnRight();
                                     
                                 break;
