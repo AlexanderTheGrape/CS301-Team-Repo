@@ -17,7 +17,7 @@
 #define Y_SIZE 15
 #define X_SIZE 19
 
-#define DEFAULT_ARRAY_SIZE 400
+#define DEFAULT_ARRAY_SIZE 800
 
 
 //pathfinding

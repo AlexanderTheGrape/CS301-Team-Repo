@@ -230,11 +230,11 @@ int generateDirections(){
          //There should be a check that it is within the map
          if(map[path[i][Y]][path[i][X] - 1] == PATH || map[path[i][Y]][path[i][X] + 1] == PATH){
             if(path[i][DIR] != path[i - 1][DIR]){
-               if(path[i][DIR] - path[i - 1][DIR] == 1){
+               if((path[i][DIR] == 1 && path[i-1][DIR] == 4)||(path[i][DIR] == 3 && path[i-1][DIR] == 2)){
                   instructions[counter] = LEFT;
-               }else if(path[i][DIR] - path[i - 1][DIR] == -1){
+               }else if((path[i][DIR] == 1 && path[i-1][DIR] == 2)||(path[i][DIR] == 3 && path[i-1][DIR] == 4)){
                   instructions[counter] = RIGHT;
-               }else if(abs(path[i][DIR] - path[i - 1][DIR]) > 1){
+               }else if((path[i][DIR] == 1 && path[i-1][DIR] == 3)||(path[i][DIR] == 3 && path[i-1][DIR] == 1)){
                   instructions[counter] = UTURN;
                }
             }else{
@@ -243,7 +243,7 @@ int generateDirections(){
             counter++;
         }else{
             if(path[i][DIR] != path[i - 1][DIR]){
-               if(abs(path[i][DIR] - path[i - 1][DIR]) > 1){
+               if((path[i][DIR] == 1 && path[i-1][DIR] == 3)||(path[i][DIR] == 3 && path[i-1][DIR] == 1)){
                   instructions[counter] = UTURN;
                 counter++;
                }
@@ -255,11 +255,11 @@ int generateDirections(){
       }else{
          if(map[path[i][Y] - 1][path[i][X]] == PATH || map[path[i][Y] + 1][path[i][X]] == PATH){
             if(path[i][DIR] != path[i - 1][DIR]){
-               if(path[i][DIR] - path[i - 1][DIR] == 1){
+               if((path[i][DIR] == 4 && path[i-1][DIR] == 3)||(path[i][DIR] == 2 && path[i-1][DIR] == 1)){
                   instructions[counter] = LEFT;
-               }else if(path[i][DIR] - path[i - 1][DIR] == -1){
+               }else if((path[i][DIR] == 4 && path[i-1][DIR] == 1)||(path[i][DIR] == 2 && path[i-1][DIR] == 3)){
                   instructions[counter] = RIGHT;
-               }else if(abs(path[i][DIR] - path[i - 1][DIR]) > 1){
+               }else if((path[i][DIR] == 4 && path[i-1][DIR] == 2)||(path[i][DIR] == 2 && path[i-1][DIR] == 4)){
                   instructions[counter] = UTURN;
                }
             }else{
@@ -268,7 +268,7 @@ int generateDirections(){
             counter++;
          }else{
             if(path[i][DIR] != path[i - 1][DIR]){
-               if(abs(path[i][DIR] - path[i - 1][DIR]) > 1){
+               if((path[i][DIR] == 4 && path[i-1][DIR] == 2)||(path[i][DIR] == 2 && path[i-1][DIR] == 4)){
                   instructions[counter] = UTURN;
                 counter++;
                }

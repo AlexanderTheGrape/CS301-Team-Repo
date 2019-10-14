@@ -605,7 +605,7 @@ void trackLineZ()
     //if only the left one, hard left
     if(nl && !nr && !mid)// && trackTurnCount > 0)
     {
-        setSpeed(speed, -speed);
+        setSpeed(speed / 1.5, -speed / 1.5);
     }
     else if(nl && mid && !nr)   //if centre/middle, soft left
     {
@@ -619,7 +619,7 @@ void trackLineZ()
     }
    else if (nr && !mid && !nl)    //if only right, hard right
     {
-        setSpeed(-speed,speed);
+        setSpeed(-speed / 1.5,speed / 1.5);
     }
     else if (mid && !nr && !nl)
     {

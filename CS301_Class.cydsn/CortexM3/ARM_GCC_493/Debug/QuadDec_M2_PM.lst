@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 1
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccKRY6RT.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 1
   25:.\Generated_Source\PSoC5/QuadDec_M2_PM.c **** * Function Name: QuadDec_M2_SaveConfig
   26:.\Generated_Source\PSoC5/QuadDec_M2_PM.c **** ********************************************************************************
   27:.\Generated_Source\PSoC5/QuadDec_M2_PM.c **** * Summary:
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 2
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccKRY6RT.s 			page 2
 
 
   28:.\Generated_Source\PSoC5/QuadDec_M2_PM.c **** *  Saves the current user configuration of the component.
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 1
   57:.\Generated_Source\PSoC5/QuadDec_M2_PM.c **** *  None.
   58:.\Generated_Source\PSoC5/QuadDec_M2_PM.c **** *
   59:.\Generated_Source\PSoC5/QuadDec_M2_PM.c **** * Return:
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 3
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccKRY6RT.s 			page 3
 
 
   60:.\Generated_Source\PSoC5/QuadDec_M2_PM.c **** *  None.
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 1
   89:.\Generated_Source\PSoC5/QuadDec_M2_PM.c **** * Global Variables:
   90:.\Generated_Source\PSoC5/QuadDec_M2_PM.c **** *  QuadDec_M2_backup - modified when non-retention registers are saved.
   91:.\Generated_Source\PSoC5/QuadDec_M2_PM.c **** *
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 4
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccKRY6RT.s 			page 4
 
 
   92:.\Generated_Source\PSoC5/QuadDec_M2_PM.c **** * Reentrant:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 1
  117              	.L6:
  118 002c 9D640040 		.word	1073767581
  119 0030 00000000 		.word	QuadDec_M2_backup
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 5
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccKRY6RT.s 			page 5
 
 
  120              		.cfi_endproc
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 1
  136:.\Generated_Source\PSoC5/QuadDec_M2_PM.c ****             QuadDec_M2_Cnt8_Enable();
  137:.\Generated_Source\PSoC5/QuadDec_M2_PM.c ****         #else 
  138:.\Generated_Source\PSoC5/QuadDec_M2_PM.c ****             /* (QuadDec_M2_COUNTER_SIZE == QuadDec_M2_COUNTER_SIZE_16_BIT) || 
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 6
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccKRY6RT.s 			page 6
 
 
  139:.\Generated_Source\PSoC5/QuadDec_M2_PM.c ****             *  (QuadDec_M2_COUNTER_SIZE == QuadDec_M2_COUNTER_SIZE_32_BIT) 
@@ -335,10 +335,10 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 1
  170 0006 00000000 		.4byte	.Ldebug_abbrev0
  171 000a 04       		.byte	0x4
  172 000b 01       		.uleb128 0x1
- 173 000c 0C010000 		.4byte	.LASF20
+ 173 000c F6000000 		.4byte	.LASF20
  174 0010 01       		.byte	0x1
- 175 0011 66000000 		.4byte	.LASF21
- 176 0015 27000000 		.4byte	.LASF22
+ 175 0011 50000000 		.4byte	.LASF21
+ 176 0015 00000000 		.4byte	.LASF22
  177 0019 00000000 		.4byte	.Ldebug_ranges0+0
  178 001d 00000000 		.4byte	0
  179 0021 00000000 		.4byte	.Ldebug_line0
@@ -349,65 +349,65 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 1
  184 002c 03       		.uleb128 0x3
  185 002d 04       		.byte	0x4
  186 002e 07       		.byte	0x7
- 187 002f 1A000000 		.4byte	.LASF0
+ 187 002f 31000000 		.4byte	.LASF0
  188 0033 03       		.uleb128 0x3
  189 0034 01       		.byte	0x1
  190 0035 06       		.byte	0x6
- 191 0036 BE010000 		.4byte	.LASF1
+ 191 0036 B6010000 		.4byte	.LASF1
  192 003a 03       		.uleb128 0x3
  193 003b 01       		.byte	0x1
  194 003c 08       		.byte	0x8
- 195 003d F0000000 		.4byte	.LASF2
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 7
+ 195 003d DA000000 		.4byte	.LASF2
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccKRY6RT.s 			page 7
 
 
  196 0041 03       		.uleb128 0x3
  197 0042 02       		.byte	0x2
  198 0043 05       		.byte	0x5
- 199 0044 9A010000 		.4byte	.LASF3
+ 199 0044 84010000 		.4byte	.LASF3
  200 0048 03       		.uleb128 0x3
  201 0049 02       		.byte	0x2
  202 004a 07       		.byte	0x7
- 203 004b AB010000 		.4byte	.LASF4
+ 203 004b A3010000 		.4byte	.LASF4
  204 004f 03       		.uleb128 0x3
  205 0050 04       		.byte	0x4
  206 0051 05       		.byte	0x5
- 207 0052 03010000 		.4byte	.LASF5
+ 207 0052 ED000000 		.4byte	.LASF5
  208 0056 03       		.uleb128 0x3
  209 0057 04       		.byte	0x4
  210 0058 07       		.byte	0x7
- 211 0059 95000000 		.4byte	.LASF6
+ 211 0059 7F000000 		.4byte	.LASF6
  212 005d 03       		.uleb128 0x3
  213 005e 08       		.byte	0x8
  214 005f 05       		.byte	0x5
- 215 0060 00000000 		.4byte	.LASF7
+ 215 0060 95010000 		.4byte	.LASF7
  216 0064 03       		.uleb128 0x3
  217 0065 08       		.byte	0x8
  218 0066 07       		.byte	0x7
- 219 0067 A7000000 		.4byte	.LASF8
+ 219 0067 91000000 		.4byte	.LASF8
  220 006b 03       		.uleb128 0x3
  221 006c 04       		.byte	0x4
  222 006d 07       		.byte	0x7
- 223 006e FD010000 		.4byte	.LASF9
+ 223 006e F5010000 		.4byte	.LASF9
  224 0072 03       		.uleb128 0x3
  225 0073 01       		.byte	0x1
  226 0074 08       		.byte	0x8
- 227 0075 FE000000 		.4byte	.LASF10
+ 227 0075 E8000000 		.4byte	.LASF10
  228 0079 04       		.uleb128 0x4
- 229 007a 8F000000 		.4byte	.LASF13
+ 229 007a 79000000 		.4byte	.LASF13
  230 007e 02       		.byte	0x2
  231 007f 9201     		.2byte	0x192
  232 0081 3A000000 		.4byte	0x3a
  233 0085 03       		.uleb128 0x3
  234 0086 04       		.byte	0x4
  235 0087 04       		.byte	0x4
- 236 0088 CA010000 		.4byte	.LASF11
+ 236 0088 C2010000 		.4byte	.LASF11
  237 008c 03       		.uleb128 0x3
  238 008d 08       		.byte	0x8
  239 008e 04       		.byte	0x4
- 240 008f A4010000 		.4byte	.LASF12
+ 240 008f 8E010000 		.4byte	.LASF12
  241 0093 04       		.uleb128 0x4
- 242 0094 E2010000 		.4byte	.LASF14
+ 242 0094 DA010000 		.4byte	.LASF14
  243 0098 02       		.byte	0x2
  244 0099 3C02     		.2byte	0x23c
  245 009b 9F000000 		.4byte	0x9f
@@ -418,23 +418,23 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 1
  250 00a6 03       		.byte	0x3
  251 00a7 3D       		.byte	0x3d
  252 00a8 B9000000 		.4byte	0xb9
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 8
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccKRY6RT.s 			page 8
 
 
  253 00ac 07       		.uleb128 0x7
- 254 00ad 0E000000 		.4byte	.LASF23
+ 254 00ad 25000000 		.4byte	.LASF23
  255 00b1 03       		.byte	0x3
  256 00b2 3F       		.byte	0x3f
  257 00b3 79000000 		.4byte	0x79
  258 00b7 00       		.byte	0
  259 00b8 00       		.byte	0
  260 00b9 08       		.uleb128 0x8
- 261 00ba D7000000 		.4byte	.LASF15
+ 261 00ba C1000000 		.4byte	.LASF15
  262 00be 03       		.byte	0x3
  263 00bf 40       		.byte	0x40
  264 00c0 A4000000 		.4byte	0xa4
  265 00c4 09       		.uleb128 0x9
- 266 00c5 E7010000 		.4byte	.LASF16
+ 266 00c5 DF010000 		.4byte	.LASF16
  267 00c9 01       		.byte	0x1
  268 00ca 25       		.byte	0x25
  269 00cb 00000000 		.4byte	.LFB0
@@ -442,7 +442,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 1
  271 00d3 01       		.uleb128 0x1
  272 00d4 9C       		.byte	0x9c
  273 00d5 09       		.uleb128 0x9
- 274 00d6 BE000000 		.4byte	.LASF17
+ 274 00d6 A8000000 		.4byte	.LASF17
  275 00da 01       		.byte	0x1
  276 00db 3F       		.byte	0x3f
  277 00dc 00000000 		.4byte	.LFB1
@@ -450,7 +450,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 1
  279 00e4 01       		.uleb128 0x1
  280 00e5 9C       		.byte	0x9c
  281 00e6 09       		.uleb128 0x9
- 282 00e7 06020000 		.4byte	.LASF18
+ 282 00e7 FE010000 		.4byte	.LASF18
  283 00eb 01       		.byte	0x1
  284 00ec 60       		.byte	0x60
  285 00ed 00000000 		.4byte	.LFB2
@@ -458,7 +458,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 1
  287 00f5 01       		.uleb128 0x1
  288 00f6 9C       		.byte	0x9c
  289 00f7 09       		.uleb128 0x9
- 290 00f8 54000000 		.4byte	.LASF19
+ 290 00f8 3E000000 		.4byte	.LASF19
  291 00fc 01       		.byte	0x1
  292 00fd 81       		.byte	0x81
  293 00fe 00000000 		.4byte	.LFB3
@@ -466,7 +466,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 1
  295 0106 01       		.uleb128 0x1
  296 0107 9C       		.byte	0x9c
  297 0108 0A       		.uleb128 0xa
- 298 0109 D0010000 		.4byte	.LASF24
+ 298 0109 C8010000 		.4byte	.LASF24
  299 010d 01       		.byte	0x1
  300 010e 15       		.byte	0x15
  301 010f B9000000 		.4byte	0xb9
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 1
  307              	.Ldebug_abbrev0:
  308 0000 01       		.uleb128 0x1
  309 0001 11       		.uleb128 0x11
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 9
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccKRY6RT.s 			page 9
 
 
  310 0002 01       		.byte	0x1
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 1
  364 0038 00       		.byte	0
  365 0039 49       		.uleb128 0x49
  366 003a 13       		.uleb128 0x13
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 10
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccKRY6RT.s 			page 10
 
 
  367 003b 00       		.byte	0
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 1
  421 0071 27       		.uleb128 0x27
  422 0072 19       		.uleb128 0x19
  423 0073 11       		.uleb128 0x11
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 11
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccKRY6RT.s 			page 11
 
 
  424 0074 01       		.uleb128 0x1
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 1
  478 0024 00000000 		.4byte	0
  479              		.section	.debug_line,"",%progbits
  480              	.Ldebug_line0:
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 12
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccKRY6RT.s 			page 12
 
 
  481 0000 AF000000 		.section	.debug_str,"MS",%progbits,1
@@ -666,119 +666,119 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 1
  481      00000201 
  481      FB0E0D00 
  481      01010101 
- 482              	.LASF7:
- 483 0000 6C6F6E67 		.ascii	"long long int\000"
- 483      206C6F6E 
- 483      6720696E 
- 483      7400
+ 482              	.LASF22:
+ 483 0000 443A5C43 		.ascii	"D:\\CS301-Team-Repo\\CS301_Class.cydsn\000"
+ 483      53333031 
+ 483      2D546561 
+ 483      6D2D5265 
+ 483      706F5C43 
  484              	.LASF23:
- 485 000e 656E6162 		.ascii	"enableState\000"
+ 485 0025 656E6162 		.ascii	"enableState\000"
  485      6C655374 
  485      61746500 
  486              	.LASF0:
- 487 001a 756E7369 		.ascii	"unsigned int\000"
+ 487 0031 756E7369 		.ascii	"unsigned int\000"
  487      676E6564 
  487      20696E74 
  487      00
- 488              	.LASF22:
- 489 0027 443A5C43 		.ascii	"D:\\CS301_1\\CS301-Team-Repo\\CS301_Class.cydsn\000"
- 489      53333031 
- 489      5F315C43 
- 489      53333031 
- 489      2D546561 
- 490              	.LASF19:
- 491 0054 51756164 		.ascii	"QuadDec_M2_Wakeup\000"
- 491      4465635F 
- 491      4D325F57 
- 491      616B6575 
- 491      7000
- 492              	.LASF21:
- 493 0066 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\QuadDec_M2_PM.c\000"
- 493      6E657261 
- 493      7465645F 
- 493      536F7572 
- 493      63655C50 
- 494              	.LASF13:
- 495 008f 75696E74 		.ascii	"uint8\000"
- 495      3800
- 496              	.LASF6:
- 497 0095 6C6F6E67 		.ascii	"long unsigned int\000"
- 497      20756E73 
- 497      69676E65 
- 497      6420696E 
- 497      7400
- 498              	.LASF8:
- 499 00a7 6C6F6E67 		.ascii	"long long unsigned int\000"
- 499      206C6F6E 
- 499      6720756E 
- 499      7369676E 
- 499      65642069 
- 500              	.LASF17:
- 501 00be 51756164 		.ascii	"QuadDec_M2_RestoreConfig\000"
+ 488              	.LASF19:
+ 489 003e 51756164 		.ascii	"QuadDec_M2_Wakeup\000"
+ 489      4465635F 
+ 489      4D325F57 
+ 489      616B6575 
+ 489      7000
+ 490              	.LASF21:
+ 491 0050 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\QuadDec_M2_PM.c\000"
+ 491      6E657261 
+ 491      7465645F 
+ 491      536F7572 
+ 491      63655C50 
+ 492              	.LASF13:
+ 493 0079 75696E74 		.ascii	"uint8\000"
+ 493      3800
+ 494              	.LASF6:
+ 495 007f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 495      20756E73 
+ 495      69676E65 
+ 495      6420696E 
+ 495      7400
+ 496              	.LASF8:
+ 497 0091 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 497      206C6F6E 
+ 497      6720756E 
+ 497      7369676E 
+ 497      65642069 
+ 498              	.LASF17:
+ 499 00a8 51756164 		.ascii	"QuadDec_M2_RestoreConfig\000"
+ 499      4465635F 
+ 499      4D325F52 
+ 499      6573746F 
+ 499      7265436F 
+ 500              	.LASF15:
+ 501 00c1 51756164 		.ascii	"QuadDec_M2_BACKUP_STRUCT\000"
  501      4465635F 
- 501      4D325F52 
- 501      6573746F 
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 13
+ 501      4D325F42 
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccKRY6RT.s 			page 13
 
 
- 501      7265436F 
- 502              	.LASF15:
- 503 00d7 51756164 		.ascii	"QuadDec_M2_BACKUP_STRUCT\000"
- 503      4465635F 
- 503      4D325F42 
- 503      41434B55 
- 503      505F5354 
- 504              	.LASF2:
- 505 00f0 756E7369 		.ascii	"unsigned char\000"
- 505      676E6564 
- 505      20636861 
- 505      7200
- 506              	.LASF10:
- 507 00fe 63686172 		.ascii	"char\000"
+ 501      41434B55 
+ 501      505F5354 
+ 502              	.LASF2:
+ 503 00da 756E7369 		.ascii	"unsigned char\000"
+ 503      676E6564 
+ 503      20636861 
+ 503      7200
+ 504              	.LASF10:
+ 505 00e8 63686172 		.ascii	"char\000"
+ 505      00
+ 506              	.LASF5:
+ 507 00ed 6C6F6E67 		.ascii	"long int\000"
+ 507      20696E74 
  507      00
- 508              	.LASF5:
- 509 0103 6C6F6E67 		.ascii	"long int\000"
- 509      20696E74 
- 509      00
- 510              	.LASF20:
- 511 010c 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 511      4320342E 
- 511      392E3320 
- 511      32303135 
- 511      30333033 
- 512 013f 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 512      20726576 
- 512      6973696F 
- 512      6E203232 
- 512      31323230 
- 513 0172 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 513      66756E63 
- 513      74696F6E 
- 513      2D736563 
- 513      74696F6E 
- 514              	.LASF3:
- 515 019a 73686F72 		.ascii	"short int\000"
- 515      7420696E 
- 515      7400
- 516              	.LASF12:
- 517 01a4 646F7562 		.ascii	"double\000"
- 517      6C6500
+ 508              	.LASF20:
+ 509 00f6 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 509      4320342E 
+ 509      392E3320 
+ 509      32303135 
+ 509      30333033 
+ 510 0129 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 510      20726576 
+ 510      6973696F 
+ 510      6E203232 
+ 510      31323230 
+ 511 015c 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 511      66756E63 
+ 511      74696F6E 
+ 511      2D736563 
+ 511      74696F6E 
+ 512              	.LASF3:
+ 513 0184 73686F72 		.ascii	"short int\000"
+ 513      7420696E 
+ 513      7400
+ 514              	.LASF12:
+ 515 018e 646F7562 		.ascii	"double\000"
+ 515      6C6500
+ 516              	.LASF7:
+ 517 0195 6C6F6E67 		.ascii	"long long int\000"
+ 517      206C6F6E 
+ 517      6720696E 
+ 517      7400
  518              	.LASF4:
- 519 01ab 73686F72 		.ascii	"short unsigned int\000"
+ 519 01a3 73686F72 		.ascii	"short unsigned int\000"
  519      7420756E 
  519      7369676E 
  519      65642069 
  519      6E7400
  520              	.LASF1:
- 521 01be 7369676E 		.ascii	"signed char\000"
+ 521 01b6 7369676E 		.ascii	"signed char\000"
  521      65642063 
  521      68617200 
  522              	.LASF11:
- 523 01ca 666C6F61 		.ascii	"float\000"
+ 523 01c2 666C6F61 		.ascii	"float\000"
  523      7400
  524              	.LASF24:
- 525 01d0 51756164 		.ascii	"QuadDec_M2_backup\000"
-ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 14
+ 525 01c8 51756164 		.ascii	"QuadDec_M2_backup\000"
+ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccKRY6RT.s 			page 14
 
 
  525      4465635F 
@@ -786,20 +786,20 @@ ARM GAS  C:\Users\tant836\AppData\Local\Temp\ccagT2PZ.s 			page 1
  525      61636B75 
  525      7000
  526              	.LASF14:
- 527 01e2 72656738 		.ascii	"reg8\000"
+ 527 01da 72656738 		.ascii	"reg8\000"
  527      00
  528              	.LASF16:
- 529 01e7 51756164 		.ascii	"QuadDec_M2_SaveConfig\000"
+ 529 01df 51756164 		.ascii	"QuadDec_M2_SaveConfig\000"
  529      4465635F 
  529      4D325F53 
  529      61766543 
  529      6F6E6669 
  530              	.LASF9:
- 531 01fd 73697A65 		.ascii	"sizetype\000"
+ 531 01f5 73697A65 		.ascii	"sizetype\000"
  531      74797065 
  531      00
  532              	.LASF18:
- 533 0206 51756164 		.ascii	"QuadDec_M2_Sleep\000"
+ 533 01fe 51756164 		.ascii	"QuadDec_M2_Sleep\000"
  533      4465635F 
  533      4D325F53 
  533      6C656570 
