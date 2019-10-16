@@ -550,8 +550,8 @@ void Quad_Dec_response()
     //there's an initial right tilt by default, so we want to decrease the initial left speed
     if(leftSpeed == 0 && rightSpeed == 0){ 
        //leftSpeed = 3;
-        scalingLeft = 8;
-        scalingRight = 8;
+        scalingLeft = 1;
+        scalingRight = 1;
     }
 
     int interCalc = leftSpeedLimit - abs(leftSpeed);
@@ -617,14 +617,14 @@ void trackLineZ()
     {
         setSpeed(speed / 1.6,-speed / 1.6);
     }
-    else if(nl && mid && !nr)   //if centre/middle, soft left
-    {
-        setSpeed(speed,speed / 1.5);
-    }
-    else if (nr && mid && !nl)//if centre/right, soft right
-    {
-        setSpeed(speed / 1.5,speed);
-    }
+//    else if(nl && mid && !nr)   //if centre/middle, soft left
+//    {
+//        setSpeed(speed,speed / 1.5);
+//    }
+//    else if (nr && mid && !nl)//if centre/right, soft right
+//    {
+//        setSpeed(speed / 1.5,speed);
+//    }
    else if (nr && !mid && !nl)    //if only right, hard right
     {
         setSpeed(-speed / 1.6,speed / 1.6);
@@ -921,9 +921,10 @@ int main()
                         if(sensorsDisabled == 0)
                         {
                             actionDebounce++;
-                            if(actionDebounce >= 255)
+                            if(actionDebounce >= 1000)
                             {
                                 sensorsDisabled = 1;
+                                UART_PutString("Triggered at intersection \r\n");
                                 UART_PutString("Deadzone entered!\r\n");
                                 deadzone = 1;
                                 Timer_Deadzone_Start();
@@ -959,8 +960,9 @@ int main()
                         if(sensorsDisabled == 0)
                         {
                             actionDebounce++;
-                            if(actionDebounce >= 3000)
+                            if(actionDebounce >= 15000)
                             {
+                                UART_PutString("Triggered at white light \r\n");
                                 UART_PutString("Deadzone entered!\r\n");
                                 deadzone = 1;
                                 Timer_Deadzone_Start();
