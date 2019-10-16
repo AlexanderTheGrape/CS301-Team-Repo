@@ -1,18 +1,5 @@
 /* ========================================
- * This code will test/use the functionality of all of the below peripherals.
- * Fully working code: 
- * PWM      : done
-    Cycle up and down when enabled
- * Encoder  : 
-    Calibrate the wheels when enabled
-
- * ADC      : done
-    Prints the ADC reading (in volts) to UART
-
- * USB      : port displays speed and position.
-
- * CMD: "PW xx"
-
+ *
  * Copyright Univ of Auckland, 2016
  * All Rights Reserved
  * UNPUBLISHED, LICENSED SOFTWARE.
@@ -74,6 +61,363 @@ uint8 food_length = 3;
 
 void changeToRF();
 void changeToBT();
+void brakeMotor();
+void driveForwards();
+void initTurnLeft();
+void initTurnRight();
+void inittrackLineZ();
+void trackLineU();
+void trackLine();
+void trackLineZ();
+void initTrackU();
+void turnLeft();
+void turnRight();
+void initForward();
+void initTurnU();
+void turnU();
+void initBrake();
+void print_ADC();
+void Quad_Dec_response();
+void handle_rx_binary();
+void readFrontSensors();
+void print_RF();
+
+/*--------------------------------------------ISRs-----------------------------------------------*/
+//BT
+CY_ISR(BT_txInt)
+{
+    
+}
+
+//ADC:
+CY_ISR (adc_isr)
+{
+    //adc_result = ADC_GetResult16(0);
+    adc_result = ADC_GetResult16();
+    flag_receive_ADC = 1;
+    flag_print_rf = 1;
+    //LED_Write(~LED_Read());
+}
+
+CY_ISR (isr_quad1)
+{
+    //LED_Write(~LED_Read());
+    last_quad_count1 = quad_count1;
+    last_quad_count2 = quad_count2;
+    quad_count1 = QuadDec_M1_GetCounter();
+    quad_count2 = QuadDec_M2_GetCounter();
+    quad_diff1 = quad_count1 - last_quad_count1;
+    quad_diff2 = quad_count2 - last_quad_count2;
+    
+    if(abs(quad_count1) > 3000 && movement_state != LTURN && movement_state != RTURN && track_mode != QUAD_STOP && movement_state != UTURN)
+    {
+        QuadDec_M1_SetCounter(0);
+        QuadDec_M2_SetCounter(0);
+        quad_count1 = 0;
+        quad_count2 = 0;
+    }
+
+    flag_calc_wheelspeed = 1;
+    
+    if (track_mode == QUAD_STOP)
+    {
+        accum_dist += quad_diff1;
+        char mes[16];
+        sprintf(mes, "dist: %d\r\n", accum_dist);
+        UART_PutString(mes);
+        if(abs(accum_dist) >= target_distance_quad)
+        {
+            initBrake();
+            track_mode = NO_TRACK;
+        }
+    } else if (track_mode == RF_STOP)
+    { 
+        // Do pythag
+        double dist = hypot((system_state.robot_xpos - initial_x_pos) / px_per_x_cm , (system_state.robot_ypos - initial_y_pos) / px_per_y_cm);
+        if (dist >= target_distance_cm)
+        {
+            initBrake();
+            track_mode = NO_TRACK;
+        }
+    }
+}
+
+CY_ISR(isr_turn_timer)
+{
+    if(movement_state == LTURN)
+    {
+        if(abs(QuadDec_M2_GetCounter() - start_turn_count) >= 208)
+        {
+            //movement_state = STOPPED;
+            brakeMotor();
+            movement_state = prev_movement_state;
+            Timer_2_Stop();
+        }
+    }
+    else if (movement_state == RTURN)
+    {
+        if(abs(QuadDec_M1_GetCounter() - start_turn_count) >= 208)
+        {
+            //movement_state = STOPPED;
+            brakeMotor();
+            movement_state = prev_movement_state;
+            Timer_2_Stop();
+        }
+    }
+    else if (movement_state == UTURN)
+    {
+        if(abs(QuadDec_M1_GetCounter() - start_turn_count) >= 208)
+        {
+            //movement_state = STOPPED;
+            brakeMotor();
+            movement_state = prev_movement_state;
+            Timer_2_Stop();
+        }
+    }
+}
+
+
+CY_ISR (Stop_on_line)
+{
+    movement_state = STOPPED;
+    if(movement_state != DRIVE) return;
+    //initTurnLeft();
+}
+
+CY_ISR (button)
+{
+    if(BT_ENABLED)
+    {
+        UART_PutString("Starting robot!\r\n");
+    }
+    movement_state = DRIVE;
+}
+
+CY_ISR(isr_adcTimer)
+{
+    ADC_StartConvert();
+}
+
+CY_ISR(isr_deadzone)
+{
+    sensorsDisabled = 0;
+    deadzone = 0;
+    Timer_Deadzone_Stop();
+    UART_PutString("Deadzone left\r\n");
+}
+
+/*-------------------------------------------------------------------------------------------*/
+
+/* -----------------------------------------MAIN-----------------------------MAIN---------------------------MAIN --------------------------------------------- */
+int main()
+{  
+
+// ----- INITIALIZATIONS ----------
+    CYGlobalIntEnable;
+    if(ENABLE_PWM)
+    {
+        PWM_1_Start();// starting the pwm
+        PWM_2_Start();// starting the pwm
+    }
+    
+    if(ENABLE_ADC)
+    {
+        ADC_Start();
+        isr_eoc_StartEx(adc_isr);
+        //ADC_StartConvert();
+        
+        //start the ADC timer for software trigger mode
+        Timer_TS_Start();
+        isr_TS_StartEx(isr_adcTimer);
+    }
+    
+    if (ENABLE_QUAD)
+    {
+        QuadDec_M1_Start();
+        QuadDec_M2_Start();
+        
+        isr_quad1_StartEx(isr_quad1);
+        isr_turn_count_StartEx(isr_turn_timer);
+        
+        Timer_1_Start();
+    }
+    
+    if(ENABLE_STOP){
+        isr_OnLine_StartEx(Stop_on_line);
+        
+    }
+    isr_button_StartEx(button);
+    isr_action_deadzone_StartEx(isr_deadzone);
+
+    // ------USB SETUP ----------------    
+    if (USE_USB){    
+        USBUART_Start(0,USBUART_5V_OPERATION);
+        if (USBUART_GetConfiguration())
+            {
+                 USBUART_CDC_Init();
+            }
+    }
+    
+    if(BIN_ENABLED){
+        changeToRF();
+    }
+    
+    if(BT_ENABLED){
+        changeToBT();
+    }
+    
+    uint16 actionDebounce = 0;
+    
+    //usbPutString("Started");
+    for(;;)
+    {
+        if(ENABLE_ADC) print_ADC();
+        if(ENABLE_QUAD) Quad_Dec_response();
+        if(BIN_ENABLED == 1)
+        {
+            handle_rx_binary();
+            print_RF();
+        }
+        // NO_TRACK, CURVE_TRACK, U_TRACK, SQUARE_TRACK
+        
+        uint8 frontSensors[5];
+        readFrontSensors(frontSensors);
+        
+        switch(track_mode)
+        {
+            case SQUARE_TRACK:
+                if(movement_state != LTURN && movement_state != RTURN)
+                {
+                    if(frontSensors[0] == 1 && frontSensors[2] == 1){ //left turn
+                        initTurnLeft();
+                    }
+                    else if (frontSensors[4] == 1 && frontSensors[2] == 1) //right turn
+                    {
+                        initTurnRight();
+                    }
+                    else inittrackLineZ();
+                }
+            break;
+            case NO_TRACK:
+            break;
+            case CURVE_TRACK:
+            break;
+            case U_TRACK:
+            break;
+            case QUAD_STOP:
+            break;
+            case RF_STOP:
+                if(initial_pos_valid == 1)
+                {
+                    //changeToBT();
+                   // UART_PutString("Valid RF detected!");
+                    //changeToRF();
+                    initial_x_pos = system_state.robot_xpos;
+                    initial_y_pos = system_state.robot_ypos;
+                    initial_pos_valid = 2;
+                    initForward();
+                }
+            break;
+            case MAP_TRAVERSE:
+            case DEST_TEST:
+                if(movement_state != LTURN && movement_state != RTURN && movement_state != UTURN){
+                    //when we hit an intersection, verify the next step then evaluate
+                    char nextStep = instructions[instructionCount];
+                    if(((frontSensors[0] == 1 && frontSensors[2] == 1) || (frontSensors[4] == 1 && frontSensors[2] == 1))){ //intersection
+                        if(sensorsDisabled == 0)
+                        {
+                            actionDebounce++;
+                            if(actionDebounce >= 1000)
+                            {
+                                sensorsDisabled = 1;
+                                UART_PutString("Triggered at intersection \r\n");
+                                UART_PutString("Deadzone entered!\r\n");
+                                deadzone = 1;
+                                Timer_Deadzone_Start();
+                                switch(nextStep)
+                                {
+                                    case 'S':
+                                        initTrackU();
+                                        //do nothing
+                                    break;
+                                    case 'L':
+                                        //if(tracked_direction == 1) tracked_direction = 4; else tracked_direction--;
+                                        initTurnLeft();
+                                    break;
+                                    case 'R':
+                                        //if(tracked_direction == 4) tracked_direction = 1; else tracked_direction++;
+                                        initTurnRight();
+                                        
+                                    break;
+                                    case 'U':
+                                        // Direction not tracked any more
+                                        initTurnU();
+                                    break;
+                                    default:
+                                        //do nothing
+                                        break;
+                                }
+                                instructionCount++;
+                            }
+                        }
+                    }
+                    else if (frontSensors[0] == 0 && frontSensors[1] == 0 && frontSensors[2] == 0 && frontSensors[3] == 0 && frontSensors[4] == 0 && nextStep == 'U')
+                    {
+                        if(sensorsDisabled == 0)
+                        {
+                            actionDebounce++;
+                            if(actionDebounce >= 15000)
+                            {
+                                UART_PutString("Triggered at white light \r\n");
+                                UART_PutString("Deadzone entered!\r\n");
+                                deadzone = 1;
+                                Timer_Deadzone_Start();
+                                actionDebounce = 0;
+                                sensorsDisabled = 1;
+                                initTurnU();
+                                instructionCount++;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        inittrackLineZ();
+                        actionDebounce = 0;
+                    }
+                }
+                break;
+        }
+        
+        switch(movement_state)
+        {
+            case DRIVE:
+                driveForwards();
+            break;
+            case LTURN:
+                turnLeft();
+            break;
+            case RTURN:
+                turnRight();
+            break;
+            case UTURN:
+                turnU();
+            break;
+            case STOPPED:
+                brakeMotor();
+            break;
+            case TRACKING:
+                trackLine();
+            break;
+            case TRACKING_U:
+                trackLineU();
+            break;
+            case TRACKING_SOFT:
+                trackLineZ();
+        }      
+    }   
+}
+
+/*------------------------------------------------------------------------------------------------------------*/
 
 void handle_rx_binary()
 {
@@ -371,131 +715,6 @@ CY_ISR(BT_rxInt)
     }
 }
 
-//BT
-CY_ISR(BT_txInt)
-{
-    
-}
-
-//ADC:
-CY_ISR (adc_isr)
-{
-    //adc_result = ADC_GetResult16(0);
-    adc_result = ADC_GetResult16();
-    flag_receive_ADC = 1;
-    flag_print_rf = 1;
-    //LED_Write(~LED_Read());
-}
-
-CY_ISR (isr_quad1)
-{
-    //LED_Write(~LED_Read());
-    last_quad_count1 = quad_count1;
-    last_quad_count2 = quad_count2;
-    quad_count1 = QuadDec_M1_GetCounter();
-    quad_count2 = QuadDec_M2_GetCounter();
-    quad_diff1 = quad_count1 - last_quad_count1;
-    quad_diff2 = quad_count2 - last_quad_count2;
-    
-    if(abs(quad_count1) > 3000 && movement_state != LTURN && movement_state != RTURN && track_mode != QUAD_STOP && movement_state != UTURN)
-    {
-        QuadDec_M1_SetCounter(0);
-        QuadDec_M2_SetCounter(0);
-        quad_count1 = 0;
-        quad_count2 = 0;
-    }
-
-    flag_calc_wheelspeed = 1;
-    
-    if (track_mode == QUAD_STOP)
-    {
-        accum_dist += quad_diff1;
-        char mes[16];
-        sprintf(mes, "dist: %d\r\n", accum_dist);
-        UART_PutString(mes);
-        if(abs(accum_dist) >= target_distance_quad)
-        {
-            initBrake();
-            track_mode = NO_TRACK;
-        }
-    } else if (track_mode == RF_STOP)
-    { 
-        // Do pythag
-        double dist = hypot((system_state.robot_xpos - initial_x_pos) / px_per_x_cm , (system_state.robot_ypos - initial_y_pos) / px_per_y_cm);
-        if (dist >= target_distance_cm)
-        {
-            initBrake();
-            track_mode = NO_TRACK;
-        }
-    }
-    
-}
-
-CY_ISR(isr_turn_timer)
-{
-    if(movement_state == LTURN)
-    {
-        if(abs(QuadDec_M2_GetCounter() - start_turn_count) >= 208)
-        {
-            //movement_state = STOPPED;
-            brakeMotor();
-            movement_state = prev_movement_state;
-            Timer_2_Stop();
-        }
-    }
-    else if (movement_state == RTURN)
-    {
-        if(abs(QuadDec_M1_GetCounter() - start_turn_count) >= 208)
-        {
-            //movement_state = STOPPED;
-            brakeMotor();
-            movement_state = prev_movement_state;
-            Timer_2_Stop();
-        }
-    }
-    else if (movement_state == UTURN)
-    {
-        if(abs(QuadDec_M1_GetCounter() - start_turn_count) >= 208)
-        {
-            //movement_state = STOPPED;
-            brakeMotor();
-            movement_state = prev_movement_state;
-            Timer_2_Stop();
-        }
-    }
-}
-
-
-CY_ISR (Stop_on_line)
-{
-    movement_state = STOPPED;
-    if(movement_state != DRIVE) return;
-    //initTurnLeft();
-}
-
-CY_ISR (button)
-{
-    if(BT_ENABLED)
-    {
-        UART_PutString("Starting robot!\r\n");
-    }
-    movement_state = DRIVE;
-}
-
-CY_ISR(isr_adcTimer)
-{
-    ADC_StartConvert();
-}
-
-CY_ISR(isr_deadzone)
-{
-    sensorsDisabled = 0;
-    deadzone = 0;
-    Timer_Deadzone_Stop();
-    UART_PutString("Deadzone left\r\n");
-}
-
-
 
 void changeToRF()
 {
@@ -571,36 +790,7 @@ void Quad_Dec_response()
 
 void trackLine()
 {
-    //read the value of the three central-front sensors
-    
-    uint8 nl = NLSens_out_Read();
-    uint8 nr = NRSens_out_Read();
-    uint8 mid = MSens_out_Read();
-    //if only the left one, hard left
-    if(nl && !nr && !mid) //if only the left one, hard left
-    {
-        setSpeed(speed / 1.5, -speed / 1.5);
-    }
-    else if(nl && mid && !nr)   //if centre/middle, soft left
-    {
-        setSpeed(speed, 0);
-    }
-    else if (nr && mid && !nl)//if centre/right, soft right
-    {
-        setSpeed(0, speed);
-    }
-   else if (nr && !mid && !nl)    //if only right, hard right
-    {
-        setSpeed(-speed / 1.5,speed / 1.5);
-    }
-    else if (mid && !nr && !nl)
-    {
-        setSpeed(speed,speed);
-    }
-   // else if (!mid && !nr && !nl)
-    //{
-        //setSpeed(0,0);
-    //}
+ //removed from implementation
 }
 uint16 leftTurnCount = 0;
 uint16 rightTurnCount = 0;
@@ -633,122 +823,12 @@ void trackLineZ()
     {
         setSpeed(speed,speed);
     }
-    //else setSpeed(speed, speed);
-  
-   // else if (!mid && !nr && !nl)
-    //{
-        //setSpeed(0,0);
-    //}
-    
-    
-//    //if only the left one, hard left
-//    if(nl && !nr && !mid)// && trackTurnCount > 0)
-//    {
-//         if(leftTurnCount < 500)
-//         {   
-//            setSpeed(speed / 1.5,-speed / 1.5);
-//            leftTurnCount++;
-//         }
-//        else setSpeed(speed, speed*0.7);
-//    }
-//    else if(nl && mid && !nr)   //if centre/middle, soft left
-//    {
-//         leftTurnCount = 0;
-//         rightTurnCount = 0;
-//        //setSpeed(speed,speed / 1.5);
-//        setSpeed(speed, speed*0.7);
-//    }
-//    else if (nr && mid && !nl)//if centre/right, soft right
-//    {
-//         leftTurnCount = 0;
-//         rightTurnCount = 0;
-//       // setSpeed(speed / 1.5,speed);
-//        setSpeed(speed*0.7,speed);
-//    }
-//   else if (nr && !mid && !nl)    //if only right, hard right
-//    {
-//        if(rightTurnCount < 500)
-//        {  
-//            setSpeed(-speed / 1.5,speed / 1.5);
-//            rightTurnCount++;
-//        }
-//        else setSpeed(speed*0.7,speed);
-//    }
-//    else if (mid && !nr && !nl)
-//    {
-//        leftTurnCount = 0;
-//        rightTurnCount = 0;
-//        setSpeed(speed,speed);
-//    }
-//    //else setSpeed(speed, speed);
-//  
-//   // else if (!mid && !nr && !nl)
-//    //{
-//        //setSpeed(0,0);
-//    //}
 }
 
 
 void trackLineU()
-{
-//    //read the value of the three central-front sensors
-//    
-//    uint8 nl = NLSens_out_Read();
-//    uint8 fl = FLSens_out_Read();
-//    uint8 nr = NRSens_out_Read();
-//    uint8 fr = FRSens_out_Read();
-//    uint8 mid = MSens_out_Read();
-//    if (fl && mid && fr) // T intersection
-//    {
-//        // not implemented
-//    }
-//    else if (fl && mid) // if far left + centre, we're at a left-turning intersection
-//    {
-//        setSpeed(speed, speed);
-//    }
-//    else if (fr && mid) // if far right + centre, we're at a right-turning intersection
-//    {
-//        setSpeed(speed, speed);
-//    }
-//    else if(nl && !nr && !mid) //if only the left one, hard left
-//    {
-//         if(hardTurnCount < 50)
-//         {   
-//            setSpeed(speed / 1.5,-speed / 1.5);
-//            hardTurnCount++;
-//         }
-//        else setSpeed(speed, speed);
-//    }
-//    else if(nl && mid && !nr)   //if centre/middle, soft left
-//    {
-//        setSpeed(speed, 0);
-//        hardTurnCount = 0;
-//    }
-//    else if (nr && mid && !nl)//if centre/right, soft right
-//    {
-//        setSpeed(0, speed);
-//        hardTurnCount = 0;
-//    }
-//   else if (nr && !mid && !nl)    //if only right, hard right
-//    {
-//        if(hardTurnCount < 50)
-//        {  
-//            setSpeed(-speed / 1.5,speed / 1.5);
-//            hardTurnCount++;
-//        }
-//        else setSpeed(speed, speed);
-//    }
-//    else if (mid && !nr && !nl)
-//    {
-//        hardTurnCount = 0;
-//        setSpeed(speed,speed);
-//    }
-//   // else if (!mid && !nr && !nl)
-//    //{
-//        //setSpeed(0,0);
-//    //}
-//   
-
+{ 
+//removed from final implementation
 }
 
 void print_ADC()
@@ -803,214 +883,7 @@ void readFrontSensors(uint8 sensorVals[5])
     sensorVals[4] = FRSens_out_Read();
 }
 
-int main()
-{  
-// -------------------------------------------------------------------------------MAIN-----------------------------MAIN---------------------------MAIN  
-// ----- INITIALIZATIONS ----------
-    CYGlobalIntEnable;
-    if(ENABLE_PWM)
-    {
-        PWM_1_Start();// starting the pwm
-        PWM_2_Start();// starting the pwm
-    }
-    
-    if(ENABLE_ADC)
-    {
-        ADC_Start();
-        isr_eoc_StartEx(adc_isr);
-        //ADC_StartConvert();
-        
-        //start the ADC timer for software trigger mode
-        Timer_TS_Start();
-        isr_TS_StartEx(isr_adcTimer);
-    }
-    
-    if (ENABLE_QUAD)
-    {
-        QuadDec_M1_Start();
-        QuadDec_M2_Start();
-        
-        isr_quad1_StartEx(isr_quad1);
-        isr_turn_count_StartEx(isr_turn_timer);
-        
-        Timer_1_Start();
-    }
-    
-    if(ENABLE_STOP){
-        isr_OnLine_StartEx(Stop_on_line);
-        
-    }
-    isr_button_StartEx(button);
-    isr_action_deadzone_StartEx(isr_deadzone);
 
-    // ------USB SETUP ----------------    
-    if (USE_USB){    
-        USBUART_Start(0,USBUART_5V_OPERATION);
-        if (USBUART_GetConfiguration())
-            {
-                 USBUART_CDC_Init();
-            }
-    }
-    
-    if(BIN_ENABLED){
-        changeToRF();
-    }
-    
-    if(BT_ENABLED){
-        changeToBT();
-    }
-    
-    uint16 actionDebounce = 0;
-    
-    //usbPutString("Started");
-    for(;;)
-    {
-        if(ENABLE_ADC) print_ADC();
-        if(ENABLE_QUAD) Quad_Dec_response();
-        if(BIN_ENABLED == 1)
-        {
-            handle_rx_binary();
-            print_RF();
-        }
-        // NO_TRACK, CURVE_TRACK, U_TRACK, SQUARE_TRACK
-        
-        uint8 frontSensors[5];
-        readFrontSensors(frontSensors);
-        
-        switch(track_mode)
-        {
-            case SQUARE_TRACK:
-                if(movement_state != LTURN && movement_state != RTURN)
-                {
-                    if(frontSensors[0] == 1 && frontSensors[2] == 1){ //left turn
-                        initTurnLeft();
-                    }
-                    else if (frontSensors[4] == 1 && frontSensors[2] == 1) //right turn
-                    {
-                        initTurnRight();
-                    }
-                    else inittrackLineZ();
-                }
-            break;
-            case NO_TRACK:
-            break;
-            case CURVE_TRACK:
-            break;
-            case U_TRACK:
-            break;
-            case QUAD_STOP:
-            break;
-            case RF_STOP:
-                if(initial_pos_valid == 1)
-                {
-                    //changeToBT();
-                   // UART_PutString("Valid RF detected!");
-                    //changeToRF();
-                    initial_x_pos = system_state.robot_xpos;
-                    initial_y_pos = system_state.robot_ypos;
-                    initial_pos_valid = 2;
-                    initForward();
-                }
-            break;
-            case MAP_TRAVERSE:
-            case DEST_TEST:
-                if(movement_state != LTURN && movement_state != RTURN && movement_state != UTURN){
-                    //when we hit an intersection, verify the next step then evaluate
-                    char nextStep = instructions[instructionCount];
-                    if(((frontSensors[0] == 1 && frontSensors[2] == 1) || (frontSensors[4] == 1 && frontSensors[2] == 1))){ //intersection
-                        if(sensorsDisabled == 0)
-                        {
-                            actionDebounce++;
-                            if(actionDebounce >= 1000)
-                            {
-                                sensorsDisabled = 1;
-                                UART_PutString("Triggered at intersection \r\n");
-                                UART_PutString("Deadzone entered!\r\n");
-                                deadzone = 1;
-                                Timer_Deadzone_Start();
-                                switch(nextStep)
-                                {
-                                    case 'S':
-                                        initTrackU();
-                                        //do nothing
-                                    break;
-                                    case 'L':
-                                        //if(tracked_direction == 1) tracked_direction = 4; else tracked_direction--;
-                                        initTurnLeft();
-                                    break;
-                                    case 'R':
-                                        //if(tracked_direction == 4) tracked_direction = 1; else tracked_direction++;
-                                        initTurnRight();
-                                        
-                                    break;
-                                    case 'U':
-                                        // Direction not tracked any more
-                                        initTurnU();
-                                    break;
-                                    default:
-                                        //do nothing
-                                        break;
-                                }
-                                instructionCount++;
-                            }
-                        }
-                    }
-                    else if (frontSensors[0] == 0 && frontSensors[1] == 0 && frontSensors[2] == 0 && frontSensors[3] == 0 && frontSensors[4] == 0 && nextStep == 'U')
-                    {
-                        if(sensorsDisabled == 0)
-                        {
-                            actionDebounce++;
-                            if(actionDebounce >= 15000)
-                            {
-                                UART_PutString("Triggered at white light \r\n");
-                                UART_PutString("Deadzone entered!\r\n");
-                                deadzone = 1;
-                                Timer_Deadzone_Start();
-                                actionDebounce = 0;
-                                sensorsDisabled = 1;
-                                initTurnU();
-                                instructionCount++;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        inittrackLineZ();
-                        actionDebounce = 0;
-                    }
-                }
-                break;
-        }
-        
-        switch(movement_state)
-        {
-            case DRIVE:
-                driveForwards();
-            break;
-            case LTURN:
-                turnLeft();
-            break;
-            case RTURN:
-                turnRight();
-            break;
-            case UTURN:
-                turnU();
-            break;
-            case STOPPED:
-                brakeMotor();
-            break;
-            case TRACKING:
-                trackLine();
-            break;
-            case TRACKING_U:
-                trackLineU();
-            break;
-            case TRACKING_SOFT:
-                trackLineZ();
-        }
-        //handle_usb();        
-    }   
-}
 //* ========================================
 void usbPutString(char *s)
 {
@@ -1053,16 +926,7 @@ void usbPutChar(char c)
 
 void uart_set_PWM()
 {
-    uint8 c;
-     if (USBUART_DataIsReady() != 0)
-       {  
-            c = USBUART_GetChar();
-            
-            if(c <= 100 && c > 0){
-                PWM_1_WriteCompare(c);
-                usbPutString(c);
-            }
-       }
+    //removed from final implementation
 }
 
 /* [] END OF FILE */
