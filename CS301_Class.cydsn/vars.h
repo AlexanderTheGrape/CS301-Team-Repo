@@ -54,6 +54,7 @@ int16 last_quad_count1 = 0;
 int16 last_quad_count2 = 0;
 int16 quad_diff1 = 0;
 int16 quad_diff2 = 0;
+uint8 deadzone = 0;
 
 //turning
 int16 start_turn_count = 0;
@@ -88,7 +89,7 @@ int16 prevVoltage2;
 
 //concept of robot state
 enum state {DRIVE = 0, LTURN, RTURN, STOPPED, TRACKING, TRACKING_U, TRACKING_SOFT, UTURN}; 
-enum mode {NO_TRACK, CURVE_TRACK, U_TRACK, SQUARE_TRACK, QUAD_STOP, RF_STOP, DEST_TEST};
+enum mode {NO_TRACK, CURVE_TRACK, U_TRACK, SQUARE_TRACK, QUAD_STOP, RF_STOP, DEST_TEST, MAP_TRAVERSE};
 //* ========================================
 char displaystring[BUF_SIZE] = "CS301 2016\n";
 char line[BUF_SIZE], entry[BUF_SIZE];

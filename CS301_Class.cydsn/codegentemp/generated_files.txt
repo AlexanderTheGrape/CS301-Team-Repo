@@ -180,6 +180,13 @@
   <file name="D:\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\NRSens_out.h" value="NONE;NRSens_out" />
   <file name="D:\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\FRSens_out.c" value="ARM_C_FILE;FRSens_out" />
   <file name="D:\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\FRSens_out.h" value="NONE;FRSens_out" />
+  <file name="D:\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\isr_action_deadzone.c" value="ARM_C_FILE;isr_action_deadzone" />
+  <file name="D:\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\isr_action_deadzone.h" value="NONE;isr_action_deadzone" />
+  <file name="D:\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\timer_clock_2.c" value="ARM_C_FILE;timer_clock_2" />
+  <file name="D:\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\timer_clock_2.h" value="NONE;timer_clock_2" />
+  <file name="D:\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\Timer_Deadzone.c" value="ARM_C_FILE;Timer_Deadzone" />
+  <file name="D:\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\Timer_Deadzone.h" value="NONE;Timer_Deadzone" />
+  <file name="D:\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\Timer_Deadzone_PM.c" value="ARM_C_FILE;Timer_Deadzone" />
   <file name="D:\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\QuadDec_M1_Cnt16.c" value="ARM_C_FILE;QuadDec_M1_Cnt16" />
   <file name="D:\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\QuadDec_M1_Cnt16.h" value="NONE;QuadDec_M1_Cnt16" />
   <file name="D:\CS301-Team-Repo\CS301_Class.cydsn\codegentemp\QuadDec_M1_Cnt16_PM.c" value="ARM_C_FILE;QuadDec_M1_Cnt16" />

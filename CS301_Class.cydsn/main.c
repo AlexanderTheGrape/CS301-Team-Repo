@@ -181,8 +181,8 @@ void setSpeed(double left, double right){
     }
     else setLeftDir(direction);
     
-    int16 countsLeft = left*QUAD_RATIO;
-    int16 countsRight = right*QUAD_RATIO;
+    int16 countsLeft = left/QUAD_RATIO;
+    int16 countsRight = right/QUAD_RATIO;
     
     leftSpeedLimit = countsRight;
     rightSpeedLimit = countsLeft;
@@ -487,6 +487,15 @@ CY_ISR(isr_adcTimer)
     ADC_StartConvert();
 }
 
+CY_ISR(isr_deadzone)
+{
+    sensorsDisabled = 0;
+    deadzone = 0;
+    Timer_Deadzone_Stop();
+    UART_PutString("Deadzone left\r\n");
+}
+
+
 
 void changeToRF()
 {
@@ -605,21 +614,21 @@ void trackLineZ()
     //if only the left one, hard left
     if(nl && !nr && !mid)// && trackTurnCount > 0)
     {
-        setSpeed(speed / 1.5, -speed / 1.5);
+        setSpeed(speed / 2.0, -speed / 2.0);
     }
     else if(nl && mid && !nr)   //if centre/middle, soft left
     {
         //setSpeed(speed,speed / 1.5);
-        //setSpeed(speed, -speed);
+        setSpeed(speed, speed*0.9);
     }
     else if (nr && mid && !nl)//if centre/right, soft right
     {
        // setSpeed(speed / 1.5,speed);
-        //setSpeed(-speed,speed);
+        setSpeed(speed*0.9,speed);
     }
    else if (nr && !mid && !nl)    //if only right, hard right
     {
-        setSpeed(-speed / 1.5,speed / 1.5);
+        setSpeed(-speed / 2.0,speed / 2.0);
     }
     else if (mid && !nr && !nl)
     {
@@ -633,6 +642,7 @@ void trackLineZ()
     //}
 }
 
+uint8 hardTurnCount = 0;
 void trackLineU()
 {
     //read the value of the three central-front sensors
@@ -656,22 +666,35 @@ void trackLineU()
     }
     else if(nl && !nr && !mid) //if only the left one, hard left
     {
-         setSpeed(speed / 1.5,-speed / 1.5);
+         if(hardTurnCount < 100)
+         {   
+            setSpeed(speed / 1.5,-speed / 1.5);
+            hardTurnCount++;
+         }
+        else setSpeed(speed, speed);
     }
     else if(nl && mid && !nr)   //if centre/middle, soft left
     {
         setSpeed(speed, 0);
+        hardTurnCount = 0;
     }
     else if (nr && mid && !nl)//if centre/right, soft right
     {
         setSpeed(0, speed);
+        hardTurnCount = 0;
     }
    else if (nr && !mid && !nl)    //if only right, hard right
     {
-         setSpeed(-speed / 1.5,speed / 1.5);
+        if(hardTurnCount < 100)
+        {  
+            setSpeed(-speed / 1.5,speed / 1.5);
+            hardTurnCount++;
+        }
+        else setSpeed(speed, speed);
     }
     else if (mid && !nr && !nl)
     {
+        hardTurnCount = 0;
         setSpeed(speed,speed);
     }
    // else if (!mid && !nr && !nl)
@@ -772,7 +795,7 @@ int main()
         
     }
     isr_button_StartEx(button);
-    
+    isr_action_deadzone_StartEx(isr_deadzone);
 
     // ------USB SETUP ----------------    
     if (USE_USB){    
@@ -790,6 +813,8 @@ int main()
     if(BT_ENABLED){
         changeToBT();
     }
+    
+    uint8 actionDebounce = 0;
     
     //usbPutString("Started");
     for(;;)
@@ -841,6 +866,7 @@ int main()
                     initForward();
                 }
             break;
+            case MAP_TRAVERSE:
             case DEST_TEST:
                 if(movement_state != LTURN && movement_state != RTURN && movement_state != UTURN){
                     //when we hit an intersection, verify the next step then evaluate
@@ -848,46 +874,61 @@ int main()
                     if(((frontSensors[0] == 1 && frontSensors[2] == 1) || (frontSensors[4] == 1 && frontSensors[2] == 1))){ //intersection
                         if(sensorsDisabled == 0)
                         {
-                            sensorsDisabled = 1;
-                            switch(nextStep)
+                            actionDebounce++;
+                            if(actionDebounce >= 5)
                             {
-                                case 'S':
-                                    initTrackU();
-                                    //do nothing
-                                break;
-                                case 'L':
-                                    //if(tracked_direction == 1) tracked_direction = 4; else tracked_direction--;
-                                    initTurnLeft();
-                                break;
-                                case 'R':
-                                    //if(tracked_direction == 4) tracked_direction = 1; else tracked_direction++;
-                                    initTurnRight();
-                                    
-                                break;
-                                case 'U':
-                                    // Direction not tracked any more
-                                    initTurnU();
-                                break;
-                                default:
-                                    //do nothing
+                                sensorsDisabled = 1;
+                                UART_PutString("Deadzone entered!\r\n");
+                                deadzone = 1;
+                                Timer_Deadzone_Start();
+                                switch(nextStep)
+                                {
+                                    case 'S':
+                                        initTrackU();
+                                        //do nothing
                                     break;
+                                    case 'L':
+                                        //if(tracked_direction == 1) tracked_direction = 4; else tracked_direction--;
+                                        initTurnLeft();
+                                    break;
+                                    case 'R':
+                                        //if(tracked_direction == 4) tracked_direction = 1; else tracked_direction++;
+                                        initTurnRight();
+                                        
+                                    break;
+                                    case 'U':
+                                        // Direction not tracked any more
+                                        initTurnU();
+                                    break;
+                                    default:
+                                        //do nothing
+                                        break;
+                                }
+                                instructionCount++;
                             }
-                            instructionCount++;
                         }
                     }
                     else if (frontSensors[0] == 0 && frontSensors[1] == 0 && frontSensors[2] == 0 && frontSensors[3] == 0 && frontSensors[4] == 0 && nextStep == 'U')
                     {
                         if(sensorsDisabled == 0)
                         {
-                            sensorsDisabled = 1;
-                            initTurnU();
-                            instructionCount++;
+                            actionDebounce++;
+                            if(actionDebounce >= 5)
+                            {
+                                UART_PutString("Deadzone entered!\r\n");
+                                deadzone = 1;
+                                Timer_Deadzone_Start();
+                                actionDebounce = 0;
+                                sensorsDisabled = 1;
+                                initTurnU();
+                                instructionCount++;
+                            }
                         }
                     }
                     else
                     {
                         inittrackLineZ();
-                        sensorsDisabled = 0;
+                        actionDebounce = 0;
                     }
                 }
                 break;

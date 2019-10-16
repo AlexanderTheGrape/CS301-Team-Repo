@@ -270,6 +270,13 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\NRSens_out.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\FRSens_out.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\FRSens_out.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\isr_action_deadzone.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\isr_action_deadzone.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Timer_Deadzone.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Timer_Deadzone.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\Timer_Deadzone_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\timer_clock_2.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\timer_clock_2.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="D:\CS301-Team-Repo\CS301_Class.cydsn\Export\ARM_GCC_Generic">

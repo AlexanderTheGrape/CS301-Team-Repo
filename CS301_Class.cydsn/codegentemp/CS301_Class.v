@@ -1,6 +1,6 @@
 // ======================================================================
 // CS301_Class.v generated from TopDesign.cysch
-// 10/14/2019 at 12:51
+// 10/16/2019 at 15:55
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -1743,10 +1743,89 @@ module Timer_v2_70_11 (
 
 endmodule
 
+// Timer_v2_70(CaptureAlternatingFall=false, CaptureAlternatingRise=false, CaptureCount=2, CaptureCounterEnabled=false, CaptureInputEnabled=false, CaptureMode=0, CONTROL3=0, ControlRegRemoved=0, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG16, CySetRegReplacementString=CY_SET_REG16, DeviceFamily=PSoC5, EnableMode=0, FF16=false, FF8=false, FixedFunction=false, FixedFunctionUsed=0, HWCaptureCounterEnabled=false, InterruptOnCapture=false, InterruptOnFIFOFull=false, InterruptOnTC=false, IntOnCapture=0, IntOnFIFOFull=0, IntOnTC=0, NumberOfCaptures=1, param45=1, Period=49999, RegDefReplacementString=reg16, RegSizeReplacementString=uint16, Resolution=16, RstStatusReplacementString=rstSts, RunMode=0, SiliconRevision=0, SoftwareCaptureModeEnabled=false, SoftwareTriggerModeEnabled=false, TriggerInputEnabled=false, TriggerMode=0, UDB16=true, UDB24=false, UDB32=false, UDB8=false, UDBControlReg=true, UsesHWEnable=0, VerilogSectionReplacementString=sT16, CY_API_CALLBACK_HEADER_INCLUDE=, CY_COMPONENT_NAME=Timer_v2_70, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=Timer_Deadzone, CY_INSTANCE_SHORT_NAME=Timer_Deadzone, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=70, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  3.3 CP3, INSTANCE_NAME=Timer_Deadzone, )
+module Timer_v2_70_12 (
+    clock,
+    reset,
+    interrupt,
+    enable,
+    capture,
+    trigger,
+    capture_out,
+    tc);
+    input       clock;
+    input       reset;
+    output      interrupt;
+    input       enable;
+    input       capture;
+    input       trigger;
+    output      capture_out;
+    output      tc;
+
+    parameter CaptureCount = 2;
+    parameter CaptureCounterEnabled = 0;
+    parameter DeviceFamily = "PSoC5";
+    parameter InterruptOnCapture = 0;
+    parameter InterruptOnTC = 0;
+    parameter Resolution = 16;
+    parameter SiliconRevision = "0";
+
+          wire  Net_261;
+          wire  Net_260;
+          wire  Net_266;
+          wire  Net_102;
+          wire  Net_55;
+          wire  Net_57;
+          wire  Net_53;
+          wire  Net_51;
+
+    ZeroTerminal ZeroTerminal_1 (
+        .z(Net_260));
+
+	// VirtualMux_2 (cy_virtualmux_v1_0)
+	assign interrupt = Net_55;
+
+	// VirtualMux_3 (cy_virtualmux_v1_0)
+	assign tc = Net_53;
+
+    B_Timer_v2_70 TimerUDB (
+        .reset(reset),
+        .interrupt(Net_55),
+        .enable(enable),
+        .trigger(trigger),
+        .capture_in(capture),
+        .capture_out(capture_out),
+        .tc(Net_53),
+        .clock(clock));
+    defparam TimerUDB.Capture_Count = 2;
+    defparam TimerUDB.CaptureCounterEnabled = 0;
+    defparam TimerUDB.CaptureMode = 0;
+    defparam TimerUDB.EnableMode = 0;
+    defparam TimerUDB.InterruptOnCapture = 0;
+    defparam TimerUDB.Resolution = 16;
+    defparam TimerUDB.RunMode = 0;
+    defparam TimerUDB.TriggerMode = 0;
+
+    OneTerminal OneTerminal_1 (
+        .o(Net_102));
+
+	// VirtualMux_1 (cy_virtualmux_v1_0)
+	assign Net_266 = Net_102;
+
+
+
+endmodule
+
 // top
 module top ;
 
           wire  CLK24M;
+          wire  Net_7414;
+          wire  Net_7413;
+          wire  Net_7412;
+          wire  Net_7411;
+          wire  Net_7410;
+          wire  Net_7427;
           wire  Net_7310;
           wire  Net_7309;
           wire  Net_7308;
@@ -1778,16 +1857,16 @@ module top ;
           wire  Net_7175;
           wire  Net_7174;
           wire  Net_7044;
-          wire  Net_6998;
-          wire  Net_6997;
-          wire  Net_6996;
+          wire  Net_7328;
+          wire  Net_7327;
+          wire  Net_7326;
           wire  Net_6994;
           wire  Net_7306;
           wire  Net_7162;
           wire  Net_7305;
-          wire  Net_6964;
-          wire  Net_6963;
-          wire  Net_6962;
+          wire  Net_7325;
+          wire  Net_7324;
+          wire  Net_7323;
           wire [7:0] Net_7217;
           wire  Net_7216;
           wire  Net_7215;
@@ -1918,6 +1997,9 @@ module top ;
           wire  Net_6766;
           wire  Net_6779;
           wire  Net_1849;
+          wire  Net_7337;
+          wire  Net_7340;
+          wire  Net_7338;
           wire  Net_7042;
           wire  Net_6959;
           wire  Net_7022;
@@ -2742,8 +2824,8 @@ module top ;
         .neg(Net_7145),
         .either(Net_7146),
         .pos(Net_7147));
-    defparam Debouncer_2.EitherEdgeDetect = 0;
-    defparam Debouncer_2.NegEdgeDetect = 0;
+    defparam Debouncer_2.EitherEdgeDetect = 1;
+    defparam Debouncer_2.NegEdgeDetect = 1;
     defparam Debouncer_2.PosEdgeDetect = 1;
     defparam Debouncer_2.SignalWidth = 1;
 
@@ -4248,11 +4330,11 @@ module top ;
         .d(Net_6960),
         .clock(Net_6961),
         .q(Net_6959),
-        .neg(Net_6962),
-        .either(Net_6963),
-        .pos(Net_6964));
-    defparam Debouncer_3.EitherEdgeDetect = 0;
-    defparam Debouncer_3.NegEdgeDetect = 0;
+        .neg(Net_7323),
+        .either(Net_7324),
+        .pos(Net_7325));
+    defparam Debouncer_3.EitherEdgeDetect = 1;
+    defparam Debouncer_3.NegEdgeDetect = 1;
     defparam Debouncer_3.PosEdgeDetect = 1;
     defparam Debouncer_3.SignalWidth = 1;
 
@@ -4287,11 +4369,11 @@ module top ;
         .d(Net_6994),
         .clock(Net_6961),
         .q(Net_6992),
-        .neg(Net_6996),
-        .either(Net_6997),
-        .pos(Net_6998));
-    defparam Debouncer_4.EitherEdgeDetect = 0;
-    defparam Debouncer_4.NegEdgeDetect = 0;
+        .neg(Net_7326),
+        .either(Net_7327),
+        .pos(Net_7328));
+    defparam Debouncer_4.EitherEdgeDetect = 1;
+    defparam Debouncer_4.NegEdgeDetect = 1;
     defparam Debouncer_4.PosEdgeDetect = 1;
     defparam Debouncer_4.SignalWidth = 1;
 
@@ -4333,8 +4415,8 @@ module top ;
         .neg(Net_7026),
         .either(Net_7027),
         .pos(Net_7028));
-    defparam Debouncer_5.EitherEdgeDetect = 0;
-    defparam Debouncer_5.NegEdgeDetect = 0;
+    defparam Debouncer_5.EitherEdgeDetect = 1;
+    defparam Debouncer_5.NegEdgeDetect = 1;
     defparam Debouncer_5.PosEdgeDetect = 1;
     defparam Debouncer_5.SignalWidth = 1;
 
@@ -4370,8 +4452,8 @@ module top ;
         .neg(Net_7046),
         .either(Net_7047),
         .pos(Net_7048));
-    defparam Debouncer_6.EitherEdgeDetect = 0;
-    defparam Debouncer_6.NegEdgeDetect = 0;
+    defparam Debouncer_6.EitherEdgeDetect = 1;
+    defparam Debouncer_6.NegEdgeDetect = 1;
     defparam Debouncer_6.PosEdgeDetect = 1;
     defparam Debouncer_6.SignalWidth = 1;
 
@@ -4422,6 +4504,45 @@ module top ;
 		Clock_7
 		 (.clock_out(Net_7276));
 
+
+
+	cy_isr_v1_0
+		#(.int_type(2'b10))
+		isr_action_deadzone
+		 (.int_signal(Net_7337));
+
+
+
+	cy_clock_v1_0
+		#(.id("7e6f4f41-a78a-41a3-9a5f-847cb68f5b9b"),
+		  .source_clock_id("315365C3-2E3E-4f04-84A2-BB564A173261"),
+		  .divisor(0),
+		  .period("20000000000"),
+		  .is_direct(0),
+		  .is_digital(1))
+		timer_clock_2
+		 (.clock_out(Net_7338));
+
+
+    ZeroTerminal ZeroTerminal_4 (
+        .z(Net_7340));
+
+    Timer_v2_70_12 Timer_Deadzone (
+        .reset(Net_7340),
+        .interrupt(Net_7410),
+        .enable(1'b1),
+        .trigger(1'b1),
+        .capture(1'b0),
+        .capture_out(Net_7414),
+        .tc(Net_7337),
+        .clock(Net_7338));
+    defparam Timer_Deadzone.CaptureCount = 2;
+    defparam Timer_Deadzone.CaptureCounterEnabled = 0;
+    defparam Timer_Deadzone.DeviceFamily = "PSoC5";
+    defparam Timer_Deadzone.InterruptOnCapture = 0;
+    defparam Timer_Deadzone.InterruptOnTC = 0;
+    defparam Timer_Deadzone.Resolution = 16;
+    defparam Timer_Deadzone.SiliconRevision = "0";
 
 
 
