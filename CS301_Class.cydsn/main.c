@@ -47,7 +47,7 @@ uint8 robot_direction = 4;
 
 uint8 path[DEFAULT_ARRAY_SIZE][3] = {0};
 uint8 start[2] = {1, 1};//(y, x) array starts at 0
-uint8 destination[2] = {13, 17};//(y, x)
+uint8 destination[2] = {13, 17};//(y, x) DON'T HARDCODE THIS
 
 
 uint8 map[15][19] = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -602,7 +602,8 @@ void trackLine()
         //setSpeed(0,0);
     //}
 }
-
+uint16 leftTurnCount = 0;
+uint16 rightTurnCount = 0;
 void trackLineZ()
 {
     //read the value of the three central-front sensors
@@ -611,24 +612,22 @@ void trackLineZ()
     uint8 nr = NRSens_out_Read();
     uint8 mid = MSens_out_Read();
     
-    //if only the left one, hard left
+        //if only the left one, hard left
     if(nl && !nr && !mid)// && trackTurnCount > 0)
     {
-        setSpeed(speed / 2.0, -speed / 2.0);
+        setSpeed(speed / 1.6,-speed / 1.6);
     }
     else if(nl && mid && !nr)   //if centre/middle, soft left
     {
-        //setSpeed(speed,speed / 1.5);
-        setSpeed(speed, speed*0.9);
+        setSpeed(speed,speed / 1.5);
     }
     else if (nr && mid && !nl)//if centre/right, soft right
     {
-       // setSpeed(speed / 1.5,speed);
-        setSpeed(speed*0.9,speed);
+        setSpeed(speed / 1.5,speed);
     }
    else if (nr && !mid && !nl)    //if only right, hard right
     {
-        setSpeed(-speed / 2.0,speed / 2.0);
+        setSpeed(-speed / 1.6,speed / 1.6);
     }
     else if (mid && !nr && !nl)
     {
@@ -640,68 +639,115 @@ void trackLineZ()
     //{
         //setSpeed(0,0);
     //}
+    
+    
+//    //if only the left one, hard left
+//    if(nl && !nr && !mid)// && trackTurnCount > 0)
+//    {
+//         if(leftTurnCount < 500)
+//         {   
+//            setSpeed(speed / 1.5,-speed / 1.5);
+//            leftTurnCount++;
+//         }
+//        else setSpeed(speed, speed*0.7);
+//    }
+//    else if(nl && mid && !nr)   //if centre/middle, soft left
+//    {
+//         leftTurnCount = 0;
+//         rightTurnCount = 0;
+//        //setSpeed(speed,speed / 1.5);
+//        setSpeed(speed, speed*0.7);
+//    }
+//    else if (nr && mid && !nl)//if centre/right, soft right
+//    {
+//         leftTurnCount = 0;
+//         rightTurnCount = 0;
+//       // setSpeed(speed / 1.5,speed);
+//        setSpeed(speed*0.7,speed);
+//    }
+//   else if (nr && !mid && !nl)    //if only right, hard right
+//    {
+//        if(rightTurnCount < 500)
+//        {  
+//            setSpeed(-speed / 1.5,speed / 1.5);
+//            rightTurnCount++;
+//        }
+//        else setSpeed(speed*0.7,speed);
+//    }
+//    else if (mid && !nr && !nl)
+//    {
+//        leftTurnCount = 0;
+//        rightTurnCount = 0;
+//        setSpeed(speed,speed);
+//    }
+//    //else setSpeed(speed, speed);
+//  
+//   // else if (!mid && !nr && !nl)
+//    //{
+//        //setSpeed(0,0);
+//    //}
 }
 
-uint8 hardTurnCount = 0;
+
 void trackLineU()
 {
-    //read the value of the three central-front sensors
-    
-    uint8 nl = NLSens_out_Read();
-    uint8 fl = FLSens_out_Read();
-    uint8 nr = NRSens_out_Read();
-    uint8 fr = FRSens_out_Read();
-    uint8 mid = MSens_out_Read();
-    if (fl && mid && fr) // T intersection
-    {
-        // not implemented
-    }
-    else if (fl && mid) // if far left + centre, we're at a left-turning intersection
-    {
-        setSpeed(speed, speed);
-    }
-    else if (fr && mid) // if far right + centre, we're at a right-turning intersection
-    {
-        setSpeed(speed, speed);
-    }
-    else if(nl && !nr && !mid) //if only the left one, hard left
-    {
-         if(hardTurnCount < 100)
-         {   
-            setSpeed(speed / 1.5,-speed / 1.5);
-            hardTurnCount++;
-         }
-        else setSpeed(speed, speed);
-    }
-    else if(nl && mid && !nr)   //if centre/middle, soft left
-    {
-        setSpeed(speed, 0);
-        hardTurnCount = 0;
-    }
-    else if (nr && mid && !nl)//if centre/right, soft right
-    {
-        setSpeed(0, speed);
-        hardTurnCount = 0;
-    }
-   else if (nr && !mid && !nl)    //if only right, hard right
-    {
-        if(hardTurnCount < 100)
-        {  
-            setSpeed(-speed / 1.5,speed / 1.5);
-            hardTurnCount++;
-        }
-        else setSpeed(speed, speed);
-    }
-    else if (mid && !nr && !nl)
-    {
-        hardTurnCount = 0;
-        setSpeed(speed,speed);
-    }
-   // else if (!mid && !nr && !nl)
-    //{
-        //setSpeed(0,0);
-    //}
-   
+//    //read the value of the three central-front sensors
+//    
+//    uint8 nl = NLSens_out_Read();
+//    uint8 fl = FLSens_out_Read();
+//    uint8 nr = NRSens_out_Read();
+//    uint8 fr = FRSens_out_Read();
+//    uint8 mid = MSens_out_Read();
+//    if (fl && mid && fr) // T intersection
+//    {
+//        // not implemented
+//    }
+//    else if (fl && mid) // if far left + centre, we're at a left-turning intersection
+//    {
+//        setSpeed(speed, speed);
+//    }
+//    else if (fr && mid) // if far right + centre, we're at a right-turning intersection
+//    {
+//        setSpeed(speed, speed);
+//    }
+//    else if(nl && !nr && !mid) //if only the left one, hard left
+//    {
+//         if(hardTurnCount < 50)
+//         {   
+//            setSpeed(speed / 1.5,-speed / 1.5);
+//            hardTurnCount++;
+//         }
+//        else setSpeed(speed, speed);
+//    }
+//    else if(nl && mid && !nr)   //if centre/middle, soft left
+//    {
+//        setSpeed(speed, 0);
+//        hardTurnCount = 0;
+//    }
+//    else if (nr && mid && !nl)//if centre/right, soft right
+//    {
+//        setSpeed(0, speed);
+//        hardTurnCount = 0;
+//    }
+//   else if (nr && !mid && !nl)    //if only right, hard right
+//    {
+//        if(hardTurnCount < 50)
+//        {  
+//            setSpeed(-speed / 1.5,speed / 1.5);
+//            hardTurnCount++;
+//        }
+//        else setSpeed(speed, speed);
+//    }
+//    else if (mid && !nr && !nl)
+//    {
+//        hardTurnCount = 0;
+//        setSpeed(speed,speed);
+//    }
+//   // else if (!mid && !nr && !nl)
+//    //{
+//        //setSpeed(0,0);
+//    //}
+//   
 
 }
 
@@ -814,7 +860,7 @@ int main()
         changeToBT();
     }
     
-    uint8 actionDebounce = 0;
+    uint16 actionDebounce = 0;
     
     //usbPutString("Started");
     for(;;)
@@ -875,7 +921,7 @@ int main()
                         if(sensorsDisabled == 0)
                         {
                             actionDebounce++;
-                            if(actionDebounce >= 5)
+                            if(actionDebounce >= 255)
                             {
                                 sensorsDisabled = 1;
                                 UART_PutString("Deadzone entered!\r\n");
@@ -913,7 +959,7 @@ int main()
                         if(sensorsDisabled == 0)
                         {
                             actionDebounce++;
-                            if(actionDebounce >= 5)
+                            if(actionDebounce >= 3000)
                             {
                                 UART_PutString("Deadzone entered!\r\n");
                                 deadzone = 1;

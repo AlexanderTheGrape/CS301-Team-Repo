@@ -1,5 +1,5 @@
 -- Project:   CS301_Class
--- Generated: 10/16/2019 15:55:34
+-- Generated: 10/16/2019 20:34:21
 -- PSoC Creator  3.3 CP3
 
 ENTITY CS301_Class IS
@@ -3676,6 +3676,15 @@ BEGIN
             main_1 => \QuadDec_M2:Net_1251\,
             main_2 => \QuadDec_M2:Cnt16:CounterUDB:prevCompare\);
 
+    M1_QA(0)_SYNC:synccell
+        GENERIC MAP(
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            in => Net_724,
+            out => Net_724_SYNCOUT,
+            clock => ClockBlock_BUS_CLK);
+
     Net_1880:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0)",
@@ -3714,6 +3723,15 @@ BEGIN
         PORT MAP(
             q => \UART:BUART:tx_status_2\,
             main_0 => \UART:BUART:tx_fifo_notfull\);
+
+    M2_IN2(0)_SYNC:synccell
+        GENERIC MAP(
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            in => Net_6767,
+            out => Net_6767_SYNCOUT,
+            clock => ClockBlock_BUS_CLK);
 
     \UART:BUART:rx_counter_load\:macrocell
         GENERIC MAP(
@@ -3792,64 +3810,6 @@ BEGIN
             q => \Timer_2:TimerUDB:status_tc\,
             main_0 => \Timer_2:TimerUDB:control_7\,
             main_1 => \Timer_2:TimerUDB:per_zero\);
-
-    ClockBlock_100k__SYNC_3:synccell
-        GENERIC MAP(
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            in => ClockBlock_100k,
-            out => ClockBlock_100k__SYNC_OUT_3,
-            clock => ClockBlock_BUS_CLK,
-            clk_en => open);
-
-    ClockBlock_100k__SYNC_2:synccell
-        GENERIC MAP(
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            in => ClockBlock_100k,
-            out => ClockBlock_100k__SYNC_OUT_2,
-            clock => ClockBlock_BUS_CLK,
-            clk_en => open);
-
-    ClockBlock_100k__SYNC_1:synccell
-        GENERIC MAP(
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            in => ClockBlock_100k,
-            out => ClockBlock_100k__SYNC_OUT_1,
-            clock => ClockBlock_BUS_CLK,
-            clk_en => open);
-
-    ClockBlock_100k__SYNC:synccell
-        GENERIC MAP(
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            in => ClockBlock_100k,
-            out => ClockBlock_100k__SYNC_OUT,
-            clock => ClockBlock_BUS_CLK,
-            clk_en => open);
-
-    Rx_2(0)_SYNC:synccell
-        GENERIC MAP(
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            in => Net_3405,
-            out => Net_3405_SYNCOUT,
-            clock => ClockBlock_BUS_CLK);
-
-    Rx_1(0)_SYNC:synccell
-        GENERIC MAP(
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            in => Net_3438,
-            out => Net_3438_SYNCOUT,
-            clock => ClockBlock_BUS_CLK);
 
     \Timer_Deadzone:TimerUDB:status_tc\:macrocell
         GENERIC MAP(
@@ -5538,15 +5498,6 @@ BEGIN
             clock_0 => Net_6961,
             main_0 => Net_6305);
 
-    M2_QB(0)_SYNC:synccell
-        GENERIC MAP(
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            in => Net_730,
-            out => Net_730_SYNCOUT,
-            clock => ClockBlock_BUS_CLK);
-
     Net_6321:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
@@ -5557,13 +5508,13 @@ BEGIN
             clock_0 => Net_6320,
             main_0 => Net_6319);
 
-    M2_QA(0)_SYNC:synccell
+    M1_IN2(0)_SYNC:synccell
         GENERIC MAP(
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            in => Net_729,
-            out => Net_729_SYNCOUT,
+            in => Net_6787,
+            out => Net_6787_SYNCOUT,
             clock => ClockBlock_BUS_CLK);
 
     \UART:BUART:txn\:macrocell
@@ -5855,15 +5806,6 @@ BEGIN
             clock_0 => Net_6961,
             main_0 => Net_6929);
 
-    M1_QB(0)_SYNC:synccell
-        GENERIC MAP(
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            in => Net_725,
-            out => Net_725_SYNCOUT,
-            clock => ClockBlock_BUS_CLK);
-
     Net_6992:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0)",
@@ -5873,15 +5815,6 @@ BEGIN
             q => Net_6992,
             clock_0 => Net_6961,
             main_0 => Net_6993);
-
-    M1_QA(0)_SYNC:synccell
-        GENERIC MAP(
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            in => Net_724,
-            out => Net_724_SYNCOUT,
-            clock => ClockBlock_BUS_CLK);
 
     Net_7022:macrocell
         GENERIC MAP(
@@ -5893,14 +5826,25 @@ BEGIN
             clock_0 => Net_6961,
             main_0 => Net_7023);
 
-    M2_IN2(0)_SYNC:synccell
+    ClockBlock_100k__SYNC_3:synccell
         GENERIC MAP(
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            in => Net_6767,
-            out => Net_6767_SYNCOUT,
-            clock => ClockBlock_BUS_CLK);
+            in => ClockBlock_100k,
+            out => ClockBlock_100k__SYNC_OUT_3,
+            clock => ClockBlock_BUS_CLK,
+            clk_en => open);
+
+    ClockBlock_100k__SYNC_2:synccell
+        GENERIC MAP(
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            in => ClockBlock_100k,
+            out => ClockBlock_100k__SYNC_OUT_2,
+            clock => ClockBlock_BUS_CLK,
+            clk_en => open);
 
     Net_7042:macrocell
         GENERIC MAP(
@@ -5912,13 +5856,51 @@ BEGIN
             clock_0 => Net_6961,
             main_0 => Net_7043);
 
-    M1_IN2(0)_SYNC:synccell
+    ClockBlock_100k__SYNC_1:synccell
         GENERIC MAP(
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            in => Net_6787,
-            out => Net_6787_SYNCOUT,
+            in => ClockBlock_100k,
+            out => ClockBlock_100k__SYNC_OUT_1,
+            clock => ClockBlock_BUS_CLK,
+            clk_en => open);
+
+    ClockBlock_100k__SYNC:synccell
+        GENERIC MAP(
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            in => ClockBlock_100k,
+            out => ClockBlock_100k__SYNC_OUT,
+            clock => ClockBlock_BUS_CLK,
+            clk_en => open);
+
+    Rx_2(0)_SYNC:synccell
+        GENERIC MAP(
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            in => Net_3405,
+            out => Net_3405_SYNCOUT,
+            clock => ClockBlock_BUS_CLK);
+
+    Rx_1(0)_SYNC:synccell
+        GENERIC MAP(
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            in => Net_3438,
+            out => Net_3438_SYNCOUT,
+            clock => ClockBlock_BUS_CLK);
+
+    M2_QB(0)_SYNC:synccell
+        GENERIC MAP(
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            in => Net_730,
+            out => Net_730_SYNCOUT,
             clock => ClockBlock_BUS_CLK);
 
     Net_7337:macrocell
@@ -5931,5 +5913,23 @@ BEGIN
             clock_0 => Net_7338,
             main_0 => \Timer_Deadzone:TimerUDB:control_7\,
             main_1 => \Timer_Deadzone:TimerUDB:per_zero\);
+
+    M2_QA(0)_SYNC:synccell
+        GENERIC MAP(
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            in => Net_729,
+            out => Net_729_SYNCOUT,
+            clock => ClockBlock_BUS_CLK);
+
+    M1_QB(0)_SYNC:synccell
+        GENERIC MAP(
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            in => Net_725,
+            out => Net_725_SYNCOUT,
+            clock => ClockBlock_BUS_CLK);
 
 END __DEFAULT__;
