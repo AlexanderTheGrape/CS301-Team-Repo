@@ -36,6 +36,7 @@ extern uint8 food_length;
 extern char instructions[DEFAULT_ARRAY_SIZE];
 
 int generateDirections();
-uint8 djikstras(uint8 map[Y_SIZE][X_SIZE], uint8 food_list[6][2], uint8 path[DEFAULT_ARRAY_SIZE][3], uint8 start[], uint8 destination[]);
+int generateEntireMapDirections();
+uint16 djikstras(uint8 map[Y_SIZE][X_SIZE], uint8 food_list[6][2], uint8 path[DEFAULT_ARRAY_SIZE][3], uint8 start[], uint8 destination[]);
 
 /* [] END OF FILE */

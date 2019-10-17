@@ -366,7 +366,7 @@ int main()
                         if(sensorsDisabled == 0)
                         {
                             actionDebounce++;
-                            if(actionDebounce >= 15000)
+                            if(actionDebounce >= 12000)
                             {
                                 UART_PutString("Triggered at white light \r\n");
                                 UART_PutString("Deadzone entered!\r\n");
@@ -706,7 +706,8 @@ CY_ISR(BT_rxInt)
     case ('x'):
         track_mode = DEST_TEST;
         tracked_direction = robot_direction;
-        generateDirections();
+        //generateDirections();
+        generateEntireMapDirections();
         char message[128];
         sprintf(message, "p:%s\r\n", instructions);
         UART_PutString(message);
