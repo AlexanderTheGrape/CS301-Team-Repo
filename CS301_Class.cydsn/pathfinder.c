@@ -373,15 +373,15 @@ uint32_t generateEntireMapDirections(){
                        if(map[inter_path[j][Y]][inter_path[j][X] - 1] == PATH || map[inter_path[j][Y]][inter_path[j][X] + 1] == PATH){
                           if(inter_path[j][DIR] != inter_path[j - 1][DIR]){
                              //current direction , the next direction
-                             if((inter_path[j][DIR] == 1 && inter_path[j - 1][DIR] == 4) || (inter_path[j][DIR] == 3 && inter_path[j - 1][DIR] == 2)){//changed
+                             if((inter_path[j][DIR] == 1 && inter_path[j - 1][DIR] == 4) || (inter_path[j][DIR] == 3 && inter_path[j - 1][DIR] == 2) || (((inter_path[j][DIR] == 1 && path[i + 1][DIR] == 4) || (inter_path[j][DIR] == 3 && path[i + 1][DIR] == 2)) && j == 1)){//changed
                                 //printf("L/R intersection found (%d) [direction = %d] -- TURN LEFT\n", end - j + 1, inter_path[j][DIR]);
                                 instructions[counter] = LEFT;
                                 counter++;
-                             }else if((inter_path[j][DIR] == 1 && inter_path[j - 1][DIR] == 2) || (inter_path[j][DIR] == 3 && inter_path[j - 1][DIR] == 4)){//changed
+                             }else if((inter_path[j][DIR] == 1 && inter_path[j - 1][DIR] == 2) || (inter_path[j][DIR] == 3 && inter_path[j - 1][DIR] == 4) || (((inter_path[j][DIR] == 1 && path[i + 1][DIR] == 2) || (inter_path[j][DIR] == 3 && path[i + 1][DIR] == 4)) && j == 1)){//changed
                                 //printf("L/R intersection found (%d) [direction = %d] -- TURN RIGHT\n", end - j + 1, inter_path[j][DIR]);
                                 instructions[counter] = RIGHT;
                                 counter++;
-                             }else if ((inter_path[j][DIR] == 1 && inter_path[j - 1][DIR] == 3) || (inter_path[j][DIR] == 3 && inter_path[j - 1][DIR] == 1)){//changed
+                             }else if ((inter_path[j][DIR] == 1 && inter_path[j - 1][DIR] == 3) || (inter_path[j][DIR] == 3 && inter_path[j - 1][DIR] == 1) || (((inter_path[j][DIR] == 1 && path[i + 1][DIR] == 3) || (inter_path[j][DIR] == 3 && path[i + 1][DIR] == 1)) && j == 1)){//changed
                                 //printf("L/R intersection found (%d) [direction = %d] -- TURN U-TURN\n", end - j + 1, inter_path[j][DIR]);
                                 instructions[counter] = UTURN;
                                 counter++;
@@ -394,7 +394,7 @@ uint32_t generateEntireMapDirections(){
                              counter++;
                           }
                        }else{//not an intersection
-                          if ((inter_path[j][DIR] == 1 && inter_path[j - 1][DIR] == 3) || (inter_path[j][DIR] == 3 && inter_path[j - 1][DIR] == 1)){//changed
+                          if ((inter_path[j][DIR] == 1 && inter_path[j - 1][DIR] == 3) || (inter_path[j][DIR] == 3 && inter_path[j - 1][DIR] == 1) || (((inter_path[j][DIR] == 1 && path[i + 1][DIR] == 3) || (inter_path[j][DIR] == 3 && path[i + 1][DIR] == 1)) && j == 1)){//changed
                              //printf("L/R intersection found (%d) [direction = %d] -- TURN U-TURN\n", end - j + 1, inter_path[j][DIR]);
                              instructions[counter] = UTURN;
                              counter++;
@@ -405,15 +405,15 @@ uint32_t generateEntireMapDirections(){
                     }else{
                        if(map[inter_path[j][Y] - 1][inter_path[j][X]] == PATH || map[inter_path[j][Y] + 1][inter_path[j][X]] == PATH){
                           if(inter_path[j][DIR] != inter_path[j - 1][DIR]){
-                             if((inter_path[j][DIR] == 4 && inter_path[j - 1][DIR] == 3) || (inter_path[j][DIR] == 2 && inter_path[j - 1][DIR] == 1)){//changed
+                             if((inter_path[j][DIR] == 4 && inter_path[j - 1][DIR] == 3) || (inter_path[j][DIR] == 2 && inter_path[j - 1][DIR] == 1) || (((inter_path[j][DIR] == 4 && path[i + 1][DIR] == 3) || (inter_path[j][DIR] == 2 && path[i + 1][DIR] == 1)) && j == 1)){//changed
                                 //printf("U/D intersection found (%d) [direction = %d] -- TURN LEFT\n", end - j + 1, inter_path[j][DIR]);
                                 instructions[counter] = LEFT;
                                 counter++;
-                             }else if((inter_path[j][DIR] == 4 && inter_path[j - 1][DIR] == 1) || (inter_path[j][DIR] == 2 && inter_path[j - 1][DIR] == 3)){//changed
+                             }else if((inter_path[j][DIR] == 4 && inter_path[j - 1][DIR] == 1) || (inter_path[j][DIR] == 2 && inter_path[j - 1][DIR] == 3) || (((inter_path[j][DIR] == 4 && path[i + 1][DIR] == 1) || (inter_path[j][DIR] == 2 && path[i + 1][DIR] == 3)) && j == 1)){//changed
                                 //printf("U/D intersection found (%d) [direction = %d] -- TURN RIGHT\n", end - j + 1, inter_path[j][DIR]);
                                 instructions[counter] = RIGHT;
                                 counter++;
-                             }else if ((inter_path[j][DIR] == 4 && inter_path[j - 1][DIR] == 2) || (inter_path[j][DIR] == 2 && inter_path[j - 1][DIR] == 4)){//changed
+                             }else if ((inter_path[j][DIR] == 4 && inter_path[j - 1][DIR] == 2) || (inter_path[j][DIR] == 2 && inter_path[j - 1][DIR] == 4) || (((inter_path[j][DIR] == 4 && path[i + 1][DIR] == 2) || (inter_path[j][DIR] == 2 && path[i + 1][DIR] == 4)) && j == 1)){//changed
                                 //printf("U/D intersection found (%d) [direction = %d] -- TURN U-TURN\n", end - j + 1, inter_path[j][DIR]);
                                 instructions[counter] = UTURN;
                                 counter++;
@@ -427,7 +427,7 @@ uint32_t generateEntireMapDirections(){
                           }
 
                        }else{
-                          if ((inter_path[j][DIR] == 4 && inter_path[j - 1][DIR] == 2) || (inter_path[j][DIR] == 2 && inter_path[j - 1][DIR] == 4)){//changed
+                          if ((inter_path[j][DIR] == 4 && inter_path[j - 1][DIR] == 2) || (inter_path[j][DIR] == 2 && inter_path[j - 1][DIR] == 4) || (((inter_path[j][DIR] == 4 && path[i + 1][DIR] == 2) || (inter_path[j][DIR] == 2 && path[i + 1][DIR] == 4)) && j == 1)){//changed
                              //printf("U/D intersection found (%d) [direction = %d] -- TURN U-TURN\n", end - j + 1, inter_path[j][DIR]);
                              instructions[counter] = UTURN;
                              counter++;

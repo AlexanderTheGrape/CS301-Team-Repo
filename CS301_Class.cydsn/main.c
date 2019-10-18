@@ -52,7 +52,7 @@ uint32_t map[15][19] = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
                     {1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,1},
                     {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
 
-//uint8 map[15][19] = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},{1,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,1},{1,1,1,1,1,0,0,0,0,0,1,0,1,0,1,0,1,1,1},{1,1,1,1,1,0,1,1,1,0,0,0,1,0,1,0,1,1,1},{1,0,0,0,0,0,0,0,1,1,1,0,1,0,1,0,0,0,1},{1,0,1,1,1,0,1,0,0,0,0,0,0,0,1,1,1,0,1},{1,0,0,0,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1},{1,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},{1,0,1,0,0,0,1,0,1,1,1,0,1,1,1,0,1,1,1},{1,0,1,1,1,0,1,0,1,1,1,0,1,1,1,0,0,0,1},{1,0,1,1,1,0,1,0,0,0,0,0,0,0,1,1,1,0,1},{1,0,0,0,0,0,1,1,1,0,1,0,1,0,0,1,1,0,1},{1,0,1,1,0,1,1,1,1,0,1,0,1,1,0,1,1,0,1},{1,0,1,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1},{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
+//uint32_t map[15][19] = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},{1,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,1},{1,1,1,1,1,0,0,0,0,0,1,0,1,0,1,0,1,1,1},{1,1,1,1,1,0,1,1,1,0,0,0,1,0,1,0,1,1,1},{1,0,0,0,0,0,0,0,1,1,1,0,1,0,1,0,0,0,1},{1,0,1,1,1,0,1,0,0,0,0,0,0,0,1,1,1,0,1},{1,0,0,0,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1},{1,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},{1,0,1,0,0,0,1,0,1,1,1,0,1,1,1,0,1,1,1},{1,0,1,1,1,0,1,0,1,1,1,0,1,1,1,0,0,0,1},{1,0,1,1,1,0,1,0,0,0,0,0,0,0,1,1,1,0,1},{1,0,0,0,0,0,1,1,1,0,1,0,1,0,0,1,1,0,1},{1,0,1,1,0,1,1,1,1,0,1,0,1,1,0,1,1,0,1},{1,0,1,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1},{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
 //first number is the y coord, second is x
 //first number is row, second column
 
@@ -328,12 +328,14 @@ int main()
                         if(sensorsDisabled == 0)
                         {
                             actionDebounce++;
-                            if(actionDebounce >= 2100)
+                            if(actionDebounce >= 1000)
                             {
                                 sensorsDisabled = 1;
                                 UART_PutString("Triggered at intersection \r\n");
                                 UART_PutString("Deadzone entered!\r\n");
                                 deadzone = 1;
+                                if(nextStep == 'S') Timer_Deadzone_WriteCounter(10000);
+                                else Timer_Deadzone_WriteCounter(40000);
                                 Timer_Deadzone_Start();
                                 switch(nextStep)
                                 {
@@ -367,11 +369,12 @@ int main()
                         if(sensorsDisabled == 0)
                         {
                             actionDebounce++;
-                            if(actionDebounce >= 12000)
+                            if(actionDebounce >= 5000)
                             {
                                 UART_PutString("Triggered at white light \r\n");
                                 UART_PutString("Deadzone entered!\r\n");
                                 deadzone = 1;
+                                Timer_Deadzone_WriteCounter(40000);
                                 Timer_Deadzone_Start();
                                 actionDebounce = 0;
                                 sensorsDisabled = 1;
@@ -809,14 +812,14 @@ void trackLineZ()
     {
         setSpeed(speed / 1.6,-speed / 1.6);
     }
-//    else if(nl && mid && !nr)   //if centre/middle, soft left
-//    {
-//        setSpeed(speed,speed / 1.5);
-//    }
-//    else if (nr && mid && !nl)//if centre/right, soft right
-//    {
-//        setSpeed(speed / 1.5,speed);
-//    }
+    else if(nl && mid && !nr)   //if centre/middle, soft left
+    {
+        setSpeed(speed,speed);
+    }
+    else if (nr && mid && !nl)//if centre/right, soft right
+    {
+        setSpeed(speed ,speed);
+    }
    else if (nr && !mid && !nl)    //if only right, hard right
     {
         setSpeed(-speed / 1.6,speed / 1.6);
