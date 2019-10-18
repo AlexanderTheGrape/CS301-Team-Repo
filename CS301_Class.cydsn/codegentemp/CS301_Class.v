@@ -1,6 +1,6 @@
 // ======================================================================
 // CS301_Class.v generated from TopDesign.cysch
-// 10/18/2019 at 10:39
+// 10/18/2019 at 14:16
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -4343,7 +4343,7 @@ module top ;
 		#(.id("ca04a246-38ac-404c-8bdf-1f7a93e211dd"),
 		  .source_clock_id("315365C3-2E3E-4f04-84A2-BB564A173261"),
 		  .divisor(0),
-		  .period("40000000000000"),
+		  .period("50000000000000"),
 		  .is_direct(0),
 		  .is_digital(1))
 		Clock_3

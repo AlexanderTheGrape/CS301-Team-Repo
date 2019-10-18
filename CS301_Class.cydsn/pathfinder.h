@@ -22,21 +22,21 @@
 
 //pathfinding
 extern uint16 instructionCount;
-extern uint8 sensorsDisabled;
+extern uint32_t sensorsDisabled;
 
-extern uint8 map[15][19];
+extern uint32_t map[15][19];
 
-extern uint8 food_list[6][2];
-extern uint8 path[DEFAULT_ARRAY_SIZE][3];
-extern uint8 start[2];//(y, x) array starts at 0
-extern uint8 destination[2];//(y, x)
-extern uint8 robot_direction;
-uint8 tracked_direction; 
-extern uint8 food_length;
+extern uint32_t food_list[6][2];
+extern uint32_t path[DEFAULT_ARRAY_SIZE][3];
+extern uint32_t start[2];//(y, x) array starts at 0
+extern uint32_t destination[2];//(y, x)
+extern uint32_t robot_direction;
+uint32_t tracked_direction; 
+extern uint32_t food_length;
 extern char instructions[DEFAULT_ARRAY_SIZE];
 
-int generateDirections();
-int generateEntireMapDirections();
-uint16 djikstras(uint8 map[Y_SIZE][X_SIZE], uint8 food_list[6][2], uint8 path[DEFAULT_ARRAY_SIZE][3], uint8 start[], uint8 destination[]);
+uint32_t generateDirections();
+uint32_t generateEntireMapDirections();
+uint32_t djikstras(uint32_t map[Y_SIZE][X_SIZE], uint32_t food_list[6][2], uint32_t path[DEFAULT_ARRAY_SIZE][3], uint32_t start[], uint32_t destination[]);
 
 /* [] END OF FILE */

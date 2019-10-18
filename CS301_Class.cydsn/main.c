@@ -28,16 +28,15 @@ void usbPutChar(char c);
 
 char instructions[DEFAULT_ARRAY_SIZE] = {0};
 uint16 instructionCount = 0;
-uint8 sensorsDisabled = 0;
+uint32_t sensorsDisabled = 0;
 
-uint8 robot_direction = 4;
+uint32_t robot_direction = 2;
 
-uint8 path[DEFAULT_ARRAY_SIZE][3] = {0};
-uint8 start[2] = {1, 1};//(y, x) array starts at 0
-uint8 destination[2] = {13, 17};//(y, x) DON'T HARDCODE THIS
+uint32_t path[DEFAULT_ARRAY_SIZE][3] = {0};
+uint32_t start[2] = {1, 1};//(y, x) array starts at 0
+uint32_t destination[2] = {13, 11};//(y, x) DON'T HARDCODE THIS
 
-
-uint8 map[15][19] = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+uint32_t map[15][19] = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
                     {1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,1},
                     {1,1,1,1,1,0,1,0,1,0,1,0,1,1,1,1,1,0,1},
                     {1,0,0,0,1,0,1,0,0,0,1,0,0,0,0,0,1,0,1},
@@ -52,12 +51,14 @@ uint8 map[15][19] = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
                     {1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1},
                     {1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,1},
                     {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
+
+//uint8 map[15][19] = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},{1,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,1},{1,1,1,1,1,0,0,0,0,0,1,0,1,0,1,0,1,1,1},{1,1,1,1,1,0,1,1,1,0,0,0,1,0,1,0,1,1,1},{1,0,0,0,0,0,0,0,1,1,1,0,1,0,1,0,0,0,1},{1,0,1,1,1,0,1,0,0,0,0,0,0,0,1,1,1,0,1},{1,0,0,0,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1},{1,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},{1,0,1,0,0,0,1,0,1,1,1,0,1,1,1,0,1,1,1},{1,0,1,1,1,0,1,0,1,1,1,0,1,1,1,0,0,0,1},{1,0,1,1,1,0,1,0,0,0,0,0,0,0,1,1,1,0,1},{1,0,0,0,0,0,1,1,1,0,1,0,1,0,0,1,1,0,1},{1,0,1,1,0,1,1,1,1,0,1,0,1,1,0,1,1,0,1},{1,0,1,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1},{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
 //first number is the y coord, second is x
 //first number is row, second column
 
-//uint8 food_list[6][2]= {{4,5},{7,1},{11,5},{10,11},{5,8},{17,2}};
-uint8 food_list[6][2]= {{5,11}, {1, 17}, {13, 1}};
-uint8 food_length = 3;
+uint32_t food_list[6][2]= {{4,5},{7,1},{11,5},{10,11},{5,8},{17,2}};
+//uint8 food_list[6][2]= {{10,1},{1,13},{9,7},{16,13},{17,1}};
+uint32_t food_length = 6;
 
 void changeToRF();
 void changeToBT();
@@ -327,7 +328,7 @@ int main()
                         if(sensorsDisabled == 0)
                         {
                             actionDebounce++;
-                            if(actionDebounce >= 1000)
+                            if(actionDebounce >= 2100)
                             {
                                 sensorsDisabled = 1;
                                 UART_PutString("Triggered at intersection \r\n");
@@ -770,8 +771,8 @@ void Quad_Dec_response()
     //there's an initial right tilt by default, so we want to decrease the initial left speed
     if(leftSpeed == 0 && rightSpeed == 0){ 
        //leftSpeed = 3;
-        scalingLeft = 1;
-        scalingRight = 1;
+        scalingLeft = 2;
+        scalingRight = 2;
     }
 
     int interCalc = leftSpeedLimit - abs(leftSpeed);

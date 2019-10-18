@@ -23,16 +23,16 @@
 
 //struct for nodes
 typedef struct node{
-   uint8 path;// 1
-   uint8 visited;// 2
+   uint32_t path;// 1
+   uint32_t visited;// 2
    uint16 cost;// 6
-   uint8 x;
-   uint8 y;
+   uint32_t x;
+   uint32_t y;
    struct node* prevNode;
-   //uint8 previous_y;// 4
-   //uint8 previous_x; // 5
+   //uint32_t previous_y;// 4
+   //uint32_t previous_x; // 5
    uint16 tentative_cost; // 3
-   uint8 direction;
+   uint32_t direction;
 } node;
 
 /**pathfinding algorithm
@@ -44,12 +44,12 @@ typedef struct node{
 * destination - end node
 * direction - the initial direction of the robot
 */
-uint16 djikstras(uint8 map[Y_SIZE][X_SIZE], uint8 food_list[6][2], uint8 path[DEFAULT_ARRAY_SIZE][3], uint8 start[], uint8 destination[]){
+uint32_t djikstras(uint32_t map[Y_SIZE][X_SIZE], uint32_t food_list[6][2], uint32_t path[DEFAULT_ARRAY_SIZE][3], uint32_t start[], uint32_t destination[]){
    node Nodes[Y_SIZE][X_SIZE];
    //fill up the default information for each node
-    uint8 i;
+    uint32_t i;
    for(i = 0; i < Y_SIZE; i++){
-      uint8 j;
+      uint32_t j;
       for(j = 0; j < X_SIZE; j++){
             Nodes[i][j].path = map[i][j];//map information
             //printf("%d\n", map[i][j]);
@@ -64,23 +64,23 @@ uint16 djikstras(uint8 map[Y_SIZE][X_SIZE], uint8 food_list[6][2], uint8 path[DE
    }
 
 
-   uint8 current[2];
+   uint32_t current[2];
    //memcpy(current, start, sizeof(current));//because nothing works in c the way you want it to
    current[Y] = start[Y];
    current[X] = start[X];
-   uint8 totalIterationCounter = 0;
-   uint8 nextNodes[DEFAULT_ARRAY_SIZE][2] = {0};
-   //uint8 nextNodesDirection[DEFAULT_ARRAY_SIZE] = {0};
-   uint8 tentativeNode[2] = {0};//x and y coordinate of the next node
-   uint8 unreachable = 0;
-   uint8 corner_penalty = 0;
-   uint8 counter = 0;
+   uint32_t totalIterationCounter = 0;
+   uint32_t nextNodes[DEFAULT_ARRAY_SIZE][2] = {0};
+   //uint32_t nextNodesDirection[DEFAULT_ARRAY_SIZE] = {0};
+   uint32_t tentativeNode[2] = {0};//x and y coordinate of the next node
+   uint32_t unreachable = 0;
+   uint32_t corner_penalty = 0;
+   uint32_t counter = 0;
    uint16 tmpCost = 0;
-   uint8 nextNode[2] = {0, 0};
-   uint8 nextNodeIndex = 0;
-   uint8 tmpNextNode[2] = {0};
+   uint32_t nextNode[2] = {0, 0};
+   uint32_t nextNodeIndex = 0;
+   uint32_t tmpNextNode[2] = {0};
    uint16 nextNodeCost = 0;
-   uint8 hasNext = 1;
+   uint32_t hasNext = 1;
 
    Nodes[current[Y]][current[X]].tentative_cost = 0;
    Nodes[current[Y]][current[X]].prevNode = &Nodes[current[Y]][current[X]];
@@ -190,11 +190,11 @@ uint16 djikstras(uint8 map[Y_SIZE][X_SIZE], uint8 food_list[6][2], uint8 path[DE
 }
 
 
-uint16 DepthFirst(uint8 map[Y_SIZE][X_SIZE], uint8 food_list[6][2], uint8 path[DEFAULT_ARRAY_SIZE][3], uint8 start[], uint8 destination[], uint8 direction){
+uint32_t DepthFirst(uint32_t map[Y_SIZE][X_SIZE], uint32_t food_list[6][2], uint32_t path[DEFAULT_ARRAY_SIZE][3], uint32_t start[], uint32_t destination[], uint32_t direction){
    //printf("Finding path\n");
    node Nodes[Y_SIZE][X_SIZE];
    //fill up the default information for each node
-   uint8 i, j;
+   uint32_t i, j;
    for(i = 0; i < Y_SIZE; i++){
       for(j = 0; j < X_SIZE; j++){
             Nodes[i][j].path = map[i][j];//map information
@@ -210,23 +210,23 @@ uint16 DepthFirst(uint8 map[Y_SIZE][X_SIZE], uint8 food_list[6][2], uint8 path[D
    }
 
 
-   uint8 current[2];
+   uint32_t current[2];
    //memcpy(current, start, sizeof(current));//because nothing works in c the way you want it to
    current[Y] = start[Y];
    current[X] = start[X];
-   uint8 totalIterationCounter = 0;
-   uint8 nextNodes[DEFAULT_ARRAY_SIZE][2] = {0};
-   //uint8 nextNodesDirection[DEFAULT_ARRAY_SIZE] = {0};
-   uint8 tentativeNode[2] = {0};//x and y coordinate of the next node
-   uint8 unreachable = 0;
-   uint8 corner_penalty = 0;
-   uint8 counter = 0;
+   uint32_t totalIterationCounter = 0;
+   uint32_t nextNodes[DEFAULT_ARRAY_SIZE][2] = {0};
+   //uint32_t nextNodesDirection[DEFAULT_ARRAY_SIZE] = {0};
+   uint32_t tentativeNode[2] = {0};//x and y coordinate of the next node
+   uint32_t unreachable = 0;
+   uint32_t corner_penalty = 0;
+   uint32_t counter = 0;
    uint16 tmpCost = 0;
-   uint8 nextNode[2] = {0, 0};
-   uint8 nextNodeIndex = 0;
-   uint8 tmpNextNode[2] = {0};
-   uint8 nextNodeCost = 0;
-   uint8 hasNext = 1;
+   uint32_t nextNode[2] = {0, 0};
+   uint32_t nextNodeIndex = 0;
+   uint32_t tmpNextNode[2] = {0};
+   uint32_t nextNodeCost = 0;
+   uint32_t hasNext = 1;
 
    //set the initial variables
    Nodes[current[Y]][current[X]].tentative_cost = 0;
@@ -324,7 +324,7 @@ uint16 DepthFirst(uint8 map[Y_SIZE][X_SIZE], uint8 food_list[6][2], uint8 path[D
    return path_couter;
 }
 
-int generateEntireMapDirections(){
+uint32_t generateEntireMapDirections(){
     int end = DepthFirst(map, food_list, path, start, destination, robot_direction);
 
    /*
@@ -343,12 +343,12 @@ int generateEntireMapDirections(){
    //U/D stands for up down intersection L/R stands for left right internsection
     int i;
    for(i = 0; i < end; i++){
-      printf("%d %d;", path[i][Y] + 1, path[i][X] + 1);
+      //printf("%d %d;", path[i][Y] + 1, path[i][X] + 1);
       //if next direction is not possible from current direction then find the inter path (down, up, left, right)
       if(!((path[i + 1][Y] == path[i][Y] + 1 && path[i + 1][X] == path[i][X]) || (path[i + 1][Y] == path[i][Y] - 1 && path[i + 1][X] == path[i][X]) || (path[i + 1][X] == path[i][X] - 1 && path[i + 1][Y] == path[i][Y]) || (path[i + 1][X] == path[i][X] + 1 && path[i + 1][Y] == path[i][Y]))){
-         uint8 inter_path[DEFAULT_ARRAY_SIZE][3] = {0};
-         uint8 inter_start[2] = {path[i][Y], path[i][X]};//(y, x) array starts at 0
-         uint8 inter_destination[2] = {path[i + 1][Y], path[i + 1][X]};//(y, x)
+         uint32_t inter_path[DEFAULT_ARRAY_SIZE][3] = {0};
+         uint32_t inter_start[2] = {path[i][Y], path[i][X]};//(y, x) array starts at 0
+         uint32_t inter_destination[2] = {path[i + 1][Y], path[i + 1][X]};//(y, x)
             
         //change the global direction
         robot_direction = path[i][DIR];
@@ -367,7 +367,7 @@ int generateEntireMapDirections(){
          //stuff
          int j;
          for(j = inter_end; j >= 1; j--){//TODO: do you include the final value j>=1 or j>=0
-            printf("%d %d;", inter_path[j][Y] + 1, inter_path[j][X] + 1);
+            //printf("%d %d;", inter_path[j][Y] + 1, inter_path[j][X] + 1);
             if(inter_path[j][DIR] == 1 || inter_path[j][DIR] == 3){
                        //There should be a check that it is within the map
                        if(map[inter_path[j][Y]][inter_path[j][X] - 1] == PATH || map[inter_path[j][Y]][inter_path[j][X] + 1] == PATH){
@@ -440,6 +440,7 @@ int generateEntireMapDirections(){
 
          //stuff
          //printf("Discontinuity found at %d \n", i + 1);
+        i++;
       }
 
       //printf("i: %d counter: %d\n", i, counter);
@@ -517,8 +518,8 @@ int generateEntireMapDirections(){
 }
 
 
-int generateDirections(){
-   uint8 counter = 0;
+uint32_t generateDirections(){
+   uint32_t counter = 0;
    int food_count;
     
    for(food_count = 0; food_count < food_length; food_count++)

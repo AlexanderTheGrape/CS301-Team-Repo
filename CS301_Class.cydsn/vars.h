@@ -126,7 +126,7 @@ char packet[2];
 //* ========================================
 
 //double speed = 16; // the speed of the robot in cm/s
-double speed = 16;
+double speed = 14;
 
 //* ========================================
 /* [] END OF FILE */
