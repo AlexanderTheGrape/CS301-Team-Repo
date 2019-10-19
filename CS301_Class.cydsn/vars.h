@@ -72,6 +72,8 @@ int16 target_distance_cm = 100;
 //quadrature decoder distance stopping
 int16 accum_dist = 0;
 int16 target_distance_quad = 0;
+uint8 reached_target = 0;
+uint8 overshot_target = 0;
 float quad_per_cm = 11.166;
 
 //RF distance stopping

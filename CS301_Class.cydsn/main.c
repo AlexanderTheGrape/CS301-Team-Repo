@@ -28,6 +28,7 @@ void usbPutChar(char c);
 
 char instructions[DEFAULT_ARRAY_SIZE] = {0};
 uint16 instructionCount = 0;
+uint16 instructionLength = 0;
 uint32_t sensorsDisabled = 0;
 
 uint32_t robot_direction = 2;
@@ -56,9 +57,10 @@ uint32_t map[15][19] = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 //first number is the y coord, second is x
 //first number is row, second column
 
-uint32_t food_list[6][2]= {{4,5},{7,1},{11,5},{10,11},{5,8},{17,2}};
+//uint32_t food_list[6][2]= {{4,5},{7,1},{11,5},{10,11},{5,8},{17,2}};
+uint32_t food_list[6][2] = {{5, 10},{5,3}, {13, 2}};
 //uint8 food_list[6][2]= {{10,1},{1,13},{9,7},{16,13},{17,1}};
-uint32_t food_length = 6;
+uint32_t food_length = 3;
 
 void changeToRF();
 void changeToBT();
@@ -110,7 +112,7 @@ CY_ISR (isr_quad1)
     quad_diff1 = quad_count1 - last_quad_count1;
     quad_diff2 = quad_count2 - last_quad_count2;
     
-    if(abs(quad_count1) > 3000 && movement_state != LTURN && movement_state != RTURN && track_mode != QUAD_STOP && movement_state != UTURN)
+    if(abs(quad_count1) > 3000 && movement_state != LTURN && movement_state != RTURN && movement_state != UTURN)
     {
         QuadDec_M1_SetCounter(0);
         QuadDec_M2_SetCounter(0);
@@ -120,27 +122,40 @@ CY_ISR (isr_quad1)
 
     flag_calc_wheelspeed = 1;
     
-    if (track_mode == QUAD_STOP)
+    if(track_mode == DEST_TEST)
     {
+        //track the distance
         accum_dist += quad_diff1;
-        char mes[16];
-        sprintf(mes, "dist: %d\r\n", accum_dist);
-        UART_PutString(mes);
-        if(abs(accum_dist) >= target_distance_quad)
+        if(abs(accum_dist) >= target_distance_quad * 0.8)
         {
-            initBrake();
-            track_mode = NO_TRACK;
+            reached_target = 1;
         }
-    } else if (track_mode == RF_STOP)
-    { 
-        // Do pythag
-        double dist = hypot((system_state.robot_xpos - initial_x_pos) / px_per_x_cm , (system_state.robot_ypos - initial_y_pos) / px_per_y_cm);
-        if (dist >= target_distance_cm)
+        if(abs(accum_dist) >= target_distance_quad * 1.1)
         {
-            initBrake();
-            track_mode = NO_TRACK;
+            overshot_target = 1;
         }
     }
+//    if (track_mode == QUAD_STOP)
+//    {
+//        accum_dist += quad_diff1;
+//        char mes[16];
+//        sprintf(mes, "dist: %d\r\n", accum_dist);
+//        UART_PutString(mes);
+//        if(abs(accum_dist) >= target_distance_quad)
+//        {
+//            initBrake();
+//            track_mode = NO_TRACK;
+//        }
+//    } else if (track_mode == RF_STOP)
+//    { 
+//        // Do pythag
+//        double dist = hypot((system_state.robot_xpos - initial_x_pos) / px_per_x_cm , (system_state.robot_ypos - initial_y_pos) / px_per_y_cm);
+//        if (dist >= target_distance_cm)
+//        {
+//            initBrake();
+//            track_mode = NO_TRACK;
+//        }
+//    }
 }
 
 CY_ISR(isr_turn_timer)
@@ -330,37 +345,66 @@ int main()
                             actionDebounce++;
                             if(actionDebounce >= 1000)
                             {
+                                char mes[16];
+                                sprintf(mes, "Dist travel: %d\r\n", accum_dist);
+                                 UART_PutString(mes);
+                            if(reached_target == 1)
+                            {
+                                if(nextStep == 'D')
+                                {
+                                    instructionCount += 2;
+                                    nextStep = instructions[instructionCount]; 
+                                }
+                                
                                 sensorsDisabled = 1;
                                 UART_PutString("Triggered at intersection \r\n");
                                 UART_PutString("Deadzone entered!\r\n");
                                 deadzone = 1;
-                                if(nextStep == 'S') Timer_Deadzone_WriteCounter(10000);
-                                else Timer_Deadzone_WriteCounter(40000);
-                                Timer_Deadzone_Start();
+                                Timer_Deadzone_WriteCounter(40000);
+                                accum_dist = 0;
+                                uint8 nextStepDist;
+                                if(instructionCount <= instructionLength - 5) nextStepDist = instructions[instructionCount+3];
+                                else nextStepDist = 0;
+                                target_distance_quad = 145 * (nextStepDist-1);
+                                
+                                
+                                
                                 switch(nextStep)
                                 {
                                     case 'S':
                                         initTrackU();
+                                         Timer_Deadzone_WriteCounter(10000);
                                         //do nothing
                                     break;
                                     case 'L':
                                         //if(tracked_direction == 1) tracked_direction = 4; else tracked_direction--;
                                         initTurnLeft();
+                                        target_distance_quad -= 100;
                                     break;
                                     case 'R':
                                         //if(tracked_direction == 4) tracked_direction = 1; else tracked_direction++;
                                         initTurnRight();
+                                        target_distance_quad += 208 - 100;
                                         
                                     break;
                                     case 'U':
                                         // Direction not tracked any more
                                         initTurnU();
+                                        target_distance_quad += 208;
                                     break;
+                                    
                                     default:
                                         //do nothing
                                         break;
                                 }
-                                instructionCount++;
+                                sprintf(mes, "Target dist: %d\r\n", target_distance_quad);
+                                 UART_PutString(mes);
+                                
+                                Timer_Deadzone_Start();
+                                reached_target = 0;
+                                overshot_target = 0;
+                                instructionCount += 2;
+                            }
                             }
                         }
                     }
@@ -368,20 +412,92 @@ int main()
                     {
                         if(sensorsDisabled == 0)
                         {
-                            actionDebounce++;
-                            if(actionDebounce >= 5000)
-                            {
-                                UART_PutString("Triggered at white light \r\n");
-                                UART_PutString("Deadzone entered!\r\n");
-                                deadzone = 1;
-                                Timer_Deadzone_WriteCounter(40000);
-                                Timer_Deadzone_Start();
-                                actionDebounce = 0;
-                                sensorsDisabled = 1;
-                                initTurnU();
-                                instructionCount++;
+                                
+                                actionDebounce++;
+                                if(actionDebounce >= 5000)
+                                {
+                                    if(reached_target == 1)
+                                    {
+                                char mes[16];
+                                sprintf(mes, "Dist travel: %d\r\n", accum_dist);
+                                 UART_PutString(mes);
+                                     accum_dist = 0;
+                                uint8 nextStepDist;
+                                if(instructionCount <= instructionLength - 5) nextStepDist = instructions[instructionCount+3];
+                                else nextStepDist = 0;
+                                
+                                target_distance_quad = 145 * (nextStepDist-1) + 208;
+                                
+                                    UART_PutString("Triggered at white light \r\n");
+                                    UART_PutString("Deadzone entered!\r\n");
+                                    deadzone = 1;
+                                    Timer_Deadzone_WriteCounter(40000);
+                                    Timer_Deadzone_Start();
+                                    actionDebounce = 0;
+                                    sensorsDisabled = 1;
+                                    initTurnU();
+                                    reached_target = 0;
+                                    overshot_target = 0;
+                                    instructionCount += 2;
+                                }
                             }
                         }
+                    }
+                    else if (overshot_target == 1 && nextStep == 'D')
+                    {
+                        
+                                instructionCount += 2;
+                                nextStep = instructions[instructionCount]; 
+                                char mes[16];
+                                sprintf(mes, "Dist travel: %d\r\n", accum_dist);
+                                 UART_PutString(mes);
+                                 accum_dist = 0;
+                                uint8 nextStepDist;
+                                if(instructionCount <= instructionLength - 5) nextStepDist = instructions[instructionCount+3];
+                                else nextStepDist = 0;
+                                
+                                target_distance_quad = 145 * (nextStepDist-1);
+                                
+                                    UART_PutString("Triggered at quad count \r\n");
+                                    UART_PutString("Deadzone entered!\r\n");
+                                    deadzone = 1;
+                                    Timer_Deadzone_WriteCounter(40000);
+                                    Timer_Deadzone_Start();
+                                    actionDebounce = 0;
+                                    sensorsDisabled = 1;
+                                    
+                                     switch(nextStep)
+                                {
+                                    case 'S':
+                                        initTrackU();
+                                         Timer_Deadzone_WriteCounter(10000);
+                                        //do nothing
+                                    break;
+                                    case 'L':
+                                        //if(tracked_direction == 1) tracked_direction = 4; else tracked_direction--;
+                                        initTurnLeft();
+                                        target_distance_quad -= 100;
+                                    break;
+                                    case 'R':
+                                        //if(tracked_direction == 4) tracked_direction = 1; else tracked_direction++;
+                                        initTurnRight();
+                                        target_distance_quad += 208 - 100;
+                                        
+                                    break;
+                                    case 'U':
+                                        // Direction not tracked any more
+                                        initTurnU();
+                                        target_distance_quad += 208;
+                                    break;
+                                    default:
+                                        //do nothing
+                                        break;
+                                }
+                                    
+                                    
+                                    reached_target = 0;
+                                    overshot_target = 0;
+                                    instructionCount += 2;
                     }
                     else
                     {
@@ -710,11 +826,23 @@ CY_ISR(BT_rxInt)
     case ('x'):
         track_mode = DEST_TEST;
         tracked_direction = robot_direction;
-        //generateDirections();
-        generateEntireMapDirections();
-        char message[128];
-        sprintf(message, "p:%s\r\n", instructions);
-        UART_PutString(message);
+        instructionLength = generateDirections();
+        //generateEntireMapDirections();
+        //char message[128];
+       // sprintf(message, "p:%s\r\n", instructions);
+        int i = 0;
+        for(i = 0;i < instructionLength; i++)
+        {
+            if(i%2 == 0)
+            {
+                UART_PutChar(instructions[i]);
+            }
+            else UART_PutChar(instructions[i] + 48);
+
+        }
+        
+        UART_PutString("\r\n");
+
         inittrackLineZ();
         break;
     }
@@ -895,7 +1023,7 @@ void usbPutString(char *s)
 // !! Assumes that *s is a string with allocated space >=64 chars     
 //  Since USB implementation retricts data packets to 64 chars, this function truncates the
 //  length to 62 char (63rd char is a '!')
-    if (USE_USB && portOpen)    
+    if (USE_USB && portOpen)
     {
             uint32 cnt = 0;
             while (USBUART_CDCIsReady() == 0)

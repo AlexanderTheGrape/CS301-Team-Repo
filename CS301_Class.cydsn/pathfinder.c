@@ -11,6 +11,7 @@
 #define LEFT 'L'
 #define RIGHT 'R'
 #define UTURN 'U'
+#define DRIVE 'D'
 
 #define INF_16 65535
 
@@ -520,10 +521,12 @@ uint32_t generateEntireMapDirections(){
 
 uint32_t generateDirections(){
    uint32_t counter = 0;
+   uint32_t prev_intersection = 0;
    int food_count;
     
    for(food_count = 0; food_count < food_length; food_count++)
 {   
+    prev_intersection = 0;
     if(counter != 0)
     {
         start[0] = destination[0];
@@ -559,55 +562,96 @@ uint32_t generateDirections(){
          //There should be a check that it is within the map
          if(map[path[i][Y]][path[i][X] - 1] == PATH || map[path[i][Y]][path[i][X] + 1] == PATH){
             if(path[i][DIR] != path[i - 1][DIR]){
-               if((path[i][DIR] == 1 && path[i-1][DIR] == 4)||(path[i][DIR] == 3 && path[i-1][DIR] == 2)){
+               //current direction - the next direction > 0 turn left otherwise turn right
+               if((path[i][DIR] == 1 && path[i-1][DIR] == 4) || (path[i][DIR] == 3 && path[i-1][DIR] == 2)){//changed
+                  //printf("L/R intersection found (%d) [direction = %d] -- TURN LEFT\n", end - i + 1, path[i][DIR]);
                   instructions[counter] = LEFT;
-               }else if((path[i][DIR] == 1 && path[i-1][DIR] == 2)||(path[i][DIR] == 3 && path[i-1][DIR] == 4)){
+                  instructions[counter + 1] = (end - i + 1 )- prev_intersection;
+                  counter += 2;
+                  prev_intersection = end - i + 1;//save the number of blocks travelled previously
+               }else if((path[i][DIR] == 1 && path[i-1][DIR] == 2) || (path[i][DIR] == 3 && path[i-1][DIR] == 4)){//changed
+                  //printf("L/R intersection found (%d) [direction = %d] -- TURN RIGHT\n", end - i + 1, path[i][DIR]);
                   instructions[counter] = RIGHT;
-               }else if((path[i][DIR] == 1 && path[i-1][DIR] == 3)||(path[i][DIR] == 3 && path[i-1][DIR] == 1)){
+                  instructions[counter + 1] = (end - i + 1 )- prev_intersection;
+                  counter += 2;
+                  prev_intersection = end - i + 1;
+               }else if ((path[i][DIR] == 1 && path[i-1][DIR] == 3) || (path[i][DIR] == 3 && path[i-1][DIR] == 1)){//changed
+                  //printf("L/R intersection found (%d) [direction = %d] -- TURN U-TURN\n", end - i + 1, path[i][DIR]);
                   instructions[counter] = UTURN;
+                  instructions[counter + 1] = (end - i + 1 )- prev_intersection;
+                  counter += 2;
+                  prev_intersection = end - i + 1;
+               }else{
+                  //printf("Prev %d, current %d\n",path[i-1][DIR], path[i][DIR]);
                }
             }else{
+               //printf("L/R intersection found (%d) [direction = %d]\n", end - i + 1, path[i][DIR]);
                instructions[counter] = STRAIGHT;
+               instructions[counter + 1] = (end - i + 1 )- prev_intersection;
+               counter += 2;
+               prev_intersection = end - i + 1;
             }
-            counter++;
-        }else{
-            if(path[i][DIR] != path[i - 1][DIR]){
-               if((path[i][DIR] == 1 && path[i-1][DIR] == 3)||(path[i][DIR] == 3 && path[i-1][DIR] == 1)){
-                  instructions[counter] = UTURN;
-                counter++;
-               }
+         }else{//not an intersection
+            if ((path[i][DIR] == 1 && path[i-1][DIR] == 3) || (path[i][DIR] == 3 && path[i-1][DIR] == 1)){//changed
+               //printf("L/R intersection found (%d) [direction = %d] -- TURN U-TURN\n", end - i + 1, path[i][DIR]);
+               instructions[counter] = UTURN;
+               instructions[counter + 1] = (end - i + 1 )- prev_intersection;
+               counter += 2;
+               prev_intersection = end - i + 1;
             }else{
-               instructions[counter] = STRAIGHT;
-            }
-        } 
-        
+            //printf("[(%d), direction = %d]\n", end - i + 1, path[i][DIR]);
+         }
+         }
       }else{
          if(map[path[i][Y] - 1][path[i][X]] == PATH || map[path[i][Y] + 1][path[i][X]] == PATH){
             if(path[i][DIR] != path[i - 1][DIR]){
-               if((path[i][DIR] == 4 && path[i-1][DIR] == 3)||(path[i][DIR] == 2 && path[i-1][DIR] == 1)){
+               if((path[i][DIR] == 4 && path[i-1][DIR] == 3) || (path[i][DIR] == 2 && path[i-1][DIR] == 1)){//changed
+                  //printf("U/D intersection found (%d) [direction = %d] -- TURN LEFT\n", end - i + 1, path[i][DIR]);
                   instructions[counter] = LEFT;
-               }else if((path[i][DIR] == 4 && path[i-1][DIR] == 1)||(path[i][DIR] == 2 && path[i-1][DIR] == 3)){
+                  instructions[counter + 1] = (end - i + 1 )- prev_intersection;
+                  counter += 2;
+                  prev_intersection = end - i + 1;
+               }else if((path[i][DIR] == 4 && path[i-1][DIR] == 1) || (path[i][DIR] == 2 && path[i-1][DIR] == 3)){//changed
+                  //printf("U/D intersection found (%d) [direction = %d] -- TURN RIGHT\n", end - i + 1, path[i][DIR]);
                   instructions[counter] = RIGHT;
-               }else if((path[i][DIR] == 4 && path[i-1][DIR] == 2)||(path[i][DIR] == 2 && path[i-1][DIR] == 4)){
+                  instructions[counter + 1] = (end - i + 1 )- prev_intersection;
+                  counter += 2;
+                  prev_intersection = end - i + 1;
+               }else if ((path[i][DIR] == 4 && path[i-1][DIR] == 2) || (path[i][DIR] == 2 && path[i-1][DIR] == 4)){//changed
+                  //printf("U/D intersection found (%d) [direction = %d] -- TURN U-TURN\n", end - i + 1, path[i][DIR]);
                   instructions[counter] = UTURN;
+                  instructions[counter + 1] = (end - i + 1 )- prev_intersection;
+                  counter += 2;
+                  prev_intersection = end - i + 1;
+               }else{
+                  //printf("Prev %d, current %d\n", path[i-1][DIR], path[i][DIR]);
                }
             }else{
+               //printf("U/D intersection found (%d) [direction = %d]\n", end - i + 1, path[i][DIR]);
                instructions[counter] = STRAIGHT;
+               instructions[counter + 1] = (end - i + 1 )- prev_intersection;
+               counter += 2;
+               prev_intersection = end - i + 1;
             }
-            counter++;
+
          }else{
-            if(path[i][DIR] != path[i - 1][DIR]){
-               if((path[i][DIR] == 4 && path[i-1][DIR] == 2)||(path[i][DIR] == 2 && path[i-1][DIR] == 4)){
-                  instructions[counter] = UTURN;
-                counter++;
-               }
+            if ((path[i][DIR] == 4 && path[i-1][DIR] == 2) || (path[i][DIR] == 2 && path[i-1][DIR] == 4)){//changed
+               //printf("U/D intersection found (%d) [direction = %d] -- TURN U-TURN\n", end - i + 1, path[i][DIR]);
+               instructions[counter] = UTURN;
+               instructions[counter + 1] = (end - i + 1 )- prev_intersection;
+               counter += 2;
+               prev_intersection = end - i + 1;
             }else{
-               instructions[counter] = STRAIGHT;
-            }
+           // printf("[(%d), direction = %d]\n", end - i + 1, path[i][DIR]);
+         }
          }
       }
+    
    }
+   instructions[counter] = DRIVE;
+   instructions[counter + 1] = end - prev_intersection;
+   counter += 2;
    //instructions[counter] = '\0';
 }
-   return 0;
+   return counter;
 }
