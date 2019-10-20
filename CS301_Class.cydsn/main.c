@@ -348,8 +348,8 @@ int main()
                                 }
                                 
                                 sensorsDisabled = 1;
-                                UART_PutString("Triggered at intersection \r\n");
-                                UART_PutString("Deadzone entered!\r\n");
+                                UART_PutString("Trigger intersection\r\n");
+                                UART_PutString("Deadzone enter\r\n");
                                 deadzone = 1;
                                 
                                 accum_dist = 0;
@@ -395,10 +395,14 @@ int main()
                                 if(target_distance_quad < 0) target_distance_quad = 0;
                                 sprintf(mes, "Target dist: %d\r\n", target_distance_quad);
                                  UART_PutString(mes);
+                                
                                 Timer_Deadzone_Start();
                                 reached_target = 0;
                                 overshot_target = 0;
                                 instructionCount += 2;
+                                sprintf(mes, "instr count:%d\r\n", instructionCount);
+                                UART_PutString(mes);
+                                
                             }
                             }
                         }
@@ -436,8 +440,8 @@ int main()
                                     target_distance_quad -= U_OFFSET;
                                     //target_distance_quad += 208;
                                     
-                                        UART_PutString("Triggered at white light \r\n");
-                                        UART_PutString("Deadzone entered!\r\n");
+                                        UART_PutString("Trigger white light\r\n");
+                                        UART_PutString("Deadzone enter\r\n");
                                         
                                         deadzone = 1;
                                         Timer_Deadzone_WriteCounter(U_DEADZONE);
@@ -451,6 +455,8 @@ int main()
                                         instructionCount += 2;
                                         
                                         sprintf(mes, "Target dist: %d\r\n", target_distance_quad);
+                                        UART_PutString(mes);
+                                        sprintf(mes, "instr count:%d\r\n", instructionCount);
                                         UART_PutString(mes);
                                 }
                                 }
@@ -473,7 +479,7 @@ int main()
                                 target_distance_quad = QUAD_PER_UNIT * (nextStepDist-0);
                                 target_distance_quad -= U_OFFSET;
                                 
-                                    UART_PutString("Triggered at quad count \r\n");
+                                    UART_PutString("Trigger quad\r\n");
                                     if(nextStep == 'U')
                                     {
                                         Timer_Deadzone_WriteCounter(U_DEADZONE);
@@ -531,6 +537,8 @@ int main()
                                     //Timer_Deadzone_Start();
                                     //deadzone = 1;
                                     sprintf(mes, "Target dist: %d\r\n", target_distance_quad);
+                                    UART_PutString(mes);
+                                    sprintf(mes, "instr count:%d\r\n", instructionCount);
                                     UART_PutString(mes);
                     }
                     else
@@ -891,7 +899,25 @@ CY_ISR(BT_rxInt)
         instructionLength = generateEntireMapDirections();
         //char message[128];
        // sprintf(message, "p:%s\r\n", instructions);
-        instructionCount = instructionLength - 22;
+        instructionCount = 0;
+        isrRF_RX_Disable();
+        while(rf_char != 'F')
+        {
+            rf_char = UART_GetChar();
+            if(rf_char == 'F') break;
+            if(rf_char >= '0' && rf_char <= '9')
+            {
+                UART_PutString("received: ");
+                UART_PutChar(rf_char);
+                UART_PutString("\r\n");
+                instructionCount = instructionCount*10 + (rf_char-48);
+            }
+            
+        }
+        isrRF_RX_StartEx(BT_rxInt);
+        sprintf(mes, "starting from instruction %d\r\n", instructionCount);
+        UART_PutString(mes);
+        //instructionCount = instructionLength - 22;
         int x;
         for(x = instructionCount;x < instructionLength; x++)
         {
@@ -906,6 +932,7 @@ CY_ISR(BT_rxInt)
         UART_PutString("\r\n");
 
         nextStep = instructions[instructionCount];
+        
         
         target_distance_quad = QUAD_PER_UNIT * instructions[instructionCount+1];        
         sprintf(mes, "Target dist: %d\r\n", target_distance_quad);
