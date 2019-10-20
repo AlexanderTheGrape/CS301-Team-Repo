@@ -350,6 +350,10 @@ uint32_t generateEntireMapDirections(){
       //printf("%d %d;", path[i][Y] + 1, path[i][X] + 1);
       //if next direction is not possible from current direction then find the inter path (down, up, left, right)
       if(!((path[i + 1][Y] == path[i][Y] + 1 && path[i + 1][X] == path[i][X]) || (path[i + 1][Y] == path[i][Y] - 1 && path[i + 1][X] == path[i][X]) || (path[i + 1][X] == path[i][X] - 1 && path[i + 1][Y] == path[i][Y]) || (path[i + 1][X] == path[i][X] + 1 && path[i + 1][Y] == path[i][Y]))){
+        instructions[counter] = DRIVE;
+        instructions[counter + 1] = i - prev_intersection;
+        counter += 2;
+        
         inter_prev_intersection = 0; 
         uint32_t inter_path[DEFAULT_ARRAY_SIZE][3] = {0};
          uint32_t inter_start[2] = {path[i][Y], path[i][X]};//(y, x) array starts at 0
