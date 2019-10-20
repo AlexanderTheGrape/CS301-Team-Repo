@@ -132,11 +132,11 @@ CY_ISR (isr_quad1)
     {
         //track the distance
         accum_dist += quad_diff1;
-        if(abs(accum_dist) >= (target_distance_quad - QUAD_PER_UNIT * 0.5))
+        if(abs(accum_dist) >= target_distance_quad - QUAD_PER_UNIT * 0.8)
         {
             reached_target = 1;
         }
-        if(abs(accum_dist) >= (target_distance_quad + QUAD_PER_UNIT * 0.5))
+        if(abs(accum_dist) >= target_distance_quad + QUAD_PER_UNIT * 1.15)
         {
             overshot_target = 1;
         }
