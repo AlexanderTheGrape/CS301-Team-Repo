@@ -361,7 +361,7 @@ int main()
                                 UART_PutString("Triggered at intersection \r\n");
                                 UART_PutString("Deadzone entered!\r\n");
                                 deadzone = 1;
-                                Timer_Deadzone_WriteCounter(40000);
+                                Timer_Deadzone_WriteCounter(100000);
                                 accum_dist = 0;
                                 uint8 nextStepDist;
                                 if(instructionCount <= instructionLength - 5) nextStepDist = instructions[instructionCount+3];
@@ -432,7 +432,7 @@ int main()
                                     UART_PutString("Triggered at white light \r\n");
                                     UART_PutString("Deadzone entered!\r\n");
                                     deadzone = 1;
-                                    Timer_Deadzone_WriteCounter(40000);
+                                    Timer_Deadzone_WriteCounter(100000);
                                     Timer_Deadzone_Start();
                                     actionDebounce = 0;
                                     sensorsDisabled = 1;
@@ -462,7 +462,7 @@ int main()
                                     UART_PutString("Triggered at quad count \r\n");
                                     UART_PutString("Deadzone entered!\r\n");
                                     deadzone = 1;
-                                    Timer_Deadzone_WriteCounter(40000);
+                                    Timer_Deadzone_WriteCounter(100000);
                                     Timer_Deadzone_Start();
                                     actionDebounce = 0;
                                     sensorsDisabled = 1;
@@ -827,7 +827,7 @@ CY_ISR(BT_rxInt)
         track_mode = DEST_TEST;
         tracked_direction = robot_direction;
         instructionLength = generateDirections();
-        instructionLength = generateEntireMapDirections();
+        //instructionLength = generateEntireMapDirections();
         //char message[128];
        // sprintf(message, "p:%s\r\n", instructions);
         int i = 0;
@@ -852,8 +852,9 @@ CY_ISR(BT_rxInt)
         instructionLength = generateEntireMapDirections();
         //char message[128];
        // sprintf(message, "p:%s\r\n", instructions);
-        int x = 0;
-        for(x = 0;x < instructionLength; x++)
+        instructionCount = instructionLength - 18;
+        int x;
+        for(x = instructionCount;x < instructionLength; x++)
         {
             if(x%2 == 0)
             {

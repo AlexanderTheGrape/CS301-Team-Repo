@@ -2,7 +2,7 @@
 --	Conversion of CS301_Class.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Sun Oct 20 14:55:35 2019
+--	Sun Oct 20 16:27:06 2019
 --
 
 USE cypress.cypress.all;
@@ -1564,141 +1564,216 @@ SIGNAL \Timer_Deadzone:TimerUDB:cs_addr_2\ : bit;
 SIGNAL \Timer_Deadzone:TimerUDB:cs_addr_1\ : bit;
 SIGNAL \Timer_Deadzone:TimerUDB:cs_addr_0\ : bit;
 SIGNAL \Timer_Deadzone:TimerUDB:zeros_3\ : bit;
-SIGNAL \Timer_Deadzone:TimerUDB:zeros_2\ : bit;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:ce0_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:ce0_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:cl0_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:cl0_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ce0_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ce0_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cl0_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:cl0_0\:SIGNAL IS 2;
 SIGNAL \Timer_Deadzone:TimerUDB:nc0\ : bit;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:ff0_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:ff0_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:ce1_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:ce1_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:cl1_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:cl1_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:z1_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:z1_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:ff1_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:ff1_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:ov_msb_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:ov_msb_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:co_msb_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:co_msb_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:cmsb_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:cmsb_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:so_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:so_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:nc3\ : bit;
-SIGNAL \Timer_Deadzone:TimerUDB:nc4\ : bit;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:f1_bus_stat_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:f1_bus_stat_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:f1_blk_stat_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:f1_blk_stat_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:ce0_reg_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:ce0_reg_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:cl0_reg_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:cl0_reg_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:z0_reg_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:z0_reg_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:ff0_reg_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:ff0_reg_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:ce1_reg_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:ce1_reg_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:cl1_reg_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:cl1_reg_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:z1_reg_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:z1_reg_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:ff1_reg_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:ff1_reg_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:ov_msb_reg_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:ov_msb_reg_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:co_msb_reg_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:co_msb_reg_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:cmsb_reg_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:cmsb_reg_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:so_reg_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:so_reg_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:f0_bus_stat_reg_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:f0_bus_stat_reg_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:f0_blk_stat_reg_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:f0_blk_stat_reg_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:f1_bus_stat_reg_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:f1_bus_stat_reg_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:f1_blk_stat_reg_0\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:f1_blk_stat_reg_0\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:carry\ : bit;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:sh_right\ : bit;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:sh_left\ : bit;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:msb\ : bit;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:cmp_eq_1\ : bit;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:cmp_eq_0\ : bit;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:cmp_lt_1\ : bit;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:cmp_lt_0\ : bit;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:cmp_zero_1\ : bit;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:cmp_zero_0\ : bit;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:cmp_ff_1\ : bit;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:cmp_ff_0\ : bit;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:cap_1\ : bit;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:cap_0\ : bit;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:cfb\ : bit;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:ce0_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:ce0_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:cl0_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:cl0_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:ff0_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:ff0_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:ce1_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:ce1_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:cl1_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:cl1_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:z1_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:z1_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:ff1_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:ff1_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:ov_msb_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:ov_msb_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:co_msb_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:co_msb_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:cmsb_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:cmsb_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:so_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:so_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:f1_bus_stat_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:f1_bus_stat_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:f1_blk_stat_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:f1_blk_stat_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:ce0_reg_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:ce0_reg_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:cl0_reg_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:cl0_reg_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:z0_reg_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:z0_reg_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:ff0_reg_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:ff0_reg_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:ce1_reg_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:ce1_reg_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:cl1_reg_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:cl1_reg_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:z1_reg_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:z1_reg_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:ff1_reg_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:ff1_reg_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:ov_msb_reg_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:ov_msb_reg_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:co_msb_reg_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:co_msb_reg_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:cmsb_reg_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:cmsb_reg_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:so_reg_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:so_reg_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:f0_bus_stat_reg_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:f0_bus_stat_reg_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:f0_blk_stat_reg_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:f0_blk_stat_reg_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:f1_bus_stat_reg_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:f1_bus_stat_reg_1\:SIGNAL IS 2;
-SIGNAL \Timer_Deadzone:TimerUDB:sT16:timerdp:f1_blk_stat_reg_1\ : bit;
-ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT16:timerdp:f1_blk_stat_reg_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ff0_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ff0_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ce1_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ce1_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cl1_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:cl1_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:z1_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:z1_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ff1_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ff1_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ov_msb_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ov_msb_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:co_msb_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:co_msb_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cmsb_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:cmsb_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:so_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:so_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:nc6\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:nc8\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:f1_bus_stat_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:f1_bus_stat_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:f1_blk_stat_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:f1_blk_stat_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ce0_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ce0_reg_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cl0_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:cl0_reg_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:z0_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:z0_reg_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ff0_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ff0_reg_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ce1_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ce1_reg_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cl1_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:cl1_reg_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:z1_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:z1_reg_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ff1_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ff1_reg_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ov_msb_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ov_msb_reg_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:co_msb_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:co_msb_reg_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cmsb_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:cmsb_reg_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:so_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:so_reg_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:f0_bus_stat_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:f0_bus_stat_reg_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:f0_blk_stat_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:f0_blk_stat_reg_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:f1_bus_stat_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:f1_bus_stat_reg_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:f1_blk_stat_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:f1_blk_stat_reg_0\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:carry0\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:sh_right0\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:sh_left0\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:msb0\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_eq0_1\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_eq0_0\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_lt0_1\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_lt0_0\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_zero0_1\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_zero0_0\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_ff0_1\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_ff0_0\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cap0_1\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cap0_0\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cfb0\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ce0_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ce0_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cl0_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:cl0_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:nc1\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ff0_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ff0_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ce1_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ce1_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cl1_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:cl1_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:z1_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:z1_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ff1_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ff1_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ov_msb_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ov_msb_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:co_msb_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:co_msb_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cmsb_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:cmsb_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:so_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:so_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:nc5\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:nc7\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:f1_bus_stat_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:f1_bus_stat_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:f1_blk_stat_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:f1_blk_stat_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ce0_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ce0_reg_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cl0_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:cl0_reg_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:z0_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:z0_reg_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ff0_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ff0_reg_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ce1_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ce1_reg_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cl1_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:cl1_reg_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:z1_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:z1_reg_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ff1_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ff1_reg_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ov_msb_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ov_msb_reg_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:co_msb_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:co_msb_reg_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cmsb_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:cmsb_reg_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:so_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:so_reg_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:f0_bus_stat_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:f0_bus_stat_reg_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:f0_blk_stat_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:f0_blk_stat_reg_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:f1_bus_stat_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:f1_bus_stat_reg_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:f1_blk_stat_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:f1_blk_stat_reg_1\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:carry1\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:sh_right1\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:sh_left1\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:msb1\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_eq1_1\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_eq1_0\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_lt1_1\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_lt1_0\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_zero1_1\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_zero1_0\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_ff1_1\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_ff1_0\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cap1_1\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cap1_0\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cfb1\ : bit;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ce0_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ce0_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cl0_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:cl0_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ff0_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ff0_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ce1_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ce1_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cl1_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:cl1_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:z1_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:z1_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ff1_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ff1_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ov_msb_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ov_msb_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:co_msb_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:co_msb_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cmsb_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:cmsb_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:so_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:so_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:f1_bus_stat_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:f1_bus_stat_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:f1_blk_stat_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:f1_blk_stat_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ce0_reg_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ce0_reg_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cl0_reg_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:cl0_reg_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:z0_reg_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:z0_reg_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ff0_reg_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ff0_reg_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ce1_reg_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ce1_reg_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cl1_reg_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:cl1_reg_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:z1_reg_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:z1_reg_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ff1_reg_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ff1_reg_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:ov_msb_reg_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:ov_msb_reg_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:co_msb_reg_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:co_msb_reg_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:cmsb_reg_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:cmsb_reg_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:so_reg_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:so_reg_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:f0_bus_stat_reg_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:f0_bus_stat_reg_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:f0_blk_stat_reg_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:f0_blk_stat_reg_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:f1_bus_stat_reg_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:f1_bus_stat_reg_2\:SIGNAL IS 2;
+SIGNAL \Timer_Deadzone:TimerUDB:sT24:timerdp:f1_blk_stat_reg_2\ : bit;
+ATTRIBUTE port_state_att of \Timer_Deadzone:TimerUDB:sT24:timerdp:f1_blk_stat_reg_2\:SIGNAL IS 2;
 SIGNAL \Timer_Deadzone:Net_102\ : bit;
 SIGNAL \Timer_Deadzone:Net_266\ : bit;
 SIGNAL \QuadDec_M1:Net_1251\\D\ : bit;
@@ -5486,7 +5561,7 @@ timer_clock_2:cy_clock_v1_0
 		status=>(Net_2183, Net_2183, Net_2183, \Timer_Deadzone:TimerUDB:status_3\,
 			\Timer_Deadzone:TimerUDB:status_2\, Net_2183, \Timer_Deadzone:TimerUDB:status_tc\),
 		interrupt=>\Timer_Deadzone:Net_55\);
-\Timer_Deadzone:TimerUDB:sT16:timerdp:u0\:cy_psoc3_dp
+\Timer_Deadzone:TimerUDB:sT24:timerdp:u0\:cy_psoc3_dp
 	GENERIC MAP(cy_dpconfig=>"0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000001000000000000000000011000",
 		d0_init=>"00000000",
 		d1_init=>"00000000",
@@ -5529,8 +5604,8 @@ timer_clock_2:cy_clock_v1_0
 		co_msb=>open,
 		cmsb=>open,
 		so=>open,
-		f0_bus_stat=>\Timer_Deadzone:TimerUDB:nc3\,
-		f0_blk_stat=>\Timer_Deadzone:TimerUDB:nc4\,
+		f0_bus_stat=>\Timer_Deadzone:TimerUDB:nc6\,
+		f0_blk_stat=>\Timer_Deadzone:TimerUDB:nc8\,
 		f1_bus_stat=>open,
 		f1_blk_stat=>open,
 		ce0_reg=>open,
@@ -5550,29 +5625,115 @@ timer_clock_2:cy_clock_v1_0
 		f1_bus_stat_reg=>open,
 		f1_blk_stat_reg=>open,
 		ci=>Net_2183,
-		co=>\Timer_Deadzone:TimerUDB:sT16:timerdp:carry\,
+		co=>\Timer_Deadzone:TimerUDB:sT24:timerdp:carry0\,
 		sir=>Net_2183,
 		sor=>open,
-		sil=>\Timer_Deadzone:TimerUDB:sT16:timerdp:sh_right\,
-		sol=>\Timer_Deadzone:TimerUDB:sT16:timerdp:sh_left\,
-		msbi=>\Timer_Deadzone:TimerUDB:sT16:timerdp:msb\,
+		sil=>\Timer_Deadzone:TimerUDB:sT24:timerdp:sh_right0\,
+		sol=>\Timer_Deadzone:TimerUDB:sT24:timerdp:sh_left0\,
+		msbi=>\Timer_Deadzone:TimerUDB:sT24:timerdp:msb0\,
 		msbo=>open,
 		cei=>(Net_2183, Net_2183),
-		ceo=>(\Timer_Deadzone:TimerUDB:sT16:timerdp:cmp_eq_1\, \Timer_Deadzone:TimerUDB:sT16:timerdp:cmp_eq_0\),
+		ceo=>(\Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_eq0_1\, \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_eq0_0\),
 		cli=>(Net_2183, Net_2183),
-		clo=>(\Timer_Deadzone:TimerUDB:sT16:timerdp:cmp_lt_1\, \Timer_Deadzone:TimerUDB:sT16:timerdp:cmp_lt_0\),
+		clo=>(\Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_lt0_1\, \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_lt0_0\),
 		zi=>(Net_2183, Net_2183),
-		zo=>(\Timer_Deadzone:TimerUDB:sT16:timerdp:cmp_zero_1\, \Timer_Deadzone:TimerUDB:sT16:timerdp:cmp_zero_0\),
+		zo=>(\Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_zero0_1\, \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_zero0_0\),
 		fi=>(Net_2183, Net_2183),
-		fo=>(\Timer_Deadzone:TimerUDB:sT16:timerdp:cmp_ff_1\, \Timer_Deadzone:TimerUDB:sT16:timerdp:cmp_ff_0\),
+		fo=>(\Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_ff0_1\, \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_ff0_0\),
 		capi=>(Net_2183, Net_2183),
-		capo=>(\Timer_Deadzone:TimerUDB:sT16:timerdp:cap_1\, \Timer_Deadzone:TimerUDB:sT16:timerdp:cap_0\),
+		capo=>(\Timer_Deadzone:TimerUDB:sT24:timerdp:cap0_1\, \Timer_Deadzone:TimerUDB:sT24:timerdp:cap0_0\),
 		cfbi=>Net_2183,
-		cfbo=>\Timer_Deadzone:TimerUDB:sT16:timerdp:cfb\,
+		cfbo=>\Timer_Deadzone:TimerUDB:sT24:timerdp:cfb0\,
 		pi=>(Net_2183, Net_2183, Net_2183, Net_2183,
 			Net_2183, Net_2183, Net_2183, Net_2183),
 		po=>open);
-\Timer_Deadzone:TimerUDB:sT16:timerdp:u1\:cy_psoc3_dp
+\Timer_Deadzone:TimerUDB:sT24:timerdp:u1\:cy_psoc3_dp
+	GENERIC MAP(cy_dpconfig=>"0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000",
+		d0_init=>"00000000",
+		d1_init=>"00000000",
+		a0_init=>"00000000",
+		a1_init=>"00000000",
+		ce0_sync=>'1',
+		cl0_sync=>'1',
+		z0_sync=>'1',
+		ff0_sync=>'1',
+		ce1_sync=>'1',
+		cl1_sync=>'1',
+		z1_sync=>'1',
+		ff1_sync=>'1',
+		ov_msb_sync=>'1',
+		co_msb_sync=>'1',
+		cmsb_sync=>'1',
+		so_sync=>'1',
+		f0_bus_sync=>'1',
+		f0_blk_sync=>'1',
+		f1_bus_sync=>'1',
+		f1_blk_sync=>'1')
+	PORT MAP(reset=>Net_2183,
+		clk=>\Timer_Deadzone:TimerUDB:ClockOutFromEnBlock\,
+		cs_addr=>(Net_2183, \Timer_Deadzone:TimerUDB:control_7\, \Timer_Deadzone:TimerUDB:per_zero\),
+		route_si=>Net_2183,
+		route_ci=>Net_2183,
+		f0_load=>Net_2183,
+		f1_load=>Net_2183,
+		d0_load=>Net_2183,
+		d1_load=>Net_2183,
+		ce0=>open,
+		cl0=>open,
+		z0=>\Timer_Deadzone:TimerUDB:nc1\,
+		ff0=>open,
+		ce1=>open,
+		cl1=>open,
+		z1=>open,
+		ff1=>open,
+		ov_msb=>open,
+		co_msb=>open,
+		cmsb=>open,
+		so=>open,
+		f0_bus_stat=>\Timer_Deadzone:TimerUDB:nc5\,
+		f0_blk_stat=>\Timer_Deadzone:TimerUDB:nc7\,
+		f1_bus_stat=>open,
+		f1_blk_stat=>open,
+		ce0_reg=>open,
+		cl0_reg=>open,
+		z0_reg=>open,
+		ff0_reg=>open,
+		ce1_reg=>open,
+		cl1_reg=>open,
+		z1_reg=>open,
+		ff1_reg=>open,
+		ov_msb_reg=>open,
+		co_msb_reg=>open,
+		cmsb_reg=>open,
+		so_reg=>open,
+		f0_bus_stat_reg=>open,
+		f0_blk_stat_reg=>open,
+		f1_bus_stat_reg=>open,
+		f1_blk_stat_reg=>open,
+		ci=>\Timer_Deadzone:TimerUDB:sT24:timerdp:carry0\,
+		co=>\Timer_Deadzone:TimerUDB:sT24:timerdp:carry1\,
+		sir=>\Timer_Deadzone:TimerUDB:sT24:timerdp:sh_left0\,
+		sor=>\Timer_Deadzone:TimerUDB:sT24:timerdp:sh_right0\,
+		sil=>\Timer_Deadzone:TimerUDB:sT24:timerdp:sh_right1\,
+		sol=>\Timer_Deadzone:TimerUDB:sT24:timerdp:sh_left1\,
+		msbi=>\Timer_Deadzone:TimerUDB:sT24:timerdp:msb1\,
+		msbo=>\Timer_Deadzone:TimerUDB:sT24:timerdp:msb0\,
+		cei=>(\Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_eq0_1\, \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_eq0_0\),
+		ceo=>(\Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_eq1_1\, \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_eq1_0\),
+		cli=>(\Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_lt0_1\, \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_lt0_0\),
+		clo=>(\Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_lt1_1\, \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_lt1_0\),
+		zi=>(\Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_zero0_1\, \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_zero0_0\),
+		zo=>(\Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_zero1_1\, \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_zero1_0\),
+		fi=>(\Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_ff0_1\, \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_ff0_0\),
+		fo=>(\Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_ff1_1\, \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_ff1_0\),
+		capi=>(\Timer_Deadzone:TimerUDB:sT24:timerdp:cap0_1\, \Timer_Deadzone:TimerUDB:sT24:timerdp:cap0_0\),
+		capo=>(\Timer_Deadzone:TimerUDB:sT24:timerdp:cap1_1\, \Timer_Deadzone:TimerUDB:sT24:timerdp:cap1_0\),
+		cfbi=>\Timer_Deadzone:TimerUDB:sT24:timerdp:cfb0\,
+		cfbo=>\Timer_Deadzone:TimerUDB:sT24:timerdp:cfb1\,
+		pi=>(Net_2183, Net_2183, Net_2183, Net_2183,
+			Net_2183, Net_2183, Net_2183, Net_2183),
+		po=>open);
+\Timer_Deadzone:TimerUDB:sT24:timerdp:u2\:cy_psoc3_dp
 	GENERIC MAP(cy_dpconfig=>"0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000",
 		d0_init=>"00000000",
 		d1_init=>"00000000",
@@ -5635,25 +5796,25 @@ timer_clock_2:cy_clock_v1_0
 		f0_blk_stat_reg=>open,
 		f1_bus_stat_reg=>open,
 		f1_blk_stat_reg=>open,
-		ci=>\Timer_Deadzone:TimerUDB:sT16:timerdp:carry\,
+		ci=>\Timer_Deadzone:TimerUDB:sT24:timerdp:carry1\,
 		co=>open,
-		sir=>\Timer_Deadzone:TimerUDB:sT16:timerdp:sh_left\,
-		sor=>\Timer_Deadzone:TimerUDB:sT16:timerdp:sh_right\,
+		sir=>\Timer_Deadzone:TimerUDB:sT24:timerdp:sh_left1\,
+		sor=>\Timer_Deadzone:TimerUDB:sT24:timerdp:sh_right1\,
 		sil=>Net_2183,
 		sol=>open,
 		msbi=>Net_2183,
-		msbo=>\Timer_Deadzone:TimerUDB:sT16:timerdp:msb\,
-		cei=>(\Timer_Deadzone:TimerUDB:sT16:timerdp:cmp_eq_1\, \Timer_Deadzone:TimerUDB:sT16:timerdp:cmp_eq_0\),
+		msbo=>\Timer_Deadzone:TimerUDB:sT24:timerdp:msb1\,
+		cei=>(\Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_eq1_1\, \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_eq1_0\),
 		ceo=>open,
-		cli=>(\Timer_Deadzone:TimerUDB:sT16:timerdp:cmp_lt_1\, \Timer_Deadzone:TimerUDB:sT16:timerdp:cmp_lt_0\),
+		cli=>(\Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_lt1_1\, \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_lt1_0\),
 		clo=>open,
-		zi=>(\Timer_Deadzone:TimerUDB:sT16:timerdp:cmp_zero_1\, \Timer_Deadzone:TimerUDB:sT16:timerdp:cmp_zero_0\),
+		zi=>(\Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_zero1_1\, \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_zero1_0\),
 		zo=>open,
-		fi=>(\Timer_Deadzone:TimerUDB:sT16:timerdp:cmp_ff_1\, \Timer_Deadzone:TimerUDB:sT16:timerdp:cmp_ff_0\),
+		fi=>(\Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_ff1_1\, \Timer_Deadzone:TimerUDB:sT24:timerdp:cmp_ff1_0\),
 		fo=>open,
-		capi=>(\Timer_Deadzone:TimerUDB:sT16:timerdp:cap_1\, \Timer_Deadzone:TimerUDB:sT16:timerdp:cap_0\),
+		capi=>(\Timer_Deadzone:TimerUDB:sT24:timerdp:cap1_1\, \Timer_Deadzone:TimerUDB:sT24:timerdp:cap1_0\),
 		capo=>open,
-		cfbi=>\Timer_Deadzone:TimerUDB:sT16:timerdp:cfb\,
+		cfbi=>\Timer_Deadzone:TimerUDB:sT24:timerdp:cfb1\,
 		cfbo=>open,
 		pi=>(Net_2183, Net_2183, Net_2183, Net_2183,
 			Net_2183, Net_2183, Net_2183, Net_2183),
