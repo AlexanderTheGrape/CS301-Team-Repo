@@ -168,7 +168,8 @@ CY_ISR(isr_turn_timer)
 {
     if(movement_state == LTURN)
     {
-        if(abs(QuadDec_M2_GetCounter() - start_turn_count) >= 208)
+        uint16 distTurned = abs(QuadDec_M2_GetCounter() - start_turn_count);
+        if((distTurned >= 208) || (distTurned >= 185 && frontSensors[2] == 1))
         {
             //movement_state = STOPPED;
             brakeMotor();
@@ -178,7 +179,8 @@ CY_ISR(isr_turn_timer)
     }
     else if (movement_state == RTURN)
     {
-        if(abs(QuadDec_M1_GetCounter() - start_turn_count) >= 208)
+        uint16 distTurned = abs(QuadDec_M1_GetCounter() - start_turn_count);
+        if((distTurned >= 208) || (distTurned >= 185 && frontSensors[2] == 1))
         {
             //movement_state = STOPPED;
             brakeMotor();
@@ -301,8 +303,7 @@ int main()
             print_RF();
         }
         // NO_TRACK, CURVE_TRACK, U_TRACK, SQUARE_TRACK
-        
-        uint8 frontSensors[5];
+       
         readFrontSensors(frontSensors);
         
         switch(track_mode)
@@ -349,7 +350,7 @@ int main()
                         if(sensorsDisabled == 0)
                         {
                             actionDebounce++;
-                            if(actionDebounce >= 500)
+                            if(actionDebounce >= 400)
                             {
                                 char mes[16];
                                 sprintf(mes, "Dist travel: %d\r\n", accum_dist);

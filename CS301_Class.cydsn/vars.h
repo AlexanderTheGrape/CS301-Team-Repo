@@ -85,6 +85,10 @@ int16 initial_y_pos = 0;
 uint8 brakeFlag;
 uint8 portOpen = 1;
 
+//sensors
+uint8 frontSensors[5];
+
+
 //Voltage measurements
 int16 prevVoltage;
 int16 prevVoltage2;
