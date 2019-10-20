@@ -351,7 +351,7 @@ uint32_t generateEntireMapDirections(){
       //if next direction is not possible from current direction then find the inter path (down, up, left, right)
       if(!((path[i + 1][Y] == path[i][Y] + 1 && path[i + 1][X] == path[i][X]) || (path[i + 1][Y] == path[i][Y] - 1 && path[i + 1][X] == path[i][X]) || (path[i + 1][X] == path[i][X] - 1 && path[i + 1][Y] == path[i][Y]) || (path[i + 1][X] == path[i][X] + 1 && path[i + 1][Y] == path[i][Y]))){
         instructions[counter] = DRIVE;
-        instructions[counter + 1] = i - prev_intersection;
+        instructions[counter + 1] = i - prev_intersection + 1;
         counter += 2;
         
         inter_prev_intersection = 0; 
@@ -702,7 +702,7 @@ uint32_t generateDirections(){
     
    }
    instructions[counter] = DRIVE;
-   instructions[counter + 1] = end - prev_intersection;
+   instructions[counter + 1] = end - prev_intersection + 1;
    counter += 2;
    //instructions[counter] = '\0';
 }
