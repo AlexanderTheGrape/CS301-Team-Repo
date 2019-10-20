@@ -26,11 +26,12 @@ void usbPutChar(char c);
 
 #define QUAD_RATIO 0.99556
 #define TURN_OFFSET 134
+#define U_OFFSET 93
 
 #define U_DEADZONE 90000
 #define TURN_DEADZONE 50000
 #define S_DEADZONE 10000
-#define QUAD_PER_UNIT 142
+#define QUAD_PER_UNIT 140
 
 char instructions[DEFAULT_ARRAY_SIZE] = {0};
 uint16 instructionCount = 0;
@@ -65,7 +66,7 @@ uint32_t map[15][19] = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 //first number is row, second column
 
 //uint32_t food_list[6][2]= {{4,5},{7,1},{11,5},{10,11},{5,8},{17,2}};
-uint32_t food_list[6][2] = {{5, 10},{5,3}, {13, 2}};
+uint32_t food_list[6][2] = {{5, 9},{5,3}, {13, 2}};
 //uint32_t food_list[6][2]= {{1,10},{1,17},{13,16},{7,9},{13,1}};
 uint32_t food_length = 3;
 
@@ -383,6 +384,7 @@ int main()
                                         // Direction not tracked any more
                                         initTurnU();
                                         Timer_Deadzone_WriteCounter(U_DEADZONE);
+                                        target_distance_quad -= U_OFFSET;
                                         //target_distance_quad += 208;
                                     break;
                                     
@@ -431,6 +433,7 @@ int main()
                                     else nextStepDist = 0;
                                     
                                     target_distance_quad = QUAD_PER_UNIT * (nextStepDist-0);
+                                    target_distance_quad -= U_OFFSET;
                                     //target_distance_quad += 208;
                                     
                                         UART_PutString("Triggered at white light \r\n");
@@ -468,6 +471,7 @@ int main()
                                 else nextStepDist = 0;
                                 
                                 target_distance_quad = QUAD_PER_UNIT * (nextStepDist-0);
+                                target_distance_quad -= U_OFFSET;
                                 
                                     UART_PutString("Triggered at quad count \r\n");
                                     if(nextStep == 'U')
@@ -877,7 +881,7 @@ CY_ISR(BT_rxInt)
         
         target_distance_quad = QUAD_PER_UNIT * instructions[instructionCount+1];        
         sprintf(mes, "Target dist: %d\r\n", target_distance_quad);
-
+        UART_PutString(mes);
         inittrackLineZ();
         break;
     case ('1'):
@@ -887,7 +891,7 @@ CY_ISR(BT_rxInt)
         instructionLength = generateEntireMapDirections();
         //char message[128];
        // sprintf(message, "p:%s\r\n", instructions);
-        instructionCount = 17*2;
+        instructionCount = instructionLength - 22;
         int x;
         for(x = instructionCount;x < instructionLength; x++)
         {
