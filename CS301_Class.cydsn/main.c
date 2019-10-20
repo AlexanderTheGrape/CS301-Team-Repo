@@ -25,6 +25,7 @@ void usbPutChar(char c);
 //* ========================================
 
 #define QUAD_RATIO 0.99556
+#define TURN_OFFSET 75
 
 char instructions[DEFAULT_ARRAY_SIZE] = {0};
 uint16 instructionCount = 0;
@@ -379,12 +380,12 @@ int main()
                                     case 'L':
                                         //if(tracked_direction == 1) tracked_direction = 4; else tracked_direction--;
                                         initTurnLeft();
-                                        target_distance_quad -= 75;
+                                        target_distance_quad -= TURN_OFFSET;
                                     break;
                                     case 'R':
                                         //if(tracked_direction == 4) tracked_direction = 1; else tracked_direction++;
                                         initTurnRight();
-                                        target_distance_quad += (208 - 75);
+                                        target_distance_quad += (208 - TURN_OFFSET);
                                         
                                     break;
                                     case 'U':
@@ -476,12 +477,12 @@ int main()
                                     case 'L':
                                         //if(tracked_direction == 1) tracked_direction = 4; else tracked_direction--;
                                         initTurnLeft();
-                                        target_distance_quad -= 75;
+                                        target_distance_quad -= TURN_OFFSET;
                                     break;
                                     case 'R':
                                         //if(tracked_direction == 4) tracked_direction = 1; else tracked_direction++;
                                         initTurnRight();
-                                        target_distance_quad += 208 - 75;
+                                        target_distance_quad += 208 - TURN_OFFSET;
                                         
                                     break;
                                     case 'U':
@@ -822,10 +823,10 @@ CY_ISR(BT_rxInt)
         initial_pos_valid = 0;
         initBrake();
         break;
-    case ('x'):
+    case ('2'):
         track_mode = DEST_TEST;
         tracked_direction = robot_direction;
-        //instructionLength = generateDirections();
+        instructionLength = generateDirections();
         instructionLength = generateEntireMapDirections();
         //char message[128];
        // sprintf(message, "p:%s\r\n", instructions);
@@ -837,6 +838,28 @@ CY_ISR(BT_rxInt)
                 UART_PutChar(instructions[i]);
             }
             else UART_PutChar(instructions[i] + 48);
+
+        }
+        
+        UART_PutString("\r\n");
+
+        inittrackLineZ();
+        break;
+        case ('1'):
+        track_mode = DEST_TEST;
+        tracked_direction = robot_direction;
+        //instructionLength = generateDirections();
+        instructionLength = generateEntireMapDirections();
+        //char message[128];
+       // sprintf(message, "p:%s\r\n", instructions);
+        int x = 0;
+        for(x = 0;x < instructionLength; x++)
+        {
+            if(x%2 == 0)
+            {
+                UART_PutChar(instructions[x]);
+            }
+            else UART_PutChar(instructions[x] + 48);
 
         }
         

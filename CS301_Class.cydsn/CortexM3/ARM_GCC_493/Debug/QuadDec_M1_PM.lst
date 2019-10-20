@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 1
+ARM GAS  C:\Users\Tomas\AppData\Local\Temp\ccJdscsP.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 1
   25:.\Generated_Source\PSoC5/QuadDec_M1_PM.c **** * Function Name: QuadDec_M1_SaveConfig
   26:.\Generated_Source\PSoC5/QuadDec_M1_PM.c **** ********************************************************************************
   27:.\Generated_Source\PSoC5/QuadDec_M1_PM.c **** * Summary:
-ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 2
+ARM GAS  C:\Users\Tomas\AppData\Local\Temp\ccJdscsP.s 			page 2
 
 
   28:.\Generated_Source\PSoC5/QuadDec_M1_PM.c **** *  Saves the current user configuration of the component.
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 1
   57:.\Generated_Source\PSoC5/QuadDec_M1_PM.c **** *  None.
   58:.\Generated_Source\PSoC5/QuadDec_M1_PM.c **** *
   59:.\Generated_Source\PSoC5/QuadDec_M1_PM.c **** * Return:
-ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 3
+ARM GAS  C:\Users\Tomas\AppData\Local\Temp\ccJdscsP.s 			page 3
 
 
   60:.\Generated_Source\PSoC5/QuadDec_M1_PM.c **** *  None.
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 1
   89:.\Generated_Source\PSoC5/QuadDec_M1_PM.c **** * Global Variables:
   90:.\Generated_Source\PSoC5/QuadDec_M1_PM.c **** *  QuadDec_M1_backup - modified when non-retention registers are saved.
   91:.\Generated_Source\PSoC5/QuadDec_M1_PM.c **** *
-ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 4
+ARM GAS  C:\Users\Tomas\AppData\Local\Temp\ccJdscsP.s 			page 4
 
 
   92:.\Generated_Source\PSoC5/QuadDec_M1_PM.c **** * Reentrant:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 1
  117              	.L6:
  118 002c 97640040 		.word	1073767575
  119 0030 00000000 		.word	QuadDec_M1_backup
-ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 5
+ARM GAS  C:\Users\Tomas\AppData\Local\Temp\ccJdscsP.s 			page 5
 
 
  120              		.cfi_endproc
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 1
  136:.\Generated_Source\PSoC5/QuadDec_M1_PM.c ****             QuadDec_M1_Cnt8_Enable();
  137:.\Generated_Source\PSoC5/QuadDec_M1_PM.c ****         #else 
  138:.\Generated_Source\PSoC5/QuadDec_M1_PM.c ****             /* (QuadDec_M1_COUNTER_SIZE == QuadDec_M1_COUNTER_SIZE_16_BIT) || 
-ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 6
+ARM GAS  C:\Users\Tomas\AppData\Local\Temp\ccJdscsP.s 			page 6
 
 
  139:.\Generated_Source\PSoC5/QuadDec_M1_PM.c ****             *  (QuadDec_M1_COUNTER_SIZE == QuadDec_M1_COUNTER_SIZE_32_BIT) 
@@ -335,10 +335,10 @@ ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 1
  170 0006 00000000 		.4byte	.Ldebug_abbrev0
  171 000a 04       		.byte	0x4
  172 000b 01       		.uleb128 0x1
- 173 000c 83010000 		.4byte	.LASF20
+ 173 000c 86010000 		.4byte	.LASF20
  174 0010 01       		.byte	0x1
- 175 0011 54010000 		.4byte	.LASF21
- 176 0015 0E000000 		.4byte	.LASF22
+ 175 0011 57010000 		.4byte	.LASF21
+ 176 0015 4E000000 		.4byte	.LASF22
  177 0019 00000000 		.4byte	.Ldebug_ranges0+0
  178 001d 00000000 		.4byte	0
  179 0021 00000000 		.4byte	.Ldebug_line0
@@ -349,34 +349,34 @@ ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 1
  184 002c 03       		.uleb128 0x3
  185 002d 04       		.byte	0x4
  186 002e 07       		.byte	0x7
- 187 002f 59000000 		.4byte	.LASF0
+ 187 002f 1A000000 		.4byte	.LASF0
  188 0033 03       		.uleb128 0x3
  189 0034 01       		.byte	0x1
  190 0035 06       		.byte	0x6
- 191 0036 48010000 		.4byte	.LASF1
+ 191 0036 4B010000 		.4byte	.LASF1
  192 003a 03       		.uleb128 0x3
  193 003b 01       		.byte	0x1
  194 003c 08       		.byte	0x8
- 195 003d CE000000 		.4byte	.LASF2
-ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 7
+ 195 003d D1000000 		.4byte	.LASF2
+ARM GAS  C:\Users\Tomas\AppData\Local\Temp\ccJdscsP.s 			page 7
 
 
  196 0041 03       		.uleb128 0x3
  197 0042 02       		.byte	0x2
  198 0043 05       		.byte	0x5
- 199 0044 11020000 		.4byte	.LASF3
+ 199 0044 14020000 		.4byte	.LASF3
  200 0048 03       		.uleb128 0x3
  201 0049 02       		.byte	0x2
  202 004a 07       		.byte	0x7
- 203 004b 35010000 		.4byte	.LASF4
+ 203 004b 38010000 		.4byte	.LASF4
  204 004f 03       		.uleb128 0x3
  205 0050 04       		.byte	0x4
  206 0051 05       		.byte	0x5
- 207 0052 F3000000 		.4byte	.LASF5
+ 207 0052 F6000000 		.4byte	.LASF5
  208 0056 03       		.uleb128 0x3
  209 0057 04       		.byte	0x4
  210 0058 07       		.byte	0x7
- 211 0059 A5000000 		.4byte	.LASF6
+ 211 0059 A8000000 		.4byte	.LASF6
  212 005d 03       		.uleb128 0x3
  213 005e 08       		.byte	0x8
  214 005f 05       		.byte	0x5
@@ -384,30 +384,30 @@ ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 1
  216 0064 03       		.uleb128 0x3
  217 0065 08       		.byte	0x8
  218 0066 07       		.byte	0x7
- 219 0067 B7000000 		.4byte	.LASF8
+ 219 0067 BA000000 		.4byte	.LASF8
  220 006b 03       		.uleb128 0x3
  221 006c 04       		.byte	0x4
  222 006d 07       		.byte	0x7
- 223 006e 20020000 		.4byte	.LASF9
+ 223 006e 23020000 		.4byte	.LASF9
  224 0072 03       		.uleb128 0x3
  225 0073 01       		.byte	0x1
  226 0074 08       		.byte	0x8
- 227 0075 DC000000 		.4byte	.LASF10
+ 227 0075 DF000000 		.4byte	.LASF10
  228 0079 04       		.uleb128 0x4
- 229 007a 9F000000 		.4byte	.LASF13
+ 229 007a A2000000 		.4byte	.LASF13
  230 007e 02       		.byte	0x2
  231 007f 9201     		.2byte	0x192
  232 0081 3A000000 		.4byte	0x3a
  233 0085 03       		.uleb128 0x3
  234 0086 04       		.byte	0x4
  235 0087 04       		.byte	0x4
- 236 0088 7D010000 		.4byte	.LASF11
+ 236 0088 80010000 		.4byte	.LASF11
  237 008c 03       		.uleb128 0x3
  238 008d 08       		.byte	0x8
  239 008e 04       		.byte	0x4
- 240 008f 15010000 		.4byte	.LASF12
+ 240 008f 18010000 		.4byte	.LASF12
  241 0093 04       		.uleb128 0x4
- 242 0094 1B020000 		.4byte	.LASF14
+ 242 0094 1E020000 		.4byte	.LASF14
  243 0098 02       		.byte	0x2
  244 0099 3C02     		.2byte	0x23c
  245 009b 9F000000 		.4byte	0x9f
@@ -418,23 +418,23 @@ ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 1
  250 00a6 03       		.byte	0x3
  251 00a7 3D       		.byte	0x3d
  252 00a8 B9000000 		.4byte	0xb9
-ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 8
+ARM GAS  C:\Users\Tomas\AppData\Local\Temp\ccJdscsP.s 			page 8
 
 
  253 00ac 07       		.uleb128 0x7
- 254 00ad 4D000000 		.4byte	.LASF23
+ 254 00ad 0E000000 		.4byte	.LASF23
  255 00b1 03       		.byte	0x3
  256 00b2 3F       		.byte	0x3f
  257 00b3 79000000 		.4byte	0x79
  258 00b7 00       		.byte	0
  259 00b8 00       		.byte	0
  260 00b9 08       		.uleb128 0x8
- 261 00ba 1C010000 		.4byte	.LASF15
+ 261 00ba 1F010000 		.4byte	.LASF15
  262 00be 03       		.byte	0x3
  263 00bf 40       		.byte	0x40
  264 00c0 A4000000 		.4byte	0xa4
  265 00c4 09       		.uleb128 0x9
- 266 00c5 66000000 		.4byte	.LASF16
+ 266 00c5 27000000 		.4byte	.LASF16
  267 00c9 01       		.byte	0x1
  268 00ca 25       		.byte	0x25
  269 00cb 00000000 		.4byte	.LFB0
@@ -442,7 +442,7 @@ ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 1
  271 00d3 01       		.uleb128 0x1
  272 00d4 9C       		.byte	0x9c
  273 00d5 09       		.uleb128 0x9
- 274 00d6 FC000000 		.4byte	.LASF17
+ 274 00d6 FF000000 		.4byte	.LASF17
  275 00da 01       		.byte	0x1
  276 00db 3F       		.byte	0x3f
  277 00dc 00000000 		.4byte	.LFB1
@@ -450,7 +450,7 @@ ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 1
  279 00e4 01       		.uleb128 0x1
  280 00e5 9C       		.byte	0x9c
  281 00e6 09       		.uleb128 0x9
- 282 00e7 7C000000 		.4byte	.LASF18
+ 282 00e7 3D000000 		.4byte	.LASF18
  283 00eb 01       		.byte	0x1
  284 00ec 60       		.byte	0x60
  285 00ed 00000000 		.4byte	.LFB2
@@ -458,7 +458,7 @@ ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 1
  287 00f5 01       		.uleb128 0x1
  288 00f6 9C       		.byte	0x9c
  289 00f7 09       		.uleb128 0x9
- 290 00f8 E1000000 		.4byte	.LASF19
+ 290 00f8 E4000000 		.4byte	.LASF19
  291 00fc 01       		.byte	0x1
  292 00fd 81       		.byte	0x81
  293 00fe 00000000 		.4byte	.LFB3
@@ -466,7 +466,7 @@ ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 1
  295 0106 01       		.uleb128 0x1
  296 0107 9C       		.byte	0x9c
  297 0108 0A       		.uleb128 0xa
- 298 0109 8D000000 		.4byte	.LASF24
+ 298 0109 90000000 		.4byte	.LASF24
  299 010d 01       		.byte	0x1
  300 010e 15       		.byte	0x15
  301 010f B9000000 		.4byte	0xb9
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 1
  307              	.Ldebug_abbrev0:
  308 0000 01       		.uleb128 0x1
  309 0001 11       		.uleb128 0x11
-ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 9
+ARM GAS  C:\Users\Tomas\AppData\Local\Temp\ccJdscsP.s 			page 9
 
 
  310 0002 01       		.byte	0x1
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 1
  364 0038 00       		.byte	0
  365 0039 49       		.uleb128 0x49
  366 003a 13       		.uleb128 0x13
-ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 10
+ARM GAS  C:\Users\Tomas\AppData\Local\Temp\ccJdscsP.s 			page 10
 
 
  367 003b 00       		.byte	0
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 1
  421 0071 27       		.uleb128 0x27
  422 0072 19       		.uleb128 0x19
  423 0073 11       		.uleb128 0x11
-ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 11
+ARM GAS  C:\Users\Tomas\AppData\Local\Temp\ccJdscsP.s 			page 11
 
 
  424 0074 01       		.uleb128 0x1
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 1
  478 0024 00000000 		.4byte	0
  479              		.section	.debug_line,"",%progbits
  480              	.Ldebug_line0:
-ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 12
+ARM GAS  C:\Users\Tomas\AppData\Local\Temp\ccJdscsP.s 			page 12
 
 
  481 0000 AF000000 		.section	.debug_str,"MS",%progbits,1
@@ -671,142 +671,142 @@ ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 1
  483      206C6F6E 
  483      6720696E 
  483      7400
- 484              	.LASF22:
- 485 000e 433A5C55 		.ascii	"C:\\Users\\Logan\\Desktop\\repos\\CS301-Team-Repo\\"
- 485      73657273 
- 485      5C4C6F67 
- 485      616E5C44 
- 485      65736B74 
- 486 003b 43533330 		.ascii	"CS301_Class.cydsn\000"
- 486      315F436C 
- 486      6173732E 
- 486      63796473 
- 486      6E00
- 487              	.LASF23:
- 488 004d 656E6162 		.ascii	"enableState\000"
- 488      6C655374 
- 488      61746500 
- 489              	.LASF0:
- 490 0059 756E7369 		.ascii	"unsigned int\000"
- 490      676E6564 
- 490      20696E74 
- 490      00
- 491              	.LASF16:
- 492 0066 51756164 		.ascii	"QuadDec_M1_SaveConfig\000"
- 492      4465635F 
- 492      4D315F53 
- 492      61766543 
- 492      6F6E6669 
- 493              	.LASF18:
- 494 007c 51756164 		.ascii	"QuadDec_M1_Sleep\000"
- 494      4465635F 
- 494      4D315F53 
- 494      6C656570 
- 494      00
+ 484              	.LASF23:
+ 485 000e 656E6162 		.ascii	"enableState\000"
+ 485      6C655374 
+ 485      61746500 
+ 486              	.LASF0:
+ 487 001a 756E7369 		.ascii	"unsigned int\000"
+ 487      676E6564 
+ 487      20696E74 
+ 487      00
+ 488              	.LASF16:
+ 489 0027 51756164 		.ascii	"QuadDec_M1_SaveConfig\000"
+ 489      4465635F 
+ 489      4D315F53 
+ 489      61766543 
+ 489      6F6E6669 
+ 490              	.LASF18:
+ 491 003d 51756164 		.ascii	"QuadDec_M1_Sleep\000"
+ 491      4465635F 
+ 491      4D315F53 
+ 491      6C656570 
+ 491      00
+ 492              	.LASF22:
+ 493 004e 433A5C55 		.ascii	"C:\\Users\\Tomas\\Google_Drive\\301\\CS301-Team-Rep"
+ 493      73657273 
+ 493      5C546F6D 
+ 493      61735C47 
+ 493      6F6F676C 
+ 494 007c 6F5C4353 		.ascii	"o\\CS301_Class.cydsn\000"
+ 494      3330315F 
+ 494      436C6173 
+ 494      732E6379 
+ 494      64736E00 
  495              	.LASF24:
- 496 008d 51756164 		.ascii	"QuadDec_M1_backup\000"
+ 496 0090 51756164 		.ascii	"QuadDec_M1_backup\000"
  496      4465635F 
  496      4D315F62 
  496      61636B75 
  496      7000
  497              	.LASF13:
- 498 009f 75696E74 		.ascii	"uint8\000"
+ 498 00a2 75696E74 		.ascii	"uint8\000"
  498      3800
  499              	.LASF6:
- 500 00a5 6C6F6E67 		.ascii	"long unsigned int\000"
+ 500 00a8 6C6F6E67 		.ascii	"long unsigned int\000"
  500      20756E73 
  500      69676E65 
  500      6420696E 
  500      7400
-ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 13
+ARM GAS  C:\Users\Tomas\AppData\Local\Temp\ccJdscsP.s 			page 13
 
 
  501              	.LASF8:
- 502 00b7 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 502 00ba 6C6F6E67 		.ascii	"long long unsigned int\000"
  502      206C6F6E 
  502      6720756E 
  502      7369676E 
  502      65642069 
  503              	.LASF2:
- 504 00ce 756E7369 		.ascii	"unsigned char\000"
+ 504 00d1 756E7369 		.ascii	"unsigned char\000"
  504      676E6564 
  504      20636861 
  504      7200
  505              	.LASF10:
- 506 00dc 63686172 		.ascii	"char\000"
+ 506 00df 63686172 		.ascii	"char\000"
  506      00
  507              	.LASF19:
- 508 00e1 51756164 		.ascii	"QuadDec_M1_Wakeup\000"
+ 508 00e4 51756164 		.ascii	"QuadDec_M1_Wakeup\000"
  508      4465635F 
  508      4D315F57 
  508      616B6575 
  508      7000
  509              	.LASF5:
- 510 00f3 6C6F6E67 		.ascii	"long int\000"
+ 510 00f6 6C6F6E67 		.ascii	"long int\000"
  510      20696E74 
  510      00
  511              	.LASF17:
- 512 00fc 51756164 		.ascii	"QuadDec_M1_RestoreConfig\000"
+ 512 00ff 51756164 		.ascii	"QuadDec_M1_RestoreConfig\000"
  512      4465635F 
  512      4D315F52 
  512      6573746F 
  512      7265436F 
  513              	.LASF12:
- 514 0115 646F7562 		.ascii	"double\000"
+ 514 0118 646F7562 		.ascii	"double\000"
  514      6C6500
  515              	.LASF15:
- 516 011c 51756164 		.ascii	"QuadDec_M1_BACKUP_STRUCT\000"
+ 516 011f 51756164 		.ascii	"QuadDec_M1_BACKUP_STRUCT\000"
  516      4465635F 
  516      4D315F42 
  516      41434B55 
  516      505F5354 
  517              	.LASF4:
- 518 0135 73686F72 		.ascii	"short unsigned int\000"
+ 518 0138 73686F72 		.ascii	"short unsigned int\000"
  518      7420756E 
  518      7369676E 
  518      65642069 
  518      6E7400
  519              	.LASF1:
- 520 0148 7369676E 		.ascii	"signed char\000"
+ 520 014b 7369676E 		.ascii	"signed char\000"
  520      65642063 
  520      68617200 
  521              	.LASF21:
- 522 0154 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\QuadDec_M1_PM.c\000"
+ 522 0157 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\QuadDec_M1_PM.c\000"
  522      6E657261 
  522      7465645F 
  522      536F7572 
  522      63655C50 
  523              	.LASF11:
- 524 017d 666C6F61 		.ascii	"float\000"
-ARM GAS  C:\Users\Logan\AppData\Local\Temp\ccbfTSjo.s 			page 14
+ 524 0180 666C6F61 		.ascii	"float\000"
+ARM GAS  C:\Users\Tomas\AppData\Local\Temp\ccJdscsP.s 			page 14
 
 
  524      7400
  525              	.LASF20:
- 526 0183 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 526 0186 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
  526      4320342E 
  526      392E3320 
  526      32303135 
  526      30333033 
- 527 01b6 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 527 01b9 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
  527      20726576 
  527      6973696F 
  527      6E203232 
  527      31323230 
- 528 01e9 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 528 01ec 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
  528      66756E63 
  528      74696F6E 
  528      2D736563 
  528      74696F6E 
  529              	.LASF3:
- 530 0211 73686F72 		.ascii	"short int\000"
+ 530 0214 73686F72 		.ascii	"short int\000"
  530      7420696E 
  530      7400
  531              	.LASF14:
- 532 021b 72656738 		.ascii	"reg8\000"
+ 532 021e 72656738 		.ascii	"reg8\000"
  532      00
  533              	.LASF9:
- 534 0220 73697A65 		.ascii	"sizetype\000"
+ 534 0223 73697A65 		.ascii	"sizetype\000"
  534      74797065 
  534      00
  535              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
