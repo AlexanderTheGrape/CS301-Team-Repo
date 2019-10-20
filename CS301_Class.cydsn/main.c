@@ -349,7 +349,7 @@ int main()
                         if(sensorsDisabled == 0)
                         {
                             actionDebounce++;
-                            if(actionDebounce >= 800)
+                            if(actionDebounce >= 500)
                             {
                                 char mes[16];
                                 sprintf(mes, "Dist travel: %d\r\n", accum_dist);
@@ -416,39 +416,51 @@ int main()
                             }
                         }
                     }
-                    else if (frontSensors[0] == 0 && frontSensors[1] == 0 && frontSensors[2] == 0 && frontSensors[3] == 0 && frontSensors[4] == 0 && nextStep == 'U')
+                    else if (frontSensors[0] == 0 && frontSensors[1] == 0 && frontSensors[2] == 0 && frontSensors[3] == 0 && frontSensors[4] == 0 && (nextStep == 'U' || nextStep == 'D'))
                     {
                         if(sensorsDisabled == 0)
                         {
-                                
-                                actionDebounce++;
-                                if(actionDebounce >= 3000)
+                                if(nextStep == 'D')
                                 {
-                                    if(reached_target == 1)
+                                    char nextInstruction = instructions[instructionCount+2];
+                                    if(nextInstruction == 'U')
                                     {
-                                char mes[16];
-                                sprintf(mes, "Dist travel: %d\r\n", accum_dist);
-                                 UART_PutString(mes);
-                                     accum_dist = 0;
-                                uint8 nextStepDist;
-                                if(instructionCount <= instructionLength - 5) nextStepDist = instructions[instructionCount+3];
-                                else nextStepDist = 0;
+                                        instructionCount += 2;
+                                        nextStep = instructions[instructionCount];
+                                    }
+                                }
                                 
-                                target_distance_quad = QUAD_PER_UNIT * (nextStepDist-1);
-                                target_distance_quad += 208;
-                                
-                                    UART_PutString("Triggered at white light \r\n");
-                                    UART_PutString("Deadzone entered!\r\n");
-                                    deadzone = 1;
-                                    Timer_Deadzone_WriteCounter(U_DEADZONE);
-                                    if(target_distance_quad < 0) target_distance_quad = 0;
-                                    Timer_Deadzone_Start();
-                                    actionDebounce = 0;
-                                    sensorsDisabled = 1;
-                                    initTurnU();
-                                    reached_target = 0;
-                                    overshot_target = 0;
-                                    instructionCount += 2;
+                                if(nextStep == 'U')
+                                {
+                                    actionDebounce++;
+                                    if(actionDebounce >= 2600)
+                                    {
+                                        if(reached_target == 1)
+                                        {
+                                    char mes[16];
+                                    sprintf(mes, "Dist travel: %d\r\n", accum_dist);
+                                     UART_PutString(mes);
+                                         accum_dist = 0;
+                                    uint8 nextStepDist;
+                                    if(instructionCount <= instructionLength - 5) nextStepDist = instructions[instructionCount+3];
+                                    else nextStepDist = 0;
+                                    
+                                    target_distance_quad = QUAD_PER_UNIT * (nextStepDist-1);
+                                    target_distance_quad += 208;
+                                    
+                                        UART_PutString("Triggered at white light \r\n");
+                                        UART_PutString("Deadzone entered!\r\n");
+                                        deadzone = 1;
+                                        Timer_Deadzone_WriteCounter(U_DEADZONE);
+                                        if(target_distance_quad < 0) target_distance_quad = 0;
+                                        Timer_Deadzone_Start();
+                                        actionDebounce = 0;
+                                        sensorsDisabled = 1;
+                                        initTurnU();
+                                        reached_target = 0;
+                                        overshot_target = 0;
+                                        instructionCount += 2;
+                                }
                                 }
                             }
                         }

@@ -511,49 +511,6 @@
 <VisibleNodeIds>
 <v>CS301_Class-000</v>
 <v>CS301_Class-000\CS301_Class</v>
-<v>CS301_Class-000\CS301_Class\CortexM3</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Bypass.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_in0.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_INT.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_IRQ.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_PM.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_theACLK.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\button_pin.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_1.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_3.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_PWM.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_QENC.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock2.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\CONTROL.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\CONTROL_PM.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\CyDmac.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\CySpc.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\DB0.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\DB1.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\DB2.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\FarLeftSensor.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\FarRightSensor.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\FLSens_out.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\FRSens_out.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\isr_action_deadzone.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\isr_button.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\isr_eoc.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\isr_OnLine.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\isr_quad1.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\isr_TS.lst</v>
-<v>CS301_Class-000\CS301_Class\CortexM3\ARM_GCC_493\Debug\Listing Files\isr_turn_count.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
