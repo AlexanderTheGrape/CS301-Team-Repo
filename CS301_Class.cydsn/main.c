@@ -330,7 +330,9 @@ int main()
                 if(movement_state != LTURN && movement_state != RTURN && movement_state != UTURN){
                     //when we hit an intersection, verify the next step then evaluate
                     char nextStep = instructions[instructionCount];
-                    if(((frontSensors[0] == 1 && frontSensors[2] == 1) || (frontSensors[4] == 1 && frontSensors[2] == 1))){ //intersection
+                    uint8 leftOn = frontSensors[0] && frontSensors[2];
+                    uint8 rightOn = frontSensors[4] && frontSensors[2];
+                    if((leftOn && (nextStep != 'R')) || (rightOn && (nextStep != 'L'))){ //intersection
                         if(sensorsDisabled == 0)
                         {
                             actionDebounce++;
@@ -872,8 +874,32 @@ CY_ISR(BT_rxInt)
         //instructionLength = generateEntireMapDirections();
         //char message[128];
        // sprintf(message, "p:%s\r\n", instructions);
-        int i = 0;
-        for(i = 0;i < instructionLength; i++)
+        
+        last_quad_count1 = 0;
+        last_quad_count2 = 0;
+        QuadDec_M1_SetCounter(0);
+        QuadDec_M2_SetCounter(0);
+        instructionCount = 0;
+        isrRF_RX_Disable();
+        while(rf_char != 'F')
+        {
+            rf_char = UART_GetChar();
+            if(rf_char == 'F') break;
+            if(rf_char >= '0' && rf_char <= '9')
+            {
+                UART_PutString("received: ");
+                UART_PutChar(rf_char);
+                UART_PutString("\r\n");
+                instructionCount = instructionCount*10 + (rf_char-48);
+            }
+            
+        }
+        isrRF_RX_StartEx(BT_rxInt);
+        sprintf(mes, "starting from instruction %d\r\n", instructionCount);
+        UART_PutString(mes);
+        
+        int i;
+        for(i = instructionCount;i < instructionLength; i++)
         {
             if(i%2 == 0)
             {
@@ -900,6 +926,10 @@ CY_ISR(BT_rxInt)
         //char message[128];
        // sprintf(message, "p:%s\r\n", instructions);
         instructionCount = 0;
+        QuadDec_M1_SetCounter(0);
+        QuadDec_M2_SetCounter(0);
+        last_quad_count1 = 0;
+        last_quad_count2 = 0;
         isrRF_RX_Disable();
         while(rf_char != 'F')
         {
