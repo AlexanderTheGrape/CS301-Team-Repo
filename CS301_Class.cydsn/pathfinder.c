@@ -466,6 +466,7 @@ uint32_t generateEntireMapDirections(){
 
          //stuff
          //printf("Discontinuity found at %d \n", i + 1);
+        prev_intersection = i;
         i++;
       }
 

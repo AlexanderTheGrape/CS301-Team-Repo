@@ -348,7 +348,7 @@ int main()
                                 char mes[16];
                                 sprintf(mes, "Dist travel: %d\r\n", accum_dist);
                                  UART_PutString(mes);
-                            //if(reached_target == 1)
+                            if(reached_target == 1)
                             {
                                 if(nextStep == 'D')
                                 {
@@ -379,12 +379,12 @@ int main()
                                     case 'L':
                                         //if(tracked_direction == 1) tracked_direction = 4; else tracked_direction--;
                                         initTurnLeft();
-                                        target_distance_quad -= 208;
+                                        target_distance_quad -= 75;
                                     break;
                                     case 'R':
                                         //if(tracked_direction == 4) tracked_direction = 1; else tracked_direction++;
                                         initTurnRight();
-                                        target_distance_quad += 208 - 208;
+                                        target_distance_quad += (208 - 75);
                                         
                                     break;
                                     case 'U':
@@ -416,7 +416,7 @@ int main()
                                 actionDebounce++;
                                 if(actionDebounce >= 3000)
                                 {
-                                    //if(reached_target == 1)
+                                    if(reached_target == 1)
                                     {
                                 char mes[16];
                                 sprintf(mes, "Dist travel: %d\r\n", accum_dist);
@@ -476,12 +476,12 @@ int main()
                                     case 'L':
                                         //if(tracked_direction == 1) tracked_direction = 4; else tracked_direction--;
                                         initTurnLeft();
-                                        target_distance_quad -= 208;
+                                        target_distance_quad -= 75;
                                     break;
                                     case 'R':
                                         //if(tracked_direction == 4) tracked_direction = 1; else tracked_direction++;
                                         initTurnRight();
-                                        target_distance_quad += 208 - 208;
+                                        target_distance_quad += 208 - 75;
                                         
                                     break;
                                     case 'U':
