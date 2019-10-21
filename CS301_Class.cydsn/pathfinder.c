@@ -473,9 +473,9 @@ uint32_t generateEntireMapDirections(){
          //printf("Discontinuity found at %d \n", i + 1);
         prev_intersection = i;
         
-        if(((path[i + 1][Y] == path[i][Y] + 1 && path[i + 1][X] == path[i][X]) || (path[i + 1][Y] == path[i][Y] - 1 && path[i + 1][X] == path[i][X]) || (path[i + 1][X] == path[i][X] - 1 && path[i + 1][Y] == path[i][Y]) || (path[i + 1][X] == path[i][X] + 1 && path[i + 1][Y] == path[i][Y]))){
+        if(((path[i+1][Y] == (path[i + 2][Y] + 1) && (path[i+1][X] == path[i + 2][X])) || (path[i+1][Y] == (path[i + 2][Y] - 1) && (path[i+1][X] == path[i + 2][X])) || (path[i+1][X] == (path[i + 2][X] - 1) && (path[i+1][Y] == path[i + 2][Y])) || (path[i+1][X] == (path[i + 2][X] + 1) && (path[i+1][Y] == path[i + 2][Y])) || (path[i + 1][Y] == (path[i + 2][Y]) && (path[i+1][X] == path[i + 2][X])))){
             i++;
-        }
+         }
       }
 
       //printf("i: %d counter: %d\n", i, counter);

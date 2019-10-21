@@ -364,8 +364,13 @@ int main()
                 if(movement_state != LTURN && movement_state != RTURN && movement_state != UTURN){
                     //when we hit an intersection, verify the next step then evaluate
                     char nextStep = instructions[instructionCount];
-                    uint8 leftOn = frontSensors[0] && frontSensors[2];
-                    uint8 rightOn = frontSensors[4] && frontSensors[2];
+                    if(nextStep == 'U' && instructions[instructionCount+1] == 0)
+                    {
+                        instructionCount += 2;
+                        nextStep = instructions[instructionCount];
+                    }
+                    leftOn = frontSensors[0] && frontSensors[2];
+                    rightOn = frontSensors[4] && frontSensors[2];
                     if((leftOn && (nextStep != 'R')) || (rightOn && (nextStep != 'L'))){ //intersection
                         if(sensorsDisabled == 0)
                         {

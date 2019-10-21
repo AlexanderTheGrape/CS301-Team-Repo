@@ -87,6 +87,8 @@ uint8 portOpen = 1;
 
 //sensors
 uint8 frontSensors[5];
+uint8 leftOn;
+uint8 rightOn;
 
 
 //Voltage measurements
