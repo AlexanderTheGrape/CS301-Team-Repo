@@ -673,6 +673,10 @@ uint32_t generateDirections(){
     
    int end = djikstras(map, food_list, path, start, destination);
 
+    message[128];
+    sprintf(message, "DIR 0: %d, %d %d, DIR 1: %d %d %d\r\n", path[end][Y], path[end][X], path[end][DIR], path[end - 1][Y], path[end - 1][X], path[end - 1][DIR]);
+    UART_PutString(message);
+
    int i;
    for(i = end; i >= 1; i--){
       if(path[i][DIR] == 1 || path[i][DIR] == 3){
@@ -715,7 +719,19 @@ uint32_t generateDirections(){
                instructions[counter + 1] = (end - i + 1 )- prev_intersection;
                counter += 2;
                prev_intersection = end - i + 1;
-            }else{
+            }else if((path[i][DIR] == 1 && path[i-1][DIR] == 4) || (path[i][DIR] == 3 && path[i-1][DIR] == 2)){//changed
+                  //printf("L/R intersection found (%d) [direction = %d] -- TURN LEFT\n", end - i + 1, path[i][DIR]);
+                  instructions[counter] = LEFT;
+                  instructions[counter + 1] = (end - i + 1 )- prev_intersection;
+                  counter += 2;
+                  prev_intersection = end - i + 1;//save the number of blocks travelled previously
+               }else if((path[i][DIR] == 1 && path[i-1][DIR] == 2) || (path[i][DIR] == 3 && path[i-1][DIR] == 4)){//changed
+                  //printf("L/R intersection found (%d) [direction = %d] -- TURN RIGHT\n", end - i + 1, path[i][DIR]);
+                  instructions[counter] = RIGHT;
+                  instructions[counter + 1] = (end - i + 1 )- prev_intersection;
+                  counter += 2;
+                  prev_intersection = end - i + 1;
+               }else{
             //printf("[(%d), direction = %d]\n", end - i + 1, path[i][DIR]);
          }
          }
@@ -758,7 +774,19 @@ uint32_t generateDirections(){
                instructions[counter + 1] = (end - i + 1 )- prev_intersection;
                counter += 2;
                prev_intersection = end - i + 1;
-            }else{
+            }else if((path[i][DIR] == 4 && path[i-1][DIR] == 3) || (path[i][DIR] == 2 && path[i-1][DIR] == 1)){//changed
+                  //printf("U/D intersection found (%d) [direction = %d] -- TURN LEFT\n", end - i + 1, path[i][DIR]);
+                  instructions[counter] = LEFT;
+                  instructions[counter + 1] = (end - i + 1 )- prev_intersection;
+                  counter += 2;
+                  prev_intersection = end - i + 1;
+               }else if((path[i][DIR] == 4 && path[i-1][DIR] == 1) || (path[i][DIR] == 2 && path[i-1][DIR] == 3)){//changed
+                  //printf("U/D intersection found (%d) [direction = %d] -- TURN RIGHT\n", end - i + 1, path[i][DIR]);
+                  instructions[counter] = RIGHT;
+                  instructions[counter + 1] = (end - i + 1 )- prev_intersection;
+                  counter += 2;
+                  prev_intersection = end - i + 1;
+               }else{
            // printf("[(%d), direction = %d]\n", end - i + 1, path[i][DIR]);
          }
          }

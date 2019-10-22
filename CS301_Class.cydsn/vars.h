@@ -37,6 +37,8 @@ uint8 flag_print_rf = 0;
 uint8 flag_receive_ADC = 0;
 int16 adc_result;
 
+uint8 LostFlag;
+
 uint8 direction = 0;
 
 //BT/RF control

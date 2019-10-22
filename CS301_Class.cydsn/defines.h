@@ -54,6 +54,7 @@
 #define DEFAULT_MAX_TURN 228
 #define QUAD_TURN_MIN 168
 #define QUAD_TURN_MAX 248
+#define MAX_NUM_TURNS 5
 
 // Motor
 #define COAST_OFF CONTROL_Write(0);
