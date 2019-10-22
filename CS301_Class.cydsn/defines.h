@@ -48,6 +48,13 @@
 //ADC
 #define ENABLE_ADC 0
 
+
+//turning
+#define DEFAULT_MIN_TURN 188
+#define DEFAULT_MAX_TURN 228
+#define QUAD_TURN_MIN 168
+#define QUAD_TURN_MAX 248
+
 // Motor
 #define COAST_OFF CONTROL_Write(0);
 #define COAST_ON CONTROL_Write(0b11);

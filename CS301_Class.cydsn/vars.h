@@ -89,7 +89,8 @@ uint8 portOpen = 1;
 uint8 frontSensors[5];
 uint8 leftOn;
 uint8 rightOn;
-
+uint16 min_turn_quad;
+uint16 max_turn_quad;
 
 //Voltage measurements
 int16 prevVoltage;

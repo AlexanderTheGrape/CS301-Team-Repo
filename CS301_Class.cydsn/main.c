@@ -187,23 +187,27 @@ CY_ISR(isr_turn_timer)
     {
         uint16 distTurned = (abs(QuadDec_M2_GetCounter() - start_turn_count) % 832);
   
-        if(((distTurned >= 185) && distTurned <= 224) && (frontSensors[2] == 1 || frontSensors[1] == 1 || frontSensors[3] == 1))
+        if(((distTurned >= min_turn_quad) && distTurned <= max_turn_quad) && (frontSensors[2] == 1 || frontSensors[1] == 1 || frontSensors[3] == 1))
         {
             //movement_state = STOPPED;
             brakeMotor();
             movement_state = prev_movement_state;
             Timer_2_Stop();
+            min_turn_quad = DEFAULT_MIN_TURN;
+            max_turn_quad = DEFAULT_MAX_TURN;
         }
     }
     else if (movement_state == RTURN)
     {
         uint16 distTurned = abs(QuadDec_M1_GetCounter() - start_turn_count) % 832;
-        if(((distTurned >= 185) && distTurned <= 224) && (frontSensors[2] == 1 || frontSensors[1] == 1 || frontSensors[3] == 1))
+        if(((distTurned >= min_turn_quad) && distTurned <= max_turn_quad) && (frontSensors[2] == 1 || frontSensors[1] == 1 || frontSensors[3] == 1))
         {
             //movement_state = STOPPED;
             brakeMotor();
             movement_state = prev_movement_state;
             Timer_2_Stop();
+            min_turn_quad = DEFAULT_MIN_TURN;
+            max_turn_quad = DEFAULT_MAX_TURN;
         }
     }
     else if (movement_state == UTURN)
@@ -255,6 +259,10 @@ int main()
 {  
 
 // ----- INITIALIZATIONS ----------
+    
+    min_turn_quad = DEFAULT_MIN_TURN;
+    max_turn_quad = DEFAULT_MAX_TURN;
+    
     CYGlobalIntEnable;
     if(ENABLE_PWM)
     {
@@ -415,6 +423,8 @@ int main()
                                         break;
                                         case 'L':
                                         //if(tracked_direction == 1) tracked_direction = 4; else tracked_direction--;
+                                        min_turn_quad = QUAD_TURN_MIN;
+                                        max_turn_quad = QUAD_TURN_MAX;
                                         initTurnLeft();
                                         Timer_Deadzone_WriteCounter(TURN_DEADZONE);
                                         target_distance_quad -= TURN_OFFSET;
@@ -423,6 +433,8 @@ int main()
                                             
                                         break;
                                         case 'R':
+                                        min_turn_quad = QUAD_TURN_MIN;
+                                        max_turn_quad = QUAD_TURN_MAX;
                                         //if(tracked_direction == 4) tracked_direction = 1; else tracked_direction++;
                                         initTurnRight();
                                         target_distance_quad -= TURN_OFFSET;
