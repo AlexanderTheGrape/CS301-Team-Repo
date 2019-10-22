@@ -362,18 +362,82 @@ int main()
             case MAP_TRAVERSE:
             case DEST_TEST:
                 if(movement_state != LTURN && movement_state != RTURN && movement_state != UTURN){
+                    if(instructionCount >= instructionLength) initBrake();
                     //when we hit an intersection, verify the next step then evaluate
                     char nextStep = instructions[instructionCount];
-                    
-//                    if(nextStep == 'D' && instructions[instructionCount+1] == 0)
-//                    {
-//                        instructionCount += 2;
-//                        nextStep = instructions[instructionCount];
-//                    }
-                    
                     leftOn = frontSensors[0] && frontSensors[2];
                     rightOn = frontSensors[4] && frontSensors[2];
-                    if((leftOn && (nextStep != 'R')) || (rightOn && (nextStep != 'L'))){ //intersection
+
+                    //else if (overshot_target == 1 && (nextStep == 'D' || nextStep == 'U' || nextStep == 'S'))
+                    if (overshot_target == 1)
+                    {
+                        
+                                //instructionCount += 2;
+                                //nextStep = instructions[instructionCount]; 
+                                char mes[16];
+                                sprintf(mes, "Dist travel: %d\r\n", accum_dist);
+                                 UART_PutString(mes);
+                                 accum_dist = 0;
+                                uint8 nextStepDist;
+                                if(instructionCount <= instructionLength - 3) nextStepDist = instructions[instructionCount+3];
+                                else nextStepDist = 0;
+                                
+                                target_distance_quad = QUAD_PER_UNIT * (nextStepDist-0);
+                                
+                                
+                                    UART_PutString("Trigger quad\r\n");
+                                    switch(nextStep)
+                                    {
+                                        case 'U':
+                                             Timer_Deadzone_WriteCounter(U_DEADZONE);
+                                            initTurnU();
+                                            //target_distance_quad += 208;
+                                            target_distance_quad -= (U_OFFSET - QUAD_PER_UNIT * 0.5);
+                                            Timer_Deadzone_Start();
+                                             deadzone = 1;
+                                        break;
+                                        case 'D':
+                                            target_distance_quad -= QUAD_PER_UNIT * 0.5;
+                                            //do nothing
+                                        break;
+                                        case 'S':
+                                            inittrackLineZ();
+                                            Timer_Deadzone_WriteCounter(S_DEADZONE);
+                                             target_distance_quad -= (QUAD_PER_UNIT * 0.5);
+                                            Timer_Deadzone_Start();
+                                            deadzone = 1;
+                                        break;
+                                        case 'L':
+                                        //if(tracked_direction == 1) tracked_direction = 4; else tracked_direction--;
+                                        initTurnLeft();
+                                        Timer_Deadzone_WriteCounter(TURN_DEADZONE);
+                                        target_distance_quad -= TURN_OFFSET;
+                                        Timer_Deadzone_Start();
+                                            deadzone = 1;
+                                        break;
+                                        case 'R':
+                                        //if(tracked_direction == 4) tracked_direction = 1; else tracked_direction++;
+                                        initTurnRight();
+                                        target_distance_quad -= TURN_OFFSET;
+                                        //target_distance_quad += (208 - TURN_OFFSET);
+                                        Timer_Deadzone_WriteCounter(TURN_DEADZONE);
+                                        Timer_Deadzone_Start();
+                                            deadzone = 1;
+                                        break;
+                                    }                                   
+                                    reached_target = 0;
+                                    overshot_target = 0;
+                                    actionDebounce = 0;
+                                    instructionCount += 2;
+                                    if(target_distance_quad < 0) target_distance_quad = 0;
+                                    //Timer_Deadzone_Start();
+                                    //deadzone = 1;
+                                    sprintf(mes, "Target dist: %d\r\n", target_distance_quad);
+                                    UART_PutString(mes);
+                                    sprintf(mes, "instr count:%d\r\n", instructionCount);
+                                    UART_PutString(mes);
+                    }
+                    else if((leftOn && (nextStep != 'R')) || (rightOn && (nextStep != 'L'))){ //intersection
                         if(sensorsDisabled == 0)
                         {
                             actionDebounce++;
@@ -441,6 +505,7 @@ int main()
                                 
                                 Timer_Deadzone_Start();
                                 reached_target = 0;
+                                actionDebounce = 0;
                                 overshot_target = 0;
                                 instructionCount += 2;
                                 sprintf(mes, "instr count:%d\r\n", instructionCount);
@@ -467,7 +532,7 @@ int main()
 //                                if(nextStep == 'U')
 //                                {
 //                                    actionDebounce++;
-//                                    if(actionDebounce >= 2400)
+//                                    if(actionDebounce >= 2600)
 //                                    {
 //                                        if(reached_target == 1)
 //                                        {
@@ -506,74 +571,6 @@ int main()
 //                            }
 //                        }
 //                    }
-                    //else if (overshot_target == 1 && (nextStep == 'D' || nextStep == 'U' || nextStep == 'S'))
-                    else if (overshot_target == 1)
-                    {
-                        
-                                //instructionCount += 2;
-                                //nextStep = instructions[instructionCount]; 
-                                char mes[16];
-                                sprintf(mes, "Dist travel: %d\r\n", accum_dist);
-                                 UART_PutString(mes);
-                                 accum_dist = 0;
-                                uint8 nextStepDist;
-                                if(instructionCount <= instructionLength - 5) nextStepDist = instructions[instructionCount+3];
-                                else nextStepDist = 0;
-                                
-                                target_distance_quad = QUAD_PER_UNIT * (nextStepDist-0);
-                                
-                                
-                                    UART_PutString("Trigger quad\r\n");
-                                    switch(nextStep)
-                                    {
-                                        case 'U':
-                                             Timer_Deadzone_WriteCounter(U_DEADZONE);
-                                            initTurnU();
-                                            //target_distance_quad += 208;
-                                            target_distance_quad -= (U_OFFSET - QUAD_PER_UNIT * 0.5);
-                                            Timer_Deadzone_Start();
-                                             deadzone = 1;
-                                        break;
-                                        case 'D':
-                                            target_distance_quad -= QUAD_PER_UNIT * 0.5;
-                                            //do nothing
-                                        break;
-                                        case 'S':
-                                            inittrackLineZ();
-                                            Timer_Deadzone_WriteCounter(S_DEADZONE);
-                                             target_distance_quad -= (QUAD_PER_UNIT * 0.5);
-                                            Timer_Deadzone_Start();
-                                            deadzone = 1;
-                                        break;
-                                        case 'L':
-                                        //if(tracked_direction == 1) tracked_direction = 4; else tracked_direction--;
-                                        initTurnLeft();
-                                        Timer_Deadzone_WriteCounter(TURN_DEADZONE);
-                                        target_distance_quad -= TURN_OFFSET;
-                                        Timer_Deadzone_Start();
-                                            deadzone = 1;
-                                        break;
-                                        case 'R':
-                                        //if(tracked_direction == 4) tracked_direction = 1; else tracked_direction++;
-                                        initTurnRight();
-                                        target_distance_quad -= TURN_OFFSET;
-                                        //target_distance_quad += (208 - TURN_OFFSET);
-                                        Timer_Deadzone_WriteCounter(TURN_DEADZONE);
-                                        Timer_Deadzone_Start();
-                                            deadzone = 1;
-                                        break;
-                                    }                                   
-                                    reached_target = 0;
-                                    overshot_target = 0;
-                                    instructionCount += 2;
-                                    if(target_distance_quad < 0) target_distance_quad = 0;
-                                    //Timer_Deadzone_Start();
-                                    //deadzone = 1;
-                                    sprintf(mes, "Target dist: %d\r\n", target_distance_quad);
-                                    UART_PutString(mes);
-                                    sprintf(mes, "instr count:%d\r\n", instructionCount);
-                                    UART_PutString(mes);
-                    }
                     else
                     {
                         inittrackLineZ();
