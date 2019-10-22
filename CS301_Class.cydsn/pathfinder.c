@@ -342,11 +342,13 @@ uint32_t generateEntireMapDirections(){
     uint16 counter = 0;
     int tmpCounter = 0;
     int inter_prev_intersection = 0;
+    int skip = 0;
    //printf("here\n");
    //start from the end since that's the way the path has been stored in the the array
    //U/D stands for up down intersection L/R stands for left right internsection
     int i;
    for(i = 0; i < end; i++){
+    skip = 0;
       //printf("%d %d;", path[i][Y] + 1, path[i][X] + 1);
       //if next direction is not possible from current direction then find the inter path (down, up, left, right)
       if(!((path[i + 1][Y] == path[i][Y] + 1 && path[i + 1][X] == path[i][X]) || (path[i + 1][Y] == path[i][Y] - 1 && path[i + 1][X] == path[i][X]) || (path[i + 1][X] == path[i][X] - 1 && path[i + 1][Y] == path[i][Y]) || (path[i + 1][X] == path[i][X] + 1 && path[i + 1][Y] == path[i][Y]))){
@@ -473,12 +475,15 @@ uint32_t generateEntireMapDirections(){
          //printf("Discontinuity found at %d \n", i + 1);
         prev_intersection = i;
         
-        if(((path[i+1][Y] == (path[i + 2][Y] + 1) && (path[i+1][X] == path[i + 2][X])) || (path[i+1][Y] == (path[i + 2][Y] - 1) && (path[i+1][X] == path[i + 2][X])) || (path[i+1][X] == (path[i + 2][X] - 1) && (path[i+1][Y] == path[i + 2][Y])) || (path[i+1][X] == (path[i + 2][X] + 1) && (path[i+1][Y] == path[i + 2][Y])) || (path[i + 1][Y] == (path[i + 2][Y]) && (path[i+1][X] == path[i + 2][X])))){
-            i++;
-         }
+        //if(((path[i+1][Y] == (path[i + 2][Y] + 1) && (path[i+1][X] == path[i + 2][X])) || (path[i+1][Y] == (path[i + 2][Y] - 1) && (path[i+1][X] == path[i + 2][X])) || (path[i+1][X] == (path[i + 2][X] - 1) && (path[i+1][Y] == path[i + 2][Y])) || (path[i+1][X] == (path[i + 2][X] + 1) && (path[i+1][Y] == path[i + 2][Y])) || (path[i + 1][Y] == (path[i + 2][Y]) && (path[i+1][X] == path[i + 2][X])))){
+          //  i++;
+         //}else{
+            skip = 1;    
+        //}
       }
 
       //printf("i: %d counter: %d\n", i, counter);
+    if(!skip){
 if(path[i][DIR] == 1 || path[i][DIR] == 3){
          //There should be a check that it is within the map
          if(map[path[i][Y]][path[i][X] - 1] == PATH || map[path[i][Y]][path[i][X] + 1] == PATH){
@@ -566,6 +571,7 @@ if(path[i][DIR] == 1 || path[i][DIR] == 3){
          }
          }
       }
+    }
 
 
       tmpCounter++;
